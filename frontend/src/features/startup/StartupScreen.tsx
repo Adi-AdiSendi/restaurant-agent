@@ -24,8 +24,8 @@ function StartupScreen({ down, onRetry }: Props) {
           <>
             <p className={styles.status}>Starting the server…</p>
             <p className={styles.hint}>
-              This demo runs on a free plan that sleeps when nobody uses it. Waking up can take up
-              to a minute.
+              The server goes to sleep when nobody has used the demo for a while. Waking it can take
+              up to a minute.
             </p>
           </>
         )}

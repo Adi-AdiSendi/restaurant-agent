@@ -8,7 +8,7 @@ and to OpenAI. Locally, FastAPI serves the build itself on one origin.
 ```
 Browser (React) -> Netlify (static build, /api/* proxy) -> FastAPI on Render
                        |                                    |      |
-   keep-awake: scheduled function, Render /api/health / 10 min|      +--> OpenAI Responses API
+   keep-awake (scheduled): Render /api/health, every 10 min |      +--> OpenAI Responses API
                                                             v
                                      Netlify DB (menu, users, memory, messages)
 ```
