@@ -40,7 +40,12 @@ table, a closed category enum, and a fixed allergen list per item.
   kitchen and complicates prices and safety. Not needed to make the point.
 
 ## Consequences
-- The guard checks resolved configurations, so an add-on can block a dish.
+- The guard blocks a dish when no way of ordering it fits: its base, or a
+  required group with no fitting choice. An optional add-on never blocks a
+  dish; it is shown struck through for that guest. A trace that every
+  fitting choice carries is a warning on the card.
+- The resolver prices and checks one exact order. It joins the request path
+  with the cart in phase 11.
 - The v1 menu stays as Corner Table, unchanged, so its tests and evals keep
   working.
 - `price_sar` naming stays: every restaurant prices in SAR.

@@ -249,7 +249,9 @@ Reused from sibling projects, adapted rather than rebuilt:
 - **Seed:** upserts by (restaurant, name) and never touches another restaurant.
 - **Resolver:** `menu/configure.py` is pure and gives the priced, checked
   configuration. Removing an ingredient never removes an allergen.
-- **Safety:** the guard checks resolved configurations.
+- **Safety:** the guard blocks a dish only when no way of ordering it fits;
+  options carry their own conflicts and trace warnings. The resolver joins
+  the request path with the cart in phase 11.
 - **Agent:**
   - conversations belong to a restaurant;
   - tools take a `ToolContext` (ADR 0020);
