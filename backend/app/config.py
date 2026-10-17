@@ -33,7 +33,11 @@ def to_asyncpg_url(url: str) -> str:
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=REPO_ROOT / ".env", extra="ignore")
+    # Values pasted into a host dashboard often carry stray spaces; an API key
+    # with one fails every OpenAI call.
+    model_config = SettingsConfigDict(
+        env_file=REPO_ROOT / ".env", extra="ignore", str_strip_whitespace=True
+    )
 
     app_env: Literal["development", "test", "production"] = "development"
     database_url: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/restaurant"

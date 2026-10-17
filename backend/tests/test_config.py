@@ -8,7 +8,7 @@ from app.config import Settings, to_asyncpg_url
 class SettingsWithoutEnvFile(Settings):
     """Ignores the developer's .env so local values cannot change results."""
 
-    model_config = SettingsConfigDict(env_file=None, extra="ignore")
+    model_config = SettingsConfigDict(env_file=None, extra="ignore", str_strip_whitespace=True)
 
 
 @pytest.mark.parametrize(
@@ -59,3 +59,10 @@ def test_turn_deadline_must_fit_under_the_proxy_limit(
     monkeypatch.setenv("TURN_DEADLINE_SECONDS", seconds)
     with pytest.raises(ValidationError):
         SettingsWithoutEnvFile()
+
+
+def test_pasted_values_lose_surrounding_spaces(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("OPENAI_API_KEY", "  sk-test  ")
+    monkeypatch.setenv("OPENAI_MODEL", " gpt-6-luna\t")
+    settings = SettingsWithoutEnvFile()
+    assert (settings.openai_api_key, settings.openai_model) == ("sk-test", "gpt-6-luna")
