@@ -1,0 +1,942 @@
+{
+  "slug": "red-sea-catch",
+  "name": "Red Sea Catch",
+  "cuisine": "Seafood",
+  "tagline": "Gulf fish and shellfish from the grill, fried or baked.",
+  "accent_color": "#1c7ed6",
+  "categories": [
+    "starters",
+    "from_the_grill",
+    "fried_and_platters",
+    "sides_and_drinks"
+  ],
+  "items": [
+    {
+      "name": "Shrimp Bisque",
+      "category": "starters",
+      "description": "Rich shrimp soup finished with cream.",
+      "price_sar": "28.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "shrimp",
+        "cream",
+        "butter",
+        "tomato",
+        "wheat flour"
+      ],
+      "allergens": [
+        "shellfish",
+        "dairy",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Tuna Tartare",
+      "category": "starters",
+      "description": "Diced yellowfin tuna with avocado, soy and sesame.",
+      "price_sar": "42.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "tuna",
+        "avocado",
+        "soy sauce",
+        "sesame seeds",
+        "lime"
+      ],
+      "allergens": [
+        "fish",
+        "soy",
+        "gluten",
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [
+        "sesame seeds"
+      ],
+      "option_groups": []
+    },
+    {
+      "name": "Lentil Soup",
+      "category": "starters",
+      "description": "Red lentils, cumin and lemon. Vegan.",
+      "price_sar": "16.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "red lentils",
+        "onion",
+        "cumin",
+        "lemon"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Fattoush Salad",
+      "category": "starters",
+      "description": "Crisp salad with sumac and fried pita.",
+      "price_sar": "18.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "lettuce",
+        "tomato",
+        "cucumber",
+        "sumac",
+        "fried pita"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [
+        "fried pita"
+      ],
+      "option_groups": []
+    },
+    {
+      "name": "Grilled Hammour Fillet",
+      "category": "from_the_grill",
+      "description": "Gulf hammour, cooked your way, with a side and your sauces.",
+      "price_sar": "68.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "hammour fillet",
+        "olive oil",
+        "lemon",
+        "herbs"
+      ],
+      "allergens": [
+        "fish"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Cooking",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Grilled with lemon",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fried in light flour",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Tandoori (yogurt marinade)",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 2
+            }
+          ]
+        },
+        {
+          "name": "Sauces",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Lemon butter",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Tahini",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "sesame"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Garlic sauce",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Tartare sauce",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "egg",
+                "mustard"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Spicy harissa",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            }
+          ]
+        },
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Saffron rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Grilled vegetables",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Green salad",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Whole Sea Bream",
+      "category": "from_the_grill",
+      "description": "A whole sea bream for one.",
+      "price_sar": "62.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "sea bream",
+        "garlic",
+        "lemon",
+        "herbs"
+      ],
+      "allergens": [
+        "fish"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Cooking",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Grilled with lemon",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fried in light flour",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Saffron rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Grilled vegetables",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Green salad",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salmon Steak",
+      "category": "from_the_grill",
+      "description": "Norwegian salmon, grilled or teriyaki.",
+      "price_sar": "72.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "salmon",
+        "lemon",
+        "dill"
+      ],
+      "allergens": [
+        "fish"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Cooking",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Grilled with lemon",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Teriyaki glaze (soy sauce, sesame)",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "soy",
+                "gluten",
+                "sesame"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Saffron rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Grilled vegetables",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Green salad",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jumbo Shrimp Skewers",
+      "category": "from_the_grill",
+      "description": "Charcoal-grilled jumbo shrimp with garlic and chilli.",
+      "price_sar": "74.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 1,
+      "ingredients": [
+        "jumbo shrimp",
+        "garlic",
+        "chilli",
+        "olive oil"
+      ],
+      "allergens": [
+        "shellfish"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Sauces",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Lemon butter",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Tahini",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "sesame"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Garlic sauce",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Tartare sauce",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "egg",
+                "mustard"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Spicy harissa",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            }
+          ]
+        },
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Saffron rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Grilled vegetables",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Green salad",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lobster Tail",
+      "category": "from_the_grill",
+      "description": "Grilled lobster tail with garlic butter.",
+      "price_sar": "145.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "lobster tail",
+        "garlic butter",
+        "lemon"
+      ],
+      "allergens": [
+        "shellfish",
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [
+        "garlic butter"
+      ],
+      "option_groups": [
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Saffron rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Grilled vegetables",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Green salad",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mixed Seafood Grill",
+      "category": "from_the_grill",
+      "description": "Hammour, jumbo shrimp and calamari from the grill, for one hungry guest.",
+      "price_sar": "118.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "hammour fillet",
+        "jumbo shrimp",
+        "calamari",
+        "lemon",
+        "herbs"
+      ],
+      "allergens": [
+        "fish",
+        "shellfish"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Sauces",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Lemon butter",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Tahini",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "sesame"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Garlic sauce",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Tartare sauce",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "egg",
+                "mustard"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Spicy harissa",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            }
+          ]
+        },
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Saffron rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Grilled vegetables",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Green salad",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Fish and Chips",
+      "category": "fried_and_platters",
+      "description": "Battered cod with fries and tartare sauce.",
+      "price_sar": "49.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "cod",
+        "wheat batter",
+        "fries",
+        "tartare sauce (egg, mustard)"
+      ],
+      "allergens": [
+        "fish",
+        "gluten",
+        "egg",
+        "mustard"
+      ],
+      "may_contain": [],
+      "removable": [
+        "tartare sauce (egg, mustard)"
+      ],
+      "option_groups": []
+    },
+    {
+      "name": "Fried Calamari",
+      "category": "fried_and_platters",
+      "description": "Crispy calamari rings with aioli.",
+      "price_sar": "39.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "calamari",
+        "wheat flour",
+        "lemon",
+        "aioli"
+      ],
+      "allergens": [
+        "shellfish",
+        "gluten",
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Sayadiyah",
+      "category": "fried_and_platters",
+      "description": "Spiced fish over caramelised onion rice, with pine nuts and tahini.",
+      "price_sar": "58.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "white fish",
+        "spiced rice",
+        "caramelised onion",
+        "pine nuts",
+        "tahini"
+      ],
+      "allergens": [
+        "fish",
+        "tree_nut",
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [
+        "pine nuts"
+      ],
+      "option_groups": []
+    },
+    {
+      "name": "Shrimp Tacos",
+      "category": "fried_and_platters",
+      "description": "Three corn tortillas with crispy shrimp, slaw and chipotle mayo.",
+      "price_sar": "44.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 2,
+      "ingredients": [
+        "shrimp",
+        "corn tortillas",
+        "slaw",
+        "chipotle mayo",
+        "rice flour"
+      ],
+      "allergens": [
+        "shellfish",
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Saffron Rice",
+      "category": "sides_and_drinks",
+      "description": "Fluffy basmati with saffron.",
+      "price_sar": "12.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "basmati rice",
+        "saffron",
+        "salt"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Fresh Orange Juice",
+      "category": "sides_and_drinks",
+      "description": "Squeezed to order.",
+      "price_sar": "14.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "orange"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Um Ali",
+      "category": "sides_and_drinks",
+      "description": "Warm pastry pudding with milk, cream, raisins and nuts.",
+      "price_sar": "24.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "puff pastry",
+        "milk",
+        "cream",
+        "raisins",
+        "almonds",
+        "pistachios"
+      ],
+      "allergens": [
+        "gluten",
+        "dairy",
+        "tree_nut"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    }
+  ]
+}
