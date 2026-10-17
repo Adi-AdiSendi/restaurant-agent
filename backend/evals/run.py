@@ -17,6 +17,7 @@ from app.db.engine import get_engine, get_sessionmaker
 from evals.case_model import Case, load_cases
 from evals.grade import grade
 from evals.graders.judge import Judge
+from evals.graders.prices import prices_by_restaurant
 from evals.harness import run_case
 from evals.report import summarize, table
 from evals.transcript import CaseRun, Check
@@ -56,11 +57,7 @@ async def main(args: argparse.Namespace) -> None:
     restaurants = load_restaurants()
     async with get_sessionmaker()() as session, session.begin():
         await seed_menus(session, restaurants)  # idempotent, the same as scripts.seed_menu
-    # Dish names repeat across restaurants, so prices are looked up per restaurant.
-    prices = {r.slug: {item.name: item.price_sar for item in r.items} for r in restaurants}
-    unknown = sorted({c.restaurant for c in cases} - set(prices))
-    if unknown:
-        raise SystemExit(f"Cases name restaurants with no data file: {unknown}")
+    prices = prices_by_restaurant(restaurants, (c.restaurant for c in cases))
     limit = asyncio.Semaphore(args.concurrency)
 
     async def one(slot: int, case: Case, run: int) -> CaseRun:

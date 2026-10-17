@@ -1,12 +1,15 @@
 from decimal import Decimal
 from typing import Any
 
+import pytest
+
 from app.agent.schemas import Card
 from evals.case_model import Expect, ProfileExpect
 from evals.graders.cards import grade_turn
 from evals.graders.memory import grade_profile
-from evals.graders.prices import grade_prices, stated_prices
+from evals.graders.prices import grade_prices, prices_by_restaurant, stated_prices
 from evals.transcript import StoredFact, Turn
+from scripts.seed_menu import load_restaurants
 
 
 def card(name: str, **fields: Any) -> Card:
@@ -102,3 +105,12 @@ def test_profile_expectations() -> None:
     results = {c.name: c.passed for c in grade_profile("u", bad, stored)}
     assert results == {"u not active": False, "u nothing else active": False}
     assert all(c.passed for c in grade_profile("u", ProfileExpect(exact=True), []))
+
+
+def test_prices_are_kept_per_restaurant_and_unknown_ones_fail() -> None:
+    restaurants = load_restaurants()
+    prices = prices_by_restaurant(restaurants, ["corner-table"])
+    assert prices["corner-table"]["Mango Sorbet"] == Decimal("22.00")
+    assert "Mango Sorbet" not in prices["golden-dragon"]
+    with pytest.raises(ValueError, match="nowhere"):
+        prices_by_restaurant(restaurants, ["nowhere"])

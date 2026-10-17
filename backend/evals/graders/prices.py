@@ -9,6 +9,7 @@ import re
 from collections.abc import Iterable, Mapping
 from decimal import Decimal
 
+from app.menu.restaurant_schemas import RestaurantFile
 from evals.transcript import Check
 
 # "85 SAR", "85.00 SAR", "SAR 85", "SAR85". A range "16-22 SAR" yields only 22.
@@ -41,3 +42,14 @@ def grade_prices(
         elif dish is None and price not in allowed:
             wrong.append(str(price))
     return Check(name=f"{label} prices", passed=not wrong, detail=", ".join(wrong))
+
+
+def prices_by_restaurant(
+    restaurants: Iterable[RestaurantFile], needed: Iterable[str]
+) -> dict[str, dict[str, Decimal]]:
+    """Dish name -> price for each restaurant slug; names repeat across restaurants."""
+    prices = {r.slug: {item.name: item.price_sar for item in r.items} for r in restaurants}
+    unknown = sorted(set(needed) - set(prices))
+    if unknown:
+        raise ValueError(f"Cases name restaurants with no data file: {unknown}")
+    return prices
