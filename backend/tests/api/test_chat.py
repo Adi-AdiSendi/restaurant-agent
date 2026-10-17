@@ -83,3 +83,17 @@ async def test_slow_turn_is_504_and_saves_nothing(
     count = await seeded.scalar(select(func.count()).where(Message.conversation_id == conversation))
     assert count == 0
     assert await active(client) == []
+
+
+async def test_a_memory_change_is_passed_on_so_the_reply_can_confirm_it(
+    llm: FakeLLM, client: httpx2.AsyncClient
+) -> None:
+    await login(client, "sara")
+    conversation = await new_conversation(client)
+    llm.extractions.append(extraction(op("add", "allergy", "dairy")))
+    llm.turns.extend([answer_turn("Noted, no dairy.", []), answer_turn("Sure.", [])])
+    await chat(client, conversation, "I'm allergic to dairy")
+    note = str(llm.calls[0][-1]["content"])
+    assert 'Saved: allergy "dairy".' in note
+    await chat(client, conversation, "Thanks")
+    assert "profile was just updated" not in str(llm.calls[1][-1].get("content"))

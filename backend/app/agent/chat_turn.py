@@ -11,7 +11,7 @@ import asyncio
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.agent.context import build_input
+from app.agent.context import build_input, memory_update_note
 from app.agent.errors import TurnTimeoutError
 from app.agent.llm_client import AgentLLM
 from app.agent.loop import run_turn
@@ -59,11 +59,13 @@ async def _turn(
     previous = next((m.content for m in reversed(history) if m.role == "assistant"), None)
     user_message = await add_message(session, conversation_id, "user", text)
 
-    ops = await extract_operations(llm, await load_profile(session, user_id), previous, text)
+    before = await load_profile(session, user_id)
+    ops = await extract_operations(llm, before, previous, text)
     await apply_operations(session, user_id, ops, user_message.id)
 
     profile = await load_profile(session, user_id)
-    items, seen = build_input(profile, [*history, user_message])
+    note = memory_update_note(before, profile)
+    items, seen = build_input(profile, [*history, user_message], note)
     reply = await run_turn(llm, session, items, seen, constraints=hard_constraints(profile))
 
     item_ids = [item.id for item in reply.items]

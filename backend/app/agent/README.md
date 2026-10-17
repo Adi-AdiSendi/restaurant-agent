@@ -9,7 +9,9 @@ Runs one chat turn: the model, its tool calls, and a structured final answer.
   deadline (`TURN_DEADLINE_SECONDS`, 22 s, under the Netlify proxy's 26 s);
   past it the turn is rolled back and `TurnTimeoutError` becomes a 504.
 - `context.py`: the profile block (first input item, every turn) and the
-  stored history; returns IDs recommended earlier in the conversation.
+  stored history; returns IDs recommended earlier in the conversation. When
+  the latest message changed the profile, a note saying what changed goes
+  last, so the reply confirms it (found by the phase 7 evals).
 - `loop.py`: `run_turn(client, session, input_items, seen_ids, constraints)`.
   Gets an answer, grounds the cards, and runs `safety.check` on every card. A
   blocked card triggers one corrective retry; if still unsafe, blocked cards

@@ -1,4 +1,4 @@
-from app.agent.context import build_input, profile_block
+from app.agent.context import build_input, memory_update_note, profile_block
 from app.memory.models import Message
 from app.memory.preference import Preference
 
@@ -38,3 +38,23 @@ def test_profile_is_the_first_item_then_history_in_order() -> None:
         "I'll take it",
     ]
     assert seen == {13}
+
+
+def test_no_note_when_the_profile_did_not_change() -> None:
+    assert memory_update_note([pref("diet", "vegan")], [pref("diet", "vegan")]) is None
+
+
+def test_note_names_replacements_additions_and_removals() -> None:
+    before = [pref("diet", "vegan"), pref("allergy", "dairy"), pref("allergy", "egg")]
+    after = [pref("diet", "vegetarian"), pref("allergy", "egg"), pref("allergy", "peanut")]
+    note = memory_update_note(before, after)
+    assert note is not None
+    assert 'Saved: allergy "peanut"; diet "vegetarian" (replaces "vegan").' in note
+    assert 'No longer on file: allergy "dairy".' in note
+    assert "Confirm this change" in note
+
+
+def test_the_note_goes_last_after_the_guests_message() -> None:
+    history = [Message(role="user", content="I'm vegetarian now", recommended_item_ids=[])]
+    items, _ = build_input([pref("diet", "vegetarian")], history, "NOTE")
+    assert [i["content"] for i in items[1:]] == ["I'm vegetarian now", "NOTE"]
