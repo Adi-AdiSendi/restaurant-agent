@@ -1,39 +1,13 @@
-"""Every branch of the hard-constraint rule and the post-check, plus an
-exhaustive pass over the real menu for every allergen and diet."""
-
-from decimal import Decimal
+"""Every branch of the hard-constraint rule and the post-check. The exhaustive
+pass over every real menu is in test_guard_exhaustive.py."""
 
 import pytest
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.menu.allergens import Allergen
 from app.menu.constraints import NO_CONSTRAINTS, HardConstraints
-from app.menu.queries import search_items
-from app.menu.schemas import MenuFilter, MenuItemOut
+from app.menu.schemas import MenuItemOut
 from app.safety.guard import check
-
-
-def dish(**override: object) -> MenuItemOut:
-    fields: dict[str, object] = {
-        "id": 1,
-        "name": "Dish",
-        "category": "starters",
-        "description": "d",
-        "price_sar": Decimal("10.00"),
-        "is_vegetarian": True,
-        "is_vegan": True,
-        "spice_level": 0,
-        "ingredients": ["x"],
-        "allergens": [],
-        "may_contain": [],
-    }
-    return MenuItemOut.model_validate(fields | override)
-
-
-def guest(*allergens: Allergen, vegetarian: bool = False, vegan: bool = False) -> HardConstraints:
-    return HardConstraints(
-        excluded_allergens=frozenset(allergens), vegetarian=vegetarian, vegan=vegan
-    )
+from tests.factories import dish, guest, latte
 
 
 @pytest.mark.parametrize(
@@ -81,25 +55,8 @@ def test_no_constraints_allow_everything() -> None:
     assert check(items, NO_CONSTRAINTS).blocked == []
 
 
-@pytest.mark.parametrize("allergen", list(Allergen))
-async def test_every_menu_item_against_every_allergen(
-    seeded: AsyncSession, allergen: Allergen
-) -> None:
-    menu = [MenuItemOut.model_validate(row) for row in await search_items(seeded, MenuFilter())]
-    result = check(menu, guest(allergen))
-    assert {b.item_id for b in result.blocked} == {i.id for i in menu if allergen in i.allergens}
-    assert all(allergen not in i.allergens for i in result.allowed)
-
-
-@pytest.mark.parametrize(
-    ("constraints", "flag"),
-    [(guest(vegan=True), "is_vegan"), (guest(vegetarian=True), "is_vegetarian")],
-)
-async def test_every_menu_item_against_each_diet(
-    seeded: AsyncSession, constraints: HardConstraints, flag: str
-) -> None:
-    menu = [MenuItemOut.model_validate(row) for row in await search_items(seeded, MenuFilter())]
-    result = check(menu, constraints)
-    assert result.allowed
-    assert all(getattr(i, flag) for i in result.allowed)
-    assert {b.item_id for b in result.blocked} == {i.id for i in menu if not getattr(i, flag)}
+def test_an_option_can_block_an_item() -> None:
+    no_oat = latte(with_oat=False)
+    result = check([no_oat, latte()], guest(Allergen.DAIRY, Allergen.TREE_NUT))
+    assert [b.reasons for b in result.blocked] == [["no milk choice fits"]]
+    assert [i.name for i in result.allowed] == ["Latte"]

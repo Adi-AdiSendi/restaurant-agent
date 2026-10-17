@@ -18,6 +18,11 @@ Restaurants, their menus and options, and every read of them.
   contain" allergens are not filtered here; the safety layer warns about them.
 - `constraints.py`: `HardConstraints` (allergens, vegetarian, vegan) built
   from the stored profile. `restrict` merges it into a search and can only
-  narrow it; `violations` is the rule the safety post-check enforces.
+  narrow it. `violations` checks anything with allergens and diet flags;
+  `item_violations` is the rule the safety post-check enforces (the base
+  fits, and every required group keeps a fitting choice).
+- `configure.py`: the pure resolver. Item + option IDs + removals give the
+  unit price, allergens, may-contain, diet flags and spice of that order, or
+  a `ConfigurationError`. Removing an ingredient never removes an allergen.
 
 Depends on: `db` (Base). Used by: `tools`, `safety`, `memory`, `scripts/seed_menu.py`.

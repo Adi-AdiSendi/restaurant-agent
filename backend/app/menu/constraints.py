@@ -1,9 +1,27 @@
-"""A guest's hard constraints (allergies and diet), applied to every menu search."""
+"""A guest's hard constraints (allergies and diet), applied to every menu search.
+
+One rule (`violations`) checks anything with allergens and diet flags: an
+item's base, one option, or a resolved configuration (`configure.py`).
+"""
+
+from collections.abc import Sequence
+from typing import Protocol
 
 from pydantic import BaseModel, ConfigDict, Field
 
 from app.menu.allergens import Allergen
 from app.menu.schemas import MenuFilter, MenuItemOut
+
+
+class Checkable(Protocol):
+    @property
+    def allergens(self) -> Sequence[Allergen]: ...
+    @property
+    def may_contain(self) -> Sequence[Allergen]: ...
+    @property
+    def is_vegetarian(self) -> bool: ...
+    @property
+    def is_vegan(self) -> bool: ...
 
 
 class HardConstraints(BaseModel):
@@ -15,18 +33,39 @@ class HardConstraints(BaseModel):
     vegetarian: bool = False
     vegan: bool = False
 
-    def violations(self, item: MenuItemOut) -> list[str]:
-        """Why this item must not be recommended to this guest; empty if it may."""
-        reasons = sorted(a.value for a in set(item.allergens) & self.excluded_allergens)
-        if self.vegan and not item.is_vegan:
+    def violations(self, food: Checkable) -> list[str]:
+        """Why this must not be served to this guest; empty if it may."""
+        reasons = sorted(a.value for a in set(food.allergens) & self.excluded_allergens)
+        if self.vegan and not food.is_vegan:
             reasons.append("not vegan")
-        elif self.vegetarian and not item.is_vegetarian:
+        elif self.vegetarian and not food.is_vegetarian:
             reasons.append("not vegetarian")
         return reasons
 
-    def may_contain_warnings(self, item: MenuItemOut) -> list[Allergen]:
+    def item_violations(self, item: MenuItemOut) -> list[str]:
+        """Why no way of ordering this item suits the guest; empty if one does.
+
+        The base must fit, and every required group must keep enough fitting options.
+        """
+        reasons = self.violations(item)
+        for group in item.option_groups:
+            fitting = [o for o in group.options if not self.violations(o)]
+            if len(fitting) < group.min_choices:
+                reasons.append(f"no {group.name.lower()} choice fits")
+        return reasons
+
+    def option_conflicts(self, item: MenuItemOut) -> dict[int, list[str]]:
+        """Option ID -> why the guest must not pick it; options that fit are left out."""
+        return {
+            option.id: reasons
+            for group in item.option_groups
+            for option in group.options
+            if (reasons := self.violations(option))
+        }
+
+    def may_contain_warnings(self, food: Checkable) -> list[Allergen]:
         """Trace allergens the guest avoids: allowed, but they should confirm with staff."""
-        return sorted(set(item.may_contain) & self.excluded_allergens)
+        return sorted(set(food.may_contain) & self.excluded_allergens)
 
     def restrict(self, menu_filter: MenuFilter) -> MenuFilter:
         """Merge into the model's filter. Only ever narrows the search, never widens it."""
