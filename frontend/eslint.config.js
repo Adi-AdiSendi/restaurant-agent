@@ -8,7 +8,7 @@ import tseslint from 'typescript-eslint'
 export default tseslint.config(
   { ignores: ['dist', 'coverage'] },
   {
-    files: ['**/*.{ts,tsx}'],
+    files: ['**/*.{ts,tsx,mts}'],
     extends: [js.configs.recommended, ...tseslint.configs.strict, prettier],
     languageOptions: { ecmaVersion: 2023, globals: globals.browser },
     plugins: { 'react-hooks': reactHooks, 'react-refresh': reactRefresh },
