@@ -29,9 +29,9 @@ verified. Update the last two columns as phases finish.
 ## Part 2: Challenge (section 4)
 | # | The brief asks | Answered in |
 |---|---|---|
-| C1 | Problem identification | ADR 0014, README, video |
-| C2 | Prioritization | ADR 0014, video |
-| C3 | Scope and trade-offs, what was left out | ADR 0014, README limitations |
+| C1 | Problem identification | ADR 0014, `docs/eval-report.md`, README, video |
+| C2 | Prioritization | ADR 0014, `docs/eval-report.md` (safety first, worst run), video |
+| C3 | Scope and trade-offs, what was left out | ADR 0014, eval report "does not show", README limitations |
 | C4 | Execution and validation | `backend/evals/`, `docs/eval-report.md` |
 
 ## Deliverables (section 6)

@@ -1,6 +1,6 @@
 # 0014: Part 2 challenge: reliability and evaluation
 
-- Status: Proposed
+- Status: Accepted
 - Date: 2026-10-17
 
 ## Problem
@@ -27,3 +27,9 @@ memory. Demos hide these failures. Without measurement, "it works" is a claim.
 
 ## Validation
 `docs/eval-report.md` with before and after results on the same cases and model.
+
+## Outcome
+42 cases, 3 runs each, on gpt-6-luna (`docs/eval-report.md`). The safety
+categories passed every run from the start. The evals found memory changing
+silently, with no confirmation to the user (preference_update 4/6). Two
+fixes to the memory-change note brought it to 6/6 with no regressions.

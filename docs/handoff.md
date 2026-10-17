@@ -1,4 +1,4 @@
-# Handoff (2026-10-17, phase 6 in progress)
+# Handoff (2026-10-17, phase 7 done)
 
 Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 
@@ -7,7 +7,7 @@ Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 |---|---|
 | 0 to 5 | done, reviewed, committed |
 | 6 Deploy | **live** at https://restaurant-agent.netlify.app; two checks left |
-| 7 Evals (Part 2) | not started |
+| 7 Evals (Part 2) | done: 42 cases x 3 runs, `docs/eval-report.md` |
 | 8 Submission | not started |
 
 Repo: private GitHub `Adi-AdiSendi/restaurant-agent`, branch `main`, CI green.
@@ -29,7 +29,11 @@ Commits are allowed now (one logical change each); see ADR 0017 for the deploy.
 2. Left: observe a cold start after a missed ping, and that the DB sleeps
    when idle (Netlify DB usage page). The user should delete the backend
    secrets they copied into Netlify env vars (only Render needs them).
-3. Then mark phase 6 done in plan.md and start phase 7.
+3. Then mark phase 6 done in plan.md.
+4. Phase 7 is done (`docs/eval-report.md`). The memory-change note fix is
+   committed and pushed; Render redeploys on push, so the live site has it.
+5. Next: phase 8 (submission): README pass, video 8 to 12 min, Drive folder,
+   check every link from a logged-out browser.
 
 ## Run locally
 - `docker compose up -d db` (Docker Desktop must be running)

@@ -15,7 +15,7 @@
 | [0011](0011-structured-memory-with-supersession.md) | Structured memory with supersession | Accepted |
 | [0012](0012-quality-gates-in-ci.md) | Quality gates in pre-commit and CI | Accepted |
 | [0013](0013-identity-username-and-pin.md) | Identity: username and PIN | Accepted |
-| [0014](0014-part-2-reliability-and-evals.md) | Part 2: reliability and evaluation | Proposed |
+| [0014](0014-part-2-reliability-and-evals.md) | Part 2: reliability and evaluation | Accepted |
 | [0015](0015-foodics-brand-for-prototype-ui.md) | Foodics brand for the prototype UI | Accepted |
 | [0016](0016-removed-status-and-target-checks.md) | `removed` status, checked targets (amends 0011) | Accepted |
 | [0017](0017-deploy-netlify-with-api-proxy.md) | Deploy: Netlify, API proxied to Render free (supersedes 0006) | Accepted |

@@ -4,7 +4,7 @@ Budget: about 10 to 12 focused hours inside the 72-hour window.
 Rule: the baseline must work end to end (deployed) before Part 2 starts.
 Every phase ends with all checks green and a `code-reviewer` pass.
 
-**Current phase: 6**
+**Current phase: 8** (phase 6 has two time-based checks left; see handoff)
 
 ## Inputs
 - Menu concept: international casual (burgers, bowls, pasta, desserts), prices in SAR.
@@ -166,6 +166,10 @@ rewrite was rejected on cost and risk, so:
   Accept ADR 0014.
 - Done when: the report shows per-category results and at least one real
   improvement measured before and after.
+- Status: done 2026-10-17. 42 cases (36 + 6 added after the first baseline),
+  3 runs each. preference_update went 4/6 to 6/6 through two fixes to the
+  memory-change note; the other six categories stayed at 100%. ADR 0014
+  accepted. Report: `docs/eval-report.md`.
 
 ## Phase 8: Submission (about 1.5 h)
 - README: local setup, architecture, key decisions (link ADRs), setup

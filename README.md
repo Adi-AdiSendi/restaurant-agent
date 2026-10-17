@@ -39,6 +39,14 @@ Live: https://restaurant-agent.netlify.app (log in with a demo account below).
 - Decisions: `docs/decisions/`
 - Requirements traceability: `docs/requirements.md`
 
+## Part 2: reliability and evals
+An eval suite (`backend/evals/`, ADR 0014) runs 42 cases in 7 categories,
+3 times each, against the real model. Allergen, diet and isolation safety
+passed every run. The evals found one real problem: memory changed silently,
+so a user who corrected their diet was never told it was understood. Two
+fixes brought that category from 4/6 to 6/6 with no regressions. Details,
+transcripts and caveats: `docs/eval-report.md`.
+
 ## Known limitations
 - Reloading the page starts a new conversation; past conversations are kept
   in the database but not listed in the UI. Memory carries over either way.
@@ -59,6 +67,8 @@ Live: https://restaurant-agent.netlify.app (log in with a demo account below).
   the server" for up to a minute.
 - A chat turn must finish within 22 s (the Netlify proxy stops at 26 s);
   slower turns end with "took too long, please try again".
+- The eval suite is small (42 cases) and its judge is the same model it
+  grades; see the eval report for what it does not cover.
 - The demo PINs are public, so anyone can change the demo profiles until the
   next deploy resets them.
 - Netlify DB Free has 48 compute hours per billing period and sleeps after 5
