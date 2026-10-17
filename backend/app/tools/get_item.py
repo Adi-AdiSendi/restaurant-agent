@@ -3,11 +3,11 @@
 from pydantic import BaseModel, Field, ValidationError
 
 from app.menu.allergens import Allergen
+from app.menu.guest_view import GuestItem, guest_item
 from app.menu.queries import get_item
 from app.menu.schemas import MenuItemOut
 from app.tools.context import ToolContext
 from app.tools.errors import ToolError, invalid_arguments
-from app.tools.menu_views import ToolItem, tool_item
 
 NAME = "get_item"
 
@@ -36,7 +36,7 @@ class GetItemArgs(BaseModel):
 
 
 class GetItemResult(BaseModel):
-    item: ToolItem
+    item: GuestItem
     conflicts_with_guest: list[str]
     may_contain_warnings: list[Allergen]
 
@@ -56,7 +56,7 @@ async def handle(arguments: str, context: ToolContext) -> GetItemResult | ToolEr
     item = MenuItemOut.model_validate(row)
     constraints = context.constraints
     return GetItemResult(
-        item=tool_item(item, constraints),
+        item=guest_item(item, constraints),
         conflicts_with_guest=constraints.item_violations(item),
         may_contain_warnings=constraints.item_may_contain_warnings(item),
     )

@@ -1,5 +1,5 @@
 // Mirrors the backend Pydantic models. Keep in sync with app/agent/schemas.py,
-// app/tools/menu_views.py, app/menu/restaurant_schemas.py, app/memory/profile.py,
+// app/menu/guest_view.py, app/menu/restaurant_schemas.py, app/memory/profile.py,
 // app/api/auth.py and app/api/health.py.
 
 export type Allergen =
@@ -52,6 +52,8 @@ export interface Card {
   may_contain: Allergen[]
   removable: string[]
   option_groups: OptionGroup[]
+  /** Why no way of ordering it suits the guest; empty if one does. */
+  conflicts_with_guest: string[]
   may_contain_warnings: Allergen[]
 }
 

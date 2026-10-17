@@ -21,6 +21,9 @@ Restaurants, their menus and options, and every read of them.
   narrow it. `violations` checks anything with allergens and diet flags;
   `item_violations` is the rule the safety post-check enforces (the base
   fits, and every required group keeps a fitting choice).
+- `guest_view.py`: `GuestItem`, an item as one guest sees it (conflicts and
+  trace warnings for the item and every option). Tools, chat cards and the
+  menu page all use it.
 - `configure.py`: the pure resolver. Item + option IDs + removals give the
   unit price, allergens, may-contain, diet flags and spice of that order, or
   a `ConfigurationError`. Removing an ingredient never removes an allergen.

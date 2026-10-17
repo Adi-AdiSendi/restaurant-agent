@@ -17,12 +17,13 @@ Tools the model can call. One file per tool, each with `NAME`, `DESCRIPTION`,
   `conflicts_with_guest` and `may_contain_warnings`, or a `not_found` error
   (also for another restaurant's ID). The agent may describe a conflicting
   item but the safety post-check blocks it as a recommendation.
-- `menu_views.py`: `ToolItem`, the item as the model sees it: every field,
-  and every option with its own `conflicts_with_guest`.
 - `errors.py`: the shared `{error_category, retryable, message}` shape.
   Bad arguments are `invalid_arguments` and not retryable.
 
 Rules: tool schemas never contain a user, conversation or restaurant; those
 come from the context.
+
+Items come back as `menu/guest_view.py` `GuestItem`s: every field, every
+option with its own conflicts and trace warnings.
 
 Depends on: `menu`. Used by: `agent/tool_dispatch.py`.

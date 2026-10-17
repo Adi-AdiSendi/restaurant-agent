@@ -1,18 +1,15 @@
 """What one chat turn returns."""
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
-from app.menu.allergens import Allergen
 from app.menu.constraints import HardConstraints
+from app.menu.guest_view import GuestItem, guest_item
 from app.menu.schemas import MenuItemOut
-from app.tools.menu_views import ToolItem, tool_item
 
 
-class Card(ToolItem):
+class Card(GuestItem):
     """A recommended item as the UI shows it: every option with its conflicts for this
     guest, and any trace-allergen warning."""
-
-    may_contain_warnings: list[Allergen] = Field(default_factory=list[Allergen])
 
 
 class AgentReply(BaseModel):
@@ -21,10 +18,4 @@ class AgentReply(BaseModel):
 
 
 def cards_for(items: list[MenuItemOut], constraints: HardConstraints) -> list[Card]:
-    return [
-        Card(
-            **tool_item(item, constraints).model_dump(),
-            may_contain_warnings=constraints.item_may_contain_warnings(item),
-        )
-        for item in items
-    ]
+    return [Card(**guest_item(item, constraints).model_dump()) for item in items]

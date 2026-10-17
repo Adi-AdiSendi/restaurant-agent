@@ -18,6 +18,7 @@ const cake: Card = {
   may_contain: ['tree_nut'],
   removable: [],
   option_groups: [],
+  conflicts_with_guest: [],
   may_contain_warnings: [],
 }
 

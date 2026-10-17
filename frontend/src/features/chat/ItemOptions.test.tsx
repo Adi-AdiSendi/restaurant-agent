@@ -52,6 +52,7 @@ const latte: Card = {
       options: [option(3, 'Vanilla'), option(4, 'Chilli', { spice_level: 3 })],
     },
   ],
+  conflicts_with_guest: [],
   may_contain_warnings: [],
 }
 

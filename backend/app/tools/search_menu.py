@@ -4,11 +4,11 @@ from pydantic import BaseModel, ValidationError
 
 from app.menu.allergens import Allergen
 from app.menu.constraints import NO_CONSTRAINTS, HardConstraints
+from app.menu.guest_view import GuestItem, guest_item
 from app.menu.queries import search_items
 from app.menu.schemas import MenuFilter, MenuItemOut
 from app.tools.context import ToolContext
 from app.tools.errors import ToolError, invalid_arguments
-from app.tools.menu_views import ToolItem, tool_item
 
 NAME = "search_menu"
 
@@ -64,7 +64,7 @@ PARAMETERS: dict[str, object] = {
 
 
 class SearchMenuResult(BaseModel):
-    items: list[ToolItem]
+    items: list[GuestItem]
     guest_constraints_applied: HardConstraints = NO_CONSTRAINTS
 
 
@@ -92,6 +92,6 @@ async def handle(arguments: str, context: ToolContext) -> SearchMenuResult | Too
     )
     items = [MenuItemOut.model_validate(row) for row in rows]
     return SearchMenuResult(
-        items=[tool_item(i, constraints) for i in items if not fits.item_violations(i)],
+        items=[guest_item(i, constraints) for i in items if not fits.item_violations(i)],
         guest_constraints_applied=constraints,
     )
