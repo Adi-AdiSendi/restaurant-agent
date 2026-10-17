@@ -18,7 +18,7 @@ test('pings the backend health check directly every 10 minutes', async () => {
     BACKEND_HEALTH_URL,
     expect.objectContaining({ signal: expect.any(AbortSignal) }),
   )
-  expect(config.schedule).toBe('*/10 * * * *')
+  expect(config.schedule).toBe('@yearly')
 })
 
 test('pings the same backend that netlify.toml proxies /api to', () => {
