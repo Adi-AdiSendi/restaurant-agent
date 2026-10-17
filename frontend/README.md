@@ -1,12 +1,15 @@
 # frontend
 
 React + Vite + strict TypeScript chat UI with the Foodics brand (ADR 0015).
-Built to `dist/`, which FastAPI serves from the same origin.
+Built to `dist/`. Locally FastAPI serves it from the same origin; deployed,
+Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
 
-- Entry point: `src/main.tsx`; `src/App.tsx` checks the session and shows
-  login or chat.
+- Entry point: `src/main.tsx`; `src/App.tsx` waits for the server, checks the
+  session and shows login or chat.
 - `src/api/`: the only code that calls the backend (`client.ts`), and payload
   types that mirror the Pydantic models (`types.ts`).
+- `src/features/startup/`: polls `/api/health` while the free backend wakes
+  up ("Starting the server"), gives up after 2 minutes with a retry button.
 - `src/features/login/`: username + 4-digit PIN.
 - `src/features/chat/`: header (logo, "Corner Table", "Powered by Foodics",
   New chat, Log out), messages, item cards, composer, suggestions. State is a

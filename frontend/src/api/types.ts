@@ -1,5 +1,5 @@
 // Mirrors the backend Pydantic models. Keep in sync with app/agent/schemas.py,
-// app/menu/schemas.py, app/memory/profile.py and app/api/auth.py.
+// app/menu/schemas.py, app/memory/profile.py, app/api/auth.py and app/api/health.py.
 
 export type Allergen =
   | 'gluten'
@@ -42,6 +42,10 @@ export interface LoginResponse {
 
 export interface Me {
   username: string
+}
+
+export interface Health {
+  status: string
 }
 
 export interface NewConversation {
