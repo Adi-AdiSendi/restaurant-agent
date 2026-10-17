@@ -62,8 +62,34 @@ async def test_a_conflict_needs_the_guests_acknowledgement(seeded: AsyncSession)
         await add_line(seeded, user, CAFE, whole, guest(Allergen.DAIRY))
     assert refused.value.reasons == ["dairy"]
     assert (await get_cart(seeded, user, guest(Allergen.DAIRY))).lines == []
-    cart = await add_line(seeded, user, CAFE, whole, guest(Allergen.DAIRY), accept_conflict=True)
+    dairy = guest(Allergen.DAIRY)
+    cart = await add_line(seeded, user, CAFE, whole, dairy, accepted_reasons=["dairy"])
     assert cart.lines[0].conflicts_with_guest == ["dairy"]
+
+
+async def test_consent_covers_only_the_reasons_the_guest_saw(seeded: AsyncSession) -> None:
+    user = await make_user(seeded, "cart_c2")
+    strict = guest(Allergen.DAIRY, vegan=True)  # whole milk now breaks two things
+    with pytest.raises(LineConflict) as refused:
+        await add_line(
+            seeded,
+            user,
+            CAFE,
+            await latte(seeded, "Whole milk"),
+            strict,
+            accepted_reasons=["dairy"],
+        )
+    assert refused.value.reasons == ["dairy", "not vegan"]
+
+
+async def test_a_trace_needs_no_consent(seeded: AsyncSession) -> None:
+    """May-contain is a warning, as in v1: oat milk may contain gluten."""
+    user = await make_user(seeded, "cart_c3")
+    cart = await add_line(
+        seeded, user, CAFE, await latte(seeded, "Oat milk"), guest(Allergen.GLUTEN)
+    )
+    assert cart.lines[0].may_contain_warnings == [Allergen.GLUTEN]
+    assert cart.lines[0].conflicts_with_guest == []
 
 
 async def test_the_same_choice_adds_up_to_twenty(seeded: AsyncSession) -> None:

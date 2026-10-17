@@ -1,7 +1,7 @@
 """Place an order from the cart, and read the guest's own orders. No payment (ADR 0019)."""
 
 from fastapi import APIRouter, Depends
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import current_user_id, guest_constraints
@@ -18,8 +18,8 @@ router = APIRouter()
 
 class PlaceOrderRequest(BaseModel):
     fulfilment: Fulfilment
-    accept_conflicts: bool = False
-    """The guest saw the allergy or diet warnings at checkout and still wants to order."""
+    accepted_reasons: list[str] = Field(default_factory=list[str], max_length=20)
+    """The conflict reasons the guest was shown at checkout and accepted."""
 
 
 @router.post("/orders", status_code=201)
@@ -31,7 +31,7 @@ async def place(
 ) -> OrderOut:
     try:
         order = await place_order(
-            session, user_id, body.fulfilment, constraints, accept_conflicts=body.accept_conflicts
+            session, user_id, body.fulfilment, constraints, accepted_reasons=body.accepted_reasons
         )
     except OrderError as exc:
         raise http_error(exc) from exc

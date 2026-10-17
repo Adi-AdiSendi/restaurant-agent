@@ -63,4 +63,7 @@ async def get_username(session: AsyncSession, user_id: int) -> str | None:
 
 async def lock_user(session: AsyncSession, user_id: int) -> None:
     """Row lock until the transaction ends, so one user's chat turns run one at a time."""
-    await session.execute(select(User.id).where(User.id == user_id).with_for_update())
+    # NO KEY UPDATE: inserts that reference the user (carts, orders) take KEY SHARE
+    # and must not wait for a chat turn.
+    stmt = select(User.id).where(User.id == user_id).with_for_update(key_share=True)
+    await session.execute(stmt)

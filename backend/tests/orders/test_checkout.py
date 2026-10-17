@@ -58,7 +58,9 @@ async def test_a_conflict_that_appeared_after_the_add_needs_consent(seeded: Asyn
     with pytest.raises(LineConflict) as refused:
         await place_order(seeded, user, "pickup", dairy)
     assert refused.value.reasons == ["dairy"]
-    order = await place_order(seeded, user, "pickup", dairy, accept_conflicts=True)
+    with pytest.raises(LineConflict):
+        await place_order(seeded, user, "pickup", dairy, accepted_reasons=["not vegan"])
+    order = await place_order(seeded, user, "pickup", dairy, accepted_reasons=["dairy"])
     assert order.lines[0].allergens == ["dairy"]
 
 

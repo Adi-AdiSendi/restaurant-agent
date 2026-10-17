@@ -19,7 +19,9 @@ EMPTY = CartOut(restaurant=None, lines=[], total_sar=Decimal(0), item_count=0)
 
 async def own_cart(session: AsyncSession, user_id: int, *, lock: bool = False) -> Cart | None:
     stmt = select(Cart).where(Cart.user_id == user_id)
-    return await session.scalar(stmt.with_for_update() if lock else stmt)
+    if lock:
+        stmt = stmt.with_for_update().execution_options(populate_existing=True)
+    return await session.scalar(stmt)
 
 
 async def get_cart(session: AsyncSession, user_id: int, constraints: HardConstraints) -> CartOut:

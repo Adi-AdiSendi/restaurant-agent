@@ -5,6 +5,7 @@ finds the cart empty. Prices and conflicts are worked out again here, since
 the menu or the guest's profile may have changed since the dish was added.
 """
 
+from collections.abc import Collection
 from decimal import Decimal
 
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -39,7 +40,7 @@ async def place_order(
     fulfilment: Fulfilment,
     constraints: HardConstraints,
     *,
-    accept_conflicts: bool = False,
+    accepted_reasons: Collection[str] = (),
 ) -> OrderOut:
     cart = await own_cart(session, user_id, lock=True)
     if cart is None or not cart.lines:
@@ -50,7 +51,7 @@ async def place_order(
     reasons = sorted(
         {reason for r in resolved if r.config for reason in constraints.violations(r.config)}
     )
-    if reasons and not accept_conflicts:
+    if not set(reasons) <= set(accepted_reasons):
         raise LineConflict(
             f"Your cart has dishes that are not suitable: {', '.join(reasons)}.", reasons
         )

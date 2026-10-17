@@ -31,7 +31,7 @@ async def resolve(session: AsyncSession, cart: Cart) -> list[Resolved]:
     resolved: list[Resolved] = []
     for line in cart.lines:
         item = items.get(line.item_id)
-        if item is None:
+        if item is None:  # not expected: lines are deleted with their dish (FK cascade)
             resolved.append(Resolved(line, None, None, "This dish is no longer on the menu."))
             continue
         try:

@@ -2,8 +2,10 @@
 
 The cart row is locked for the write, so two quick adds (or a chat turn and a
 click) cannot interleave. A choice that breaks the guest's saved allergies or
-diet is only added when the guest has acknowledged it (ADR 0019).
+diet is only added when the guest has accepted exactly those reasons (ADR 0019).
 """
+
+from collections.abc import Collection
 
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -25,7 +27,7 @@ async def add_line(
     new: NewLine,
     constraints: HardConstraints,
     *,
-    accept_conflict: bool = False,
+    accepted_reasons: Collection[str] = (),
     replace_cart: bool = False,
 ) -> CartOut:
     restaurant = await restaurant_by_slug(session, restaurant_slug)
@@ -38,7 +40,8 @@ async def add_line(
     except ConfigurationError as exc:
         raise InvalidChoice(str(exc)) from exc
     reasons = constraints.violations(config)
-    if reasons and not accept_conflict:
+    # Consent covers the reasons the guest was shown, nothing else.
+    if not set(reasons) <= set(accepted_reasons):
         raise LineConflict(f"{item.name} as chosen is not suitable: {', '.join(reasons)}.", reasons)
 
     # One cart row per user: create it if needed, then lock it for this write.

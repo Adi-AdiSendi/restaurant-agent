@@ -4,7 +4,7 @@ import httpx2
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from tests.api.conftest import login
-from tests.api.test_cart_api import CAFE, latte
+from tests.api.test_cart_api import CAFE, allergic_to_dairy, latte
 
 
 async def test_place_list_and_read_an_order(
@@ -41,3 +41,17 @@ async def test_another_guests_order_is_not_found(
     assert (await other_client.get(f"/api/orders/{order_id}")).status_code == 404
     assert (await other_client.get("/api/orders")).json() == []
     assert (await client.get("/api/orders")).status_code == 200
+
+
+async def test_checkout_consent_names_the_reasons(
+    seeded: AsyncSession, client: httpx2.AsyncClient
+) -> None:
+    await login(client, "ord_api_e")
+    await client.post("/api/cart/lines", json=await latte(seeded, "Whole milk"))
+    await allergic_to_dairy(seeded, "ord_api_e")  # said in the chat after adding it
+    refused = await client.post("/api/orders", json={"fulfilment": "pickup"})
+    assert refused.status_code == 409 and refused.json()["detail"]["reasons"] == ["dairy"]
+    placed = await client.post(
+        "/api/orders", json={"fulfilment": "pickup", "accepted_reasons": ["dairy"]}
+    )
+    assert placed.status_code == 201

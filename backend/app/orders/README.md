@@ -23,4 +23,4 @@ user's ID; nothing here trusts a price or user from the client or the model.
   placed, preparing or ready, from the time since placing.
 - `errors.py`: domain errors, each with a `code` the API returns.
 
-Depends on: `menu`, `users`, `db`. Used by: `api`, and the phase 12 cart tools.
+Depends on: `menu`, `db`. Used by: `api`, and the phase 12 cart tools.

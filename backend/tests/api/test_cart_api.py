@@ -61,7 +61,7 @@ async def test_adding_and_the_409s_the_ui_answers(
     assert refused.status_code == 409
     assert refused.json()["detail"]["code"] == "conflict"
     assert refused.json()["detail"]["reasons"] == ["dairy"]
-    added = await client.post("/api/cart/lines", json=whole | {"accept_conflict": True})
+    added = await client.post("/api/cart/lines", json=whole | {"accepted_reasons": ["dairy"]})
     assert added.status_code == 200 and added.json()["item_count"] == 1
 
     sorbet, _ = await dish(seeded, "corner-table", "Mango Sorbet")

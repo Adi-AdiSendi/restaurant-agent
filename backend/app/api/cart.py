@@ -21,8 +21,8 @@ router = APIRouter()
 
 class AddLineRequest(NewLine):
     restaurant: str = Field(max_length=40)
-    accept_conflict: bool = False
-    """The guest saw the allergy or diet warning and still wants it."""
+    accepted_reasons: list[str] = Field(default_factory=list[str], max_length=20)
+    """The conflict reasons the guest was shown and accepted; any other conflict asks again."""
     replace_cart: bool = False
     """The guest agreed to empty a cart from another restaurant."""
 
@@ -64,7 +64,7 @@ async def add(
         body.restaurant,
         line,
         constraints,
-        accept_conflict=body.accept_conflict,
+        accepted_reasons=body.accepted_reasons,
         replace_cart=body.replace_cart,
     )
     return await _saved(session, change)
