@@ -1,7 +1,9 @@
 """Run one case against the real agent path, inside a transaction that is rolled back.
 
 Same entry point as POST /api/chat (`handle_message`), minus HTTP. Nothing a
-case writes survives it, so the local DB stays clean.
+case writes survives it, so the local DB stays clean. The menu must already be
+seeded (the runner does it once): upserting it inside every case made
+concurrent cases wait on each other's row locks.
 """
 
 import time
@@ -17,7 +19,6 @@ from app.memory.profile import preference_history
 from app.users.models import User
 from evals.case_model import Case, Step
 from evals.transcript import CaseRun, StoredFact, Turn
-from scripts.seed_menu import load_menu, seed_menu
 
 
 async def run_case(case: Case, slot: int, run: int, llm: AgentLLM, deadline: float) -> CaseRun:
@@ -28,7 +29,6 @@ async def run_case(case: Case, slot: int, run: int, llm: AgentLLM, deadline: flo
             bind=connection, join_transaction_mode="create_savepoint", expire_on_commit=False
         )
         try:
-            await seed_menu(session, load_menu())
             users = {name: await _user(session, f"ev{slot}_{run}_{name}") for name in case.users}
             # Each commit only releases a savepoint; the outer transaction still rolls
             # back. Committing setup keeps it when a failed turn rolls back its own work.

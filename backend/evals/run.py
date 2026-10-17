@@ -13,14 +13,14 @@ from urllib.parse import urlsplit
 
 from app.agent.openai_client import openai_client_from_settings
 from app.config import get_settings
-from app.db.engine import get_engine
+from app.db.engine import get_engine, get_sessionmaker
 from evals.case_model import Case, load_cases
 from evals.grade import grade
 from evals.graders.judge import Judge
 from evals.harness import run_case
 from evals.report import summarize, table
 from evals.transcript import CaseRun
-from scripts.seed_menu import load_menu
+from scripts.seed_menu import load_menu, seed_menu
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 LOCAL_HOSTS = {"localhost", "127.0.0.1", "db"}
@@ -39,7 +39,10 @@ async def main(args: argparse.Namespace) -> None:
     ]
     llm = openai_client_from_settings(settings)
     judge = Judge(llm)
-    prices = [item.price_sar for item in load_menu()]
+    menu = load_menu()
+    async with get_sessionmaker()() as session, session.begin():
+        await seed_menu(session, menu)  # idempotent, the same as scripts.seed_menu
+    prices = [item.price_sar for item in menu]
     limit = asyncio.Semaphore(args.concurrency)
 
     async def one(slot: int, case: Case, run: int) -> CaseRun:
