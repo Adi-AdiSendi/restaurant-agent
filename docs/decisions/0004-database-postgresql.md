@@ -6,7 +6,8 @@
 ## Decision
 PostgreSQL 16 for all persistent data. Docker Compose locally. Schema managed
 with Alembic. Production database: Netlify DB, per [0017](0017-deploy-netlify-with-api-proxy.md)
-(it replaced Railway Postgres).
+(it replaced Railway Postgres). Netlify DB runs Postgres 18; migrations are
+tested on 16 locally and in CI, and ran cleanly on 18.
 
 ## Why
 - The menu is relational and constraint-heavy. SQL filters on allergens, diet,

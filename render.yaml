@@ -5,7 +5,8 @@ services:
     name: restaurant-agent-api
     runtime: python
     plan: free
-    region: frankfurt
+    # Same region as the Netlify DB (us-east-2): a turn makes many DB round trips.
+    region: ohio
     rootDir: backend
     buildCommand: >-
       uv sync --locked --no-dev

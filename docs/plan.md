@@ -131,12 +131,13 @@ rewrite was rejected on cost and risk, so:
   6. `netlify.toml` with the proxy and SPA fallback. Done.
   7. Startup gate in the UI (`features/startup/`). Done.
   8. Keep-awake scheduled function. Done.
-  9. Spike on the live setup (open): DB reachable from outside Netlify;
-     `Set-Cookie` through the proxy; use the direct DB URL (asyncpg prepared
-     statements break behind a transaction pooler); the Render hostname in
-     `netlify.toml`; Render uses Python 3.12 and finds `uv` at start; what a
-     waking backend returns; the proxy really stops at 26 s; the DB region is
-     near Frankfurt; the DB sleeps when idle (production uses NullPool).
+  9. Spike on the live setup. Done so far: Netlify DB is reachable from
+     outside Netlify over TLS 1.3 (plain text refused); the string is direct,
+     not a pooler; Postgres 18.6 in us-east-2, so Render runs in Ohio;
+     migrations and both seeds ran on it. Open: `Set-Cookie` through the
+     proxy; the Render hostname in `netlify.toml`; Render uses Python 3.12
+     and finds `uv` at start; what a waking backend returns; the proxy really
+     stops at 26 s; the DB sleeps when idle (production uses NullPool).
   10. Docs and ADRs. Done. Then `code-reviewer`.
 - Done when: the baseline works on the Netlify URL from a fresh browser
   (login, memory across chats, a correction, isolation, an allergen block),

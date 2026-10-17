@@ -22,10 +22,10 @@ Commits are allowed now (one logical change each); see ADR 0017 for the deploy.
 - Demo users reset on every Render build: `demo_alice` / 1234, `demo_bob` / 5678.
 
 ## Next steps
-1. The user creates: the Netlify project (import the repo), the Netlify DB
-   (Frankfurt if offered; copy the direct connection string into `.env` as
-   `NETLIFY_DB_URL`), and a Render Blueprint (paste `DATABASE_URL`,
-   `OPENAI_API_KEY`). Then fix the Render hostname in `netlify.toml` if needed.
+1. Done: Netlify project `jovial-gelato-6307c0`, Netlify DB (us-east-2,
+   migrated and seeded; string in `.env` as `NETLIFY_DB_URL`). Still to do:
+   the user creates the Render Blueprint (Ohio; paste `DATABASE_URL`,
+   `OPENAI_API_KEY`), then fix the Render hostname in `netlify.toml` if needed.
 2. Run the spike checklist in `docs/plan.md` phase 6 step 9. If Netlify DB is
    not reachable from Render, switch to Neon free and record it in ADR 0017.
 3. Live checks from a fresh browser; time 10 turns, record p95 in plan.md.

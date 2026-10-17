@@ -15,7 +15,9 @@ def to_asyncpg_url(url: str) -> str:
     """Rewrite plain Postgres URLs (as hosted databases provide them) for asyncpg.
 
     asyncpg takes `ssl=` instead of libpq's `sslmode=` and rejects `channel_binding`.
+    Spaces around a pasted value are dropped.
     """
+    url = url.strip()
     for prefix in ("postgres://", "postgresql://"):
         if url.startswith(prefix):
             url = "postgresql+asyncpg://" + url.removeprefix(prefix)

@@ -22,6 +22,7 @@ class SettingsWithoutEnvFile(Settings):
             "postgresql+asyncpg://u:p@h/db?ssl=require",
         ),
         ("postgres://u:p@h/db?ssl=require", "postgresql+asyncpg://u:p@h/db?ssl=require"),
+        ("  postgresql://u:p@h/db \t", "postgresql+asyncpg://u:p@h/db"),
     ],
 )
 def test_to_asyncpg_url(given: str, expected: str) -> None:
