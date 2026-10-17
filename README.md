@@ -163,7 +163,8 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
 
 ## Known limitations
 - **Free hosting:** the backend sleeps after 15 idle minutes. A ping keeps it
-  awake, but if one is missed the first load waits up to a minute. Netlify DB
+  awake; if one is missed, the first load waits for the server to start
+  (measured: 33 s, then a 7.7 s first answer). Netlify DB
   Free has a monthly compute cap; the app keeps no idle connections so it can sleep.
 - **Turn time:** a turn must finish in 22 s or it ends with "took too long,
   please try again" (measured p95 is under 8 s).

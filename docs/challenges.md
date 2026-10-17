@@ -51,7 +51,11 @@ wake. That is longer than the proxy waits.
   its own site evidently does not reach the backend that way, and the
   function logs that would say why are not available on the free plan. The
   ping now calls Render directly, and a test fails if its URL and the proxy
-  target in `netlify.toml` ever differ.
+  target in `netlify.toml` ever differ. After 20 idle minutes the backend now
+  answers in about 1 s.
+- **A measured cold start.** With the ping paused on purpose, the UI's own
+  retry loop got its answer after 33.5 s (4 attempts timed out first), and
+  the first chat turn then took 7.7 s.
 - **Handle the case where it sleeps anyway.** The UI shows "Starting the
   server" and retries until the backend answers
   (`frontend/src/features/startup/`).

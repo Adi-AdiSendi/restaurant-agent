@@ -6,7 +6,7 @@ Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 | Phase | State |
 |---|---|
 | 0 to 5 | done, reviewed, committed |
-| 6 Deploy | **live** at https://restaurant-agent.netlify.app; two checks left |
+| 6 Deploy | done: live at https://restaurant-agent.netlify.app, cold start and DB sleep measured |
 | 7 Evals (Part 2) | done: 42 cases x 3 runs, `docs/eval-report.md` |
 | 8 Submission | README rewritten for reviewers; video deferred (more changes first) |
 
@@ -26,10 +26,11 @@ Commits are allowed now (one logical change each); see ADR 0017 for the deploy.
    with Netlify DB (us-east-2); Render Blueprint `restaurant-agent-api` in Ohio.
    Live run passed, p95 7.5 s (see plan.md phase 6). Local `.env` has the DB
    string as `NETLIFY_DB_URL`; scripts that touch it must check the host.
-2. Left: observe a cold start after a missed ping, and that the DB sleeps
-   when idle (Netlify DB usage page). The user should delete the backend
+2. Done: keep-awake fixed (it now pings Render directly), cold start
+   measured (ready at 33.5 s, first turn 7.7 s), DB sleep confirmed; see
+   plan.md phase 6 step 11. The user should still delete the backend
    secrets they copied into Netlify env vars (only Render needs them).
-3. Then mark phase 6 done in plan.md.
+3. The ping was paused for the test and restored (commit 2b068f4).
 4. Phase 7 is done (`docs/eval-report.md`): three fixes to the memory-change
    note, the third after the code review found the first two shortened
    replies. Final run `after-3`: every case passes; dead ends 11/159.

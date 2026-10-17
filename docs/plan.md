@@ -4,7 +4,7 @@ Budget: about 10 to 12 focused hours inside the 72-hour window.
 Rule: the baseline must work end to end (deployed) before Part 2 starts.
 Every phase ends with all checks green and a `code-reviewer` pass.
 
-**Current phase: 8** (phase 6 has two time-based checks left; see handoff)
+**Current phase: 8** (video deferred; see handoff)
 
 ## Inputs
 - Menu concept: international casual (burgers, bowls, pasta, desserts), prices in SAR.
@@ -139,8 +139,26 @@ rewrite was rejected on cost and risk, so:
      `Set-Cookie` arrives first-party (`HttpOnly; Secure; SameSite=Lax`) and
      comes back; SPA deep links work. Found live: values pasted into Render
      carried spaces, which broke the OpenAI key (every turn 503); settings now
-     strip whitespace. Still to observe: a cold start after a missed ping, and
-     that the DB sleeps when idle (Netlify DB usage page).
+     strip whitespace.
+  11. Close-out checks, 2026-10-17 (scripts in the session scratchpad, not committed):
+      - **Keep-awake did not work at first.** After 16.5 idle minutes,
+        health got a proxy 504 after 28.6 s: Render was asleep, although
+        Netlify's metrics showed the function running every 10 minutes. It
+        called the site's own `/api` proxy. It now calls Render directly
+        (a test keeps the URL in sync with `netlify.toml`). After 20 idle
+        minutes: health 200 in 1.29 s.
+      - **Cold start, measured** with the ping paused for 20 minutes
+        (commits 7bdf160 and its revert), using the UI's own loop (5 s
+        abort, retry every 3 s): 4 timed-out attempts, then
+        `{"status": "ok"}` at 33.5 s. Then, with Render and the DB both
+        just woken: login 1.6 s, first chat turn 7.7 s with two cards.
+        The UI gives up at 120 s, so there is plenty of margin.
+      - **Netlify DB sleeps when idle.** Three fresh connections in a row,
+        timed. After 20+ idle minutes the first took 2.13 s and the next
+        two about 1.1 s; a warm control straight after had a fast first
+        connection (1.11 s). After 7.5 idle minutes, 1.94 s against 1.15 s.
+        Waking costs about 1 s, and nothing in the app keeps it awake.
+- Status: done 2026-10-17.
   10. Docs and ADRs. Done. Then `code-reviewer`.
 - Done when: the baseline works on the Netlify URL from a fresh browser
   (login, memory across chats, a correction, isolation, an allergen block),
