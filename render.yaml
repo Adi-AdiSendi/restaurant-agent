@@ -11,6 +11,7 @@ services:
       uv sync --locked --no-dev
       && uv run --no-sync alembic upgrade head
       && uv run --no-sync python -m scripts.seed_menu
+      && uv run --no-sync python -m scripts.seed_demo_users
     startCommand: ./start.sh
     healthCheckPath: /api/health
     envVars:
