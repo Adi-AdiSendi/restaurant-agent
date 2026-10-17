@@ -1,14 +1,7 @@
 // The only module that calls the backend. Same origin: FastAPI serves this app
 // locally, and Netlify proxies /api to the backend when deployed.
-import type {
-  ChatReply,
-  Health,
-  LoginResponse,
-  Me,
-  NewConversation,
-  Preference,
-  Restaurant,
-} from './types'
+import type { ChatReply, Health, LoginResponse, Me, NewConversation, Preference } from './types'
+import type { Restaurant } from './menuTypes'
 
 export class ApiError extends Error {
   readonly status: number

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
 import { api, ApiError } from '../../api/client'
-import type { Restaurant } from '../../api/types'
+import type { Restaurant } from '../../api/menuTypes'
 
 const STORAGE_KEY = 'restaurant'
 

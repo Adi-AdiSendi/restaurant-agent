@@ -1,4 +1,4 @@
-import type { Restaurant } from '../../api/types'
+import type { Restaurant } from '../../api/menuTypes'
 import RestaurantPicker from '../restaurants/RestaurantPicker'
 import styles from './ChatHeader.module.css'
 

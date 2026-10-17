@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, test } from 'vitest'
 
-import type { Card } from '../../api/types'
+import type { Card } from '../../api/menuTypes'
 import ItemCard from './ItemCard'
 
 const cake: Card = {

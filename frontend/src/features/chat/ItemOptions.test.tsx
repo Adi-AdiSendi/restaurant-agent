@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react'
 import { describe, expect, test } from 'vitest'
 
-import type { Card, CardOption } from '../../api/types'
+import type { Card, CardOption } from '../../api/menuTypes'
 import ItemCard from './ItemCard'
 
 function option(id: number, name: string, extra: Partial<CardOption> = {}): CardOption {

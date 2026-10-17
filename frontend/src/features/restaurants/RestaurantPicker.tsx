@@ -1,4 +1,4 @@
-import type { Restaurant } from '../../api/types'
+import type { Restaurant } from '../../api/menuTypes'
 import styles from './RestaurantPicker.module.css'
 
 interface Props {

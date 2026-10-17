@@ -1,4 +1,5 @@
-import type { Card, ChatReply } from '../../api/types'
+import type { Card } from '../../api/menuTypes'
+import type { ChatReply } from '../../api/types'
 
 export interface ChatMessage {
   id: number

@@ -1,4 +1,4 @@
-import type { Allergen, Card } from '../../api/types'
+import type { Allergen, Card } from '../../api/menuTypes'
 import styles from './ItemCard.module.css'
 import ItemOptions from './ItemOptions'
 

@@ -1,4 +1,4 @@
-import type { Allergen, OptionGroup } from '../../api/types'
+import type { Allergen, OptionGroup } from '../../api/menuTypes'
 import styles from './ItemOptions.module.css'
 
 const allergenLabel = (allergen: Allergen) => allergen.replace('_', ' ')
