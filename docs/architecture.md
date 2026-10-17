@@ -1,14 +1,20 @@
 # Architecture
 
 ## Overview
-One deployed service: FastAPI serves the API and the built React app. It talks
-to PostgreSQL and to OpenAI. Nothing else.
+Deployed (ADR 0017): Netlify serves the built React app and proxies `/api/*`
+to the FastAPI service on Render free, which talks to Netlify DB (Postgres)
+and to OpenAI. Locally, FastAPI serves the build itself on one origin.
 
 ```
-Browser (React)  ->  FastAPI  ->  PostgreSQL (menu, users, memory, messages)
-                        |
-                        +--> OpenAI Responses API (GPT-6 Luna)
+Browser (React) -> Netlify (static build, /api/* proxy) -> FastAPI on Render
+                       |                                    |      |
+   keep-awake: scheduled function, /api/health every 10 min |      +--> OpenAI Responses API
+                                                            v
+                                     Netlify DB (menu, users, memory, messages)
 ```
+
+A chat turn has a 22 s deadline because the proxy gives up at 26 s. The UI
+waits on `/api/health` while a sleeping backend wakes up.
 
 ## Folder map
 ```
@@ -26,7 +32,7 @@ backend/
     users/        users, PIN hashing, login or register
     db/           engine, session dependency, declarative Base
   migrations/     Alembic migrations
-  scripts/        seed_menu.py and other one-off commands
+  scripts/        seed_menu.py, seed_demo_users.py (both run on every deploy)
   data/menu.json  menu seed data (source of truth for the seed)
   evals/          eval cases, graders, runner, results
   tests/          unit and integration tests, mirroring app/
@@ -34,6 +40,8 @@ frontend/
   src/features/chat/    chat window, messages, item cards
   src/features/login/   username + PIN entry
   src/features/memory/  "What I remember about you" panel
+  src/features/startup/ "Starting the server" while the backend wakes up
+  netlify/functions/    keep-awake scheduled function
   src/api/              backend client and payload types
 docs/             architecture, plan, requirements, decisions, eval report
 scripts/          repo-wide checks (line limits)

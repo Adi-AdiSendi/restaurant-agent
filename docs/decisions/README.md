@@ -7,7 +7,7 @@
 | [0003](0003-backend-python-fastapi.md) | Backend: Python, FastAPI | Accepted |
 | [0004](0004-database-postgresql.md) | Database: PostgreSQL | Accepted |
 | [0005](0005-llm-gpt-6-luna.md) | LLM: GPT-6 Luna, Responses API | Accepted |
-| [0006](0006-deploy-railway.md) | Deploy: Railway, always-on during evaluation | Accepted |
+| [0006](0006-deploy-railway.md) | Deploy: Railway, always-on during evaluation | Superseded by 0017 |
 | [0007](0007-line-limits.md) | 100-line limit for code and agent files | Accepted |
 | [0008](0008-feature-folders-and-dependency-direction.md) | Feature folders, one-way dependencies | Accepted |
 | [0009](0009-hard-constraints-enforced-in-code.md) | Allergens and diet enforced in code | Accepted |
@@ -18,6 +18,6 @@
 | [0014](0014-part-2-reliability-and-evals.md) | Part 2: reliability and evaluation | Proposed |
 | [0015](0015-foodics-brand-for-prototype-ui.md) | Foodics brand for the prototype UI | Accepted |
 | [0016](0016-removed-status-and-target-checks.md) | `removed` status, checked targets (amends 0011) | Accepted |
-| [0017](0017-deploy-netlify-with-api-proxy.md) | Deploy on Netlify with an API proxy (supersedes 0006) | Proposed |
+| [0017](0017-deploy-netlify-with-api-proxy.md) | Deploy: Netlify, API proxied to Render free (supersedes 0006) | Accepted |
 
 New ADR: copy the format, take the next number, add a row here.

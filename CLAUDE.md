@@ -16,9 +16,10 @@ These are plain paths, not imports. Open them when the task needs them.
 - Backend: Python 3.12, FastAPI, Pydantic v2, SQLAlchemy 2 (async) + asyncpg, Alembic
 - Database: PostgreSQL 16
 - LLM: OpenAI GPT-6 Luna via the Responses API (model ID from `OPENAI_MODEL`)
-- Frontend: React + Vite + TypeScript (strict), built to static files served by FastAPI
+- Frontend: React + Vite + TypeScript (strict), static build (Netlify; FastAPI locally)
 - Tooling: uv, ruff, pyright (strict), pytest, ESLint, Prettier
-- Deploy: Railway (one app service + Railway Postgres)
+- Deploy (ADR 0017): Netlify serves the UI and proxies `/api/*` to FastAPI on
+  Render free (native uv, `render.yaml`); Netlify DB. Docker is for the local DB only.
 
 ## Commands
 - Local DB: `docker compose up -d db`

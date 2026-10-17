@@ -1,6 +1,6 @@
 # 0006: Deploy on Railway as one service
 
-- Status: Accepted
+- Status: Superseded by [0017](0017-deploy-netlify-with-api-proxy.md)
 - Date: 2026-10-17
 
 ## Decision

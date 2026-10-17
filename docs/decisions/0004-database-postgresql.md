@@ -4,8 +4,9 @@
 - Date: 2026-10-17
 
 ## Decision
-PostgreSQL 16 for all persistent data. Railway Postgres in production,
-Docker Compose locally. Schema managed with Alembic.
+PostgreSQL 16 for all persistent data. Docker Compose locally. Schema managed
+with Alembic. Production database: Netlify DB, per [0017](0017-deploy-netlify-with-api-proxy.md)
+(it replaced Railway Postgres).
 
 ## Why
 - The menu is relational and constraint-heavy. SQL filters on allergens, diet,
@@ -19,8 +20,8 @@ Docker Compose locally. Schema managed with Alembic.
 
 ## Alternatives considered
 - JSON file: fine for the menu alone, but not for per-user memory.
-- SQLite: simpler, but Railway's filesystem is not durable across redeploys,
-  so memory would be lost.
+- SQLite: simpler, but hosted app filesystems are not durable across
+  redeploys (Render free loses files on every spin-down), so memory would be lost.
 - A vector database: semantic recall is not needed for a small set of typed
   preferences.
 

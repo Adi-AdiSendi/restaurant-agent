@@ -108,41 +108,36 @@ Every phase ends with all checks green and a `code-reviewer` pass.
   (active facts, hard ones marked "always enforced", old ones struck through)
   and suggestion chips. A page reload starts a new conversation.
 
-## Phase 6: Deploy on Netlify (about 1.5 h) - replanned 2026-10-17
-Railway is dropped; the user chose Netlify. Proposed ADR 0017 supersedes ADR
-0006 once accepted. Netlify cannot run the FastAPI server (functions are
-JS/TS/Go, 10 s default and 26 s max on paid plans), so:
-- **Netlify** hosts the React build and is the only URL reviewers use.
-  `netlify.toml`: base `frontend`, command `npm ci && npm run build`, publish
-  `dist`; redirect `/api/*` to `https://<backend-host>/api/:splat` with status
-  200 (proxy, so the browser stays on the Netlify domain and the session
-  cookie stays first-party, same as today); then `/*` to `/index.html` 200.
-- **Backend**: the existing Docker image on an always-on container host
-  (decision for the user: recommended Fly.io or Render paid; Railway for the
-  backend only is also possible). Not exposed to reviewers directly.
-- **Database**: Netlify DB (Postgres by Neon), to keep the stack on Netlify,
-  or Neon directly. Use the direct (unpooled) connection string: asyncpg
-  prepared statements break behind a transaction pooler. TLS required.
+## Phase 6: Deploy for free (about 1.5 h) - replanned 2026-10-17
+Railway is dropped, and so is paid hosting (ADR 0017, supersedes 0006).
+Netlify Functions cannot run Python (JS, TS, Go; 60 s), and a TypeScript
+rewrite was rejected on cost and risk, so:
+- **Netlify** serves the React build and is the only URL reviewers use.
+  `netlify.toml` proxies `/api/*` (status 200) to the backend, so the cookie
+  stays first-party. The proxy stops at a fixed 26 s.
+- **Render free** runs the unchanged backend, native Python with uv
+  (`render.yaml`). No Docker online; the build migrates and seeds.
+- **Netlify DB** (Postgres, TLS). Fallback: Neon free.
+- **Sleep**: Render free sleeps after 15 idle minutes (about 1 min to wake).
+  A Netlify scheduled function pings `/api/health` every 10 minutes; the UI
+  shows "Starting the server" and retries for up to 2 minutes.
+- **Git**: commits and a private GitHub repo; both hosts deploy on push.
 - Steps:
-  1. Spike first (15 min): deploy a hello build with the proxy rule to a
-     test backend and confirm `Set-Cookie` passes through the proxy and the
-     cookie is sent back. If not, stop and rethink before anything else.
-  2. Config, no app logic: `netlify.toml`; settings for TLS on the DB URL
-     (`?ssl=require` for asyncpg); drop `railway.toml`; keep the Dockerfile
-     for the backend host; `.env.example` notes. `frontend_dist` stays for
-     local runs where FastAPI serves the build.
-  3. Latency: the proxy times out at 26 s. Add a turn deadline (about 22 s)
-     that ends the turn with a clear "taking too long, please retry" 504
-     instead of a proxy error, and lower the OpenAI client timeout so retries
-     fit. Measure p95 turn time on the live setup.
-  4. Migrations and seed run as the backend's release or start command.
-  5. Two demo accounts (`demo_alice`, `demo_bob`) seeded with a few
-     preferences so reviewers see memory at once; documented in README.
-  6. Update CLAUDE.md stack line, `docs/architecture.md` overview, README
-     run/deploy notes, `docs/requirements.md` R9/D1, and ADR index.
+  1. Baseline commit, private repo, CI green. Done.
+  2. `sslmode` to `ssl` in hosted DB URLs. Done.
+  3. 22 s turn deadline with a clear 504; OpenAI timeout 15 s, one retry. Done.
+  4. `render.yaml`, `start.sh`; Dockerfile, `railway.toml`, CI container job removed. Done.
+  5. `seed_demo_users.py`: `demo_alice` / `demo_bob`, reset each deploy. Done.
+  6. `netlify.toml` with the proxy and SPA fallback. Done.
+  7. Startup gate in the UI (`features/startup/`). Done.
+  8. Keep-awake scheduled function. Done.
+  9. Spike on the live setup (open): DB reachable from outside Netlify,
+     `Set-Cookie` through the proxy, pooled or direct DB URL, what a waking
+     backend returns, whether idle pooled connections stop the DB sleeping.
+  10. Docs and ADRs. Done. Then `code-reviewer`.
 - Done when: the baseline works on the Netlify URL from a fresh browser
   (login, memory across chats, a correction, isolation, an allergen block),
-  and a chat turn stays under the proxy timeout.
+  10 real turns stay under 22 s (record p95 here), and the DB sleeps when idle.
 
 ## Phase 7: Part 2, reliability and evals (about 2.5 h)
 - Eval cases per category, deterministic graders, runner, committed results.
