@@ -1,0 +1,88 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--brand);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.name {
+  margin: 0;
+  font-size: 16px;
+}
+
+.price {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.description,
+.ingredients,
+.traces {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 14px;
+}
+
+.ingredients {
+  font-size: 13px;
+}
+
+.badges,
+.allergens {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+}
+
+.diet {
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--ok-tint);
+  color: #0b7a55;
+  font-weight: 600;
+}
+
+.spice {
+  color: var(--ink-muted);
+}
+
+.allergenTitle {
+  font-weight: 600;
+}
+
+.chip {
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--danger-tint);
+  color: #a61b1b;
+  font-weight: 500;
+}
+
+.none {
+  color: var(--ink-faint);
+}
+
+.warning {
+  margin: 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  font-size: 13px;
+  font-weight: 500;
+}

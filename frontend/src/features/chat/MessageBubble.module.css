@@ -1,0 +1,43 @@
+.row,
+.rowMine {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 100%;
+}
+
+.rowMine {
+  align-items: flex-end;
+}
+
+.row {
+  align-items: flex-start;
+}
+
+.mine,
+.theirs {
+  max-width: min(560px, 88%);
+  padding: 10px 14px;
+  border-radius: 16px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.mine {
+  background: var(--brand);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+
+.theirs {
+  background: var(--brand-tint);
+  color: var(--ink);
+  border-bottom-left-radius: 4px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+  width: min(760px, 100%);
+}

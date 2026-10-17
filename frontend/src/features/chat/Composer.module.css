@@ -1,0 +1,35 @@
+.composer {
+  display: flex;
+  gap: 8px;
+  padding: 12px var(--gutter);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--page);
+  color: var(--ink);
+}
+
+.input:focus {
+  border-color: var(--brand);
+  outline: none;
+}
+
+.send {
+  padding: 0 20px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+}
+
+.send:hover:not(:disabled) {
+  background: var(--brand-accent);
+}

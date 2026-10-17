@@ -1,0 +1,20 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0 var(--gutter) 12px;
+}
+
+.chip {
+  padding: 7px 14px;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--brand);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.chip:hover {
+  background: var(--brand-tint);
+}

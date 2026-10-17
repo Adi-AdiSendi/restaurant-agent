@@ -1,0 +1,84 @@
+.page {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  padding: var(--gutter);
+  background: linear-gradient(160deg, var(--brand-tint), var(--page) 60%);
+}
+
+.card {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 32px 28px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.logo {
+  height: 22px;
+  align-self: flex-start;
+}
+
+.title {
+  margin: 8px 0 0;
+  font-size: 26px;
+  color: var(--brand);
+}
+
+.subtitle {
+  margin: 0 0 6px;
+  color: var(--ink-muted);
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: 500;
+}
+
+.input {
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.input:focus {
+  border-color: var(--brand);
+  outline: none;
+}
+
+.error {
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--danger-tint);
+  color: #a61b1b;
+}
+
+.button {
+  padding: 11px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+}
+
+.button:hover:not(:disabled) {
+  background: var(--brand-accent);
+}
+
+.hint {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-faint);
+  text-align: center;
+}

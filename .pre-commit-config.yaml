@@ -1,0 +1,33 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v6.0.0
+    hooks:
+      - id: check-json
+      - id: check-yaml
+      - id: check-toml
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: detect-private-key
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.28.0
+    hooks:
+      - id: gitleaks
+  - repo: local
+    hooks:
+      - id: line-limits
+        name: line limits
+        entry: python scripts/check_line_limits.py
+        language: system
+        pass_filenames: false
+      - id: backend
+        name: backend checks
+        entry: bash -c 'cd backend && uv run ruff check . && uv run ruff format --check . && uv run pyright && uv run lint-imports && uv run pytest -q'
+        language: system
+        files: ^backend/
+        pass_filenames: false
+      - id: frontend
+        name: frontend checks
+        entry: bash -c 'cd frontend && npm run lint && npm run typecheck && npm test'
+        language: system
+        files: ^frontend/
+        pass_filenames: false
