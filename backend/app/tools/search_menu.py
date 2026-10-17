@@ -82,11 +82,16 @@ async def handle(arguments: str, context: ToolContext) -> SearchMenuResult | Too
             f"Use one of: {', '.join(context.categories)}, or null.",
         )
     constraints = context.constraints
-    rows = await search_items(
-        context.session, context.restaurant_id, constraints.restrict(model_filter)
+    merged = constraints.restrict(model_filter)
+    rows = await search_items(context.session, context.restaurant_id, merged)
+    # SQL checks each item's base; options decide whether any way of ordering fits.
+    fits = HardConstraints(
+        excluded_allergens=frozenset(merged.exclude_allergens),
+        vegetarian=merged.vegetarian,
+        vegan=merged.vegan,
     )
     items = [MenuItemOut.model_validate(row) for row in rows]
     return SearchMenuResult(
-        items=[tool_item(i, constraints) for i in items if not constraints.item_violations(i)],
+        items=[tool_item(i, constraints) for i in items if not fits.item_violations(i)],
         guest_constraints_applied=constraints,
     )

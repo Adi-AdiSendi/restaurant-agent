@@ -173,7 +173,7 @@
           "max_choices": 3,
           "options": [
             {
-              "name": "Fries in the wrap",
+              "name": "Extra fries",
               "price_delta_sar": "2.00",
               "allergens": [],
               "may_contain": [
@@ -212,8 +212,8 @@
       "category": "shawarma",
       "description": "A shawarma wrap cut into bites, with fries, garlic toum and pickles.",
       "price_sar": "32.00",
-      "is_vegetarian": true,
-      "is_vegan": true,
+      "is_vegetarian": false,
+      "is_vegan": false,
       "spice_level": 0,
       "ingredients": [
         "Arabic khubz",
@@ -317,7 +317,7 @@
       "category": "shawarma",
       "description": "Crispy bread, chickpeas and warm yogurt, topped with shawarma and pine nuts.",
       "price_sar": "34.00",
-      "is_vegetarian": true,
+      "is_vegetarian": false,
       "is_vegan": false,
       "spice_level": 0,
       "ingredients": [

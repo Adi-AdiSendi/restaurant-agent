@@ -70,3 +70,18 @@ async def test_another_restaurants_item_is_not_found(seeded: AsyncSession) -> No
     found = await search(seeded, guest())
     assert isinstance(found, SearchMenuResult)
     assert {i.name for i in found.items} == {"Latte"}
+
+
+async def test_the_models_own_filter_also_checks_options(session: AsyncSession) -> None:
+    """No saved profile, but the model asks for dairy- and gluten-free: no milk fits."""
+    await sync_restaurant(session, TEST_CAFE, 9)
+    result = await search(session, guest(), exclude_allergens=["dairy", "gluten"])
+    assert isinstance(result, SearchMenuResult)
+    assert result.items == []
+
+
+async def test_text_search_matches_option_names(session: AsyncSession) -> None:
+    await sync_restaurant(session, TEST_CAFE, 9)
+    result = await search(session, guest(), text="oat")
+    assert isinstance(result, SearchMenuResult)
+    assert [i.name for i in result.items] == ["Latte"]

@@ -54,3 +54,13 @@ async def test_fit_rule_matches_brute_force(
         assert len(configs) <= MAX_CONFIGURATIONS, item.name
         some_safe = any(not constraints.violations(configure(item, ids, [])) for ids in configs)
         assert (item.id in allowed) == some_safe, item.name
+
+
+async def test_a_base_diet_flag_is_reachable(seeded: AsyncSession) -> None:
+    """A dish flagged vegetarian or vegan can be ordered that way: no required group
+    forces meat (or dairy) on it, so its badge and the SQL diet filter are honest."""
+    for item in await all_items(seeded):
+        if item.is_vegan:
+            assert not guest(vegan=True).item_violations(item), item.name
+        if item.is_vegetarian:
+            assert not guest(vegetarian=True).item_violations(item), item.name

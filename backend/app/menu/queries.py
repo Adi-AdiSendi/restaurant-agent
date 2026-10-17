@@ -8,7 +8,7 @@ from collections.abc import Sequence
 from sqlalchemy import Select, func, not_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.menu.models import MenuItem
+from app.menu.models import MenuItem, Option, OptionGroup
 from app.menu.restaurant import Restaurant
 from app.menu.schemas import MenuFilter
 
@@ -28,12 +28,19 @@ def _apply_filter(stmt: Select[MenuItem], f: MenuFilter) -> Select[MenuItem]:
         stmt = stmt.where(not_(MenuItem.allergens.overlap([a.value for a in f.exclude_allergens])))
     if f.text:
         escaped = f.text.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+        option_names = (
+            select(func.string_agg(Option.name, " "))
+            .join(OptionGroup, Option.group_id == OptionGroup.id)
+            .where(OptionGroup.item_id == MenuItem.id)
+            .scalar_subquery()
+        )
         searchable = func.concat_ws(
             " ",
             MenuItem.name,
             MenuItem.description,
             func.replace(MenuItem.category, "_", " "),
             func.array_to_string(MenuItem.ingredients, " "),
+            option_names,
         )
         stmt = stmt.where(searchable.ilike(f"%{escaped}%", escape="\\"))
     return stmt
