@@ -1,0 +1,62 @@
+.line {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.price {
+  flex-shrink: 0;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.details,
+.trace,
+.conflict {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+.trace {
+  color: var(--warn-ink);
+}
+
+.conflict {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actions button {
+  min-width: 36px;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.actions .remove {
+  margin-left: auto;
+  padding: 0 12px;
+  color: var(--danger);
+}

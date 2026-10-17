@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router'
 
+import CartButton from '../cart/CartButton'
 import CartProvider from '../cart/CartProvider'
 import styles from './AppShell.module.css'
 
@@ -30,6 +31,7 @@ function AppShell({ username, onLogout }: Props) {
             </NavLink>
           </nav>
           <div className={styles.user}>
+            <CartButton />
             <span className={styles.hello}>Hi, {username}</span>
             <button className={styles.logout} type="button" onClick={onLogout}>
               Log out

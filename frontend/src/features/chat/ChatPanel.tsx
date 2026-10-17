@@ -1,3 +1,4 @@
+import type { Card } from '../../api/menuTypes'
 import Composer from './Composer'
 import MessageList from './MessageList'
 import styles from './ChatPanel.module.css'
@@ -11,9 +12,11 @@ interface Props {
   isNew: boolean
   onUnauthorized: () => void
   onReplied: () => void
+  /** Opens the options sheet for a recommended dish. */
+  onChoose?: (item: Card) => void
 }
 
-function ChatPanel({ restaurant, username, isNew, onUnauthorized, onReplied }: Props) {
+function ChatPanel({ restaurant, username, isNew, onUnauthorized, onReplied, onChoose }: Props) {
   const { state, send, retry, newChat } = useChat({ restaurant, onUnauthorized, onReplied })
   const greeting = isNew
     ? `Welcome, ${username}! Tell me what you feel like, and anything you avoid or cannot eat. I will remember it for next time.`
@@ -32,7 +35,12 @@ function ChatPanel({ restaurant, username, isNew, onUnauthorized, onReplied }: P
           New chat
         </button>
       </div>
-      <MessageList messages={state.messages} sending={state.sending} greeting={greeting} />
+      <MessageList
+        messages={state.messages}
+        sending={state.sending}
+        greeting={greeting}
+        onChoose={onChoose}
+      />
       {state.error && (
         <div className={styles.error} role="alert">
           <span>{state.error}</span>

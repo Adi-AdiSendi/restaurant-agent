@@ -4,6 +4,9 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
 import { api } from './api/client'
 import LoginForm from './features/login/LoginForm'
 import MenuPage from './features/menu/MenuPage'
+import CheckoutPage from './features/orders/CheckoutPage'
+import OrderPage from './features/orders/OrderPage'
+import OrdersPage from './features/orders/OrdersPage'
 import RestaurantsPage from './features/restaurants/RestaurantsPage'
 import AppShell from './features/shell/AppShell'
 import StartupScreen from './features/startup/StartupScreen'
@@ -51,6 +54,9 @@ function App() {
             path="r/:slug"
             element={<MenuPage username={username} isNew={isNew} onLogout={logout} />}
           />
+          <Route path="checkout" element={<CheckoutPage />} />
+          <Route path="orders" element={<OrdersPage />} />
+          <Route path="orders/:id" element={<OrderPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

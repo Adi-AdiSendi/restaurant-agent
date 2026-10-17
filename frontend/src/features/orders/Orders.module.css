@@ -1,0 +1,87 @@
+.page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 40px;
+}
+
+.title {
+  margin: 0 0 12px;
+  font-size: clamp(20px, 3vw, 24px);
+}
+
+.lines {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.total {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.choice {
+  display: flex;
+  gap: 20px;
+  margin: 0 0 12px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.note {
+  color: var(--ink-muted);
+}
+
+.place,
+.danger {
+  padding: 12px 22px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color: #fff;
+  font-weight: 700;
+}
+
+.danger {
+  background: var(--danger);
+}
+
+.confirm {
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--danger-tint);
+}
+
+.error {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.placed,
+.preparing,
+.ready {
+  padding: 2px 10px;
+  border-radius: var(--radius-pill);
+  background: var(--info-tint);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.preparing {
+  background: var(--warn-bg);
+}
+
+.ready {
+  background: var(--ok-tint);
+}

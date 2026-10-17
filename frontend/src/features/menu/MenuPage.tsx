@@ -65,6 +65,7 @@ function MenuPage({ username, isNew, onLogout }: Props) {
             isNew={isNew}
             onUnauthorized={onLogout}
             onReplied={onReplied}
+            onChoose={setChoosing}
           />
         </div>
         {side === 'memory' && <MemoryPanel refreshKey={refreshKey} onUnauthorized={onLogout} />}

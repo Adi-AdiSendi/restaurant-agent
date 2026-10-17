@@ -1,12 +1,14 @@
+import type { Card } from '../../api/menuTypes'
 import type { ChatMessage } from './chatReducer'
 import ItemCard from './ItemCard'
 import styles from './MessageBubble.module.css'
 
 interface Props {
   message: ChatMessage
+  onChoose?: (item: Card) => void
 }
 
-function MessageBubble({ message }: Props) {
+function MessageBubble({ message, onChoose }: Props) {
   const mine = message.role === 'user'
   return (
     <div className={mine ? styles.rowMine : styles.row}>
@@ -14,7 +16,7 @@ function MessageBubble({ message }: Props) {
       {message.items.length > 0 && (
         <div className={styles.cards}>
           {message.items.map((item) => (
-            <ItemCard key={item.id} item={item} />
+            <ItemCard key={item.id} item={item} onChoose={onChoose && (() => onChoose(item))} />
           ))}
         </div>
       )}
