@@ -1,0 +1,884 @@
+{
+  "slug": "shawarma-street",
+  "name": "Shawarma Street",
+  "cuisine": "Shawarma and grill",
+  "tagline": "Charcoal shawarma, grills and fresh mezze.",
+  "accent_color": "#c92a2a",
+  "categories": [
+    "shawarma",
+    "plates_and_grills",
+    "mezze",
+    "drinks_and_sweets"
+  ],
+  "items": [
+    {
+      "name": "Classic Shawarma Wrap",
+      "category": "shawarma",
+      "description": "Our signature wrap with your choice of protein, garlic toum, pickles and fries.",
+      "price_sar": "16.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "garlic toum",
+        "pickles",
+        "tomato",
+        "lettuce",
+        "fries"
+      ],
+      "allergens": [],
+      "may_contain": [
+        "gluten"
+      ],
+      "removable": [
+        "pickles",
+        "tomato",
+        "lettuce",
+        "fries"
+      ],
+      "option_groups": [
+        {
+          "name": "Protein",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Chicken",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Mixed chicken and beef",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Falafel",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "sesame"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Served in",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Saj wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Arabic khubz",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Plate with rice",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Sauces",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Garlic toum",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Tahini",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "sesame"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Spicy red sauce",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            },
+            {
+              "name": "Garlic mayo",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extras",
+          "min_choices": 0,
+          "max_choices": 3,
+          "options": [
+            {
+              "name": "Fries in the wrap",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Akkawi cheese",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Pickled turnips",
+              "price_delta_sar": "1.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Arabic Shawarma Platter",
+      "category": "shawarma",
+      "description": "A shawarma wrap cut into bites, with fries, garlic toum and pickles.",
+      "price_sar": "32.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "Arabic khubz",
+        "fries",
+        "garlic toum",
+        "pickles"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [
+        "pickles"
+      ],
+      "option_groups": [
+        {
+          "name": "Protein",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Chicken",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Mixed chicken and beef",
+              "price_delta_sar": "5.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Sauces",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Garlic toum",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Tahini",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "sesame"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Spicy red sauce",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            },
+            {
+              "name": "Garlic mayo",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shawarma Fatteh",
+      "category": "shawarma",
+      "description": "Crispy bread, chickpeas and warm yogurt, topped with shawarma and pine nuts.",
+      "price_sar": "34.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "crispy bread",
+        "chickpeas",
+        "garlic yogurt",
+        "toasted pine nuts",
+        "sumac"
+      ],
+      "allergens": [
+        "gluten",
+        "dairy",
+        "tree_nut"
+      ],
+      "may_contain": [],
+      "removable": [
+        "toasted pine nuts"
+      ],
+      "option_groups": [
+        {
+          "name": "Protein",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Chicken",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Mixed chicken and beef",
+              "price_delta_sar": "5.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Falafel Wrap",
+      "category": "shawarma",
+      "description": "Fresh falafel, tahini, tomato, pickles and parsley.",
+      "price_sar": "13.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "falafel",
+        "tahini",
+        "tomato",
+        "pickles",
+        "parsley"
+      ],
+      "allergens": [
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [
+        "tomato",
+        "pickles",
+        "parsley"
+      ],
+      "option_groups": [
+        {
+          "name": "Bread",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Saj wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Arabic khubz",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mixed Grill Plate",
+      "category": "plates_and_grills",
+      "description": "Shish tawook, beef kofta and lamb tikka with grilled vegetables and garlic toum.",
+      "price_sar": "69.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "shish tawook (yogurt marinade)",
+        "beef kofta",
+        "lamb tikka",
+        "grilled vegetables",
+        "garlic toum"
+      ],
+      "allergens": [
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Vermicelli rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fattoush salad",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shish Tawook Plate",
+      "category": "plates_and_grills",
+      "description": "Chicken marinated in yogurt and spices, grilled over charcoal.",
+      "price_sar": "42.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "chicken breast",
+        "yogurt marinade",
+        "garlic toum",
+        "grilled tomato"
+      ],
+      "allergens": [
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Vermicelli rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fattoush salad",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Kofta Plate",
+      "category": "plates_and_grills",
+      "description": "Charcoal-grilled beef kofta with onion, parsley and tahini.",
+      "price_sar": "45.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "beef kofta",
+        "onion",
+        "parsley",
+        "tahini"
+      ],
+      "allergens": [
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [
+        "onion"
+      ],
+      "option_groups": [
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Vermicelli rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fattoush salad",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grilled Halloumi Plate",
+      "category": "plates_and_grills",
+      "description": "Grilled halloumi and vegetables with za'atar and olive oil.",
+      "price_sar": "36.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "halloumi",
+        "grilled vegetables",
+        "za'atar",
+        "olive oil"
+      ],
+      "allergens": [
+        "dairy",
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Side",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Vermicelli rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fries",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Fattoush salad",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Hummus",
+      "category": "mezze",
+      "description": "Smooth chickpea and tahini dip with olive oil.",
+      "price_sar": "14.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "chickpeas",
+        "tahini",
+        "olive oil",
+        "lemon"
+      ],
+      "allergens": [
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Topping",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Shawarma meat",
+              "price_delta_sar": "8.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Toasted pine nuts",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Moutabal",
+      "category": "mezze",
+      "description": "Smoked eggplant with tahini and a little yogurt.",
+      "price_sar": "15.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "smoked eggplant",
+        "tahini",
+        "yogurt",
+        "garlic"
+      ],
+      "allergens": [
+        "sesame",
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Fattoush",
+      "category": "mezze",
+      "description": "Crisp salad with radish, sumac, pomegranate molasses and fried pita.",
+      "price_sar": "16.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "lettuce",
+        "tomato",
+        "cucumber",
+        "radish",
+        "sumac",
+        "fried pita",
+        "pomegranate molasses"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [
+        "radish",
+        "fried pita"
+      ],
+      "option_groups": []
+    },
+    {
+      "name": "Tabbouleh",
+      "category": "mezze",
+      "description": "Parsley, bulgur, tomato and lemon.",
+      "price_sar": "15.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "parsley",
+        "bulgur",
+        "tomato",
+        "lemon",
+        "olive oil"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Cheese Sambousek",
+      "category": "mezze",
+      "description": "Golden pastries filled with akkawi cheese.",
+      "price_sar": "16.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "pastry",
+        "akkawi cheese",
+        "egg wash",
+        "nigella seeds"
+      ],
+      "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Ayran",
+      "category": "drinks_and_sweets",
+      "description": "Chilled salted yogurt drink.",
+      "price_sar": "8.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "yogurt",
+        "water",
+        "salt"
+      ],
+      "allergens": [
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Mint Lemonade",
+      "category": "drinks_and_sweets",
+      "description": "Lemon and fresh mint, blended with ice.",
+      "price_sar": "12.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "lemon",
+        "mint",
+        "sugar",
+        "ice"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Kunafa",
+      "category": "drinks_and_sweets",
+      "description": "Warm shredded pastry over melted akkawi cheese, with syrup and pistachio.",
+      "price_sar": "24.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "shredded pastry",
+        "akkawi cheese",
+        "sugar syrup",
+        "pistachio"
+      ],
+      "allergens": [
+        "gluten",
+        "dairy",
+        "tree_nut"
+      ],
+      "may_contain": [],
+      "removable": [
+        "pistachio"
+      ],
+      "option_groups": []
+    }
+  ]
+}
