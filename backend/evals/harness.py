@@ -1,0 +1,86 @@
+"""Run one case against the real agent path, inside a transaction that is rolled back.
+
+Same entry point as POST /api/chat (`handle_message`), minus HTTP. Nothing a
+case writes survives it, so the local DB stays clean.
+"""
+
+import time
+
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.agent.chat_turn import ConversationNotFoundError, handle_message
+from app.agent.errors import AgentAnswerError, AgentLoopError, TurnTimeoutError
+from app.agent.llm_client import AgentLLM, LLMUnavailableError
+from app.db.engine import get_engine
+from app.memory.conversations import create_conversation
+from app.memory.profile import preference_history
+from app.users.models import User
+from evals.case_model import Case, Step
+from evals.transcript import CaseRun, StoredFact, Turn
+from scripts.seed_menu import load_menu, seed_menu
+
+
+async def run_case(case: Case, slot: int, run: int, llm: AgentLLM, deadline: float) -> CaseRun:
+    """`slot` and `run` make usernames unique, so concurrent cases never collide."""
+    async with get_engine().connect() as connection:
+        outer = await connection.begin()
+        session = AsyncSession(
+            bind=connection, join_transaction_mode="create_savepoint", expire_on_commit=False
+        )
+        try:
+            await seed_menu(session, load_menu())
+            users = {name: await _user(session, f"ev{slot}_{run}_{name}") for name in case.users}
+            # Each commit only releases a savepoint; the outer transaction still rolls
+            # back. Committing setup keeps it when a failed turn rolls back its own work.
+            await session.commit()
+            conversations: dict[str, int] = {}
+            turns = [
+                await _turn(llm, session, step, users, conversations, deadline)
+                for step in case.steps
+            ]
+            profiles = {
+                name: [
+                    StoredFact(kind=p.kind, value=p.value, status=p.status)
+                    for p in await preference_history(session, user_id)
+                ]
+                for name, user_id in users.items()
+            }
+        finally:
+            await session.close()
+            await outer.rollback()
+    return CaseRun(case_id=case.id, category=case.category, run=run, turns=turns, profiles=profiles)
+
+
+async def _user(session: AsyncSession, username: str) -> int:
+    user = User(username=username[:20], pin_hash="eval-user-never-logs-in")
+    session.add(user)
+    await session.flush()
+    return user.id
+
+
+async def _turn(
+    llm: AgentLLM,
+    session: AsyncSession,
+    step: Step,
+    users: dict[str, int],
+    conversations: dict[str, int],
+    deadline: float,
+) -> Turn:
+    user_id = users[step.user]
+    if step.new_conversation or step.user not in conversations:
+        conversations[step.user] = await create_conversation(session, user_id)
+        await session.commit()
+    target = conversations[step.into_conversation_of or step.user]
+    started = time.perf_counter()
+    result: dict[str, object] = {"user": step.user, "say": step.say}
+    try:
+        reply = await handle_message(llm, session, user_id, target, step.say, deadline)
+        result |= {"status": "ok", "reply": reply.reply, "cards": reply.items}
+    except ConversationNotFoundError:
+        result |= {"status": "refused"}
+    except TurnTimeoutError:
+        result |= {"status": "timeout"}
+    except (LLMUnavailableError, AgentAnswerError, AgentLoopError) as exc:
+        result |= {"status": "error", "error": type(exc).__name__}
+    result["seconds"] = round(time.perf_counter() - started, 2)
+    return Turn.model_validate(result)
