@@ -17,4 +17,4 @@ export default async function keepAwake(): Promise<void> {
   }
 }
 
-export const config = { schedule: '@yearly' }
+export const config = { schedule: '*/10 * * * *' }
