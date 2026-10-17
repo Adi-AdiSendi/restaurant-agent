@@ -3,15 +3,15 @@
 from collections.abc import Awaitable, Callable
 
 from pydantic import BaseModel
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.agent.llm_client import Spec, ToolCall
-from app.menu.constraints import HardConstraints
 from app.tools import get_item, search_menu
+from app.tools.context import ToolContext
 from app.tools.errors import ToolError
 
-# Handlers get the guest's constraints from the server, never a user_id.
-Handler = Callable[[AsyncSession, str, HardConstraints], Awaitable[BaseModel]]
+# Handlers get the user, restaurant and constraints from the server (ADR 0020),
+# never from the model's arguments.
+Handler = Callable[[str, ToolContext], Awaitable[BaseModel]]
 
 _TOOLS = (search_menu, get_item)
 HANDLERS: dict[str, Handler] = {tool.NAME: tool.handle for tool in _TOOLS}
@@ -27,9 +27,7 @@ TOOL_SPECS: list[Spec] = [
 ]
 
 
-async def run_tool(
-    session: AsyncSession, call: ToolCall, constraints: HardConstraints
-) -> BaseModel:
+async def run_tool(call: ToolCall, context: ToolContext) -> BaseModel:
     handler = HANDLERS.get(call.name)
     if handler is None:
         return ToolError(
@@ -37,4 +35,4 @@ async def run_tool(
             retryable=False,
             message=f"There is no tool named {call.name!r}. Use one of: {sorted(HANDLERS)}.",
         )
-    return await handler(session, call.arguments, constraints)
+    return await handler(call.arguments, context)

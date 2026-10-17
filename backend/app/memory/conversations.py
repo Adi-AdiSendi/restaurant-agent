@@ -27,11 +27,14 @@ async def start_conversation(session: AsyncSession, user_id: int, slug: str) -> 
     return await create_conversation(session, user_id, restaurant.id)
 
 
-async def is_owned_by(session: AsyncSession, user_id: int, conversation_id: int) -> bool:
-    stmt = select(Conversation.id).where(
+async def owned_conversation(
+    session: AsyncSession, user_id: int, conversation_id: int
+) -> Conversation | None:
+    """The conversation, or None if it does not exist or belongs to another user."""
+    stmt = select(Conversation).where(
         Conversation.id == conversation_id, Conversation.user_id == user_id
     )
-    return await session.scalar(stmt) is not None
+    return await session.scalar(stmt)
 
 
 async def recent_messages(

@@ -15,11 +15,14 @@ from app.agent.context import build_input, memory_update_note
 from app.agent.errors import TurnTimeoutError
 from app.agent.llm_client import AgentLLM
 from app.agent.loop import run_turn
+from app.agent.prompt import SYSTEM_PROMPT
 from app.agent.schemas import AgentReply
-from app.memory.conversations import add_message, is_owned_by, recent_messages
+from app.memory.conversations import add_message, owned_conversation, recent_messages
 from app.memory.extract import extract_operations
 from app.memory.profile import hard_constraints, load_profile
 from app.memory.supersede import apply_operations
+from app.menu.queries import get_restaurant
+from app.tools.context import ToolContext
 from app.users.service import lock_user
 
 
@@ -52,8 +55,11 @@ async def handle_message(
 async def _turn(
     llm: AgentLLM, session: AsyncSession, user_id: int, conversation_id: int, text: str
 ) -> AgentReply:
-    if not await is_owned_by(session, user_id, conversation_id):
+    conversation = await owned_conversation(session, user_id, conversation_id)
+    if conversation is None:
         raise ConversationNotFoundError
+    restaurant = await get_restaurant(session, conversation.restaurant_id)
+    assert restaurant is not None, "conversations.restaurant_id is a foreign key"
     await lock_user(session, user_id)
     history = list(await recent_messages(session, user_id, conversation_id))
     previous = next((m.content for m in reversed(history) if m.role == "assistant"), None)
@@ -66,7 +72,15 @@ async def _turn(
     profile = await load_profile(session, user_id)
     note = memory_update_note(before, profile)
     items, seen = build_input(profile, [*history, user_message], note)
-    reply = await run_turn(llm, session, items, seen, constraints=hard_constraints(profile))
+    context = ToolContext(
+        session,
+        user_id,
+        conversation_id,
+        restaurant.id,
+        tuple(restaurant.categories),
+        hard_constraints(profile),
+    )
+    reply = await run_turn(llm, context, items, seen, instructions=SYSTEM_PROMPT)
 
     item_ids = [item.id for item in reply.items]
     await add_message(session, conversation_id, "assistant", reply.reply, item_ids)

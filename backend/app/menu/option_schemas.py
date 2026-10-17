@@ -32,7 +32,7 @@ class OptionOut(OptionFields):
     id: int
 
 
-class _GroupBase(BaseModel):
+class OptionGroupBase(BaseModel):
     name: str = Field(min_length=1, max_length=60)
     min_choices: int = Field(ge=0)
     max_choices: int = Field(ge=1)
@@ -42,7 +42,7 @@ class _GroupBase(BaseModel):
         return self.min_choices > 0
 
 
-def _check_group(group: _GroupBase, option_names: list[str]) -> None:
+def _check_group(group: OptionGroupBase, option_names: list[str]) -> None:
     if group.min_choices > group.max_choices:
         raise ValueError(f"group {group.name!r}: min_choices is above max_choices")
     if group.min_choices > len(option_names):
@@ -51,7 +51,7 @@ def _check_group(group: _GroupBase, option_names: list[str]) -> None:
         raise ValueError(f"group {group.name!r}: option names repeat")
 
 
-class OptionGroupFields(_GroupBase):
+class OptionGroupFields(OptionGroupBase):
     options: list[OptionFields] = Field(min_length=1)
 
     @model_validator(mode="after")
@@ -60,7 +60,7 @@ class OptionGroupFields(_GroupBase):
         return self
 
 
-class OptionGroupOut(_GroupBase):
+class OptionGroupOut(OptionGroupBase):
     model_config = ConfigDict(from_attributes=True)
 
     id: int

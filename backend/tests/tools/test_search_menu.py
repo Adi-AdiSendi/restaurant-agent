@@ -9,13 +9,14 @@ from app.tools import search_menu
 from app.tools.errors import ToolError
 from app.tools.search_menu import SearchMenuResult
 from tests.agent.fake_llm import EMPTY_SEARCH
+from tests.contexts import tool_context
 
 
 async def run(
     session: AsyncSession, constraints: HardConstraints = NO_CONSTRAINTS, **overrides: object
 ) -> SearchMenuResult | ToolError:
     arguments = json.dumps(EMPTY_SEARCH | overrides)
-    return await search_menu.handle(session, arguments, constraints)
+    return await search_menu.handle(arguments, await tool_context(session, constraints))
 
 
 async def test_filters_are_applied_in_sql(seeded: AsyncSession) -> None:
@@ -51,7 +52,7 @@ async def test_bad_arguments_are_not_retryable(seeded: AsyncSession) -> None:
 
 
 async def test_malformed_json_is_invalid_arguments(seeded: AsyncSession) -> None:
-    result = await search_menu.handle(seeded, "{not json", NO_CONSTRAINTS)
+    result = await search_menu.handle("{not json", await tool_context(seeded))
     assert isinstance(result, ToolError)
     assert result.error_category == "invalid_arguments"
 

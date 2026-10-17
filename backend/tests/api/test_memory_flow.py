@@ -7,10 +7,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.agent.llm_client import ModelTurn
 from app.memory.models import Message
-from app.menu.queries import search_items
 from app.menu.schemas import MenuFilter
 from tests.agent.fake_llm import EMPTY_SEARCH, FakeLLM, answer_turn, extraction, op, tool_turn
 from tests.api.conftest import active, login, new_conversation, say
+from tests.contexts import corner_items
 
 
 async def test_fact_from_conversation_one_reaches_conversation_two(
@@ -87,7 +87,7 @@ async def test_item_from_earlier_in_the_conversation_can_be_a_card_again(
     """ "I'll take the bowl": no new search needed for an item already recommended."""
     await login(client, "sara")
     conversation = await new_conversation(client)
-    bowl = (await search_items(seeded, MenuFilter(text="veggie bowl")))[0].id
+    bowl = (await corner_items(seeded, MenuFilter(text="veggie bowl")))[0].id
     llm.turns.extend([tool_turn("search_menu", EMPTY_SEARCH), answer_turn("Try the bowl", [bowl])])
     await say(client, conversation, "Something light")
     llm.turns.append(answer_turn("Great choice", [bowl]))

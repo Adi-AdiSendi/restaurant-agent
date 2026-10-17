@@ -23,17 +23,17 @@ def ids_in_tool_result(result: BaseModel) -> set[int]:
 
 
 async def grounded_items(
-    session: AsyncSession, recommended: Iterable[int], seen: set[int]
+    session: AsyncSession, restaurant_id: int, recommended: Iterable[int], seen: set[int]
 ) -> list[MenuItemOut]:
-    """Keep IDs that exist and were seen (a tool returned them this turn, or they were
-    recommended earlier in this conversation); log and drop the rest."""
+    """Keep IDs of this restaurant that were seen (a tool returned them this turn, or
+    they were recommended earlier in this conversation); log and drop the rest."""
     allowed: list[int] = []
     for item_id in recommended:
         if item_id in seen:
             allowed.append(item_id)
         else:
             logger.warning("agent_unseen_item_id id=%d", item_id)
-    found = await get_items_by_ids(session, allowed)
+    found = await get_items_by_ids(session, restaurant_id, allowed)
     known = {item.id for item in found}
     for item_id in allowed:
         if item_id not in known:

@@ -7,10 +7,10 @@ from app.agent.llm_client import LLMUnavailableError, ModelTurn
 from app.agent.tool_rounds import MAX_TOOL_ROUNDS
 from app.config import get_settings
 from app.memory.models import Message
-from app.menu.queries import search_items
 from app.menu.schemas import MenuFilter
 from tests.agent.fake_llm import EMPTY_SEARCH, FakeLLM, answer_turn, extraction, op, tool_turn
 from tests.api.conftest import active, login, new_conversation
+from tests.contexts import corner_items
 
 
 async def chat(http: httpx2.AsyncClient, conversation_id: int, text: str) -> httpx2.Response:
@@ -22,7 +22,7 @@ async def test_chat_returns_reply_and_db_cards(
 ) -> None:
     await login(client, "sara")
     conversation = await new_conversation(client)
-    sorbet = (await search_items(seeded, MenuFilter(text="sorbet")))[0]
+    sorbet = (await corner_items(seeded, MenuFilter(text="sorbet")))[0]
     search = tool_turn("search_menu", EMPTY_SEARCH | {"text": "sorbet"})
     llm.turns.extend([search, answer_turn("Try the sorbet", [sorbet.id])])
     response = await chat(client, conversation, "Something sweet")

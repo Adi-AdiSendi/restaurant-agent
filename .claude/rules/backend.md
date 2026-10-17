@@ -37,13 +37,15 @@ paths:
 - The user profile block goes at the top of the context on every turn, not
   inside the history. Hard constraints are never summarized away.
 - The final answer is structured: `{reply: str, recommended_item_ids: list[int]}`.
+  An item is recommended by ID; options are checked by the guard, never trusted.
 - On schema validation failure, retry once with only the failed fields and the
   validation error. Then fail with a clear error.
 
 ## Tool design
 - Tools have distinct purposes. Each description states: what it does, input
   format, an example, and what it must NOT be used for.
-- Tools never accept `user_id`. The handler receives it from the server context.
+- Tools never accept `user_id`, a conversation or a restaurant. Handlers take
+  `(arguments, context)`; `ToolContext` is built by the server (ADR 0020).
 - `search_menu` always applies the user's hard constraints server-side, whatever
   arguments the model sends.
 - No results is a success with an empty list, never an error.
