@@ -38,7 +38,8 @@ export const initialChat: ChatState = {
   nextId: 1,
 }
 
-const RETRYABLE = new Set([0, 502, 503])
+// 504: the turn hit its deadline and was rolled back, so resending is safe.
+const RETRYABLE = new Set([0, 502, 503, 504])
 
 function withMessage(state: ChatState, message: Omit<ChatMessage, 'id'>): ChatState {
   return {

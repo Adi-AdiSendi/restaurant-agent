@@ -43,8 +43,12 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
 const post = <T>(path: string, body?: unknown) =>
   request<T>(path, { method: 'POST', body: body === undefined ? undefined : JSON.stringify(body) })
 
+// A waking backend holds the request until the proxy gives up (26 s); stop sooner.
+const HEALTH_TIMEOUT_MS = 5_000
+
 export const api = {
-  health: () => request<Health | null>('/health'),
+  health: () =>
+    request<Health | null>('/health', { signal: AbortSignal.timeout(HEALTH_TIMEOUT_MS) }),
   me: () => request<Me>('/auth/me'),
   login: (username: string, pin: string) => post<LoginResponse>('/auth/login', { username, pin }),
   logout: () => post<undefined>('/auth/logout'),

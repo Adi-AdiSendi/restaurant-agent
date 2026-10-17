@@ -2,7 +2,7 @@ import { act, fireEvent, render, screen } from '@testing-library/react'
 import { afterEach, expect, test, vi } from 'vitest'
 
 import App from './App'
-import { GIVE_UP_MS, RETRY_MS } from './features/startup/useServerReady'
+import { GIVE_UP_MS, RETRY_MS, SLOW_MS } from './features/startup/useServerReady'
 import { mockFetch } from './test/fetchMock'
 
 const UP = { body: { status: 'ok' } }
@@ -59,4 +59,16 @@ test('after two minutes it gives up and offers a retry', async () => {
   fireEvent.click(screen.getByRole('button', { name: 'Try again' }))
   expect(await screen.findByRole('button', { name: 'Continue' })).toBeInTheDocument()
   expect(fetchMock.mock.calls.length).toBeGreaterThan(10)
+})
+
+test('a health check that hangs shows the startup screen after a second', async () => {
+  vi.useFakeTimers({ shouldAdvanceTime: true })
+  vi.stubGlobal(
+    'fetch',
+    vi.fn(() => new Promise<Response>(() => undefined)),
+  )
+  render(<App />)
+  expect(screen.queryByText('Starting the server…')).not.toBeInTheDocument()
+  await act(() => vi.advanceTimersByTimeAsync(SLOW_MS))
+  expect(screen.getByText('Starting the server…')).toBeInTheDocument()
 })

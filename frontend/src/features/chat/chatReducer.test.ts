@@ -34,7 +34,7 @@ describe('chatReducer', () => {
 
   test('only network and gateway errors can be resent', () => {
     const sent = chatReducer(started, { type: 'sent', text: 'hi' })
-    for (const status of [0, 502, 503]) {
+    for (const status of [0, 502, 503, 504]) {
       expect(chatReducer(sent, { type: 'failed', error: 'x', status }).retry).toBe('send')
     }
     for (const status of [404, 422, 500]) {
