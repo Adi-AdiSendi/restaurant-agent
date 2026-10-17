@@ -1,0 +1,83 @@
+"""What the cart and order functions take and return. Prices are always computed here."""
+
+from datetime import datetime
+from decimal import Decimal
+from typing import Literal
+
+from pydantic import BaseModel, ConfigDict, Field
+
+from app.menu.allergens import Allergen
+
+MAX_QUANTITY = 20
+Fulfilment = Literal["pickup", "dine_in"]
+OrderStatus = Literal["placed", "preparing", "ready"]
+
+
+class NewLine(BaseModel):
+    """One dish as the guest configured it. There is no price field: the server prices it."""
+
+    model_config = ConfigDict(extra="forbid")
+
+    item_id: int = Field(ge=1)
+    quantity: int = Field(default=1, ge=1, le=MAX_QUANTITY)
+    option_ids: list[int] = Field(default_factory=list[int], max_length=20)
+    removed: list[str] = Field(default_factory=list[str], max_length=20)
+
+
+class LineOption(BaseModel):
+    id: int
+    name: str
+    price_delta_sar: Decimal
+
+
+class CartLineOut(BaseModel):
+    id: int
+    item_id: int
+    name: str
+    quantity: int
+    options: list[LineOption]
+    removed: list[str]
+    unit_price_sar: Decimal | None
+    line_total_sar: Decimal | None
+    allergens: list[Allergen]
+    conflicts_with_guest: list[str]
+    may_contain_warnings: list[Allergen]
+    problem: str | None
+    """Why this line cannot be ordered any more (the menu changed); None if it can."""
+
+
+class CartRestaurant(BaseModel):
+    slug: str
+    name: str
+
+
+class CartOut(BaseModel):
+    restaurant: CartRestaurant | None
+    lines: list[CartLineOut]
+    total_sar: Decimal
+    item_count: int
+
+
+class OrderLineOut(BaseModel):
+    model_config = ConfigDict(from_attributes=True)
+
+    item_name: str
+    quantity: int
+    unit_price_sar: Decimal
+    option_names: list[str]
+    removed: list[str]
+    allergens: list[Allergen]
+
+
+class OrderSummary(BaseModel):
+    id: int
+    restaurant: CartRestaurant
+    fulfilment: Fulfilment
+    total_sar: Decimal
+    item_count: int
+    placed_at: datetime
+    status: OrderStatus
+
+
+class OrderOut(OrderSummary):
+    lines: list[OrderLineOut]
