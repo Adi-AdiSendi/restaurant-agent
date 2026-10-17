@@ -67,6 +67,7 @@ layers = [
     "app.api",
     "app.agent",
     "app.tools | app.memory | app.safety",
+    "app.orders",
     "app.menu | app.users",
     "app.db",
     "app.config",

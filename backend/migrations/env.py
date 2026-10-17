@@ -16,6 +16,7 @@ from app.memory import models as _memory_models  # noqa: F401  # pyright: ignore
 from app.memory import preference as _preference_model  # noqa: F401  # pyright: ignore[reportUnusedImport]
 from app.menu import models as _menu_models  # noqa: F401  # pyright: ignore[reportUnusedImport]
 from app.menu import restaurant as _restaurant_model  # noqa: F401  # pyright: ignore[reportUnusedImport]
+from app.orders import models as _order_models  # noqa: F401  # pyright: ignore[reportUnusedImport]
 from app.users import models as _user_models  # noqa: F401  # pyright: ignore[reportUnusedImport]
 
 config = context.config
