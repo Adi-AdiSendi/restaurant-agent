@@ -3,7 +3,6 @@
 from decimal import Decimal
 
 from app.menu.allergens import Allergen
-from app.menu.categories import Category
 from app.menu.constraints import NO_CONSTRAINTS, HardConstraints
 from app.menu.schemas import MenuFilter
 
@@ -19,14 +18,14 @@ def test_guest_constraints_are_added_to_an_empty_model_filter() -> None:
 def test_model_choices_are_kept_and_combined() -> None:
     guest = HardConstraints(excluded_allergens=frozenset({Allergen.PEANUT}))
     model = MenuFilter(
-        category=Category.STARTERS,
+        category="starters",
         max_price_sar=Decimal("30"),
         exclude_allergens=[Allergen.DAIRY],
         vegetarian=True,
     )
     merged = guest.restrict(model)
     assert merged.exclude_allergens == [Allergen.DAIRY, Allergen.PEANUT]
-    assert merged.category == Category.STARTERS
+    assert merged.category == "starters"
     assert merged.max_price_sar == Decimal("30")
     assert merged.vegetarian
 

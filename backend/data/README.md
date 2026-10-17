@@ -1,10 +1,17 @@
 # data
 
-`menu.json` is the source of truth for the menu seed (`scripts/seed_menu.py`).
-The restaurant is fictional. Prices are in SAR. Allergens use the fixed
-vocabulary in `app/menu/allergens.py`.
+`restaurants/<slug>.json` holds one file per restaurant, and each file is the
+source of truth for that restaurant's menu (`scripts/seed_menu.py`). The file
+name must match the slug. Every restaurant is fictional, and all prices are
+in SAR. Allergens use the fixed vocabulary in `app/menu/allergens.py`.
 
-## What is on it
+Each file has the restaurant's name, cuisine, tagline, accent colour and
+ordered categories, then its items. An item may list `removable` ingredients
+and `option_groups` (with `min_choices` and `max_choices`). Each option has
+its own price change, allergens, may-contain, diet flags and spice level.
+Allergen and diet fields are always written out, never defaulted.
+
+## Corner Table (`corner-table.json`, the v1 menu)
 18 items in 4 categories: starters, burgers and mains, bowls and pasta,
 desserts and drinks. Prices run from 16 to 85 SAR. 12 vegetarian items, 7 of
 them vegan, and 6 with meat or fish. Spice levels 0 to 3.

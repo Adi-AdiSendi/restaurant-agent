@@ -7,7 +7,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.engine import get_engine
 from app.users.models import User
-from scripts.seed_menu import load_menu, seed_menu
+from scripts.seed_menu import load_restaurants, seed_menus
 
 
 @pytest.fixture
@@ -27,7 +27,7 @@ async def session() -> AsyncIterator[AsyncSession]:
 
 @pytest.fixture
 async def seeded(session: AsyncSession) -> AsyncSession:
-    await seed_menu(session, load_menu())
+    await seed_menus(session, load_restaurants())
     return session
 
 

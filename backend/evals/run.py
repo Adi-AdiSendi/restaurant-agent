@@ -20,7 +20,7 @@ from evals.graders.judge import Judge
 from evals.harness import run_case
 from evals.report import summarize, table
 from evals.transcript import CaseRun, Check
-from scripts.seed_menu import load_menu, seed_menu
+from scripts.seed_menu import load_restaurants, seed_menus
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 LOCAL_HOSTS = {"localhost", "127.0.0.1", "db"}
@@ -53,10 +53,10 @@ async def main(args: argparse.Namespace) -> None:
     ]
     llm = openai_client_from_settings(settings)
     judge = Judge(llm)
-    menu = load_menu()
+    restaurants = load_restaurants()
     async with get_sessionmaker()() as session, session.begin():
-        await seed_menu(session, menu)  # idempotent, the same as scripts.seed_menu
-    prices = {item.name: item.price_sar for item in menu}
+        await seed_menus(session, restaurants)  # idempotent, the same as scripts.seed_menu
+    prices = {item.name: item.price_sar for item in restaurants[0].items}
     limit = asyncio.Semaphore(args.concurrency)
 
     async def one(slot: int, case: Case, run: int) -> CaseRun:

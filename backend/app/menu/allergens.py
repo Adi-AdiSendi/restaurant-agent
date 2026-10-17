@@ -14,3 +14,11 @@ class Allergen(StrEnum):
     FISH = "fish"
     SHELLFISH = "shellfish"
     MUSTARD = "mustard"
+
+
+def sql_text_array(values: list[str]) -> str:
+    """A literal text[] for CHECK constraints, e.g. ARRAY['gluten', 'dairy']::text[]."""
+    return "ARRAY[" + ", ".join(f"'{v}'" for v in values) + "]::text[]"
+
+
+ALLERGENS_SQL = sql_text_array([a.value for a in Allergen])

@@ -1,4 +1,4 @@
-"""Conversations and their messages. Every conversation belongs to one user."""
+"""Conversations and their messages. Every conversation belongs to one user and one restaurant."""
 
 from datetime import datetime
 
@@ -18,6 +18,9 @@ class Conversation(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True)
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), index=True)
+    restaurant_id: Mapped[int] = mapped_column(
+        ForeignKey("restaurants.id", ondelete="RESTRICT"), index=True
+    )
     started_at: Mapped[datetime] = created_at_column()
 
 

@@ -1,7 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.memory.conversations import add_message
+from app.memory.conversations import add_message, start_conversation
 from app.memory.models import Conversation
 from app.memory.preference import Preference
 from app.users.models import User
@@ -41,10 +41,9 @@ async def test_demo_pins_log_in(session: AsyncSession) -> None:
 async def test_reseed_resets_what_a_reviewer_changed(session: AsyncSession) -> None:
     await seed_demo_users(session)
     bob = await user_id(session, "demo_bob")
-    chat = Conversation(user_id=bob)
-    session.add(chat)
-    await session.flush()
-    await add_message(session, chat.id, "user", "I am vegan now")
+    chat_id = await start_conversation(session, bob, "corner-table")
+    assert chat_id is not None
+    await add_message(session, chat_id, "user", "I am vegan now")
     session.add(Preference(user_id=bob, kind="diet", value="vegan"))
     await session.flush()
 

@@ -7,15 +7,24 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.memory.models import Conversation, Message
+from app.menu.queries import restaurant_by_slug
 
 HISTORY_LIMIT = 20
 
 
-async def create_conversation(session: AsyncSession, user_id: int) -> int:
-    conversation = Conversation(user_id=user_id)
+async def create_conversation(session: AsyncSession, user_id: int, restaurant_id: int) -> int:
+    conversation = Conversation(user_id=user_id, restaurant_id=restaurant_id)
     session.add(conversation)
     await session.flush()
     return conversation.id
+
+
+async def start_conversation(session: AsyncSession, user_id: int, slug: str) -> int | None:
+    """A new conversation at the restaurant with this slug; None if there is none."""
+    restaurant = await restaurant_by_slug(session, slug)
+    if restaurant is None:
+        return None
+    return await create_conversation(session, user_id, restaurant.id)
 
 
 async def is_owned_by(session: AsyncSession, user_id: int, conversation_id: int) -> bool:

@@ -1,4 +1,4 @@
-"""Make menu_items match data/menu.json. Safe to run on every deploy.
+"""Make the menu tables match data/restaurants/*.json. Safe to run on every deploy.
 
 Usage: uv run python -m scripts.seed_menu
 """
@@ -7,48 +7,48 @@ import asyncio
 import logging
 from pathlib import Path
 
-from pydantic import TypeAdapter
-from sqlalchemy import delete
-from sqlalchemy.dialects.postgresql import insert
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.engine import get_engine, get_sessionmaker
-from app.menu.models import MenuItem
-from app.menu.schemas import MenuItemFields
+from app.menu.restaurant import Restaurant
+from app.menu.restaurant_schemas import RestaurantFile
+from scripts.menu_sync import sync_restaurant
 
-MENU_PATH = Path(__file__).resolve().parents[1] / "data" / "menu.json"
+RESTAURANTS_DIR = Path(__file__).resolve().parents[1] / "data" / "restaurants"
 logger = logging.getLogger(__name__)
 
-_menu_adapter = TypeAdapter(list[MenuItemFields])
+
+def load_restaurants(directory: Path = RESTAURANTS_DIR) -> list[RestaurantFile]:
+    """Every restaurant file, Corner Table first, the rest by name."""
+    paths = sorted(directory.glob("*.json"), key=lambda p: (p.stem != "corner-table", p.stem))
+    if not paths:
+        raise ValueError(f"{directory} has no restaurant files")
+    restaurants = [RestaurantFile.model_validate_json(p.read_bytes()) for p in paths]
+    for path, restaurant in zip(paths, restaurants, strict=True):
+        if restaurant.slug != path.stem:
+            raise ValueError(f"{path.name}: slug {restaurant.slug!r} must match the file name")
+    return restaurants
 
 
-def load_menu(path: Path = MENU_PATH) -> list[MenuItemFields]:
-    items = _menu_adapter.validate_json(path.read_bytes())
-    if not items:
-        raise ValueError(f"{path} has no menu items")
-    return items
-
-
-async def seed_menu(session: AsyncSession, items: list[MenuItemFields]) -> None:
-    """Upsert by name, then delete rows the file no longer lists.
-
-    The file is the source of truth: a removed or renamed dish must not stay
-    recommendable. Keeping names stable keeps IDs stable.
-    """
-    rows = [item.model_dump() for item in items]
-    stmt = insert(MenuItem).values(rows)
-    updatable = {c: stmt.excluded[c] for c in rows[0] if c != "name"}
-    await session.execute(stmt.on_conflict_do_update(index_elements=["name"], set_=updatable))
-    names = [item.name for item in items]
-    await session.execute(delete(MenuItem).where(MenuItem.name.not_in(names)))
+async def seed_menus(session: AsyncSession, restaurants: list[RestaurantFile]) -> None:
+    """Restaurants missing from the files are kept, since conversations point at them;
+    only their absence is logged."""
+    for position, restaurant in enumerate(restaurants):
+        await sync_restaurant(session, restaurant, position)
+    known = {r.slug for r in restaurants}
+    for slug in await session.scalars(select(Restaurant.slug)):
+        if slug not in known:
+            logger.warning("restaurant_not_in_files slug=%s", slug)
 
 
 async def main() -> None:
-    items = load_menu()
+    restaurants = load_restaurants()
     async with get_sessionmaker()() as session, session.begin():
-        await seed_menu(session, items)
+        await seed_menus(session, restaurants)
     await get_engine().dispose()
-    logger.info("menu_seeded items=%d", len(items))
+    items = sum(len(r.items) for r in restaurants)
+    logger.info("menu_seeded restaurants=%d items=%d", len(restaurants), items)
 
 
 if __name__ == "__main__":

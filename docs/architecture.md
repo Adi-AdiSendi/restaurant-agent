@@ -33,7 +33,7 @@ backend/
     db/           engine, session dependency, declarative Base
   migrations/     Alembic migrations
   scripts/        seed_menu.py, seed_demo_users.py (both run on every deploy)
-  data/menu.json  menu seed data (source of truth for the seed)
+  data/restaurants/  one menu file per restaurant (source of truth for the seed)
   evals/          eval cases, graders, runner, results
   tests/          unit and integration tests, mirroring app/
 frontend/

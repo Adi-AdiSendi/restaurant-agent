@@ -3,7 +3,6 @@ from decimal import Decimal
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.menu.allergens import Allergen
-from app.menu.categories import Category
 from app.menu.queries import get_item, get_items_by_ids, search_items
 from app.menu.schemas import MenuFilter
 
@@ -19,7 +18,7 @@ async def test_empty_filter_returns_whole_menu_by_price(seeded: AsyncSession) ->
 
 
 async def test_category(seeded: AsyncSession) -> None:
-    items = await search_items(seeded, MenuFilter(category=Category.STARTERS))
+    items = await search_items(seeded, MenuFilter(category="starters"))
     assert len(items) == 4
     assert {i.category for i in items} == {"starters"}
 
@@ -85,7 +84,7 @@ async def test_combined_filter(seeded: AsyncSession) -> None:
 
 
 async def test_no_match_is_empty_list(seeded: AsyncSession) -> None:
-    menu_filter = MenuFilter(vegan=True, category=Category.STARTERS, max_price_sar=Decimal("10"))
+    menu_filter = MenuFilter(vegan=True, category="starters", max_price_sar=Decimal("10"))
     assert list(await search_items(seeded, menu_filter)) == []
 
 

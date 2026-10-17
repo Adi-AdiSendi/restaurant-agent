@@ -16,7 +16,7 @@ from app.menu.schemas import MenuFilter
         {"max_price_sar": "0"},
         {"text": "x" * 101},
         {"exclude_allergens": ["lactose"]},
-        {"category": "mains"},
+        {"category": "x" * 41},
     ],
 )
 def test_out_of_range_filter_is_rejected(bad: dict[str, Any]) -> None:

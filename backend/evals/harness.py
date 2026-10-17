@@ -14,7 +14,7 @@ from app.agent.chat_turn import ConversationNotFoundError, handle_message
 from app.agent.errors import AgentAnswerError, AgentLoopError, TurnTimeoutError
 from app.agent.llm_client import AgentLLM, LLMUnavailableError
 from app.db.engine import get_engine
-from app.memory.conversations import create_conversation
+from app.memory.conversations import start_conversation
 from app.memory.profile import preference_history
 from app.users.models import User
 from evals.case_model import Case, Step
@@ -68,7 +68,9 @@ async def _turn(
 ) -> Turn:
     user_id = users[step.user]
     if step.new_conversation or step.user not in conversations:
-        conversations[step.user] = await create_conversation(session, user_id)
+        conversation_id = await start_conversation(session, user_id, "corner-table")
+        assert conversation_id is not None, "the menu must be seeded before evals run"
+        conversations[step.user] = conversation_id
         await session.commit()
     target = conversations[step.into_conversation_of or step.user]
     started = time.perf_counter()

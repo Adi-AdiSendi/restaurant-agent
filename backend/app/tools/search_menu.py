@@ -4,7 +4,6 @@ from pydantic import BaseModel, ValidationError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.menu.allergens import Allergen
-from app.menu.categories import Category
 from app.menu.constraints import NO_CONSTRAINTS, HardConstraints
 from app.menu.queries import search_items
 from app.menu.schemas import MenuFilter, MenuItemOut
@@ -44,7 +43,7 @@ PARAMETERS: dict[str, object] = {
         "text",
     ],
     "properties": {
-        "category": _nullable({"type": "string", "enum": [c.value for c in Category]}),
+        "category": _nullable({"type": "string", "maxLength": 40}),
         "max_price_sar": _nullable({"type": "number"}),
         "max_spice": _nullable({"type": "integer", "minimum": 0, "maximum": 3}),
         "vegetarian": {"type": "boolean"},

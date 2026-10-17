@@ -6,12 +6,13 @@ from sqlalchemy import Select, func, not_, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.menu.models import MenuItem
+from app.menu.restaurant import Restaurant
 from app.menu.schemas import MenuFilter
 
 
 def _apply_filter(stmt: Select[MenuItem], f: MenuFilter) -> Select[MenuItem]:
     if f.category is not None:
-        stmt = stmt.where(MenuItem.category == f.category.value)
+        stmt = stmt.where(MenuItem.category == f.category)
     if f.max_price_sar is not None:
         stmt = stmt.where(MenuItem.price_sar <= f.max_price_sar)
     if f.max_spice is not None:
@@ -51,3 +52,11 @@ async def get_items_by_ids(session: AsyncSession, item_ids: Sequence[int]) -> Se
     found = await session.scalars(select(MenuItem).where(MenuItem.id.in_(item_ids)))
     by_id = {item.id: item for item in found}
     return [by_id[i] for i in dict.fromkeys(item_ids) if i in by_id]
+
+
+async def list_restaurants(session: AsyncSession) -> Sequence[Restaurant]:
+    return (await session.scalars(select(Restaurant).order_by(Restaurant.position))).all()
+
+
+async def restaurant_by_slug(session: AsyncSession, slug: str) -> Restaurant | None:
+    return await session.scalar(select(Restaurant).where(Restaurant.slug == slug))

@@ -189,7 +189,7 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
 |---|---|
 | `backend/app/` | FastAPI app: `api`, `agent`, `tools`, `memory`, `safety`, `menu`, `users`, `db` |
 | `backend/evals/` | eval cases, graders, runner, committed results |
-| `backend/data/menu.json` | the menu (18 items, 4 categories) |
+| `backend/data/restaurants/` | one menu file per restaurant |
 | `backend/tests/` | 270+ tests, real Postgres, fake LLM |
 | `frontend/` | React + Vite + TypeScript UI, Netlify keep-awake function |
 | `docs/` | [architecture](docs/architecture.md), [decisions](docs/decisions/README.md), [eval report](docs/eval-report.md), [challenges we faced](docs/challenges.md), [requirements trace](docs/requirements.md), [plan](docs/plan.md) |
