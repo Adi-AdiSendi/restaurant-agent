@@ -1,4 +1,4 @@
-# Handoff (2026-10-17, v1 done, v2 phase 9)
+# Handoff (2026-10-17, v1 done, v2 phase 11 next)
 
 Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 
@@ -9,7 +9,7 @@ Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 | 6 Deploy | done: live at https://restaurant-agent.netlify.app, cold start and DB sleep measured |
 | 7 Evals (Part 2) | done: 42 cases x 3 runs, `docs/eval-report.md` |
 | 8 Submission | README rewritten for reviewers; video moved to phase 18 |
-| 9 to 18 (v2) | planned in `docs/plan.md`, ADRs 0018 to 0023; phase 9 in progress |
+| 9 to 18 (v2) | `docs/plan.md`, ADRs 0018 to 0023; 9 and 10 done (six restaurants with options, live); next 11, cart and checkout |
 
 Repo: private GitHub `Adi-AdiSendi/restaurant-agent`, branch `main`, CI green.
 Commits are allowed now (one logical change each); see ADR 0017 for the deploy.

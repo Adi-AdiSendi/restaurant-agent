@@ -162,5 +162,10 @@ What the new cases showed, in every run:
   pointed to Corner Table without a card or a question, so it counts as a
   dead end. That is the honest answer here.
 
+After the code review fixed option traces and diet filtering, the same 23
+cases ran again (`2026-10-17-gpt-6-luna-phase10-fixes.json`): every case
+passed every run again. Dead ends: allergen 2/36, diet 0/24, isolation 3/27,
+and the Pesto Penne case 3/3 (it answers without a card or a question).
+
 Not covered yet: option prices in the reply text (the price grader checks
 dish prices only), and choosing options in an order (phase 11).

@@ -4,7 +4,7 @@ Budget: about 10 to 12 focused hours inside the 72-hour window.
 Rule: the baseline must work end to end (deployed) before Part 2 starts.
 Every phase ends with all checks green and a `code-reviewer` pass.
 
-**Current phase: 9** (v2 foundations; v1 phases 0 to 8 are below, the video moved to phase 18)
+**Current phase: 11** (v2; phases 9 and 10 done; v1 phases 0 to 8 are below, the video moved to phase 18)
 
 ## Inputs
 - Menu concept: international casual (burgers, bowls, pasta, desserts), prices in SAR.
@@ -233,6 +233,8 @@ Reused from sibling projects, adapted rather than rebuilt:
 - Still open from v1: remove `docs/task/` from the git history before the
   repo goes public. It needs the user's go-ahead for the rewrite and force-push.
 - Done when: the ADRs are accepted and this plan is committed.
+- Status: done 2026-10-17. The `docs/task/` history rewrite is still open; it
+  needs the user's permission.
 
 ## Phase 10: many restaurants and options (about 7 h)
 - **Data:** one file per restaurant in `backend/data/restaurants/<slug>.json`.
@@ -264,6 +266,30 @@ Reused from sibling projects, adapted rather than rebuilt:
   - an eval case where an add-on brings in an allergen.
 - Done when: the six menus are seeded locally and live, and each
   restaurant's chat recommends only its own dishes.
+- Status: done 2026-10-17. 103 dishes (Corner Table 18, then 15 to 20 each),
+  304 options. 774 backend and 42 frontend tests. Evals: the 5 new cases plus
+  every safety category, 3 runs, all pass, before and after the review fixes
+  (`phase10`, `phase10-fixes`).
+  - **Review fixes:**
+    - Option traces (oat milk, gluten-free bread, falafel, fries) did not
+      reach the guest; now they are on each option, and on the card when
+      unavoidable.
+    - Meat-only dishes were flagged vegetarian; a data test now requires
+      base diet flags to be reachable.
+    - The model's own diet filter now checks options.
+    - Text search covers option names.
+    - A stale chat start could win a fast restaurant switch.
+    - `evals/run.py` was over 100 lines.
+  - **Live run on gpt-6-luna, fresh user, one chat per restaurant:**
+
+    | Restaurant | Turn | Result |
+    |---|---|---|
+    | Bean & Bloom | 9.3 s | "dairy allergy, latte?": latte with oat milk; whole, skimmed and lactose-free struck through |
+    | Golden Dragon | 5.2 s | spicy tofu: Mapo Tofu, base steamed rice or rice noodles |
+    | Shawarma Street | 5.1 s | wrap with chicken; Akkawi cheese marked "not for you" (the dairy allergy carried over) |
+    | Red Sea Catch | 4.9 s | hammour; tandoori and lemon butter marked dairy |
+    | Stack & Smash | 5.7 s | "no pickles": Beyond Smash, potato bun or lettuce wrap, then a question |
+    | Corner Table | 4.8 s | dairy-free desserts only: Mango Sorbet, Fresh Lemon Mint |
 
 ## Phase 11: browse, cart and checkout by hand (about 9 h)
 - **Backend:** `app/orders/` holds carts, cart lines, orders and order lines
