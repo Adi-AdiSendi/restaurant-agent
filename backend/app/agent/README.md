@@ -37,6 +37,8 @@ Runs one chat turn: the model, its tool calls, and a structured final answer.
   including `complete_json` for `memory/extract.py`. Tests use
   `tests/agent/fake_llm.py`.
 - `tool_dispatch.py`: tool specs and name-to-handler dispatch.
-- `prompt.py`: system prompt for the fictional restaurant "Corner Table".
+- `prompt.py`: `system_prompt(restaurant, others)`, built each turn for the
+  conversation's restaurant: its name, cuisine and categories, how to handle
+  options, and the other restaurants (suggest by name, never search).
 
 Depends on: `tools`, `memory`, `safety`, `users`, `menu`. Used by: `api/chat.py`.

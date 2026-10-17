@@ -17,6 +17,7 @@ class FakeLLM:
     extractions: list[str] = field(default_factory=list[str])
     calls: list[list[InputItem]] = field(default_factory=list[list[InputItem]])
     extraction_inputs: list[str] = field(default_factory=list[str])
+    instructions: list[str] = field(default_factory=list[str])
     respond_delay: float = 0.0
 
     async def complete_json(
@@ -36,6 +37,7 @@ class FakeLLM:
         text_format: Spec,
     ) -> ModelTurn:
         self.calls.append(copy.deepcopy(input_items))
+        self.instructions.append(instructions)
         await asyncio.sleep(self.respond_delay)
         if self.error:
             raise self.error

@@ -6,7 +6,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.agent.errors import AgentAnswerError, AgentLoopError
 from app.agent.llm_client import InputItem, ModelTurn
 from app.agent.loop import run_turn
-from app.agent.prompt import SYSTEM_PROMPT as PROMPT
 from app.agent.tool_rounds import MAX_TOOL_ROUNDS, RETRY_TOOL_ROUNDS
 from app.menu.constraints import NO_CONSTRAINTS as NONE
 from app.menu.schemas import MenuFilter
@@ -14,6 +13,7 @@ from tests.agent.fake_llm import EMPTY_SEARCH, FakeLLM, answer_turn, tool_turn
 from tests.contexts import corner_items, tool_context
 
 ASK: list[InputItem] = [{"role": "user", "content": "Something vegan and mild, please"}]
+PROMPT = "You are a test assistant."
 VEGAN_SEARCH = tool_turn("search_menu", EMPTY_SEARCH | {"vegan": True})
 
 

@@ -4,7 +4,7 @@ import logging
 
 from fastapi import FastAPI
 
-from app.api import auth, chat, conversations, health, preferences
+from app.api import auth, chat, conversations, health, preferences, restaurants
 from app.api.frontend import mount_frontend
 from app.api.session import add_session_middleware
 from app.config import get_settings
@@ -16,7 +16,7 @@ def create_app() -> FastAPI:
     settings = get_settings()
     app = FastAPI(title="Restaurant Ordering Assistant", version="0.1.0")
     add_session_middleware(app, settings)
-    for module in (health, auth, conversations, chat, preferences):
+    for module in (health, auth, restaurants, conversations, chat, preferences):
         app.include_router(module.router, prefix="/api")
     mount_frontend(app, settings.frontend_dist)
     return app

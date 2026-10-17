@@ -5,6 +5,7 @@ from typing import Any
 
 from app.menu.allergens import Allergen
 from app.menu.constraints import HardConstraints
+from app.menu.restaurant_schemas import RestaurantFile
 from app.menu.schemas import MenuItemOut
 
 
@@ -73,3 +74,48 @@ def guest(*allergens: Allergen, vegetarian: bool = False, vegan: bool = False) -
     return HardConstraints(
         excluded_allergens=frozenset(allergens), vegetarian=vegetarian, vegan=vegan
     )
+
+
+def milk(name: str, *allergens: str) -> dict[str, Any]:
+    flags: dict[str, Any] = {"may_contain": [], "is_vegetarian": True, "is_vegan": True}
+    return {
+        "name": name,
+        "price_delta_sar": "0.00",
+        "allergens": list(allergens),
+        "spice_level": 0,
+    } | flags
+
+
+# A one-item restaurant whose latte needs a milk: whole (dairy) or oat (gluten).
+TEST_CAFE = RestaurantFile.model_validate(
+    {
+        "slug": "test-cafe",
+        "name": "Test Cafe",
+        "cuisine": "Cafe",
+        "tagline": "Test.",
+        "accent_color": "#123456",
+        "categories": ["coffee"],
+        "items": [
+            {
+                "name": "Latte",
+                "category": "coffee",
+                "description": "Espresso and milk.",
+                "price_sar": "14.00",
+                "is_vegetarian": True,
+                "is_vegan": True,
+                "spice_level": 0,
+                "ingredients": ["espresso"],
+                "allergens": [],
+                "may_contain": [],
+                "option_groups": [
+                    {
+                        "name": "Milk",
+                        "min_choices": 1,
+                        "max_choices": 1,
+                        "options": [milk("Whole milk", "dairy"), milk("Oat milk", "gluten")],
+                    }
+                ],
+            }
+        ],
+    }
+)

@@ -15,13 +15,13 @@ from app.agent.context import build_input, memory_update_note
 from app.agent.errors import TurnTimeoutError
 from app.agent.llm_client import AgentLLM
 from app.agent.loop import run_turn
-from app.agent.prompt import SYSTEM_PROMPT
+from app.agent.prompt import system_prompt
 from app.agent.schemas import AgentReply
 from app.memory.conversations import add_message, owned_conversation, recent_messages
 from app.memory.extract import extract_operations
 from app.memory.profile import hard_constraints, load_profile
 from app.memory.supersede import apply_operations
-from app.menu.queries import get_restaurant
+from app.menu.queries import get_restaurant, list_restaurants
 from app.tools.context import ToolContext
 from app.users.service import lock_user
 
@@ -80,7 +80,9 @@ async def _turn(
         tuple(restaurant.categories),
         hard_constraints(profile),
     )
-    reply = await run_turn(llm, context, items, seen, instructions=SYSTEM_PROMPT)
+    others = [r for r in await list_restaurants(session) if r.id != restaurant.id]
+    instructions = system_prompt(restaurant, others)
+    reply = await run_turn(llm, context, items, seen, instructions=instructions)
 
     item_ids = [item.id for item in reply.items]
     await add_message(session, conversation_id, "assistant", reply.reply, item_ids)

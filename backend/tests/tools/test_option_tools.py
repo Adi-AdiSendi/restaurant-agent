@@ -1,13 +1,11 @@
 """The menu tools at a restaurant with options, and their restaurant scoping."""
 
 import json
-from typing import Any
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.menu.allergens import Allergen
 from app.menu.constraints import HardConstraints
-from app.menu.restaurant_schemas import RestaurantFile
 from app.tools import get_item, search_menu
 from app.tools.errors import ToolError
 from app.tools.get_item import GetItemResult
@@ -15,51 +13,7 @@ from app.tools.search_menu import SearchMenuResult
 from scripts.menu_sync import sync_restaurant
 from tests.agent.fake_llm import EMPTY_SEARCH
 from tests.contexts import corner_items, tool_context
-from tests.factories import guest
-
-
-def milk(name: str, *allergens: str) -> dict[str, Any]:
-    flags: dict[str, Any] = {"may_contain": [], "is_vegetarian": True, "is_vegan": True}
-    return {
-        "name": name,
-        "price_delta_sar": "0.00",
-        "allergens": list(allergens),
-        "spice_level": 0,
-    } | flags
-
-
-TEST_CAFE = RestaurantFile.model_validate(
-    {
-        "slug": "test-cafe",
-        "name": "Test Cafe",
-        "cuisine": "Cafe",
-        "tagline": "Test.",
-        "accent_color": "#123456",
-        "categories": ["coffee"],
-        "items": [
-            {
-                "name": "Latte",
-                "category": "coffee",
-                "description": "Espresso and milk.",
-                "price_sar": "14.00",
-                "is_vegetarian": True,
-                "is_vegan": True,
-                "spice_level": 0,
-                "ingredients": ["espresso"],
-                "allergens": [],
-                "may_contain": [],
-                "option_groups": [
-                    {
-                        "name": "Milk",
-                        "min_choices": 1,
-                        "max_choices": 1,
-                        "options": [milk("Whole milk", "dairy"), milk("Oat milk", "gluten")],
-                    }
-                ],
-            }
-        ],
-    }
-)
+from tests.factories import TEST_CAFE, guest
 
 
 async def search(

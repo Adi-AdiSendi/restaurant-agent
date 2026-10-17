@@ -8,7 +8,6 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.agent.llm_client import InputItem, ModelTurn, ToolCall
 from app.agent.loop import NO_SAFE_MATCH, SAFE_MATCHES, run_turn
-from app.agent.prompt import SYSTEM_PROMPT as PROMPT
 from app.menu.allergens import Allergen
 from app.menu.constraints import HardConstraints
 from app.menu.schemas import MenuFilter, MenuItemOut
@@ -16,6 +15,7 @@ from tests.agent.fake_llm import FakeLLM, answer_turn
 from tests.contexts import corner_items, tool_context
 
 ASK: list[InputItem] = [{"role": "user", "content": "What should I order?"}]
+PROMPT = "You are a test assistant."
 PEANUT = HardConstraints(excluded_allergens=frozenset({Allergen.PEANUT}))
 
 

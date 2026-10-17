@@ -47,8 +47,9 @@ async def login(http: httpx2.AsyncClient, username: str, pin: str = "1234") -> N
     assert response.status_code == 200, response.text
 
 
-async def new_conversation(http: httpx2.AsyncClient) -> int:
-    response = await http.post("/api/conversations")
+async def new_conversation(http: httpx2.AsyncClient, restaurant: str | None = None) -> int:
+    body = {"restaurant": restaurant} if restaurant else None
+    response = await http.post("/api/conversations", json=body)
     assert response.status_code == 201
     return int(response.json()["id"])
 
