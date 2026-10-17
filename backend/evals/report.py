@@ -18,6 +18,10 @@ class CategoryRow(BaseModel):
     runs_passed: int
     timeouts: int
     errors: int
+    dead_ends: int
+    """Answered turns with no card and no question: the guest is left with nothing to do.
+    Reported, not graded (added after the phase 7 review found the note suppressing them)."""
+    answered: int
 
 
 def summarize(results: list[CaseRun]) -> list[CategoryRow]:
@@ -28,6 +32,7 @@ def summarize(results: list[CaseRun]) -> list[CategoryRow]:
     for category, cases in sorted(by_category.items()):
         runs = [r for case_runs in cases.values() for r in case_runs]
         statuses = [t.status for r in runs for t in r.turns]
+        answered = [t for r in runs for t in r.turns if t.status == "ok"]
         rows.append(
             CategoryRow(
                 category=category,
@@ -38,6 +43,8 @@ def summarize(results: list[CaseRun]) -> list[CategoryRow]:
                 runs_passed=sum(r.passed for r in runs),
                 timeouts=statuses.count("timeout"),
                 errors=statuses.count("error"),
+                dead_ends=sum(not t.cards and "?" not in t.reply for t in answered),
+                answered=len(answered),
             )
         )
     return rows
@@ -45,13 +52,13 @@ def summarize(results: list[CaseRun]) -> list[CategoryRow]:
 
 def table(rows: list[CategoryRow]) -> str:
     lines = [
-        "| Category | Cases passed (all runs) | Runs passed | Timeouts | Errors |",
-        "|---|---|---|---|---|",
+        "| Category | Cases passed (all runs) | Runs passed | Timeouts | Errors | Dead ends |",
+        "|---|---|---|---|---|---|",
     ]
     for r in rows:
         name = f"{r.category} (safety)" if r.safety else r.category
         lines.append(
             f"| {name} | {r.cases_passed}/{r.cases} | {r.runs_passed}/{r.runs} "
-            f"| {r.timeouts} | {r.errors} |"
+            f"| {r.timeouts} | {r.errors} | {r.dead_ends}/{r.answered} |"
         )
     return "\n".join(lines)

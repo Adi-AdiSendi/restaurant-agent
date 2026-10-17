@@ -4,6 +4,7 @@ from typing import Any
 
 from sqlalchemy import func, select
 
+from app.agent.llm_client import LLMUnavailableError
 from app.db.engine import get_sessionmaker
 from app.users.models import User
 from evals.case_model import Case
@@ -11,6 +12,7 @@ from evals.grade import grade
 from evals.graders.judge import Judge
 from evals.harness import run_case
 from evals.report import summarize
+from evals.run import crashed
 from evals.transcript import CaseRun, Check
 from tests.agent.fake_llm import FakeLLM, answer_turn
 
@@ -69,7 +71,7 @@ async def test_judge_verdicts_and_grading() -> None:
             "profiles": {"u": []},
         }
     )
-    checks = await grade(judged, run, [], Judge(FakeLLM([], extractions=[yes])))
+    checks = await grade(judged, run, {}, Judge(FakeLLM([], extractions=[yes])))
     assert [(c.name, c.passed) for c in checks] == [("turn 1 status", True), ("turn 1 judge", True)]
 
 
@@ -82,3 +84,27 @@ def test_a_safety_case_must_pass_every_run() -> None:
 
     [row] = summarize([run(1, True), run(2, True), run(3, False)])
     assert (row.safety, row.cases_passed, row.runs_passed, row.runs) == (True, 0, 2, 3)
+
+
+async def test_an_unavailable_judge_fails_the_check() -> None:
+    judge = Judge(FakeLLM([], error=LLMUnavailableError("RateLimitError")))
+    check = await judge("crit", "q", "reply", "turn 1")
+    assert (check.passed, check.detail) == (False, "judge unavailable: RateLimitError")
+
+
+def test_a_crashed_case_is_kept_as_a_failure() -> None:
+    result = crashed(case(users=["u"], steps=[{"user": "u", "say": "q"}]), 2, KeyError("x"))
+    assert (result.run, result.passed, result.checks[0].detail) == (2, False, "KeyError: 'x'")
+
+
+def test_dead_ends_count_answered_turns_without_card_or_question() -> None:
+    turns = [
+        {"user": "u", "say": "q", "status": "ok", "seconds": 1, "reply": "Noted."},
+        {"user": "u", "say": "q", "status": "ok", "seconds": 1, "reply": "What now?"},
+        {"user": "u", "say": "q", "status": "timeout", "seconds": 1},
+    ]
+    result = CaseRun.model_validate(
+        {"case_id": "c", "category": "grounding", "run": 1, "turns": turns, "profiles": {}}
+    )
+    [row] = summarize([result])
+    assert (row.dead_ends, row.answered) == (1, 2)

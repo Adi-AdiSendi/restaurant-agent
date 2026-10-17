@@ -72,11 +72,21 @@ def test_prices_must_be_on_the_menu_or_said_by_the_user() -> None:
         Decimal(85),
         Decimal("16.00"),
     ]
-    menu = [Decimal("85.00"), Decimal("16.00")]
-    assert grade_prices("The Wagyu is 85 SAR.", menu, [], "t").passed
+    menu = {"Double Wagyu Burger": Decimal("85.00"), "Fresh Lemon Mint": Decimal("16.00")}
+    assert grade_prices("The Double Wagyu Burger is 85 SAR.", menu, [], "t").passed
     assert grade_prices("Under 30 SAR: try X.", menu, ["I have 30 SAR"], "t").passed
     invented = grade_prices("Sushi is 55 SAR.", menu, ["hi"], "t")
     assert (invented.passed, invented.detail) == (False, "55")
+
+
+def test_a_price_must_match_the_dish_it_follows() -> None:
+    menu = {"Double Wagyu Burger": Decimal("85.00"), "Fresh Lemon Mint": Decimal("16.00")}
+    swapped = grade_prices("The Double Wagyu Burger is 16 SAR.", menu, [], "t")
+    assert (swapped.passed, swapped.detail) == (False, "Double Wagyu Burger 16 (menu 85.00)")
+    both = "Fresh Lemon Mint (16 SAR) or the double wagyu burger (SAR 85)."
+    assert grade_prices(both, menu, [], "t").passed
+    new_sentence = "Try the Fresh Lemon Mint. Most mains are 85 SAR."
+    assert grade_prices(new_sentence, menu, [], "t").passed
 
 
 def test_profile_expectations() -> None:

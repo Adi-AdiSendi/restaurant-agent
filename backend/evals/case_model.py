@@ -6,10 +6,10 @@ Expectations come from the case, never from the DB: if extraction misses
 
 from decimal import Decimal
 from pathlib import Path
-from typing import Literal
+from typing import Annotated, Literal
 
 import yaml
-from pydantic import BaseModel, ConfigDict, Field, TypeAdapter
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, TypeAdapter
 
 from app.memory.vocabulary import Diet, Kind
 from app.menu.allergens import Allergen
@@ -65,11 +65,15 @@ class ProfileExpect(_Strict):
     """The active facts must be exactly `active`, nothing more."""
 
 
+# Short and lowercase: the harness builds usernames like "ev12_3_alice" (max 20 chars).
+UserName = Annotated[str, StringConstraints(pattern=r"^[a-z]{1,8}$")]
+
+
 class Case(_Strict):
     id: str
     category: Category
     description: str
-    users: list[str]
+    users: list[UserName]
     steps: list[Step]
     profiles: dict[str, ProfileExpect] = Field(default_factory=dict[str, ProfileExpect])
     added_after_baseline: bool = False

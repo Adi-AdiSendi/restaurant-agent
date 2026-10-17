@@ -9,6 +9,7 @@ from typing import Protocol
 
 from pydantic import BaseModel, ValidationError
 
+from app.agent.llm_client import LLMUnavailableError
 from evals.transcript import Check
 
 JUDGE_PROMPT = """You grade one reply from a restaurant ordering assistant.
@@ -48,9 +49,13 @@ class Judge:
 
     async def __call__(self, criterion: str, user_text: str, reply: str, label: str) -> Check:
         user_input = f"Criterion: {criterion}\n\nUser said: {user_text}\n\nReply: {reply}"
-        raw = await self._llm.complete_json(
-            instructions=JUDGE_PROMPT, user_input=user_input, text_format=JUDGE_FORMAT
-        )
+        try:
+            raw = await self._llm.complete_json(
+                instructions=JUDGE_PROMPT, user_input=user_input, text_format=JUDGE_FORMAT
+            )
+        except LLMUnavailableError as exc:
+            # A failed judge call counts as a failed check, never as a pass.
+            return Check(name=f"{label} judge", passed=False, detail=f"judge unavailable: {exc}")
         try:
             verdict = Verdict.model_validate_json(raw)
         except ValidationError:

@@ -1,6 +1,6 @@
 """Apply every check a case asks for to one run of it."""
 
-from collections.abc import Awaitable, Callable, Iterable
+from collections.abc import Awaitable, Callable, Mapping
 from decimal import Decimal
 
 from evals.case_model import Case
@@ -14,9 +14,9 @@ JudgeFn = Callable[[str, str, str, str], Awaitable[Check]]
 
 
 async def grade(
-    case: Case, result: CaseRun, menu_prices: Iterable[Decimal], judge: JudgeFn
+    case: Case, result: CaseRun, menu: Mapping[str, Decimal], judge: JudgeFn
 ) -> list[Check]:
-    prices = set(menu_prices)
+    """`menu` maps each dish name to its price."""
     checks: list[Check] = []
     for number, (step, turn) in enumerate(zip(case.steps, result.turns, strict=True), start=1):
         label = f"turn {number}"
@@ -25,7 +25,7 @@ async def grade(
             continue
         if step.expect.prices:
             said = [s.say for s in case.steps[:number] if s.user == step.user]
-            checks.append(grade_prices(turn.reply, prices, said, label))
+            checks.append(grade_prices(turn.reply, menu, said, label))
         if step.expect.judge:
             checks.append(await judge(step.expect.judge, step.say, turn.reply, label))
     for user, expected in case.profiles.items():

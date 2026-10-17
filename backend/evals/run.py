@@ -19,11 +19,20 @@ from evals.grade import grade
 from evals.graders.judge import Judge
 from evals.harness import run_case
 from evals.report import summarize, table
-from evals.transcript import CaseRun
+from evals.transcript import CaseRun, Check
 from scripts.seed_menu import load_menu, seed_menu
 
 RESULTS_DIR = Path(__file__).resolve().parent / "results"
 LOCAL_HOSTS = {"localhost", "127.0.0.1", "db"}
+
+
+def crashed(case: Case, run: int, exc: Exception) -> CaseRun:
+    """A case that raised is recorded as a failure, so one error never loses a paid run."""
+    detail = f"{type(exc).__name__}: {exc}"[:300]
+    check = Check(name="run crashed", passed=False, detail=detail)
+    return CaseRun(
+        case_id=case.id, category=case.category, run=run, turns=[], profiles={}, checks=[check]
+    )
 
 
 async def main(args: argparse.Namespace) -> None:
@@ -31,6 +40,11 @@ async def main(args: argparse.Namespace) -> None:
     host = urlsplit(settings.database_url).hostname
     if host not in LOCAL_HOSTS:
         raise SystemExit(f"Refusing to run evals against a non-local database ({host}).")
+    started = datetime.now(UTC)
+    name = f"{started:%Y-%m-%d}-{settings.openai_model}" + (f"-{args.label}" if args.label else "")
+    out = RESULTS_DIR / f"{name}.json"
+    if out.exists():
+        raise SystemExit(f"{out.name} exists; pass a different --label.")
     ids = set(args.ids.split(",")) if args.ids else None
     cases = [
         c
@@ -42,13 +56,16 @@ async def main(args: argparse.Namespace) -> None:
     menu = load_menu()
     async with get_sessionmaker()() as session, session.begin():
         await seed_menu(session, menu)  # idempotent, the same as scripts.seed_menu
-    prices = [item.price_sar for item in menu]
+    prices = {item.name: item.price_sar for item in menu}
     limit = asyncio.Semaphore(args.concurrency)
 
     async def one(slot: int, case: Case, run: int) -> CaseRun:
         async with limit:
-            result = await run_case(case, slot, run, llm, settings.turn_deadline_seconds)
-            result.checks = await grade(case, result, prices, judge)
+            try:
+                result = await run_case(case, slot, run, llm, settings.turn_deadline_seconds)
+                result.checks = await grade(case, result, prices, judge)
+            except Exception as exc:
+                result = crashed(case, run, exc)
         print(f"{'pass' if result.passed else 'FAIL'}  {case.id} run {run}", flush=True)
         return result
 
@@ -56,24 +73,17 @@ async def main(args: argparse.Namespace) -> None:
     results = await asyncio.gather(*jobs)
     await get_engine().dispose()
     rows = summarize(results)
-    started = datetime.now(UTC)
-    name = f"{started:%Y-%m-%d}-{settings.openai_model}" + (f"-{args.label}" if args.label else "")
-    out = RESULTS_DIR / f"{name}.json"
-    out.write_text(
-        json.dumps(
-            {
-                "model": settings.openai_model,
-                "date": started.isoformat(timespec="seconds"),
-                "label": args.label,
-                "runs_per_case": args.runs,
-                "case_count": len(cases),
-                "summary": [row.model_dump() for row in rows],
-                "results": [r.model_dump(mode="json") for r in results],
-            },
-            indent=1,
-        ),
-        encoding="utf-8",
-    )
+    summary = {
+        "model": settings.openai_model,
+        "started": started.isoformat(timespec="seconds"),
+        "finished": datetime.now(UTC).isoformat(timespec="seconds"),
+        "label": args.label,
+        "runs_per_case": args.runs,
+        "case_count": len(cases),
+        "summary": [row.model_dump() for row in rows],
+        "results": [r.model_dump(mode="json") for r in results],
+    }
+    out.write_text(json.dumps(summary, indent=1), encoding="utf-8")
     print(f"\n{table(rows)}\n\nmodel {settings.openai_model}, {args.runs} runs, wrote {out.name}")
 
 

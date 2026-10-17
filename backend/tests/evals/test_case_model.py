@@ -56,3 +56,13 @@ def test_unknown_fields_are_rejected(tmp_path: Path) -> None:
     )
     with pytest.raises(ValueError, match="forbid"):
         load_cases(tmp_path)
+
+
+def test_user_names_must_be_short_and_lowercase(tmp_path: Path) -> None:
+    (tmp_path / "grounding.yaml").write_text(
+        "- id: x\n  category: grounding\n  description: d\n  users: [Alice_Long_Name]\n"
+        "  steps: [{user: Alice_Long_Name, say: hi}]\n",
+        encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="pattern"):
+        load_cases(tmp_path)

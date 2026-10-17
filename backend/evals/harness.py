@@ -52,7 +52,7 @@ async def run_case(case: Case, slot: int, run: int, llm: AgentLLM, deadline: flo
 
 
 async def _user(session: AsyncSession, username: str) -> int:
-    user = User(username=username[:20], pin_hash="eval-user-never-logs-in")
+    user = User(username=username, pin_hash="eval-user-never-logs-in")
     session.add(user)
     await session.flush()
     return user.id
