@@ -36,7 +36,8 @@ expected. Spend effort on clarity, not features.
   errors, with a retry option.
 - The user can start a new conversation and log out. Both are needed to demo
   memory across independent conversations.
-- Keep the API base URL relative (`/api`), since FastAPI serves the build.
+- Keep the API base URL relative (`/api`): FastAPI serves the build locally,
+  and Netlify proxies `/api` when deployed.
 
 ## Testing
 - Vitest + React Testing Library for components with logic.

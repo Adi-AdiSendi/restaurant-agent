@@ -15,6 +15,9 @@ services:
     startCommand: ./start.sh
     healthCheckPath: /api/health
     envVars:
+      # Explicit, so uv uses this Python instead of downloading one outside the project.
+      - key: PYTHON_VERSION
+        value: "3.12"
       - key: APP_ENV
         value: production
       - key: OPENAI_MODEL

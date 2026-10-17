@@ -5,14 +5,17 @@ Runs one chat turn: the model, its tool calls, and a structured final answer.
 - `chat_turn.py`: entry point for the API, `handle_message(...)`. Checks the
   conversation belongs to the user, locks the user row, saves the message,
   runs memory extraction, builds the context, runs the loop, saves the reply.
-  One transaction; any failure rolls back the whole turn.
+  One transaction; any failure rolls back the whole turn. The turn has a
+  deadline (`TURN_DEADLINE_SECONDS`, 22 s, under the Netlify proxy's 26 s);
+  past it the turn is rolled back and `TurnTimeoutError` becomes a 504.
 - `context.py`: the profile block (first input item, every turn) and the
   stored history; returns IDs recommended earlier in the conversation.
 - `loop.py`: `run_turn(client, session, input_items, seen_ids, constraints)`.
   Gets an answer, grounds the cards, and runs `safety.check` on every card. A
   blocked card triggers one corrective retry; if still unsafe, blocked cards
   are dropped and the reply becomes a fixed safe message. Cards carry
-  `may_contain_warnings`. Worst case 12 model calls per turn.
+  `may_contain_warnings`. Worst case 12 model calls per turn; in practice
+  the deadline ends such a turn first.
 - `tool_rounds.py`: calls the model with tools until it answers without tools
   (at most 5 tool rounds, then `AgentLoopError`), and retries a malformed
   answer once. Full tool results go back to the model untrimmed, after the

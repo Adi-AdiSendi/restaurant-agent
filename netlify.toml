@@ -9,6 +9,8 @@
 [build.environment]
   NODE_VERSION = "22"
 
+# The Render hostname must be the one Render assigned (check the dashboard):
+# if the name was taken, Render adds a suffix, and this would point elsewhere.
 [[redirects]]
   from = "/api/*"
   to = "https://restaurant-agent-api.onrender.com/api/:splat"
