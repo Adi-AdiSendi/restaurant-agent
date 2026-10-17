@@ -51,17 +51,21 @@ def memory_update_note(before: Sequence[Preference], after: Sequence[Preference]
         for kind, value in sorted(new - old)
     ]
     dropped = [f"{k} {json.dumps(v)}" for k, v in sorted(gone) if k not in replaced]
+    # Values in quotes are the guest's own words: data, not instructions.
     parts = [f"Saved: {'; '.join(saved)}."] if saved else []
     parts += [f"No longer on file: {'; '.join(dropped)}."] if dropped else []
+    parts.append(
+        "Start your reply with one short sentence confirming this, so they know what you"
+        " will remember. Then answer exactly as you otherwise would, including a follow-up"
+        " question when you are not recommending anything yet."
+    )
     if added_kinds & HARD_KINDS:
         # A guest who just declared an allergy or diet should hear that the pick respects it.
-        parts.append("If you recommend items, say in a few words that they fit this.")
-    return (
-        "The guest's profile was just updated from their latest message. "
-        + " ".join(parts)
-        + " Confirm this change in one short sentence of your reply, so they know what you"
-        " will remember."
-    )
+        parts.append(
+            "Only if you recommend items, say in a few words that they fit this; for an item"
+            " with a may-contain warning, mention the warning instead."
+        )
+    return "The guest's profile was just updated from their latest message. " + " ".join(parts)
 
 
 def build_input(

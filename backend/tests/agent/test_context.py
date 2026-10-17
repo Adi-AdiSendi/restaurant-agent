@@ -51,8 +51,10 @@ def test_note_names_replacements_additions_and_removals() -> None:
     assert note is not None
     assert 'Saved: allergy "peanut"; diet "vegetarian" (replaces "vegan").' in note
     assert 'No longer on file: allergy "dairy".' in note
-    assert "Confirm this change" in note
-    assert "say in a few words that they fit this" in note
+    assert "one short sentence confirming this" in note
+    assert "including a follow-up question" in note
+    assert "Only if you recommend items" in note
+    assert "may-contain warning" in note
 
 
 def test_a_soft_change_does_not_ask_to_justify_the_picks() -> None:
@@ -60,6 +62,21 @@ def test_a_soft_change_does_not_ask_to_justify_the_picks() -> None:
     assert note is not None
     assert 'spice "mild" (replaces "hot")' in note
     assert "fit this" not in note
+
+
+def test_removing_a_hard_fact_alone_does_not_ask_to_justify_picks() -> None:
+    note = memory_update_note([pref("allergy", "dairy")], [])
+    assert note is not None
+    assert 'No longer on file: allergy "dairy".' in note
+    assert "Saved" not in note
+    assert "fit this" not in note
+
+
+def test_a_like_that_becomes_a_dislike_is_reported_as_both() -> None:
+    note = memory_update_note([pref("like", "mushrooms")], [pref("dislike", "mushrooms")])
+    assert note is not None
+    assert 'Saved: dislike "mushrooms".' in note
+    assert 'No longer on file: like "mushrooms".' in note
 
 
 def test_the_note_goes_last_after_the_guests_message() -> None:
