@@ -33,3 +33,19 @@ Conflicting requests these support: "vegan, nut-free and spicy" (only Edamame,
 Plant-Based Burger and Penne Arrabbiata fit), "vegetarian main under 40 SAR"
 (only the Mediterranean Veggie Bowl), "dairy-free dessert" (only the sorbet;
 Fresh Lemon Mint is a drink).
+
+## The other five restaurants (v2, ADR 0018)
+Each shows a kind of business Foodics serves, and choices that change what
+is safe to order.
+
+| File | Restaurant | Items | Choices that change safety |
+|---|---|---|---|
+| `stack-and-smash.json` | Stack & Smash, burger house | 15 | Bun: brioche adds gluten, egg, dairy; lettuce wrap adds nothing. Extras add cheese, egg, beef bacon. The Beyond Smash is vegan only on a potato bun or lettuce wrap. |
+| `shawarma-street.json` | Shawarma Street, shawarma and grill | 16 | Protein: only falafel is vegetarian, so the platter and fatteh (meat only) never fit a vegetarian. Tahini adds sesame; khubz and saj add gluten. |
+| `golden-dragon.json` | Golden Dragon, Chinese | 17 | Soy sauce puts soy and gluten in most wok dishes; oyster sauce adds shellfish. Kung pao keeps its peanuts even with "no peanuts". Egg fried rice and egg noodles add egg. |
+| `red-sea-catch.json` | Red Sea Catch, seafood | 17 | Frying adds gluten, tandoori adds dairy, lemon butter adds dairy, tartare adds egg and mustard. Lentil soup, fattoush and saffron rice cover vegan guests. |
+| `bean-and-bloom.json` | Bean & Bloom, cafe | 20 | Milk: whole, skimmed and lactose-free are dairy (lactose-free is a trap), almond is a tree nut, soy is soy, oat may contain gluten. Hazelnut syrup is listed as a tree nut to be safe. |
+
+Every file passes the same checks: `tests/menu/test_seed_data.py`,
+`tests/menu/test_file_schemas.py` and `tests/menu/test_allergen_lint.py`
+(an ingredient or option that names an allergen source must list it).

@@ -19,11 +19,11 @@ verified. Update the last two columns as phases finish.
 ## Menu (section 3)
 | # | Requirement | Verified by |
 |---|---|---|
-| M1 | 12+ items across 3+ categories | `tests/menu/test_seed_data.py` (18 items, 4 categories) |
-| M2 | Different prices | `tests/menu/test_seed_data.py` (all distinct, 16 to 85 SAR) |
-| M3 | Vegetarian and non-vegetarian | `tests/menu/test_seed_data.py` (12 veg, 7 vegan, 6 non-veg) |
+| M1 | 12+ items across 3+ categories | `tests/menu/test_seed_data.py`, for every restaurant (six, 15 to 20 items, 4 categories each) |
+| M2 | Different prices | `tests/menu/test_seed_data.py` (Corner Table: all distinct, 16 to 85 SAR; options add their own price) |
+| M3 | Vegetarian and non-vegetarian | `tests/menu/test_seed_data.py` (every restaurant has vegetarian dishes; Corner Table: 12 veg, 7 vegan, 6 non-veg) |
 | M4 | Different spice levels | `tests/menu/test_seed_data.py` (0 to 3 all used) |
-| M5 | Explicit ingredients and allergens | `tests/menu/test_seed_data.py`, non-null columns + CHECK on vocabulary (`tests/menu/test_constraints.py`) |
+| M5 | Explicit ingredients and allergens | `tests/menu/test_seed_data.py`, non-null columns + CHECK on vocabulary (`tests/menu/test_constraints.py`), options included; `tests/menu/test_allergen_lint.py` checks that named sources list their allergen |
 | M6 | Overlapping items for comparison and conflicts | documented in `backend/data/README.md` |
 
 ## Part 2: Challenge (section 4)
@@ -38,7 +38,12 @@ verified. Update the last two columns as phases finish.
 | # | Deliverable | Status |
 |---|---|---|
 | D1 | Live URL, available through evaluation, test instructions | live at https://restaurant-agent.netlify.app; keep-awake ping; demo accounts in README |
-| D2 | Repo with README: local run, architecture, decisions, setup, limitations | not started |
+| D2 | Repo with README: local run, architecture, decisions, setup, limitations | README (updated each phase) |
 | D3 | No secrets committed | CI secret scan |
 | D4 | Video 8 to 12 min: baseline demo, challenge, deep dive, trade-offs, results | not started |
 | D5 | Google Drive folder with URL, repo, video, access notes | not started |
+
+## Version 2 (phases 9 to 18, `docs/plan.md`)
+| # | Feature | Where | Evidence |
+|---|---|---|---|
+| V1 | Many restaurants with options, add-ons and removals (phase 10) | ADR 0018, `menu/` (`restaurant.py`, `models.py`, `configure.py`, `constraints.py`), `data/restaurants/`, `tools/context.py` | `tests/menu/test_configure.py`, `test_fit.py`, `tests/safety/test_guard_exhaustive.py`, `tests/tools/test_option_tools.py`, `tests/api/test_restaurants.py`; evals marked phase 10 |

@@ -1,9 +1,16 @@
-# Corner Table: a restaurant ordering assistant that remembers you
+# Foodics Order Assistant: a restaurant ordering assistant that remembers you
 
 An AI assistant that helps people choose what to order from a restaurant menu.
 It learns their preferences through normal conversation, remembers them across
 independent conversations, accepts corrections, and never recommends a dish
 that breaks a stated allergy or diet. Built for the AI Engineer take-home.
+
+Version 2 (in progress, `docs/plan.md`) adds six fictional restaurants, the
+kinds of business Foodics serves: Corner Table (the v1 menu), Stack & Smash
+(burgers), Shawarma Street, Golden Dragon (Chinese), Red Sea Catch (seafood)
+and Bean & Bloom (cafe). Their dishes have real-world choices (bun, protein,
+milk, sides, extras) and removable ingredients, and the allergy and diet
+rules cover every choice.
 
 **Live: https://restaurant-agent.netlify.app**
 
@@ -32,6 +39,11 @@ to a minute.
    and ask "What should I get?"
 6. **Isolation.** Log in as `demo_bob`: his profile is empty and nothing from
    Alice or you carries over.
+7. **Restaurants and options.** Pick Bean & Bloom in the header and say "I'm
+   allergic to dairy, can I have a latte?" The latte card lists every milk and
+   strikes through whole, skimmed and lactose-free (all dairy). At Golden
+   Dragon, `demo_alice` asking for kung pao "without the peanuts" is refused:
+   leaving an ingredient out never removes an allergen.
 
 ## How it works
 ```
@@ -59,6 +71,10 @@ Each links to its decision record in [docs/decisions/](docs/decisions/README.md)
 - **Allergens and diet enforced in code, not in the prompt**
   ([0009](docs/decisions/0009-hard-constraints-enforced-in-code.md)): a filter on
   every search plus a guard on every card.
+- **Restaurants with options** ([0018](docs/decisions/0018-multiple-restaurants-with-options.md),
+  [0020](docs/decisions/0020-tool-context-from-the-server.md)): a dish fits a guest
+  only if its base fits and every required choice still has a safe option.
+  Tools get the restaurant from the server, so a chat only sees its own menu.
 - **Structured memory with supersession**
   ([0011](docs/decisions/0011-structured-memory-with-supersession.md),
   [0016](docs/decisions/0016-removed-status-and-target-checks.md)): typed facts
@@ -175,7 +191,11 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
   text. Cards are always safe; the text could in rare cases name an unsuitable
   dish. The evals found no such case.
 - **Conversations:** reloading the page starts a new conversation; old ones
-  are kept but not listed. Memory carries over either way.
+  are kept but not listed. Memory carries over either way, across restaurants.
+- **Options (phase 10):** cards show every choice and which ones conflict
+  with your profile, but you cannot pick options or order yet (phase 11).
+  Search price limits apply to the base price; options can add to it. The
+  eval price grader only checks dish prices, not option prices.
 - **Concurrency:** a turn holds one DB transaction across its LLM calls, so
   each open turn uses one connection. Fine at demo scale.
 - **Evals:** 42 cases, written by the same team that built the system, and the
