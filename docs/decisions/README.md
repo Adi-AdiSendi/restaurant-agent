@@ -19,5 +19,11 @@
 | [0015](0015-foodics-brand-for-prototype-ui.md) | Foodics brand for the prototype UI | Accepted |
 | [0016](0016-removed-status-and-target-checks.md) | `removed` status, checked targets (amends 0011) | Accepted |
 | [0017](0017-deploy-netlify-with-api-proxy.md) | Deploy: Netlify, API proxied to Render free (supersedes 0006) | Accepted |
+| [0018](0018-multiple-restaurants-with-options.md) | Multiple restaurants, with options and add-ons (v2) | Accepted |
+| [0019](0019-cart-orders-and-confirmed-checkout.md) | Cart, orders, checkout only the guest confirms (v2) | Accepted |
+| [0020](0020-tool-context-from-the-server.md) | Tools get their context from the server (v2) | Accepted |
+| [0021](0021-client-routing-with-react-router.md) | Client routing with React Router (v2) | Accepted |
+| [0022](0022-free-stock-photos-for-dishes.md) | Free stock photos for dishes (v2) | Accepted |
+| [0023](0023-staff-role-for-the-restaurant-crm.md) | A staff role for the restaurant CRM (v2) | Accepted |
 
 New ADR: copy the format, take the next number, add a row here.
