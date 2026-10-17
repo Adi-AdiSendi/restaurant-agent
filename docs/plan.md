@@ -4,7 +4,7 @@ Budget: about 10 to 12 focused hours inside the 72-hour window.
 Rule: the baseline must work end to end (deployed) before Part 2 starts.
 Every phase ends with all checks green and a `code-reviewer` pass.
 
-**Current phase: 11** (v2; phases 9 and 10 done; v1 phases 0 to 8 are below, the video moved to phase 18)
+**Current phase: 11** (v2; phases 9 and 10 done, 11 nearly done; v1 phases 0 to 8 are below, the video moved to phase 18)
 
 ## Inputs
 - Menu concept: international casual (burgers, bowls, pasta, desserts), prices in SAR.
@@ -322,6 +322,13 @@ Reused from sibling projects, adapted rather than rebuilt:
   - frontend flows.
 - Done when: a guest can pick a restaurant, configure a dish, check out and
   see the order on the live site.
+- Status (2026-10-17, end of session): code, tests (806 backend, 66 frontend),
+  docs and the code-review fixes are committed. The review found consent
+  that could cover a later conflict, a chat turn's user lock blocking
+  checkout (FK key-share), stale cart warnings, non-modal dialogs and an
+  optional single choice that could not be cleared; all fixed. Left: the
+  live check, OrderPage polling and MenuPage keying, three frontend tests,
+  and three README limitations (see `docs/handoff.md`).
 
 ## Phase 12: ordering through the chat (about 7 h)
 - **Tools:** `view_cart`, `add_to_cart`, `update_cart_line`,
