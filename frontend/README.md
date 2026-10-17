@@ -11,21 +11,25 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
 - `src/features/startup/`: polls `/api/health` while the free backend wakes
   up ("Starting the server"), gives up after 2 minutes with a retry button.
 - `src/features/login/`: username + 4-digit PIN.
-- `src/features/chat/`: header (logo, the current restaurant, "Foodics Order
-  Assistant", restaurant picker, New chat, Log out), messages, item cards,
-  composer, suggestions. State is a pure reducer (`chatReducer.ts`) driven by
-  `useChat.ts`; a chat starts at the chosen restaurant, and choosing another
-  starts a new one. Cards render only from backend item data: allergens are
-  always visible, may-contain warnings are highlighted, and `ItemOptions`
-  lists every option group with each option's allergens, striking through
-  options that break the guest's saved allergies or diet.
-- `src/features/restaurants/`: `useRestaurants` loads `/api/restaurants` and
-  remembers the chosen one in `localStorage` (if storage fails, it is just
-  not remembered); `RestaurantPicker` is the select.
+- Routes (React Router, ADR 0021) in `src/App.tsx`, after the startup gate
+  and login: `/` restaurants, `/r/:slug` one restaurant; anything else goes
+  back to `/`.
+- `src/features/shell/`: `AppShell`, the header on every page (logo, app
+  name, Restaurants and Orders links, user, Log out).
+- `src/features/restaurants/`: the home page grid, from `/api/restaurants`.
+- `src/features/menu/`: `MenuPage` for `/r/:slug`: the chat for that
+  restaurant and the memory panel.
+- `src/features/chat/`: `ChatPanel` (New chat, messages, item cards,
+  composer, suggestions). State is a pure reducer (`chatReducer.ts`) driven by
+  `useChat.ts`; a chat starts at the URL's restaurant, and another restaurant
+  starts a new one (only the latest start counts). Cards render only from
+  backend item data: allergens are always visible, may-contain warnings are
+  highlighted, and `ItemOptions` lists every option group with each option's
+  allergens, striking through options that break the guest's saved
+  allergies or diet.
 - `src/features/memory/`: "What I remember about you", from `/api/preferences`,
-  refreshed after each reply. Old facts are struck through. `ChatPage` hosts
-  it next to the chat. Only `chat` imports other features (memory and
-  restaurants).
+  refreshed after each reply. Old facts are struck through. Pages (`menu`)
+  compose features; features do not import each other otherwise.
 - `netlify/functions/keep-awake.mts`: Netlify scheduled function that pings
   the backend's `/api/health` on Render directly every 10 minutes so the free
   backend stays awake. A test keeps its URL in sync with `../netlify.toml`.

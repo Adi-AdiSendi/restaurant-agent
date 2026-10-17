@@ -1,0 +1,81 @@
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 24px var(--gutter) 40px;
+}
+
+.title {
+  margin: 0 0 4px;
+  font-size: clamp(20px, 3vw, 26px);
+  color: var(--ink);
+}
+
+.subtitle {
+  margin: 0 0 20px;
+  color: var(--ink-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--brand);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.card:hover {
+  border-color: var(--brand);
+}
+
+.name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.cuisine {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand);
+}
+
+.tagline {
+  font-size: 14px;
+  color: var(--ink-muted);
+}
+
+.error {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--danger-tint);
+  color: #a61b1b;
+}
+
+.retry {
+  padding: 5px 14px;
+  border: 1px solid #a61b1b;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: #a61b1b;
+  font-weight: 600;
+}

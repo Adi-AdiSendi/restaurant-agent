@@ -22,22 +22,40 @@ test('shows the login form when there is no session', async () => {
   expect(screen.getByRole('button', { name: 'Continue' })).toBeInTheDocument()
 })
 
-test('a returning session opens the chat with a greeting and the memory panel', async () => {
-  mockFetch({
-    'GET /api/health': UP,
-    'GET /api/auth/me': { body: { username: 'sara' } },
-    'POST /api/conversations': { status: 201, body: { id: 5 } },
-    ...restaurants,
-    'GET /api/preferences': { body: [] },
-  })
+const SIGNED_IN = {
+  'GET /api/health': UP,
+  'GET /api/auth/me': { body: { username: 'sara' } },
+  'POST /api/conversations': { status: 201, body: { id: 5 } },
+  ...restaurants,
+  'GET /api/preferences': { body: [] },
+}
+
+test('a returning session opens the restaurants page with the app header', async () => {
+  window.history.pushState({}, '', '/')
+  mockFetch(SIGNED_IN)
+  render(<App />)
+  expect(await screen.findByRole('link', { name: /Golden Dragon/ })).toBeInTheDocument()
+  expect(screen.getByRole('navigation', { name: 'Main' })).toBeInTheDocument()
+  expect(screen.getByText('Hi, sara')).toBeInTheDocument()
+})
+
+test('a restaurant link opens its chat and the memory panel', async () => {
+  window.history.pushState({}, '', '/r/golden-dragon')
+  mockFetch(SIGNED_IN)
   render(<App />)
   expect(await screen.findByText(/Welcome back, sara!/)).toBeInTheDocument()
   expect(
     screen.getByRole('complementary', { name: 'What I remember about you' }),
   ).toBeInTheDocument()
-  expect(
-    await screen.findByRole('button', { name: 'Something vegan under 45 SAR' }),
-  ).toBeInTheDocument()
+  window.history.pushState({}, '', '/')
+})
+
+test('an unknown path goes back to the restaurants', async () => {
+  window.history.pushState({}, '', '/nowhere')
+  mockFetch(SIGNED_IN)
+  render(<App />)
+  expect(await screen.findByRole('link', { name: /Corner Table/ })).toBeInTheDocument()
+  expect(window.location.pathname).toBe('/')
 })
 
 test('a sleeping server shows the startup screen, then the app once it answers', async () => {

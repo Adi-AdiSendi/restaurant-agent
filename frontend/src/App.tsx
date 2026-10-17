@@ -1,8 +1,11 @@
 import { useCallback, useEffect, useState } from 'react'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
 
 import { api } from './api/client'
-import ChatPage from './features/chat/ChatPage'
 import LoginForm from './features/login/LoginForm'
+import MenuPage from './features/menu/MenuPage'
+import RestaurantsPage from './features/restaurants/RestaurantsPage'
+import AppShell from './features/shell/AppShell'
 import StartupScreen from './features/startup/StartupScreen'
 import { useServerReady } from './features/startup/useServerReady'
 
@@ -31,13 +34,28 @@ function App() {
   }
   if (session.status === 'checking') return null
   if (session.status === 'out') {
+    // Before the router, so a deep link survives logging in.
     return (
       <LoginForm
         onLoggedIn={(r) => setSession({ status: 'in', username: r.username, isNew: r.is_new })}
       />
     )
   }
-  return <ChatPage username={session.username} isNew={session.isNew} onLogout={logout} />
+  const { username, isNew } = session
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppShell username={username} onLogout={logout} />}>
+          <Route index element={<RestaurantsPage />} />
+          <Route
+            path="r/:slug"
+            element={<MenuPage username={username} isNew={isNew} onLogout={logout} />}
+          />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App

@@ -3,15 +3,22 @@ import { describe, expect, test, vi } from 'vitest'
 
 import type { ChatReply } from '../../api/types'
 import { mockFetch } from '../../test/fetchMock'
-import { restaurants } from '../../test/restaurants'
-import ChatPage from './ChatPage'
+import ChatPanel from './ChatPanel'
 
 const reply: ChatReply = { reply: 'Try the sorbet.', items: [] }
 const prefs = { 'GET /api/preferences': { body: [] } }
 const started = { 'POST /api/conversations': { status: 201, body: { id: 1 } } }
 
 function renderPage(onLogout = vi.fn()) {
-  render(<ChatPage username="sara" isNew={false} onLogout={onLogout} />)
+  render(
+    <ChatPanel
+      restaurant="corner-table"
+      username="sara"
+      isNew={false}
+      onUnauthorized={onLogout}
+      onReplied={vi.fn()}
+    />,
+  )
   return onLogout
 }
 
@@ -24,11 +31,10 @@ async function say(text: string) {
   fireEvent.click(sendButton)
 }
 
-describe('ChatPage', () => {
+describe('ChatPanel', () => {
   test('a 503 shows Retry, and Retry resends the same message', async () => {
     const fetchMock = mockFetch({
       ...prefs,
-      ...restaurants,
       ...started,
       'POST /api/chat': [
         { status: 503, body: { detail: 'The assistant is unavailable.' } },
@@ -51,7 +57,6 @@ describe('ChatPage', () => {
   test('errors that a resend cannot fix show no Retry', async () => {
     mockFetch({
       ...prefs,
-      ...restaurants,
       ...started,
       'POST /api/chat': { status: 404, body: { detail: 'Conversation not found.' } },
     })
@@ -64,7 +69,6 @@ describe('ChatPage', () => {
   test('a failed new chat can be retried', async () => {
     mockFetch({
       ...prefs,
-      ...restaurants,
       'POST /api/conversations': [
         { status: 503, body: { detail: 'Database is busy.' } },
         { status: 201, body: { id: 2 } },
@@ -80,7 +84,6 @@ describe('ChatPage', () => {
   test('a lost session during a chat goes back to login', async () => {
     mockFetch({
       ...prefs,
-      ...restaurants,
       ...started,
       'POST /api/chat': { status: 401, body: { detail: 'Please log in.' } },
     })
@@ -90,7 +93,7 @@ describe('ChatPage', () => {
   })
 
   test('New chat is disabled while a reply is pending', async () => {
-    mockFetch({ ...prefs, ...restaurants, ...started })
+    mockFetch({ ...prefs, ...started })
     const pending = new Promise<Response>(() => undefined)
     const base = globalThis.fetch
     vi.stubGlobal(
