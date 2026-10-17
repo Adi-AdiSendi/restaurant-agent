@@ -1,0 +1,947 @@
+{
+  "slug": "golden-dragon",
+  "name": "Golden Dragon",
+  "cuisine": "Chinese",
+  "tagline": "Wok dishes, noodles and dumplings, Sichuan heat on request.",
+  "accent_color": "#d4a017",
+  "categories": [
+    "starters",
+    "wok_dishes",
+    "noodles_and_rice",
+    "soups_and_desserts"
+  ],
+  "items": [
+    {
+      "name": "Vegetable Spring Rolls",
+      "category": "starters",
+      "description": "Four crisp rolls of cabbage, carrot and glass noodles, with sweet chilli dip.",
+      "price_sar": "18.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "spring roll pastry",
+        "cabbage",
+        "carrot",
+        "glass noodles",
+        "sweet chilli sauce"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Prawn Har Gow",
+      "category": "starters",
+      "description": "Four steamed shrimp dumplings in translucent wrappers.",
+      "price_sar": "26.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "shrimp",
+        "wheat starch wrappers",
+        "bamboo shoots",
+        "sesame oil"
+      ],
+      "allergens": [
+        "shellfish",
+        "gluten",
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Chicken Dumplings",
+      "category": "starters",
+      "description": "Six chicken and ginger dumplings with soy and black vinegar dip.",
+      "price_sar": "24.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "wheat wrappers",
+        "chicken",
+        "ginger",
+        "spring onion",
+        "soy sauce dip"
+      ],
+      "allergens": [
+        "gluten",
+        "soy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Cooking",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Steamed",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Pan-fried",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Salt and Pepper Calamari",
+      "category": "starters",
+      "description": "Lightly floured squid tossed with chilli, garlic and Sichuan pepper.",
+      "price_sar": "32.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 1,
+      "ingredients": [
+        "squid",
+        "wheat flour",
+        "chilli",
+        "garlic",
+        "Sichuan pepper"
+      ],
+      "allergens": [
+        "shellfish",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Kung Pao",
+      "category": "wok_dishes",
+      "description": "Wok-fried with roasted peanuts, dried chilli and spring onion in a tangy sauce.",
+      "price_sar": "42.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 2,
+      "ingredients": [
+        "roasted peanuts",
+        "dried chilli",
+        "spring onion",
+        "soy sauce",
+        "black vinegar"
+      ],
+      "allergens": [
+        "peanut",
+        "soy",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [
+        "roasted peanuts",
+        "spring onion"
+      ],
+      "option_groups": [
+        {
+          "name": "Protein",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Chicken",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef",
+              "price_delta_sar": "5.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Shrimp",
+              "price_delta_sar": "8.00",
+              "allergens": [
+                "shellfish"
+              ],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Tofu",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Base",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Steamed jasmine rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg fried rice",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg",
+                "soy",
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "gluten",
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Rice noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Sweet and Sour",
+      "category": "wok_dishes",
+      "description": "Crispy battered pieces with pineapple and peppers in sweet and sour sauce.",
+      "price_sar": "39.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "wheat batter with egg",
+        "pineapple",
+        "peppers",
+        "onion",
+        "sweet and sour sauce"
+      ],
+      "allergens": [
+        "gluten",
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [
+        "onion"
+      ],
+      "option_groups": [
+        {
+          "name": "Protein",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Chicken",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef",
+              "price_delta_sar": "5.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Shrimp",
+              "price_delta_sar": "8.00",
+              "allergens": [
+                "shellfish"
+              ],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Tofu",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Base",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Steamed jasmine rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg fried rice",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg",
+                "soy",
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "gluten",
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Rice noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beef with Broccoli",
+      "category": "wok_dishes",
+      "description": "Tender beef and broccoli in oyster and soy sauce.",
+      "price_sar": "46.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "beef",
+        "broccoli",
+        "garlic",
+        "oyster sauce",
+        "soy sauce"
+      ],
+      "allergens": [
+        "shellfish",
+        "soy",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Base",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Steamed jasmine rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg fried rice",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg",
+                "soy",
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "gluten",
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Rice noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "General Tso's Chicken",
+      "category": "wok_dishes",
+      "description": "Crispy chicken in a sticky, gently spicy glaze with sesame seeds.",
+      "price_sar": "41.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 2,
+      "ingredients": [
+        "fried chicken (wheat flour, egg)",
+        "soy sauce",
+        "dried chilli",
+        "sesame seeds"
+      ],
+      "allergens": [
+        "gluten",
+        "egg",
+        "soy",
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [
+        "sesame seeds"
+      ],
+      "option_groups": [
+        {
+          "name": "Base",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Steamed jasmine rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg fried rice",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg",
+                "soy",
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "gluten",
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Rice noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mapo Tofu",
+      "category": "wok_dishes",
+      "description": "Silken tofu in a fiery chilli bean sauce with Sichuan pepper. Vegan.",
+      "price_sar": "34.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 3,
+      "ingredients": [
+        "silken tofu",
+        "chilli bean paste (soy, wheat)",
+        "Sichuan pepper",
+        "spring onion"
+      ],
+      "allergens": [
+        "soy",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Base",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Steamed jasmine rice",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg fried rice",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg",
+                "soy",
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Egg noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "gluten",
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Rice noodles",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Garlic Greens",
+      "category": "wok_dishes",
+      "description": "Bok choy stir-fried with garlic and salt. No sauce, no allergens.",
+      "price_sar": "26.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "bok choy",
+        "garlic",
+        "vegetable oil",
+        "salt"
+      ],
+      "allergens": [],
+      "may_contain": [
+        "soy"
+      ],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Chow Mein",
+      "category": "noodles_and_rice",
+      "description": "Wok-tossed egg noodles with cabbage, bean sprouts and soy.",
+      "price_sar": "36.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "egg noodles",
+        "cabbage",
+        "bean sprouts",
+        "soy sauce"
+      ],
+      "allergens": [
+        "gluten",
+        "egg",
+        "soy"
+      ],
+      "may_contain": [],
+      "removable": [
+        "bean sprouts"
+      ],
+      "option_groups": [
+        {
+          "name": "Protein",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Vegetables only",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Chicken",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef",
+              "price_delta_sar": "5.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Shrimp",
+              "price_delta_sar": "8.00",
+              "allergens": [
+                "shellfish"
+              ],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Tofu",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Singapore Rice Noodles",
+      "category": "noodles_and_rice",
+      "description": "Thin rice noodles with curry spices, egg, peppers and onion.",
+      "price_sar": "38.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 2,
+      "ingredients": [
+        "rice noodles",
+        "curry spices",
+        "egg",
+        "peppers",
+        "onion",
+        "light soy sauce"
+      ],
+      "allergens": [
+        "egg",
+        "soy",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [
+        "onion"
+      ],
+      "option_groups": [
+        {
+          "name": "Protein",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Chicken",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef",
+              "price_delta_sar": "5.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Shrimp",
+              "price_delta_sar": "8.00",
+              "allergens": [
+                "shellfish"
+              ],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Tofu",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Yangzhou Fried Rice",
+      "category": "noodles_and_rice",
+      "description": "Fried rice with egg, peas and spring onion.",
+      "price_sar": "34.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "jasmine rice",
+        "egg",
+        "peas",
+        "spring onion",
+        "soy sauce"
+      ],
+      "allergens": [
+        "egg",
+        "soy",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Protein",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Chicken",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef",
+              "price_delta_sar": "5.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Shrimp",
+              "price_delta_sar": "8.00",
+              "allergens": [
+                "shellfish"
+              ],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Tofu",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Dan Dan Noodles",
+      "category": "noodles_and_rice",
+      "description": "Wheat noodles in sesame chilli sauce with minced beef and crushed peanuts.",
+      "price_sar": "37.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 3,
+      "ingredients": [
+        "wheat noodles",
+        "sesame paste",
+        "chilli oil",
+        "minced beef",
+        "crushed peanuts"
+      ],
+      "allergens": [
+        "gluten",
+        "sesame",
+        "peanut"
+      ],
+      "may_contain": [],
+      "removable": [
+        "crushed peanuts"
+      ],
+      "option_groups": []
+    },
+    {
+      "name": "Hot and Sour Soup",
+      "category": "soups_and_desserts",
+      "description": "Tofu, mushrooms and egg ribbons in a peppery, tangy broth.",
+      "price_sar": "18.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 2,
+      "ingredients": [
+        "tofu",
+        "mushrooms",
+        "egg",
+        "black vinegar",
+        "soy sauce",
+        "white pepper"
+      ],
+      "allergens": [
+        "soy",
+        "egg",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Mango Pudding",
+      "category": "soups_and_desserts",
+      "description": "Chilled mango pudding set with agar, with a splash of milk.",
+      "price_sar": "16.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "mango",
+        "milk",
+        "sugar",
+        "agar"
+      ],
+      "allergens": [
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Sesame Balls",
+      "category": "soups_and_desserts",
+      "description": "Chewy glutinous rice balls filled with red bean and rolled in sesame.",
+      "price_sar": "15.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "glutinous rice flour",
+        "red bean paste",
+        "sesame seeds"
+      ],
+      "allergens": [
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    }
+  ]
+}
