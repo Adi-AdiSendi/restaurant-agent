@@ -22,25 +22,29 @@ instead of claiming them, fixes what fails, and measures again (ADR 0014).
     what the reply text claims. 15 of the 42 cases use it.
 - A case passes only if every check passes in every run. That is the
   worst-run view the rules require for safety.
-- Raw results with full transcripts: `backend/evals/results/`. To reproduce:
+- Raw results with full transcripts: `backend/evals/results/` (labels
+  `before`, `before-added`, `after`, `after-2`, `after-3`). To reproduce:
   `cd backend && uv run python -m evals.run --runs 3`.
 
 ## Results per category
 Cases passed in all 3 runs (runs passed in brackets). "Before" combines the
 first baseline (36 cases) with the before-run of the 6 added cases.
 
-| Category | Before | After fix 1 | After fix 2 |
-|---|---|---|---|
-| allergen_safety (safety) | 7/7 (21/21) | 7/7 (21/21) | 7/7 (21/21) |
-| diet_compliance (safety) | 6/6 (18/18) | 6/6 (18/18) | 6/6 (18/18) |
-| isolation (safety) | 5/5 (15/15) | 5/5 (15/15) | 5/5 (15/15) |
-| grounding | 5/5 (15/15) | 5/5 (15/15) | 5/5 (15/15) |
-| memory_recall | 6/6 (18/18) | 6/6 (18/18) | 6/6 (18/18) |
-| extraction_precision | 7/7 (21/21) | 7/7 (21/21) | 7/7 (21/21) |
-| **preference_update** | **4/6 (12/18)** | **5/6 (16/18)** | **6/6 (18/18)** |
+| Category | Before | After fix 1 | After fix 2 | After fix 3 (final) |
+|---|---|---|---|---|
+| allergen_safety (safety) | 7/7 (21/21) | 7/7 (21/21) | 7/7 (21/21) | 7/7 (21/21) |
+| diet_compliance (safety) | 6/6 (18/18) | 6/6 (18/18) | 6/6 (18/18) | 6/6 (18/18) |
+| isolation (safety) | 5/5 (15/15) | 5/5 (15/15) | 5/5 (15/15) | 5/5 (15/15) |
+| grounding | 5/5 (15/15) | 5/5 (15/15) | 5/5 (15/15) | 5/5 (15/15) |
+| memory_recall | 6/6 (18/18) | 6/6 (18/18) | 6/6 (18/18) | 6/6 (18/18) |
+| extraction_precision | 7/7 (21/21) | 7/7 (21/21) | 7/7 (21/21) | 7/7 (21/21) |
+| **preference_update** | **4/6 (12/18)** | **5/6 (16/18)** | **6/6 (18/18)** | **6/6 (18/18)** |
+| Dead ends, 36 original cases (not graded, see below) | 18/159 | **43/159** | 38/159 | **11/159** |
 
-None of the runs had a timeout or an error. Turn time across 186 turns:
-median 4.3 s, p95 7.3 s, max 10.1 s (after fix 2), well under the 22 s deadline.
+A dead end is an answered turn with no card and no question: the guest is left
+with nothing to do. None of the runs had a timeout or an error. Final run
+(fix 3) across 186 turns: median 4.3 s, p95 7.5 s, max 12.2 s, well under the
+22 s deadline.
 
 ## What failed and why
 **Memory changed silently.** Two cases failed in every run:
@@ -80,8 +84,24 @@ reply model only saw the new profile. Nothing told it what had just changed.
    case passes every run. For example: "I'll remember your dairy allergy. The
    Edamame with Chili Salt is a mild starter and fits your dairy allergy."
 
-Both fixes have unit tests (`tests/agent/test_context.py`) and an API test
-(`tests/api/test_chat.py`). Every other category stayed at 100% after each fix.
+3. **Fix 3: keep the rest of the reply.** A code review of fixes 1 and 2
+   found a regression the graders did not check: "confirm in one short
+   sentence" shrank whole replies. On the same 36 cases, dead ends rose from
+   18 to 43 (fix 1) and 38 (fix 2). For example, "I'm allergic to peanuts, by
+   the way" used to get "...What are you in the mood for?" and then got only
+   "Got it, I'll remember that you're allergic to peanuts." Once the reply
+   even said "the options returned fit that allergy" with no options shown.
+   The note now asks for one confirming sentence first, then the normal
+   answer including any follow-up question. The "fits" sentence applies only
+   when items are recommended, and a may-contain warning must be mentioned
+   instead. Result: all graded checks still pass and dead ends fell to 11,
+   below the original 18: "I'll remember that you're allergic to peanuts.
+   What are you in the mood for?"
+
+All three fixes have unit tests (`tests/agent/test_context.py`) and an API
+test (`tests/api/test_chat.py`). The graded categories stayed at 100% after
+each fix. The dead-end count was added after the review, as a reported metric
+rather than a pass/fail check.
 
 ## What this does and does not show
 - **The safety categories never failed, even before the fixes.** That is
@@ -95,6 +115,11 @@ Both fixes have unit tests (`tests/agent/test_context.py`) and an API test
   every verdict and was read for every failure here. Fix 2 was aimed at a
   judged criterion, so there is a risk of tuning to the judge. The behaviour
   it asks for (saying the pick fits a new allergy) is wanted in its own right.
+- **Graders only see what they check.** Fixes 1 and 2 passed every graded
+  check while making replies worse; a code review caught it. The dead-end
+  count now covers that gap; others may remain.
+- **The price check** matches each stated price to the dish named before it
+  in the same sentence. It cannot catch a wrong price with no dish named.
 - **Not covered**:
   - long conversations past the 20-message history window;
   - adversarial input such as prompt injection through a "like";
@@ -106,7 +131,9 @@ Both fixes have unit tests (`tests/agent/test_context.py`) and an API test
   your peanut allergy"). The judge rubric treats that as correct, and so do we.
 
 ## Eval tooling note
-The four committed runs used a harness that re-seeded the menu inside every
-case. Concurrent cases then waited on each other's row locks, so runs took
-15 to 20 minutes. The runner now seeds the menu once (about 3 times faster).
-Grading and results are unaffected.
+The first four runs used a harness that re-seeded the menu inside every case.
+Concurrent cases then waited on each other's row locks, so a full run took
+about 13 to 15 minutes. The runner now seeds the menu once; the final run
+(fix 3, `after-3`) used it and took 4 minutes. Grading is unaffected. After
+the review, the runner also records a crashed case as a failure instead of
+aborting, and an unavailable judge as a failed check.

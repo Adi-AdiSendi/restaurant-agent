@@ -61,8 +61,9 @@ The hard-constraint type lives in `menu`; `agent` loads it from the profile
 and passes it to `search_menu` and to the `safety` post-check.
 
 ## One chat turn
-All steps are built (phase 4). Orchestrated by `agent/chat_turn.py` in one
-transaction; any failure rolls the whole turn back.
+Orchestrated by `agent/chat_turn.py` in one transaction; any failure rolls the
+whole turn back. The turn has a 22 s deadline (the Netlify proxy stops at 26 s);
+past it the turn is rolled back and the API returns 504.
 
 1. `POST /api/chat {conversation_id, message}`. The session cookie gives `user_id`.
 2. **Load profile**: active preferences for `user_id`.
@@ -75,6 +76,8 @@ transaction; any failure rolls the whole turn back.
 4. **Build context**: system prompt, then the profile block at the top, then
    the last 20 messages of this conversation. IDs recommended earlier in the
    conversation are noted and may be recommended again without a new search.
+   If step 3 changed the profile, a short note saying what changed goes last,
+   so the reply confirms it (found by the phase 7 evals, `docs/eval-report.md`).
 5. **Agent loop**: the model may call `search_menu` / `get_item`. Hard
    constraints (`menu/constraints.py`, built from the stored profile) are
    merged into every search and can only narrow it. `get_item` still returns

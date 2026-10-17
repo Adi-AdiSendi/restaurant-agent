@@ -1,76 +1,194 @@
-# Restaurant Ordering Assistant
+# Corner Table: a restaurant ordering assistant that remembers you
 
-An AI assistant that helps people choose from a restaurant menu and remembers
-them across conversations. Built for an AI Engineer take-home. Work in progress;
-see `docs/plan.md` for the current phase.
+An AI assistant that helps people choose what to order from a restaurant menu.
+It learns their preferences through normal conversation, remembers them across
+independent conversations, accepts corrections, and never recommends a dish
+that breaks a stated allergy or diet. Built for the AI Engineer take-home.
+
+**Live: https://restaurant-agent.netlify.app**
+
+| Demo login | PIN | Profile |
+|---|---|---|
+| `demo_alice` | `1234` | peanut allergy, vegetarian, mild spice (an older "hot" shows as replaced) |
+| `demo_bob` | `5678` | empty, to show isolation |
+
+Any other username creates a fresh profile with the PIN you choose. The demo
+accounts are reset on every backend deploy. The app runs on free hosting: if
+nobody used it for a while, the first load shows "Starting the server" for up
+to a minute.
+
+## Try it (about 5 minutes)
+1. **Memory and personalisation.** Log in as `demo_alice`, ask "What should I
+   get today?" The picks are vegetarian, peanut-free and mild without you
+   saying so. The side panel shows what is remembered.
+2. **Safety.** Ask "Can I get the Thai Peanut Noodle Bowl?" It explains why not
+   and offers an alternative. No card for it ever appears.
+3. **Updating a preference.** Say "I'm vegan now." The reply confirms the
+   change, and the panel shows vegan replacing vegetarian.
+4. **Memory across conversations.** Click "New chat" and ask "Any dessert for
+   me?" Only vegan desserts come back, from what you said in the other chat.
+5. **Learning naturally.** Log out, log in as a new name, and just chat: "I'm
+   allergic to sesame and I love spicy food, what's good?" Then open a new chat
+   and ask "What should I get?"
+6. **Isolation.** Log in as `demo_bob`: his profile is empty and nothing from
+   Alice or you carries over.
+
+## How it works
+```
+Browser (React) -> Netlify (static UI, /api/* proxy) -> FastAPI on Render -> Postgres (Netlify DB)
+                                                           |
+                                                           +-> OpenAI Responses API (gpt-6-luna)
+```
+One chat turn (`backend/app/agent/chat_turn.py`), in one DB transaction:
+1. Load the user's active preferences (`user_id` comes from the session cookie only).
+2. An extraction call turns the new message into memory operations (add,
+   supersede, remove), validated and applied before the reply is written.
+3. The model gets the profile, the conversation and, if memory just changed,
+   a note saying what changed. It searches the menu with tools.
+4. Allergies and diet are merged into every menu search in code, and every
+   recommended item is checked again before it is shown.
+5. The model answers with item IDs only; the UI renders each card (name,
+   price, ingredients, allergens) from the database.
+
+More detail: [docs/architecture.md](docs/architecture.md).
+
+## Key technical decisions
+Each links to its decision record in [docs/decisions/](docs/decisions/README.md).
+- **Grounding by item ID** ([0010](docs/decisions/0010-grounding-by-item-id.md)):
+  the model cannot invent a dish or a price, because cards come from the DB.
+- **Allergens and diet enforced in code, not in the prompt**
+  ([0009](docs/decisions/0009-hard-constraints-enforced-in-code.md)): a filter on
+  every search plus a guard on every card.
+- **Structured memory with supersession**
+  ([0011](docs/decisions/0011-structured-memory-with-supersession.md),
+  [0016](docs/decisions/0016-removed-status-and-target-checks.md)): typed facts
+  (allergy, diet, budget, spice, likes, dislikes) with a status, so a correction
+  replaces the old fact and the history stays visible.
+- **Username + 4-digit PIN** ([0013](docs/decisions/0013-identity-username-and-pin.md)):
+  enough to identify returning users for a demo, nothing more.
+- **Python, FastAPI, Postgres, React** ([0002](docs/decisions/0002-frontend-react-vite-typescript.md),
+  [0003](docs/decisions/0003-backend-python-fastapi.md),
+  [0004](docs/decisions/0004-database-postgresql.md)) and **gpt-6-luna**
+  ([0005](docs/decisions/0005-llm-gpt-6-luna.md)).
+- **Free hosting: Netlify + Render + Netlify DB**
+  ([0017](docs/decisions/0017-deploy-netlify-with-api-proxy.md)): the UI on
+  Netlify proxies `/api` to the unchanged backend, so the cookie stays
+  first-party; a 22 s turn deadline fits the proxy's 26 s limit.
+- **Small files, one-way dependencies** ([0007](docs/decisions/0007-line-limits.md),
+  [0008](docs/decisions/0008-feature-folders-and-dependency-direction.md)),
+  checked in CI ([0012](docs/decisions/0012-quality-gates-in-ci.md)).
+
+## Part 2: reliability and evaluation
+**Problem.** An assistant that remembers people can fail quietly: recommend a
+dish with a stored allergen, invent a price, keep an outdated fact, or mix two
+users' memories. A demo hides these failures. Without measurement, "it works"
+is a claim.
+
+**Why this over other directions.** It protects the promises the baseline
+makes (safety, grounding, memory, isolation), and the brief values evidence
+over claims. Voice, integrations or scale would add surface area before proving
+the core works.
+
+**Scope.** An eval suite in `backend/evals/`
+([ADR 0014](docs/decisions/0014-part-2-reliability-and-evals.md)):
+- 42 cases in 7 categories: allergen safety, diet compliance, grounding,
+  memory recall, preference update, isolation, extraction precision.
+- Each case runs 3 times through the real chat path and model, in a
+  rolled-back DB transaction.
+- Graders are code wherever possible; an LLM judge only reads the reply text,
+  and its reasoning is stored.
+- A safety case must pass in every run.
+
+Left out: production observability, load testing, automatic prompt tuning.
+
+**Results.** Full report with transcripts and caveats:
+[docs/eval-report.md](docs/eval-report.md).
+
+| | Before | Final |
+|---|---|---|
+| Allergen, diet and isolation safety (18 cases) | 18/18 | 18/18 |
+| Grounding, memory recall, extraction (18 cases) | 18/18 | 18/18 |
+| Preference update (6 cases) | **4/6** | **6/6** |
+| Replies with no card and no question (36 original cases) | 18/159 | 11/159 |
+
+- **What failed.** Memory changed silently. After "I'm vegetarian now, not
+  vegan" or a new dairy allergy, the memory and the cards were right, but the
+  reply never told the user, so a wrong extraction would go unnoticed.
+- **The fix** ([context.py](backend/app/agent/context.py)). The turn compares
+  the profile before and after extraction and tells the reply model what
+  changed. The reply confirms it in one sentence and, for an allergy or a
+  diet, says the pick fits it.
+- **A lesson along the way.** The first version passed every graded check
+  but made replies shorter (dead ends 18 to 43). A code review caught it. It
+  is now measured, and the final version is better than the start (11).
+
+## Setup requirements
+- Docker (for the local Postgres), [uv](https://docs.astral.sh/uv/), Node 22+.
+- An OpenAI API key with access to the model in `OPENAI_MODEL`.
+- Settings come from the environment or a repo-root `.env` (see `.env.example`):
+
+| Variable | Needed | Meaning |
+|---|---|---|
+| `OPENAI_API_KEY` | yes | OpenAI key |
+| `OPENAI_MODEL` | yes | model ID, `gpt-6-luna` |
+| `DATABASE_URL` | yes | Postgres URL; plain `postgres://` URLs are converted |
+| `SESSION_SECRET` | in production | 32+ random characters to sign cookies |
+| `APP_ENV` | no | `development` (default), `test` or `production` |
+| `TURN_DEADLINE_SECONDS` | no | per-turn limit, default 22, must stay under 26 |
 
 ## Run locally
-Needs Docker, uv and Node 22+.
 ```
-cp .env.example .env            # then fill in OPENAI_API_KEY and SESSION_SECRET
+cp .env.example .env            # fill in OPENAI_API_KEY
 docker compose up -d db
-# terminal 1
-cd backend && uv sync && uv run alembic upgrade head && uv run python -m scripts.seed_menu && uv run uvicorn app.main:app --reload
-# terminal 2
-cd frontend && npm install && npm run dev
+cd backend && uv sync && uv run alembic upgrade head && uv run python -m scripts.seed_menu
+uv run uvicorn app.main:app --reload          # API on http://localhost:8000
+cd ../frontend && npm install && npm run dev  # UI on http://localhost:5173
 ```
+Checks (the same as CI):
+```
+cd backend && uv run ruff check . && uv run ruff format --check . && uv run pyright && uv run lint-imports && uv run pytest
+cd frontend && npm run lint && npm run typecheck && npm test
+python scripts/check_line_limits.py
+```
+Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.run --runs 3`.
 
-## Deployed
-Live: https://restaurant-agent.netlify.app (log in with a demo account below).
-
-- Netlify serves the UI and proxies `/api/*` to the FastAPI backend on Render
-  free; the database is Netlify DB (ADR 0017). Config: `netlify.toml`, `render.yaml`.
-- Netlify deploys on every push to `main`. Render deploys when files under
-  `backend/` change; its build runs migrations, the menu seed and the
-  demo-user reset.
-- Secrets live in the Render dashboard: `DATABASE_URL`, `OPENAI_API_KEY`
-  (`SESSION_SECRET` is generated by Render). Use the direct (unpooled) Netlify
-  DB connection string: asyncpg prepared statements break behind a
-  transaction pooler.
-
-## Demo accounts
-- `demo_alice`, PIN `1234`: peanut allergy, vegetarian, mild spice (an older
-  "hot" shows as replaced).
-- `demo_bob`, PIN `5678`: empty profile, to show isolation.
-- Both are reset on every deploy. Any new username creates a fresh profile.
-
-## Docs
-- Architecture: `docs/architecture.md`
-- Decisions: `docs/decisions/`
-- Requirements traceability: `docs/requirements.md`
-
-## Part 2: reliability and evals
-An eval suite (`backend/evals/`, ADR 0014) runs 42 cases in 7 categories,
-3 times each, against the real model. Allergen, diet and isolation safety
-passed every run. The evals found one real problem: memory changed silently,
-so a user who corrected their diet was never told it was understood. Two
-fixes brought that category from 4/6 to 6/6 with no regressions. Details,
-transcripts and caveats: `docs/eval-report.md`.
+## Deployment
+- Netlify builds `frontend/` and proxies `/api/*` to the backend (`netlify.toml`).
+  A scheduled function pings the backend every 10 minutes so it stays awake.
+- Render runs `backend/` with its native Python runtime (`render.yaml`, no
+  Docker). Its build runs migrations, the menu seed and the demo-user reset.
+- Secrets live only in the Render dashboard: `DATABASE_URL` (the direct, not
+  pooled, Netlify DB string) and `OPENAI_API_KEY`; Render generates `SESSION_SECRET`.
+- Netlify deploys every push to `main`; Render deploys when `backend/` changes.
 
 ## Known limitations
-- Reloading the page starts a new conversation; past conversations are kept
-  in the database but not listed in the UI. Memory carries over either way.
-- Identity is a username and a 4-digit PIN (ADR 0013), with no lockout after
-  wrong guesses. Fine for a demo, not for production.
-- Sessions are stateless signed cookies: logout clears the browser's copy, but
-  a copied cookie stays valid for 30 days unless `SESSION_SECRET` changes.
-- The safety guard checks recommended item IDs, not the reply text. The model
-  may describe an unsuitable dish (ADR 0009, with a warning), and in rare cases
-  the text could still suggest one without a card. Cards are always safe.
-- A chat turn holds one database transaction open across its LLM calls (so a
-  failure rolls back everything). Each open turn uses one DB connection
-  (production keeps no idle pool, so the DB can sleep); fine for a demo.
-- The Foodics name, logo and colours are used for this prototype only. The
-  restaurant is fictional.
-- Free hosting: Render free sleeps after 15 idle minutes. A ping every 10
-  minutes keeps it awake; if a ping is missed, the first load shows "Starting
-  the server" for up to a minute.
-- A chat turn must finish within 22 s (the Netlify proxy stops at 26 s);
-  slower turns end with "took too long, please try again".
-- The eval suite is small (42 cases) and its judge is the same model it
-  grades; see the eval report for what it does not cover.
-- The demo PINs are public, so anyone can change the demo profiles until the
-  next deploy resets them.
-- Netlify DB Free has 48 compute hours per billing period and sleeps after 5
-  idle minutes. The app keeps no idle connections in production so it can
-  sleep; check its usage page during evaluation.
+- **Free hosting:** the backend sleeps after 15 idle minutes. A ping keeps it
+  awake, but if one is missed the first load waits up to a minute. Netlify DB
+  Free has a monthly compute cap; the app keeps no idle connections so it can sleep.
+- **Turn time:** a turn must finish in 22 s or it ends with "took too long,
+  please try again" (measured p95 is under 8 s).
+- **Identity:** username and PIN with no lockout; sessions are signed cookies
+  valid for 30 days. Fine for a demo, not for production. The demo PINs are
+  public, so anyone can change the demo profiles until the next deploy resets them.
+- **Text vs cards:** the safety guard checks recommended items, not the reply
+  text. Cards are always safe; the text could in rare cases name an unsuitable
+  dish. The evals found no such case.
+- **Conversations:** reloading the page starts a new conversation; old ones
+  are kept but not listed. Memory carries over either way.
+- **Concurrency:** a turn holds one DB transaction across its LLM calls, so
+  each open turn uses one connection. Fine at demo scale.
+- **Evals:** 42 cases, written by the same team that built the system, and the
+  judge is the same model it grades. See the report for what is not covered.
+- **Brand:** the Foodics name, logo and colours are used for this prototype
+  only (ADR 0015). The restaurant is fictional. Not handled: real orders or
+  payments, multiple restaurants, voice, Arabic.
+
+## Repository map
+| Path | What |
+|---|---|
+| `backend/app/` | FastAPI app: `api`, `agent`, `tools`, `memory`, `safety`, `menu`, `users`, `db` |
+| `backend/evals/` | eval cases, graders, runner, committed results |
+| `backend/data/menu.json` | the menu (18 items, 4 categories) |
+| `backend/tests/` | 270+ tests, real Postgres, fake LLM |
+| `frontend/` | React + Vite + TypeScript UI, Netlify keep-awake function |
+| `docs/` | [architecture](docs/architecture.md), [decisions](docs/decisions/README.md), [eval report](docs/eval-report.md), [requirements trace](docs/requirements.md), [plan](docs/plan.md) |

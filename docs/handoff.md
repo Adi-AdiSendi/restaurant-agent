@@ -8,7 +8,7 @@ Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 | 0 to 5 | done, reviewed, committed |
 | 6 Deploy | **live** at https://restaurant-agent.netlify.app; two checks left |
 | 7 Evals (Part 2) | done: 42 cases x 3 runs, `docs/eval-report.md` |
-| 8 Submission | not started |
+| 8 Submission | README rewritten for reviewers; video deferred (more changes first) |
 
 Repo: private GitHub `Adi-AdiSendi/restaurant-agent`, branch `main`, CI green.
 Commits are allowed now (one logical change each); see ADR 0017 for the deploy.
@@ -30,10 +30,15 @@ Commits are allowed now (one logical change each); see ADR 0017 for the deploy.
    when idle (Netlify DB usage page). The user should delete the backend
    secrets they copied into Netlify env vars (only Render needs them).
 3. Then mark phase 6 done in plan.md.
-4. Phase 7 is done (`docs/eval-report.md`). The memory-change note fix is
-   committed and pushed; Render redeploys on push, so the live site has it.
-5. Next: phase 8 (submission): README pass, video 8 to 12 min, Drive folder,
-   check every link from a logged-out browser.
+4. Phase 7 is done (`docs/eval-report.md`): three fixes to the memory-change
+   note, the third after the code review found the first two shortened
+   replies. Final run `after-3`: every case passes; dead ends 11/159.
+5. Phase 8, remaining (plan in `~/.claude/plans/we-stoped-at-phase-spicy-pebble.md`):
+   - Before the user makes the repo public: remove `docs/task/` (the brief
+     PDF, only in commit 60cb32b) from history with filter-branch, force-push,
+     add it to `.gitignore`, re-run gitleaks. Commit author email is public.
+   - `docs/submission.md` for the Drive folder; anonymous link check.
+   - Video later: the user wants more changes once the core is solid.
 
 ## Run locally
 - `docker compose up -d db` (Docker Desktop must be running)

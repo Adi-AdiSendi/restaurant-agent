@@ -167,9 +167,10 @@ rewrite was rejected on cost and risk, so:
 - Done when: the report shows per-category results and at least one real
   improvement measured before and after.
 - Status: done 2026-10-17. 42 cases (36 + 6 added after the first baseline),
-  3 runs each. preference_update went 4/6 to 6/6 through two fixes to the
-  memory-change note; the other six categories stayed at 100%. ADR 0014
-  accepted. Report: `docs/eval-report.md`.
+  3 runs each. preference_update went 4/6 to 6/6 through fixes to a
+  memory-change note; the review found the first two shortened replies, and
+  a third fix took dead ends from 43 back to 11 (baseline 18). The other six
+  categories stayed at 100%. ADR 0014 accepted. Report: `docs/eval-report.md`.
 
 ## Phase 8: Submission (about 1.5 h)
 - README: local setup, architecture, key decisions (link ADRs), setup
