@@ -49,3 +49,12 @@ def test_settings_rewrite_hosted_url(monkeypatch: pytest.MonkeyPatch) -> None:
     assert (
         SettingsWithoutEnvFile().database_url == "postgresql+asyncpg://u:p@db.host/app?ssl=require"
     )
+
+
+@pytest.mark.parametrize("seconds", ["0", "26", "30"])
+def test_turn_deadline_must_fit_under_the_proxy_limit(
+    monkeypatch: pytest.MonkeyPatch, seconds: str
+) -> None:
+    monkeypatch.setenv("TURN_DEADLINE_SECONDS", seconds)
+    with pytest.raises(ValidationError):
+        SettingsWithoutEnvFile()

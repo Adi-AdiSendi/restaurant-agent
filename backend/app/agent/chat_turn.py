@@ -35,14 +35,15 @@ async def handle_message(
     text: str,
     deadline_seconds: float,
 ) -> AgentReply:
+    deadline = asyncio.timeout(deadline_seconds)
     try:
-        async with asyncio.timeout(deadline_seconds):
+        async with deadline:
             reply = await _turn(llm, session, user_id, conversation_id, text)
-    except TimeoutError as exc:
+    except Exception as exc:
         await session.rollback()
-        raise TurnTimeoutError from exc
-    except Exception:
-        await session.rollback()
+        # Only our deadline is a 504; other timeouts (e.g. a DB connect) are not.
+        if isinstance(exc, TimeoutError) and deadline.expired():
+            raise TurnTimeoutError from exc
         raise
     await session.commit()
     return reply

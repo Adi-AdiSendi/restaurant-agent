@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Literal, Self
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
-from pydantic import field_validator, model_validator
+from pydantic import Field, field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -39,7 +39,7 @@ class Settings(BaseSettings):
     openai_model: str = "gpt-6-luna"
     session_secret: str = ""
     # Seconds for one chat turn. Must stay under the Netlify proxy's fixed 26 s.
-    turn_deadline_seconds: float = 22.0
+    turn_deadline_seconds: float = Field(default=22.0, gt=0, lt=26)
     frontend_dist: Path = REPO_ROOT / "frontend" / "dist"
 
     @field_validator("database_url")
