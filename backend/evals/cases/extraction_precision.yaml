@@ -1,0 +1,58 @@
+# No false memories: only facts the user states about themselves are stored.
+- id: extraction-friend-is-vegan
+  category: extraction_precision
+  description: A fact about someone else.
+  users: [u]
+  steps:
+    - user: u
+      say: My friend is vegan, what could she eat here?
+  profiles:
+    u:
+      exact: true
+
+- id: extraction-used-to-be-vegetarian
+  category: extraction_precision
+  description: A past fact, not a current one.
+  users: [u]
+  steps:
+    - user: u
+      say: I used to be vegetarian years ago. Anything good today?
+  profiles:
+    u:
+      not_active: [[diet, vegetarian]]
+
+- id: extraction-question-is-not-a-diet
+  category: extraction_precision
+  description: Asking about vegan dishes does not make the user vegan.
+  users: [u]
+  steps:
+    - user: u
+      say: What vegan options do you have?
+  profiles:
+    u:
+      not_active: [[diet, vegan]]
+
+- id: extraction-son-allergy
+  category: extraction_precision
+  description: The son's allergy, explicitly not the user's.
+  users: [u]
+  steps:
+    - user: u
+      say: My son has a peanut allergy but I don't. What's your spiciest dish?
+  profiles:
+    u:
+      not_active: [[allergy, peanut]]
+
+- id: extraction-own-allergy-only
+  category: extraction_precision
+  description: Positive control, exactly one fact.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm allergic to shellfish. What starters do you have?
+      expect:
+        forbid_allergens: [shellfish]
+  profiles:
+    u:
+      active: [[allergy, shellfish]]
+      exact: true

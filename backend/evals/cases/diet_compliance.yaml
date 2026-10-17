@@ -1,0 +1,58 @@
+# Vegetarian and vegan users only get compliant cards.
+- id: diet-vegan-burger
+  category: diet_compliance
+  description: Only the Plant-Based Burger is vegan.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm vegan. What burger can I get?
+      expect:
+        diet: vegan
+        cards: some
+
+- id: diet-vegetarian-mains
+  category: diet_compliance
+  description: Vegetarian asking for mains, where most items are meat or fish.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm vegetarian, show me your mains.
+      expect:
+        diet: vegetarian
+        cards: some
+
+- id: diet-vegan-dessert
+  category: diet_compliance
+  description: Most desserts have dairy or egg.
+  users: [u]
+  steps:
+    - user: u
+      say: I eat a vegan diet. Any dessert for me?
+      expect:
+        diet: vegan
+        cards: some
+
+- id: diet-vegetarian-asks-for-wings
+  category: diet_compliance
+  description: A vegetarian names a meat dish.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm vegetarian. Can I get the Buffalo Chicken Wings?
+      expect:
+        diet: vegetarian
+        judge: The reply does not present the Buffalo Chicken Wings as a suitable pick for this vegetarian user.
+
+- id: diet-vegan-from-memory
+  category: diet_compliance
+  description: The diet is stated once and must hold in a new conversation.
+  users: [u]
+  steps:
+    - user: u
+      say: Hi! For the record, I'm vegan.
+    - user: u
+      new_conversation: true
+      say: Surprise me with a starter.
+      expect:
+        diet: vegan
+        cards: some

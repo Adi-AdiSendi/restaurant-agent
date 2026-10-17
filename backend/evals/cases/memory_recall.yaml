@@ -1,0 +1,83 @@
+# A fact from conversation 1 is stored and changes conversation 2.
+- id: recall-peanut
+  category: memory_recall
+  description: Allergy stated in conversation 1, never repeated.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm allergic to peanuts, by the way.
+    - user: u
+      new_conversation: true
+      say: What should I get today?
+      expect:
+        forbid_allergens: [peanut]
+        cards: some
+  profiles:
+    u:
+      active: [[allergy, peanut]]
+
+- id: recall-vegetarian
+  category: memory_recall
+  description: Diet stated in conversation 1.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm vegetarian.
+    - user: u
+      new_conversation: true
+      say: Any burger for me?
+      expect:
+        diet: vegetarian
+  profiles:
+    u:
+      active: [[diet, vegetarian]]
+
+- id: recall-spicy
+  category: memory_recall
+  description: A soft taste preference should shape the next pick.
+  users: [u]
+  steps:
+    - user: u
+      say: I love really spicy food, the hotter the better.
+    - user: u
+      new_conversation: true
+      say: Pick a main for me.
+      expect:
+        cards: some
+        judge: The reply favours a spicy dish or says it chose with the user's love of spicy food in mind.
+  profiles:
+    u:
+      active: [[spice, hot]]
+
+- id: recall-budget
+  category: memory_recall
+  description: A usual budget stated once.
+  users: [u]
+  steps:
+    - user: u
+      say: My budget is usually around 40 SAR.
+    - user: u
+      new_conversation: true
+      say: What do you recommend for lunch?
+      expect:
+        max_price_sar: 40
+        cards: some
+  profiles:
+    u:
+      active: [[budget, "40.00"]]
+
+- id: recall-dislike-mustard
+  category: memory_recall
+  description: A dislike stated once; both beef burgers contain mustard.
+  users: [u]
+  steps:
+    - user: u
+      say: I can't stand mustard.
+    - user: u
+      new_conversation: true
+      say: I want a burger.
+      expect:
+        forbid_allergens: [mustard]
+  profiles:
+    u:
+      active: [[dislike, mustard]]

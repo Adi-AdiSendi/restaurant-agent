@@ -22,7 +22,9 @@ dev = [
     "pyright>=1.1.414",
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
+    "pyyaml>=6.0.3",
     "ruff>=0.17.1",
+    "types-pyyaml>=6.0.12.20260906",
 ]
 
 [tool.uv]
@@ -41,7 +43,7 @@ ignore = ["B008"]
 [tool.pyright]
 typeCheckingMode = "strict"
 pythonVersion = "3.12"
-include = ["app", "tests", "scripts", "migrations"]
+include = ["app", "tests", "scripts", "migrations", "evals"]
 exclude = ["migrations/versions"]
 venvPath = "."
 venv = ".venv"

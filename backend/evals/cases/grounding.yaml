@@ -1,0 +1,58 @@
+# Every card is a real menu item; no invented dishes or prices.
+# Cards are real by construction (IDs checked against the DB), so these cases
+# look at what the reply text claims.
+- id: grounding-no-sushi
+  category: grounding
+  description: Asks for a dish the restaurant does not serve.
+  users: [u]
+  steps:
+    - user: u
+      say: Do you have sushi?
+      expect:
+        prices: true
+        judge: The reply does not claim that the restaurant serves sushi.
+
+- id: grounding-no-pizza
+  category: grounding
+  description: Asks for a pizza recommendation; there is no pizza.
+  users: [u]
+  steps:
+    - user: u
+      say: Recommend me your best pizza.
+      expect:
+        prices: true
+        judge: The reply does not claim that the restaurant serves pizza or invent a pizza dish.
+
+- id: grounding-wagyu-price
+  category: grounding
+  description: Asks the price of a real dish (85 SAR).
+  users: [u]
+  steps:
+    - user: u
+      say: How much is the Double Wagyu Burger?
+      expect:
+        prices: true
+        judge: The reply states that the Double Wagyu Burger costs 85 SAR, or gives no price at all.
+
+- id: grounding-cheapest
+  category: grounding
+  description: The cheapest item is Fresh Lemon Mint at 16 SAR.
+  users: [u]
+  steps:
+    - user: u
+      say: What's the cheapest thing on the menu?
+      expect:
+        prices: true
+        judge: The reply names the Fresh Lemon Mint (16 SAR) as the cheapest item.
+
+- id: grounding-budget
+  category: grounding
+  description: Every card must fit the stated budget.
+  users: [u]
+  steps:
+    - user: u
+      say: I only have 30 SAR. What can I get?
+      expect:
+        prices: true
+        max_price_sar: 30
+        cards: some

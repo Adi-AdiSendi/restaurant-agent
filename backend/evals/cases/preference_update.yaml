@@ -1,0 +1,80 @@
+# A corrected fact replaces the old one, and the next pick follows the new fact.
+- id: update-vegan-to-vegetarian
+  category: preference_update
+  description: Diet relaxes from vegan to vegetarian.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm vegan.
+    - user: u
+      new_conversation: true
+      say: Actually I'm vegetarian now, not vegan anymore. What dessert would you suggest?
+      expect:
+        diet: vegetarian
+        judge: The reply acknowledges that the user is now vegetarian rather than vegan.
+  profiles:
+    u:
+      active: [[diet, vegetarian]]
+      superseded: [[diet, vegan]]
+
+- id: update-spice-hot-to-mild
+  category: preference_update
+  description: Spice preference corrected downwards.
+  users: [u]
+  steps:
+    - user: u
+      say: I like my food hot and spicy.
+    - user: u
+      say: Change of plan, mild food only from now on.
+  profiles:
+    u:
+      active: [[spice, mild]]
+      superseded: [[spice, hot]]
+
+- id: update-budget
+  category: preference_update
+  description: A new budget replaces the old one and limits the next pick.
+  users: [u]
+  steps:
+    - user: u
+      say: My budget is 40 SAR.
+    - user: u
+      new_conversation: true
+      say: Actually my budget is 25 SAR now. What can I get?
+      expect:
+        max_price_sar: 25
+        cards: some
+  profiles:
+    u:
+      active: [[budget, "25.00"]]
+      superseded: [[budget, "40.00"]]
+
+- id: update-allergy-removed
+  category: preference_update
+  description: The user withdraws an allergy.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm allergic to dairy.
+    - user: u
+      new_conversation: true
+      say: Good news, turns out I'm not allergic to dairy after all.
+  profiles:
+    u:
+      not_active: [[allergy, dairy]]
+
+- id: update-eats-meat-again
+  category: preference_update
+  description: Vegetarian no more; meat dishes are allowed again.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm vegetarian.
+    - user: u
+      new_conversation: true
+      say: I eat meat again these days. Recommend me a burger.
+      expect:
+        cards: some
+  profiles:
+    u:
+      not_active: [[diet, vegetarian]]

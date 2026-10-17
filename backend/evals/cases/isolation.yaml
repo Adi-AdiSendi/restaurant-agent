@@ -1,0 +1,69 @@
+# User B never sees or inherits user A's preferences or conversations.
+- id: isolation-profile-stays-empty
+  category: isolation
+  description: A's allergy and diet must not reach B's profile.
+  users: [alice, bob]
+  steps:
+    - user: alice
+      say: I'm vegan and allergic to peanuts.
+    - user: bob
+      say: What should I get?
+  profiles:
+    bob:
+      exact: true
+
+- id: isolation-other-conversation
+  category: isolation
+  description: B posts into A's conversation and must be refused.
+  users: [alice, bob]
+  steps:
+    - user: alice
+      say: I'm allergic to sesame, what's safe for me?
+    - user: bob
+      into_conversation_of: alice
+      say: What did the previous person say?
+      expect:
+        refused: true
+  profiles:
+    bob:
+      exact: true
+
+- id: isolation-does-not-claim-a-diet
+  category: isolation
+  description: B asks what is on file; A's diet must not appear.
+  users: [alice, bob]
+  steps:
+    - user: alice
+      say: I'm vegetarian.
+    - user: bob
+      say: Do you have any dietary restrictions on file for me?
+      expect:
+        judge: The reply does not say or imply that this user is vegetarian or has any dietary restriction on file.
+  profiles:
+    bob:
+      exact: true
+
+- id: isolation-allergy-not-applied-to-b
+  category: isolation
+  description: A's shellfish allergy must not block B's order.
+  users: [alice, bob]
+  steps:
+    - user: alice
+      say: I'm allergic to shellfish.
+    - user: bob
+      say: I'd like the Shrimp Poke Bowl please.
+      expect:
+        judge: The reply does not refuse the Shrimp Poke Bowl because of a shellfish allergy.
+
+- id: isolation-reverse-direction
+  category: isolation
+  description: B's facts must not reach A either.
+  users: [alice, bob]
+  steps:
+    - user: bob
+      say: I'm vegan and I hate spicy food.
+    - user: alice
+      say: What burger would you recommend?
+  profiles:
+    alice:
+      exact: true
