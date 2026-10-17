@@ -52,6 +52,14 @@ def test_note_names_replacements_additions_and_removals() -> None:
     assert 'Saved: allergy "peanut"; diet "vegetarian" (replaces "vegan").' in note
     assert 'No longer on file: allergy "dairy".' in note
     assert "Confirm this change" in note
+    assert "say in a few words that they fit this" in note
+
+
+def test_a_soft_change_does_not_ask_to_justify_the_picks() -> None:
+    note = memory_update_note([pref("spice", "hot")], [pref("spice", "mild")])
+    assert note is not None
+    assert 'spice "mild" (replaces "hot")' in note
+    assert "fit this" not in note
 
 
 def test_the_note_goes_last_after_the_guests_message() -> None:

@@ -6,7 +6,7 @@ from collections.abc import Sequence
 from app.agent.llm_client import InputItem
 from app.memory.models import Message
 from app.memory.preference import Preference
-from app.memory.vocabulary import SINGLE_VALUED_KINDS, Kind
+from app.memory.vocabulary import HARD_KINDS, SINGLE_VALUED_KINDS, Kind
 
 _LINES: list[tuple[Kind, str]] = [
     (Kind.ALLERGY, "Allergies (never recommend items containing these)"),
@@ -53,6 +53,9 @@ def memory_update_note(before: Sequence[Preference], after: Sequence[Preference]
     dropped = [f"{k} {json.dumps(v)}" for k, v in sorted(gone) if k not in replaced]
     parts = [f"Saved: {'; '.join(saved)}."] if saved else []
     parts += [f"No longer on file: {'; '.join(dropped)}."] if dropped else []
+    if added_kinds & HARD_KINDS:
+        # A guest who just declared an allergy or diet should hear that the pick respects it.
+        parts.append("If you recommend items, say in a few words that they fit this.")
     return (
         "The guest's profile was just updated from their latest message. "
         + " ".join(parts)
