@@ -35,7 +35,7 @@ async def run_case(case: Case, slot: int, run: int, llm: AgentLLM, deadline: flo
             await session.commit()
             conversations: dict[str, int] = {}
             turns = [
-                await _turn(llm, session, step, users, conversations, deadline)
+                await _turn(llm, session, case.restaurant, step, users, conversations, deadline)
                 for step in case.steps
             ]
             profiles = {
@@ -61,6 +61,7 @@ async def _user(session: AsyncSession, username: str) -> int:
 async def _turn(
     llm: AgentLLM,
     session: AsyncSession,
+    restaurant: str,
     step: Step,
     users: dict[str, int],
     conversations: dict[str, int],
@@ -68,8 +69,8 @@ async def _turn(
 ) -> Turn:
     user_id = users[step.user]
     if step.new_conversation or step.user not in conversations:
-        conversation_id = await start_conversation(session, user_id, "corner-table")
-        assert conversation_id is not None, "the menu must be seeded before evals run"
+        conversation_id = await start_conversation(session, user_id, restaurant)
+        assert conversation_id is not None, f"seed the menu first; no restaurant {restaurant}"
         conversations[step.user] = conversation_id
         await session.commit()
     target = conversations[step.into_conversation_of or step.user]

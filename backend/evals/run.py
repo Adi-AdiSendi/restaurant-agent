@@ -56,14 +56,18 @@ async def main(args: argparse.Namespace) -> None:
     restaurants = load_restaurants()
     async with get_sessionmaker()() as session, session.begin():
         await seed_menus(session, restaurants)  # idempotent, the same as scripts.seed_menu
-    prices = {item.name: item.price_sar for item in restaurants[0].items}
+    # Dish names repeat across restaurants, so prices are looked up per restaurant.
+    prices = {r.slug: {item.name: item.price_sar for item in r.items} for r in restaurants}
+    unknown = sorted({c.restaurant for c in cases} - set(prices))
+    if unknown:
+        raise SystemExit(f"Cases name restaurants with no data file: {unknown}")
     limit = asyncio.Semaphore(args.concurrency)
 
     async def one(slot: int, case: Case, run: int) -> CaseRun:
         async with limit:
             try:
                 result = await run_case(case, slot, run, llm, settings.turn_deadline_seconds)
-                result.checks = await grade(case, result, prices, judge)
+                result.checks = await grade(case, result, prices[case.restaurant], judge)
             except Exception as exc:
                 result = crashed(case, run, exc)
         print(f"{'pass' if result.passed else 'FAIL'}  {case.id} run {run}", flush=True)

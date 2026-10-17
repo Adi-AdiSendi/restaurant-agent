@@ -13,6 +13,7 @@ from pydantic import BaseModel, ConfigDict, Field, StringConstraints, TypeAdapte
 
 from app.memory.vocabulary import Diet, Kind
 from app.menu.allergens import Allergen
+from app.menu.restaurant import SLUG_PATTERN
 
 CASES_DIR = Path(__file__).resolve().parent / "cases"
 
@@ -75,6 +76,8 @@ class Case(_Strict):
     description: str
     users: list[UserName]
     steps: list[Step]
+    restaurant: str = Field(default="corner-table", pattern=SLUG_PATTERN)
+    """Every conversation in the case is at this restaurant."""
     profiles: dict[str, ProfileExpect] = Field(default_factory=dict[str, ProfileExpect])
     added_after_baseline: bool = False
     """Written after the first baseline run, to probe weak spots; reported as such."""

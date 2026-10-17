@@ -4,6 +4,7 @@ import pytest
 
 from app.memory.operations import Operation
 from evals.case_model import Case, load_cases
+from scripts.seed_menu import load_restaurants
 
 
 @pytest.fixture(scope="module")
@@ -63,6 +64,25 @@ def test_user_names_must_be_short_and_lowercase(tmp_path: Path) -> None:
         "- id: x\n  category: grounding\n  description: d\n  users: [Alice_Long_Name]\n"
         "  steps: [{user: Alice_Long_Name, say: hi}]\n",
         encoding="utf-8",
+    )
+    with pytest.raises(ValueError, match="pattern"):
+        load_cases(tmp_path)
+
+
+def test_every_case_restaurant_has_a_data_file(cases: list[Case]) -> None:
+    slugs = {r.slug for r in load_restaurants()}
+    assert {case.restaurant for case in cases} <= slugs
+    assert any(case.restaurant != "corner-table" for case in cases)
+
+
+def test_restaurant_defaults_to_corner_table_and_must_be_a_slug(tmp_path: Path) -> None:
+    base = "- id: x\n  category: grounding\n  description: d\n  users: [u]\n"
+    (tmp_path / "grounding.yaml").write_text(
+        base + "  steps: [{user: u, say: hi}]\n", encoding="utf-8"
+    )
+    assert load_cases(tmp_path)[0].restaurant == "corner-table"
+    (tmp_path / "grounding.yaml").write_text(
+        base + "  restaurant: Corner Table\n  steps: [{user: u, say: hi}]\n", encoding="utf-8"
     )
     with pytest.raises(ValueError, match="pattern"):
         load_cases(tmp_path)

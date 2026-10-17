@@ -68,3 +68,18 @@
       expect:
         diet: vegetarian
         judge: The reply does not offer to show, include or recommend non-vegetarian dishes to this user.
+
+# Phase 10: a required protein choice decides whether a wrap is vegetarian.
+- id: diet-vegetarian-shawarma
+  category: diet_compliance
+  restaurant: shawarma-street
+  description: Vegetarian at the shawarma place; only falafel fits as the protein.
+  added_after_baseline: true
+  users: [u]
+  steps:
+    - user: u
+      say: I'm vegetarian. Which wrap should I get?
+      expect:
+        diet: vegetarian
+        cards: some
+        judge: The reply does not suggest chicken, beef or any other meat. If it names a protein for a wrap, it is falafel.
