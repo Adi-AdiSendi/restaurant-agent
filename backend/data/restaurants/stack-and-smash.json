@@ -1,0 +1,1294 @@
+{
+  "slug": "stack-and-smash",
+  "name": "Stack & Smash",
+  "cuisine": "Burger house",
+  "tagline": "Smashed burgers, crispy chicken, fries and thick shakes.",
+  "accent_color": "#e8590c",
+  "categories": [
+    "burgers",
+    "chicken",
+    "sides",
+    "shakes_and_drinks"
+  ],
+  "items": [
+    {
+      "name": "Classic Smash",
+      "category": "burgers",
+      "description": "A smashed beef patty with American cheese, house sauce and the classic crunch.",
+      "price_sar": "32.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "beef patty",
+        "American cheese",
+        "lettuce",
+        "tomato",
+        "pickles",
+        "onion",
+        "smash sauce (mayo, mustard)"
+      ],
+      "allergens": [
+        "dairy",
+        "egg",
+        "mustard"
+      ],
+      "may_contain": [],
+      "removable": [
+        "pickles",
+        "onion",
+        "tomato",
+        "lettuce",
+        "smash sauce (mayo, mustard)"
+      ],
+      "option_groups": [
+        {
+          "name": "Patty",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Single patty",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Double patty",
+              "price_delta_sar": "14.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Bun",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Brioche bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten",
+                "egg",
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Potato bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Lettuce wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extras",
+          "min_choices": 0,
+          "max_choices": 4,
+          "options": [
+            {
+              "name": "Extra cheddar",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef bacon",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Fried egg",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Jalapenos",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            },
+            {
+              "name": "Caramelised onions",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Smoky BBQ Burger",
+      "category": "burgers",
+      "description": "Beef, aged cheddar, crispy onion strings and smoky barbecue sauce.",
+      "price_sar": "38.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "beef patty",
+        "aged cheddar",
+        "crispy onion strings (wheat batter)",
+        "barbecue sauce",
+        "pickles"
+      ],
+      "allergens": [
+        "dairy",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [
+        "pickles"
+      ],
+      "option_groups": [
+        {
+          "name": "Patty",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Single patty",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Double patty",
+              "price_delta_sar": "14.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Bun",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Brioche bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten",
+                "egg",
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Potato bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Lettuce wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extras",
+          "min_choices": 0,
+          "max_choices": 4,
+          "options": [
+            {
+              "name": "Extra cheddar",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef bacon",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Fried egg",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Jalapenos",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            },
+            {
+              "name": "Caramelised onions",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Jalapeno Heat Burger",
+      "category": "burgers",
+      "description": "Beef with pepper jack, fresh jalapenos and chipotle mayo. Properly hot.",
+      "price_sar": "36.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 2,
+      "ingredients": [
+        "beef patty",
+        "pepper jack cheese",
+        "jalapenos",
+        "chipotle mayo",
+        "lettuce",
+        "onion"
+      ],
+      "allergens": [
+        "dairy",
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [
+        "lettuce",
+        "onion"
+      ],
+      "option_groups": [
+        {
+          "name": "Patty",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Single patty",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Double patty",
+              "price_delta_sar": "14.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Bun",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Brioche bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten",
+                "egg",
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Potato bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Lettuce wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extras",
+          "min_choices": 0,
+          "max_choices": 4,
+          "options": [
+            {
+              "name": "Extra cheddar",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef bacon",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Fried egg",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Jalapenos",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            },
+            {
+              "name": "Caramelised onions",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Truffle Wagyu Burger",
+      "category": "burgers",
+      "description": "A thick wagyu patty, truffle mayo, shaved parmesan and rocket.",
+      "price_sar": "64.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "wagyu beef patty",
+        "truffle mayo",
+        "parmesan",
+        "rocket"
+      ],
+      "allergens": [
+        "egg",
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [
+        "rocket"
+      ],
+      "option_groups": [
+        {
+          "name": "Bun",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Brioche bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten",
+                "egg",
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Potato bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Lettuce wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extras",
+          "min_choices": 0,
+          "max_choices": 4,
+          "options": [
+            {
+              "name": "Extra cheddar",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef bacon",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Fried egg",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Jalapenos",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            },
+            {
+              "name": "Caramelised onions",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halloumi Stack",
+      "category": "burgers",
+      "description": "Grilled halloumi, roasted red peppers, rocket and basil pesto.",
+      "price_sar": "34.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "grilled halloumi",
+        "roasted red peppers",
+        "rocket",
+        "basil pesto (pine nuts, parmesan)"
+      ],
+      "allergens": [
+        "dairy",
+        "tree_nut"
+      ],
+      "may_contain": [],
+      "removable": [
+        "rocket"
+      ],
+      "option_groups": [
+        {
+          "name": "Bun",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Brioche bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten",
+                "egg",
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Potato bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Lettuce wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extras",
+          "min_choices": 0,
+          "max_choices": 3,
+          "options": [
+            {
+              "name": "Extra cheddar",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Jalapenos",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            },
+            {
+              "name": "Caramelised onions",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Beyond Smash",
+      "category": "burgers",
+      "description": "A plant-based patty with vegan cheese, pickles and vegan smash sauce. Vegan on a potato bun or lettuce wrap.",
+      "price_sar": "37.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "plant-based patty (soy protein)",
+        "vegan cheese",
+        "lettuce",
+        "tomato",
+        "pickles",
+        "vegan smash sauce"
+      ],
+      "allergens": [
+        "soy"
+      ],
+      "may_contain": [],
+      "removable": [
+        "lettuce",
+        "tomato",
+        "pickles"
+      ],
+      "option_groups": [
+        {
+          "name": "Bun",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Brioche bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten",
+                "egg",
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Potato bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Lettuce wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extras",
+          "min_choices": 0,
+          "max_choices": 3,
+          "options": [
+            {
+              "name": "Extra cheddar",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Jalapenos",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            },
+            {
+              "name": "Caramelised onions",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Crispy Chicken Sandwich",
+      "category": "chicken",
+      "description": "Buttermilk-free crispy chicken breast with slaw and pickles. Classic or Nashville hot.",
+      "price_sar": "33.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "fried chicken breast (wheat flour, egg)",
+        "slaw (mayo)",
+        "pickles"
+      ],
+      "allergens": [
+        "gluten",
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [
+        "pickles",
+        "slaw (mayo)"
+      ],
+      "option_groups": [
+        {
+          "name": "Heat",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Classic",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Nashville hot",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 3
+            }
+          ]
+        },
+        {
+          "name": "Bun",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Brioche bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten",
+                "egg",
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Potato bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Lettuce wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grilled Chicken Burger",
+      "category": "chicken",
+      "description": "Herb-marinated grilled chicken with lettuce, tomato and garlic mayo.",
+      "price_sar": "31.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "grilled chicken breast",
+        "lettuce",
+        "tomato",
+        "garlic mayo"
+      ],
+      "allergens": [
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [
+        "lettuce",
+        "tomato",
+        "garlic mayo"
+      ],
+      "option_groups": [
+        {
+          "name": "Bun",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Brioche bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten",
+                "egg",
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Potato bun",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Lettuce wrap",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extras",
+          "min_choices": 0,
+          "max_choices": 4,
+          "options": [
+            {
+              "name": "Extra cheddar",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Beef bacon",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Fried egg",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Jalapenos",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 2
+            },
+            {
+              "name": "Caramelised onions",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chicken Tenders",
+      "category": "chicken",
+      "description": "Five crispy chicken tenders with your dips.",
+      "price_sar": "29.00",
+      "is_vegetarian": false,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "chicken breast",
+        "wheat flour",
+        "egg",
+        "spices"
+      ],
+      "allergens": [
+        "gluten",
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Dips",
+          "min_choices": 1,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Honey mustard",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "mustard"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Ranch",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy",
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Smoky BBQ",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Sriracha mayo",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Classic Fries",
+      "category": "sides",
+      "description": "Skin-on fries with sea salt.",
+      "price_sar": "12.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "potato",
+        "sunflower oil",
+        "sea salt"
+      ],
+      "allergens": [],
+      "may_contain": [
+        "gluten"
+      ],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Size",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Regular",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Large",
+              "price_delta_sar": "5.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cheese Fries",
+      "category": "sides",
+      "description": "Fries under warm cheddar sauce and spring onion.",
+      "price_sar": "18.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "potato",
+        "cheddar sauce",
+        "spring onion"
+      ],
+      "allergens": [
+        "dairy"
+      ],
+      "may_contain": [
+        "gluten"
+      ],
+      "removable": [
+        "spring onion"
+      ],
+      "option_groups": []
+    },
+    {
+      "name": "Onion Rings",
+      "category": "sides",
+      "description": "Thick-cut onion rings in a crisp batter.",
+      "price_sar": "15.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "onion",
+        "wheat batter"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Vanilla Shake",
+      "category": "shakes_and_drinks",
+      "description": "Thick vanilla ice cream shake.",
+      "price_sar": "22.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "vanilla ice cream",
+        "whole milk",
+        "vanilla"
+      ],
+      "allergens": [
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Extras",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Oreo crumble",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "gluten",
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Peanut butter swirl",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "peanut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Whipped cream",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lotus Biscoff Shake",
+      "category": "shakes_and_drinks",
+      "description": "Vanilla ice cream blended with caramelised Biscoff biscuits.",
+      "price_sar": "25.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "vanilla ice cream",
+        "whole milk",
+        "Biscoff biscuits (wheat, soy)"
+      ],
+      "allergens": [
+        "dairy",
+        "gluten",
+        "soy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Fresh Lemonade",
+      "category": "shakes_and_drinks",
+      "description": "Squeezed lemons, a little sugar, ice.",
+      "price_sar": "12.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "lemon",
+        "sugar",
+        "water",
+        "ice"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Flavour",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Mint",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Strawberry",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
