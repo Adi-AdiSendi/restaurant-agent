@@ -64,4 +64,15 @@ describe('chatReducer', () => {
     expect(fresh.messages).toEqual([])
     expect(fresh.nextId).toBe(chatted.nextId)
   })
+
+  test('starting a chat clears the old one and blocks sending until it exists', () => {
+    const chatting = chatReducer(chatReducer(initialChat, { type: 'started', conversationId: 4 }), {
+      type: 'sent',
+      text: 'hi',
+    })
+    const next = chatReducer(chatting, { type: 'starting' })
+    expect(next.conversationId).toBeNull()
+    expect(next.messages).toEqual([])
+    expect(next.nextId).toBe(chatting.nextId)
+  })
 })

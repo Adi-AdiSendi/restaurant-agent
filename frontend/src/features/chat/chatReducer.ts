@@ -22,6 +22,7 @@ export interface ChatState {
 }
 
 export type ChatAction =
+  | { type: 'starting' }
   | { type: 'started'; conversationId: number }
   | { type: 'sent'; text: string }
   | { type: 'replied'; reply: ChatReply }
@@ -51,6 +52,9 @@ function withMessage(state: ChatState, message: Omit<ChatMessage, 'id'>): ChatSt
 
 export function chatReducer(state: ChatState, action: ChatAction): ChatState {
   switch (action.type) {
+    case 'starting':
+      // The old chat goes away and nothing can be sent until the new one exists.
+      return { ...initialChat, nextId: state.nextId }
     case 'started':
       return { ...initialChat, conversationId: action.conversationId, nextId: state.nextId }
     case 'sent':

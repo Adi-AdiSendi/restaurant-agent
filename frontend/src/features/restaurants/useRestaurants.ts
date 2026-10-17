@@ -32,6 +32,10 @@ export function useRestaurants() {
     () =>
       api.restaurants().then(
         (list) => {
+          if (list.length === 0) {
+            setError('No restaurants are set up yet. Please try again later.')
+            return
+          }
           const saved = storedSlug()
           setRestaurants(list)
           setSlug(list.some((r) => r.slug === saved) ? saved : (list[0]?.slug ?? null))

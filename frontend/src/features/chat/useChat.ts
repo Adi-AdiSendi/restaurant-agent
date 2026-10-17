@@ -15,13 +15,20 @@ const FALLBACK = 'Something went wrong. Please try again.'
 export function useChat({ restaurant, onUnauthorized, onReplied }: Options) {
   const [state, dispatch] = useReducer(chatReducer, initialChat)
   const startedAt = useRef<string | null>(null)
+  // Only the latest start counts: switching twice quickly must not let the
+  // first, slower response replace the second.
+  const latestStart = useRef(0)
 
   const newChat = useCallback(async () => {
     if (restaurant === null) return
+    const start = ++latestStart.current
+    dispatch({ type: 'starting' })
     try {
       const { id } = await api.newConversation(restaurant)
+      if (start !== latestStart.current) return
       dispatch({ type: 'started', conversationId: id })
     } catch (err) {
+      if (start !== latestStart.current) return
       if (err instanceof ApiError && err.status === 401) onUnauthorized()
       else
         dispatch({ type: 'startFailed', error: err instanceof ApiError ? err.message : FALLBACK })
