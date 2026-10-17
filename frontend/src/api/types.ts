@@ -25,6 +25,8 @@ export interface CardOption {
   spice_level: number
   /** Why this guest must not pick it (saved allergies or diet); empty if they may. */
   conflicts_with_guest: string[]
+  /** Trace allergens of this option that the guest avoids. */
+  may_contain_warnings: Allergen[]
 }
 
 export interface OptionGroup {

@@ -15,6 +15,7 @@ function option(id: number, name: string, extra: Partial<CardOption> = {}): Card
     is_vegan: true,
     spice_level: 0,
     conflicts_with_guest: [],
+    may_contain_warnings: [],
     ...extra,
   }
 }
@@ -40,10 +41,16 @@ const latte: Card = {
       max_choices: 1,
       options: [
         option(1, 'Whole milk', { allergens: ['dairy'], conflicts_with_guest: ['dairy'] }),
-        option(2, 'Oat milk', { price_delta_sar: '3.00' }),
+        option(2, 'Oat milk', { price_delta_sar: '3.00', may_contain_warnings: ['gluten'] }),
       ],
     },
-    { id: 8, name: 'Syrup', min_choices: 0, max_choices: 2, options: [option(3, 'Vanilla')] },
+    {
+      id: 8,
+      name: 'Syrup',
+      min_choices: 0,
+      max_choices: 2,
+      options: [option(3, 'Vanilla'), option(4, 'Chilli', { spice_level: 3 })],
+    },
   ],
   may_contain_warnings: [],
 }
@@ -70,5 +77,13 @@ describe('ItemCard options', () => {
     render(<ItemCard item={{ ...latte, option_groups: [], removable: [] }} />)
     expect(screen.getByText('16.00 SAR')).toBeInTheDocument()
     expect(screen.queryByText(/Can be made without/)).not.toBeInTheDocument()
+  })
+
+  test('an option shows its spice and any trace the guest avoids', () => {
+    render(<ItemCard item={latte} />)
+    const oat = screen.getByText('Oat milk +3.00').closest('li') as HTMLElement
+    expect(within(oat).getByText(/may contain gluten/)).toBeInTheDocument()
+    const chilli = screen.getByText('Chilli').closest('li') as HTMLElement
+    expect(within(chilli).getByText(/hot/)).toBeInTheDocument()
   })
 })

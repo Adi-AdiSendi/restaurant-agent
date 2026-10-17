@@ -24,7 +24,7 @@ def cards_for(items: list[MenuItemOut], constraints: HardConstraints) -> list[Ca
     return [
         Card(
             **tool_item(item, constraints).model_dump(),
-            may_contain_warnings=constraints.may_contain_warnings(item),
+            may_contain_warnings=constraints.item_may_contain_warnings(item),
         )
         for item in items
     ]

@@ -58,5 +58,5 @@ async def handle(arguments: str, context: ToolContext) -> GetItemResult | ToolEr
     return GetItemResult(
         item=tool_item(item, constraints),
         conflicts_with_guest=constraints.item_violations(item),
-        may_contain_warnings=constraints.may_contain_warnings(item),
+        may_contain_warnings=constraints.item_may_contain_warnings(item),
     )

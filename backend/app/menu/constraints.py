@@ -67,6 +67,18 @@ class HardConstraints(BaseModel):
         """Trace allergens the guest avoids: allowed, but they should confirm with staff."""
         return sorted(set(food.may_contain) & self.excluded_allergens)
 
+    def item_may_contain_warnings(self, item: MenuItemOut) -> list[Allergen]:
+        """Traces the guest avoids that every safe way of ordering carries: the base's, and
+        any a required group cannot avoid with its fitting choices."""
+        warned = set(self.may_contain_warnings(item))
+        for group in item.option_groups:
+            fitting = [o for o in group.options if not self.violations(o)]
+            for allergen in self.excluded_allergens:
+                clean = [o for o in fitting if allergen not in o.may_contain]
+                if len(clean) < group.min_choices:
+                    warned.add(allergen)
+        return sorted(warned)
+
     def restrict(self, menu_filter: MenuFilter) -> MenuFilter:
         """Merge into the model's filter. Only ever narrows the search, never widens it."""
         allergens = set(menu_filter.exclude_allergens) | self.excluded_allergens

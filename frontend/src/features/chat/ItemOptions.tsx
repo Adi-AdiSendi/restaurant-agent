@@ -2,6 +2,7 @@ import type { Allergen, OptionGroup } from '../../api/types'
 import styles from './ItemOptions.module.css'
 
 const allergenLabel = (allergen: Allergen) => allergen.replace('_', ' ')
+const SPICE = ['', 'mild', 'medium', 'hot']
 
 function rule({ min_choices: min, max_choices: max }: OptionGroup): string {
   if (min === 0) return max === 1 ? 'optional' : `optional, up to ${max}`
@@ -34,10 +35,19 @@ function ItemOptions({ groups, removable }: Props) {
                     {option.name}
                     {extra}
                   </span>
+                  {option.spice_level > 0 && (
+                    <span className={styles.contains}> {SPICE[option.spice_level]}</span>
+                  )}
                   {option.allergens.length > 0 && (
                     <span className={styles.contains}>
                       {' '}
                       contains {option.allergens.map(allergenLabel).join(', ')}
+                    </span>
+                  )}
+                  {option.may_contain_warnings.length > 0 && (
+                    <span className={styles.reason}>
+                      {' '}
+                      may contain {option.may_contain_warnings.map(allergenLabel).join(', ')}
                     </span>
                   )}
                   {conflicts.length > 0 && (
