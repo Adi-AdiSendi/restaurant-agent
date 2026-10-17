@@ -16,7 +16,8 @@ interface Props {
 
 /** One option group: radio buttons for a single choice, checkboxes otherwise. */
 function OptionGroupField({ group, chosen, onToggle }: Props) {
-  const single = group.max_choices === 1
+  // A radio cannot be unticked, so only a required single choice uses radios.
+  const single = group.max_choices === 1 && group.min_choices >= 1
   return (
     <fieldset className={styles.group}>
       <legend className={styles.legend}>

@@ -5,6 +5,8 @@ import type { Cart } from '../../api/cartTypes'
 export interface CartState {
   /** The server's cart; null until it has loaded. */
   cart: Cart | null
+  /** Why the cart could not be loaded; null if it could. */
+  error: string | null
   /** Show a cart the server just returned (every cart call returns the whole cart). */
   setCart: (cart: Cart) => void
   refresh: () => Promise<void>

@@ -89,8 +89,8 @@ export const api = {
     patch<Cart>(`/cart/lines/${lineId}`, { quantity }),
   removeCartLine: (lineId: number) => remove<Cart>(`/cart/lines/${lineId}`),
   clearCart: () => remove<Cart>('/cart'),
-  placeOrder: (fulfilment: Fulfilment, acceptConflicts: boolean) =>
-    post<Order>('/orders', { fulfilment, accept_conflicts: acceptConflicts }),
+  placeOrder: (fulfilment: Fulfilment, acceptedReasons: string[]) =>
+    post<Order>('/orders', { fulfilment, accepted_reasons: acceptedReasons }),
   orders: () => request<OrderSummary[]>('/orders'),
   order: (orderId: number) => request<Order>(`/orders/${orderId}`),
 }

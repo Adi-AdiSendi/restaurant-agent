@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { api, ApiError } from '../../api/client'
-import type { CartLine } from '../../api/cartTypes'
+import { MAX_QUANTITY, type CartLine } from '../../api/cartTypes'
 import { useCart } from './cartContext'
 import styles from './CartLineRow.module.css'
 
@@ -40,6 +40,10 @@ function CartLineRow({ line, readOnly = false }: Props) {
         </span>
       </div>
       {details && <p className={styles.details}>{details}</p>}
+      <p className={styles.details}>
+        Allergens:{' '}
+        {line.allergens.length ? line.allergens.join(', ').replaceAll('_', ' ') : 'none listed'}
+      </p>
       {line.conflicts_with_guest.length > 0 && (
         <p className={styles.conflict}>
           Not suitable for you: {line.conflicts_with_guest.join(', ')}
@@ -65,7 +69,7 @@ function CartLineRow({ line, readOnly = false }: Props) {
           <button
             type="button"
             aria-label={`One more ${line.name}`}
-            disabled={line.quantity >= 20}
+            disabled={line.quantity >= MAX_QUANTITY}
             onClick={() => void change(() => api.setQuantity(line.id, line.quantity + 1))}
           >
             +

@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import { Link, useParams } from 'react-router'
 
 import type { Card } from '../../api/menuTypes'
+import { useCart } from '../cart/cartContext'
 import ChatPanel from '../chat/ChatPanel'
 import MemoryPanel from '../memory/MemoryPanel'
 import ItemSheet from './ItemSheet'
@@ -21,7 +22,11 @@ type Side = 'chat' | 'memory'
 function MenuPage({ username, isNew, onLogout }: Props) {
   const { slug = '' } = useParams()
   const [refreshKey, setRefreshKey] = useState(0)
-  const onReplied = useCallback(() => setRefreshKey((k) => k + 1), [])
+  const { refresh: refreshCart } = useCart()
+  const onReplied = useCallback(() => {
+    setRefreshKey((k) => k + 1)
+    void refreshCart()
+  }, [refreshCart])
   const { menu, error, reload } = useGuestMenu(slug, refreshKey, onLogout)
   const [choosing, setChoosing] = useState<Card | null>(null)
   const [side, setSide] = useState<Side>('chat')

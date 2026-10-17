@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import type { Card } from '../../api/menuTypes'
+import { useModal } from '../../components/useModal'
 import AddConfirm from './AddConfirm'
 import ChoiceExtras from './ChoiceExtras'
 import {
@@ -26,6 +27,7 @@ interface Props {
 /** Configure one dish and add it to the cart. The server re-prices and re-checks it. */
 function ItemSheet({ item, restaurant, onClose, onUnauthorized }: Props) {
   const [choice, setChoice] = useState(() => initialChoice(item))
+  const dialog = useModal<HTMLDivElement>(onClose)
   const add = useAddLine({ item, restaurant, choice, onAdded: onClose, onUnauthorized })
   const todo = missing(item, choice)
   const conflicts = chosenConflicts(item, choice)
@@ -33,12 +35,12 @@ function ItemSheet({ item, restaurant, onClose, onUnauthorized }: Props) {
   return (
     <div className={styles.backdrop} onClick={onClose}>
       <div
+        ref={dialog}
         className={styles.sheet}
         role="dialog"
         aria-modal="true"
         aria-labelledby="sheet-title"
         onClick={(e) => e.stopPropagation()}
-        onKeyDown={(e) => e.key === 'Escape' && onClose()}
       >
         <header className={styles.head}>
           <h2 id="sheet-title" className={styles.title}>

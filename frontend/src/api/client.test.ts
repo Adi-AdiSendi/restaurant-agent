@@ -44,7 +44,7 @@ describe('api client', () => {
       quantity: 1,
       option_ids: [],
       removed: [],
-      accept_conflict: false,
+      accepted_reasons: [],
       replace_cart: false,
     }
     const error = await api.addCartLine(line).catch((e: unknown) => e)

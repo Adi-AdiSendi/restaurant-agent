@@ -2,14 +2,17 @@
 // app/api/cart.py, app/api/orders.py. Prices arrive as strings ("19.00").
 import type { Allergen } from './menuTypes'
 
+/** Most of one dish in a cart line; the server has the same limit. */
+export const MAX_QUANTITY = 20
+
 export interface AddLine {
   restaurant: string
   item_id: number
   quantity: number
   option_ids: number[]
   removed: string[]
-  /** The guest saw the allergy or diet warning and still wants it. */
-  accept_conflict: boolean
+  /** The conflict reasons the guest was shown and accepted; any other conflict asks again. */
+  accepted_reasons: string[]
   /** The guest agreed to empty a cart from another restaurant. */
   replace_cart: boolean
 }

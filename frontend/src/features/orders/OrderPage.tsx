@@ -57,6 +57,9 @@ function OrderPage() {
             </span>
             <span>{[...line.option_names, ...line.removed.map((r) => `no ${r}`)].join(', ')}</span>
             <span>{line.unit_price_sar} SAR each</span>
+            <span>
+              Allergens: {line.allergens.join(', ').replaceAll('_', ' ') || 'none listed'}
+            </span>
           </li>
         ))}
       </ul>

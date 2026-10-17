@@ -1,6 +1,7 @@
+import { MAX_QUANTITY } from '../../api/cartTypes'
 import styles from './ItemSheet.module.css'
 
-const clamp = (value: string) => Math.min(20, Math.max(1, Number(value) || 1))
+const clamp = (value: string) => Math.min(MAX_QUANTITY, Math.max(1, Math.trunc(Number(value)) || 1))
 
 interface Props {
   quantity: number
@@ -19,7 +20,7 @@ function SheetFooter({ quantity, onQuantity, label, disabled, onAdd }: Props) {
         <input
           type="number"
           min={1}
-          max={20}
+          max={MAX_QUANTITY}
           value={quantity}
           onChange={(e) => onQuantity(clamp(e.target.value))}
         />

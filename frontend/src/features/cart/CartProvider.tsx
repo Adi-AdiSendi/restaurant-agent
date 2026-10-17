@@ -9,15 +9,24 @@ interface Props {
   onUnauthorized: () => void
 }
 
-/** Holds the server's cart for every page. The server is the only source of truth. */
+/** Holds the server's cart for every page. The server is the only source of truth, so
+ * pages refresh it whenever something else may have changed it (a chat reply, checkout). */
 function CartProvider({ children, onUnauthorized }: Props) {
   const [cart, setCart] = useState<Cart | null>(null)
+  const [error, setError] = useState<string | null>(null)
 
   const refresh = useCallback(
     () =>
-      api.cart().then(setCart, (err: unknown) => {
-        if (err instanceof ApiError && err.status === 401) onUnauthorized()
-      }),
+      api.cart().then(
+        (loaded) => {
+          setCart(loaded)
+          setError(null)
+        },
+        (err: unknown) => {
+          if (err instanceof ApiError && err.status === 401) onUnauthorized()
+          else setError(err instanceof ApiError ? err.message : 'Could not load your cart.')
+        },
+      ),
     [onUnauthorized],
   )
 
@@ -25,7 +34,7 @@ function CartProvider({ children, onUnauthorized }: Props) {
     void refresh()
   }, [refresh])
 
-  const value = useMemo(() => ({ cart, setCart, refresh }), [cart, refresh])
+  const value = useMemo(() => ({ cart, error, setCart, refresh }), [cart, error, refresh])
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }
 

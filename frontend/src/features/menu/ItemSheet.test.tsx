@@ -58,7 +58,7 @@ describe('ItemSheet', () => {
     expect(sentBodies(fetchMock)[0]).toMatchObject({
       item_id: 40,
       option_ids: [2, 3],
-      accept_conflict: false,
+      accepted_reasons: [],
     })
   })
 
@@ -75,7 +75,7 @@ describe('ItemSheet', () => {
     expect(onClose).not.toHaveBeenCalled()
     fireEvent.click(screen.getByRole('button', { name: 'Add anyway' }))
     await vi.waitFor(() => expect(onClose).toHaveBeenCalled())
-    expect(sentBodies(fetchMock).map((b) => b.accept_conflict)).toEqual([false, true])
+    expect(sentBodies(fetchMock).map((b) => b.accepted_reasons)).toEqual([[], ['dairy']])
   })
 
   test('a cart at another restaurant is only replaced when the guest agrees', async () => {

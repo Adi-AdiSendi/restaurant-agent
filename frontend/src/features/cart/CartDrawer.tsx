@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 
 import { api, ApiError } from '../../api/client'
+import { useModal } from '../../components/useModal'
 import { useCart } from './cartContext'
 import styles from './CartDrawer.module.css'
 import CartLineRow from './CartLineRow'
@@ -12,7 +13,8 @@ interface Props {
 
 /** The cart, from the side (or the bottom on a phone). Checkout is a separate page. */
 function CartDrawer({ onClose }: Props) {
-  const { cart, setCart } = useCart()
+  const { cart, error: loadError, setCart, refresh } = useCart()
+  const dialog = useModal<HTMLElement>(onClose)
   const [error, setError] = useState<string | null>(null)
   const lines = cart?.lines ?? []
   const blocked = lines.some((l) => l.problem !== null)
@@ -28,12 +30,12 @@ function CartDrawer({ onClose }: Props) {
   return (
     <div className={styles.backdrop} onClick={onClose}>
       <aside
+        ref={dialog}
         className={styles.drawer}
         role="dialog"
         aria-modal="true"
         aria-label="Your cart"
         onClick={(e) => e.stopPropagation()}
-        onKeyDown={(e) => e.key === 'Escape' && onClose()}
       >
         <header className={styles.head}>
           <h2 className={styles.title}>
@@ -54,7 +56,14 @@ function CartDrawer({ onClose }: Props) {
             ))}
           </ul>
         )}
-        {error && <p role="alert">{error}</p>}
+        {(error ?? loadError) && (
+          <p role="alert">
+            {error ?? loadError}{' '}
+            <button type="button" onClick={() => void refresh()}>
+              Retry
+            </button>
+          </p>
+        )}
         {lines.length > 0 && (
           <footer className={styles.foot}>
             <div className={styles.total}>

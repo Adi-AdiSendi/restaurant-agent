@@ -31,7 +31,7 @@ const conflict = {
 describe('checkout and orders', () => {
   test('placing an order goes to its page', async () => {
     const fetchMock = mockFetch({
-      'GET /api/cart': [{ body: latteCart }, { body: emptyCart }],
+      'GET /api/cart': [{ body: latteCart }, { body: latteCart }, { body: emptyCart }],
       'POST /api/orders': { status: 201, body: placedOrder },
       'GET /api/orders/31': { body: placedOrder },
     })
@@ -43,9 +43,7 @@ describe('checkout and orders', () => {
     ).toBeInTheDocument()
     expect(screen.getByText('Preparing')).toBeInTheDocument()
     const placed = fetchMock.mock.calls.find(([url]) => String(url) === '/api/orders')
-    expect(placed?.[1]?.body).toBe(
-      JSON.stringify({ fulfilment: 'dine_in', accept_conflicts: false }),
-    )
+    expect(placed?.[1]?.body).toBe(JSON.stringify({ fulfilment: 'dine_in', accepted_reasons: [] }))
   })
 
   test('a conflict at checkout needs "Place it anyway"', async () => {
@@ -61,8 +59,8 @@ describe('checkout and orders', () => {
     expect(await screen.findByRole('heading', { name: /Order 31/ })).toBeInTheDocument()
     const bodies = fetchMock.mock.calls
       .filter(([url]) => String(url) === '/api/orders')
-      .map(([, init]) => JSON.parse(String(init?.body)) as { accept_conflicts: boolean })
-    expect(bodies.map((b) => b.accept_conflicts)).toEqual([false, true])
+      .map(([, init]) => JSON.parse(String(init?.body)) as { accepted_reasons: string[] })
+    expect(bodies.map((b) => b.accepted_reasons)).toEqual([[], ['dairy']])
   })
 
   test('an empty cart cannot be checked out', async () => {
