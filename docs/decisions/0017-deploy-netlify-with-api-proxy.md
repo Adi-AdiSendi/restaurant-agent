@@ -4,8 +4,8 @@
 - Date: 2026-10-17
 
 ## Context
-The user chose Netlify instead of Railway, and no paid hosting for a
-prototype. The backend is a long-running FastAPI service with async Postgres;
+Railway (ADR 0006) did not accept our credit card, so we moved to Netlify,
+and chose no paid hosting for a prototype. The backend is a long-running FastAPI service with async Postgres;
 one chat turn makes several OpenAI calls (often 5 to 15 s). Netlify Functions
 run JS, TS or Go only (60 s limit), so hosting the backend there means a full
 rewrite of a tested Python stack (ADR 0003).
@@ -26,6 +26,7 @@ rewrite of a tested Python stack (ADR 0003).
   minutes, and the UI shows "Starting the server" and retries if it is asleep.
 
 ## Alternatives considered
+- Stay on Railway (ADR 0006): not possible, Railway did not accept our card.
 - Rewrite the backend as Netlify Functions in TypeScript: one host and no
   cold start, but redoes phases 1 to 4 and their tests. Rejected on cost and risk.
 - Paid always-on host (Render Starter, Fly.io): no cold start. Rejected by the
