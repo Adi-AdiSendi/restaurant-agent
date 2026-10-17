@@ -20,7 +20,8 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
   refreshed after each reply. Old facts are struck through. `ChatPage` hosts
   it next to the chat; that is the only import between features.
 - `netlify/functions/keep-awake.mts`: Netlify scheduled function that pings
-  `/api/health` every 10 minutes so the free backend stays awake.
+  the backend's `/api/health` on Render directly every 10 minutes so the free
+  backend stays awake. A test keeps its URL in sync with `../netlify.toml`.
 - `src/theme.css`: brand tokens as CSS variables. Components use CSS modules.
 - Dev server proxies `/api` to `http://localhost:8000`.
 

@@ -44,6 +44,14 @@ wake. That is longer than the proxy waits.
 - **Keep it awake.** A Netlify scheduled function calls `/api/health` every
   10 minutes (`frontend/netlify/functions/keep-awake.mts`). The health check
   never touches the database, so the database can still sleep.
+- **The first ping did not work.** It called the site's own `/api` proxy, so
+  the backend URL lived in one place. Netlify's metrics showed it running
+  every 10 minutes, yet after 16 idle minutes the backend was asleep: a health
+  check got a proxy timeout (504 after 28.6 s). A function calling back into
+  its own site evidently does not reach the backend that way, and the
+  function logs that would say why are not available on the free plan. The
+  ping now calls Render directly, and a test fails if its URL and the proxy
+  target in `netlify.toml` ever differ.
 - **Handle the case where it sleeps anyway.** The UI shows "Starting the
   server" and retries until the backend answers
   (`frontend/src/features/startup/`).
