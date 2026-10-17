@@ -81,3 +81,21 @@
   profiles:
     u:
       active: [[dislike, mustard]]
+
+- id: recall-mild-is-not-a-ban
+  category: memory_recall
+  added_after_baseline: true
+  description: Mild is a soft preference; the only vegetarian burger is mild (spice 1) and fits.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm vegetarian and I prefer mild food.
+    - user: u
+      new_conversation: true
+      say: Any burger for me?
+      expect:
+        diet: vegetarian
+        cards: some
+  profiles:
+    u:
+      active: [[diet, vegetarian], [spice, mild]]

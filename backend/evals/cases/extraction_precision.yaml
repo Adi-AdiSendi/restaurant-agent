@@ -56,3 +56,28 @@
     u:
       active: [[allergy, shellfish]]
       exact: true
+
+- id: extraction-ordering-for-daughter
+  category: extraction_precision
+  added_after_baseline: true
+  description: Ordering for someone else; none of her facts are the user's.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm ordering for my daughter, she's vegan and allergic to sesame. What would she like?
+  profiles:
+    u:
+      exact: true
+
+- id: extraction-family-dinner
+  category: extraction_precision
+  added_after_baseline: true
+  description: Mixed facts about the user and others in one message; only the user's is stored.
+  users: [u]
+  steps:
+    - user: u
+      say: Family dinner tonight. My husband is vegetarian, my son hates spicy food, and I'm allergic to sesame.
+  profiles:
+    u:
+      active: [[allergy, sesame]]
+      exact: true

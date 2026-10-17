@@ -72,6 +72,8 @@ class Case(_Strict):
     users: list[str]
     steps: list[Step]
     profiles: dict[str, ProfileExpect] = Field(default_factory=dict[str, ProfileExpect])
+    added_after_baseline: bool = False
+    """Written after the first baseline run, to probe weak spots; reported as such."""
 
 
 _cases = TypeAdapter(list[Case])

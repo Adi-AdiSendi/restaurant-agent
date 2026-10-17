@@ -78,3 +78,21 @@
   profiles:
     u:
       not_active: [[diet, vegetarian]]
+
+- id: update-new-allergy-acknowledged
+  category: preference_update
+  added_after_baseline: true
+  description: A new allergy mentioned in passing must be stored and confirmed to the user.
+  users: [u]
+  steps:
+    - user: u
+      say: I like mild food.
+    - user: u
+      new_conversation: true
+      say: Since my last visit I found out I'm allergic to dairy. What starter would you suggest?
+      expect:
+        forbid_allergens: [dairy]
+        judge: The reply makes clear that it took the new dairy allergy into account.
+  profiles:
+    u:
+      active: [[allergy, dairy], [spice, mild]]

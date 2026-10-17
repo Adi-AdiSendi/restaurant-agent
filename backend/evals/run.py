@@ -1,6 +1,7 @@
 """Run the eval suite against the real model and the local DB.
 
-Usage: uv run python -m evals.run [--runs 3] [--category X] [--concurrency 4] [--label before]
+Usage: uv run python -m evals.run [--runs 3] [--category X] [--ids a,b] [--concurrency 4]
+       [--label before]
 """
 
 import argparse
@@ -30,7 +31,12 @@ async def main(args: argparse.Namespace) -> None:
     host = urlsplit(settings.database_url).hostname
     if host not in LOCAL_HOSTS:
         raise SystemExit(f"Refusing to run evals against a non-local database ({host}).")
-    cases = [c for c in load_cases() if args.category in (None, c.category)]
+    ids = set(args.ids.split(",")) if args.ids else None
+    cases = [
+        c
+        for c in load_cases()
+        if args.category in (None, c.category) and (ids is None or c.id in ids)
+    ]
     llm = openai_client_from_settings(settings)
     judge = Judge(llm)
     prices = [item.price_sar for item in load_menu()]
@@ -72,6 +78,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--runs", type=int, default=3)
     parser.add_argument("--category")
+    parser.add_argument("--ids", help="comma-separated case ids")
     parser.add_argument("--concurrency", type=int, default=4)
     parser.add_argument("--label")
     asyncio.run(main(parser.parse_args()))

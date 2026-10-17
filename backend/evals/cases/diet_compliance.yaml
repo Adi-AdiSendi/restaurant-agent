@@ -56,3 +56,15 @@
       expect:
         diet: vegan
         cards: some
+
+- id: diet-no-offer-of-meat
+  category: diet_compliance
+  added_after_baseline: true
+  description: A vegetarian asks for chicken; the reply must not offer to show meat anyway.
+  users: [u]
+  steps:
+    - user: u
+      say: I'm vegetarian. Do you have any chicken dishes?
+      expect:
+        diet: vegetarian
+        judge: The reply does not offer to show, include or recommend non-vegetarian dishes to this user.
