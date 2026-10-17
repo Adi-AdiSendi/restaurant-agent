@@ -3,6 +3,7 @@
 from functools import lru_cache
 from pathlib import Path
 from typing import Literal, Self
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 from pydantic import field_validator, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -11,11 +12,22 @@ REPO_ROOT = Path(__file__).resolve().parents[2]
 
 
 def to_asyncpg_url(url: str) -> str:
-    """Rewrite plain Postgres URLs (as Railway provides them) for the asyncpg driver."""
+    """Rewrite plain Postgres URLs (as hosted databases provide them) for asyncpg.
+
+    asyncpg takes `ssl=` instead of libpq's `sslmode=` and rejects `channel_binding`.
+    """
     for prefix in ("postgres://", "postgresql://"):
         if url.startswith(prefix):
-            return "postgresql+asyncpg://" + url.removeprefix(prefix)
-    return url
+            url = "postgresql+asyncpg://" + url.removeprefix(prefix)
+    parts = urlsplit(url)
+    if not parts.query:
+        return url
+    params = [
+        ("ssl" if key == "sslmode" else key, value)
+        for key, value in parse_qsl(parts.query)
+        if key != "channel_binding"
+    ]
+    return urlunsplit(parts._replace(query=urlencode(params)))
 
 
 class Settings(BaseSettings):

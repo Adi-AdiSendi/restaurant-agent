@@ -17,6 +17,11 @@ class SettingsWithoutEnvFile(Settings):
         ("postgres://u:p@h:5432/db", "postgresql+asyncpg://u:p@h:5432/db"),
         ("postgresql://u:p@h:5432/db", "postgresql+asyncpg://u:p@h:5432/db"),
         ("postgresql+asyncpg://u:p@h:5432/db", "postgresql+asyncpg://u:p@h:5432/db"),
+        (
+            "postgresql://u:p@h/db?sslmode=require&channel_binding=require",
+            "postgresql+asyncpg://u:p@h/db?ssl=require",
+        ),
+        ("postgres://u:p@h/db?ssl=require", "postgresql+asyncpg://u:p@h/db?ssl=require"),
     ],
 )
 def test_to_asyncpg_url(given: str, expected: str) -> None:
@@ -39,6 +44,8 @@ def test_development_allows_an_empty_session_secret(monkeypatch: pytest.MonkeyPa
     assert SettingsWithoutEnvFile().session_secret == ""
 
 
-def test_settings_rewrite_railway_url(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setenv("DATABASE_URL", "postgres://u:p@railway:5432/railway")
-    assert SettingsWithoutEnvFile().database_url == "postgresql+asyncpg://u:p@railway:5432/railway"
+def test_settings_rewrite_hosted_url(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("DATABASE_URL", "postgresql://u:p@db.host/app?sslmode=require")
+    assert (
+        SettingsWithoutEnvFile().database_url == "postgresql+asyncpg://u:p@db.host/app?ssl=require"
+    )
