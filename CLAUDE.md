@@ -13,6 +13,9 @@ These are plain paths, not imports. Open them when the task needs them.
   propose a new ADR that supersedes it.
 
 ## Stack
+v2 (phases 9 to 18, ADRs 0018 to 0023) adds restaurants with options, a
+cart and orders, React Router, voice input and CRMs. Update these lines as
+each lands.
 - Backend: Python 3.12, FastAPI, Pydantic v2, SQLAlchemy 2 (async) + asyncpg, Alembic
 - Database: PostgreSQL 16
 - LLM: OpenAI GPT-6 Luna via the Responses API (model ID from `OPENAI_MODEL`)

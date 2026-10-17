@@ -1,4 +1,4 @@
-# Handoff (2026-10-17, phase 7 done)
+# Handoff (2026-10-17, v1 done, v2 phase 9)
 
 Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 
@@ -8,10 +8,18 @@ Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 | 0 to 5 | done, reviewed, committed |
 | 6 Deploy | done: live at https://restaurant-agent.netlify.app, cold start and DB sleep measured |
 | 7 Evals (Part 2) | done: 42 cases x 3 runs, `docs/eval-report.md` |
-| 8 Submission | README rewritten for reviewers; video deferred (more changes first) |
+| 8 Submission | README rewritten for reviewers; video moved to phase 18 |
+| 9 to 18 (v2) | planned in `docs/plan.md`, ADRs 0018 to 0023; phase 9 in progress |
 
 Repo: private GitHub `Adi-AdiSendi/restaurant-agent`, branch `main`, CI green.
 Commits are allowed now (one logical change each); see ADR 0017 for the deploy.
+
+## v2 in one paragraph
+Six restaurants with options, a server cart and orders (chat can edit the
+cart, only the guest's button places an order), photo cards, a mobile pass,
+voice in English and Arabic, a staff CRM and a personal CRM on simulated
+history. The sibling apps have no cart: reuse their patterns (see the v2
+overview in plan.md), not their code.
 
 ## Deploy design (ADR 0017, accepted)
 - Netlify serves the UI and proxies `/api/*` to FastAPI on Render free
