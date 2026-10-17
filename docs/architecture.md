@@ -22,15 +22,16 @@ backend/
   app/
     main.py       creates the FastAPI app, mounts routes and the frontend build
     config.py     settings from env (pydantic-settings)
-    api/          HTTP routes only: auth, chat, conversations, restaurants, preferences,
-                  health;
-                  plus the session cookie (session.py) and user_id dependency (deps.py)
+    api/          HTTP routes only: auth, chat, conversations, restaurants (and a
+                  guest's menu), preferences, cart, orders, health; plus the session
+                  cookie (session.py) and the user and constraints dependencies (deps.py)
     agent/        LLM loop, system prompt, context builder, final-answer schema
     tools/        tools the model can call (search_menu, get_item) and the
                   server-built ToolContext they receive (ADR 0020)
     menu/         restaurants, menu items and options, queries, filters, the fit
                   rule, the order resolver (configure.py), allergen vocabulary
     memory/       extract preferences, store them, supersede outdated ones
+    orders/       the cart, checkout and orders, priced by menu/configure.py (ADR 0019)
     safety/       hard-constraint guard for allergens and diet
     users/        users, PIN hashing, login or register
     db/           engine, session dependency, declarative Base
@@ -40,8 +41,13 @@ backend/
   evals/          eval cases, graders, runner, results
   tests/          unit and integration tests, mirroring app/
 frontend/
-  src/features/chat/    chat window, messages, item cards with their options
-  src/features/restaurants/  restaurant list and picker
+  src/App.tsx           startup gate, login, then routes (React Router, ADR 0021)
+  src/features/shell/   header on every page (nav, cart button, log out)
+  src/features/restaurants/  home page: the restaurant grid
+  src/features/menu/    /r/:slug: menu, item sheet, chat and memory tabs
+  src/features/cart/    cart state (server truth), drawer, lines
+  src/features/orders/  /checkout, /orders, /orders/:id
+  src/features/chat/    chat panel, messages, item cards with their options
   src/features/login/   username + PIN entry
   src/features/memory/  "What I remember about you" panel
   src/features/startup/ "Starting the server" while the backend wakes up
@@ -57,7 +63,7 @@ importing upward.
 
 ## Dependency direction
 ```
-api -> agent -> tools | memory | safety -> menu | users -> db
+api -> agent -> tools | memory | safety -> orders -> menu | users -> db
 ```
 Lower layers never import higher ones. Enforced with import-linter in CI.
 `tools`, `memory` and `safety` are siblings and do not import each other.
@@ -126,6 +132,14 @@ past it the turn is rolled back and the API returns 504.
   chosen option adds its allergens and can make a dish non-vegetarian;
   removing an ingredient never removes an allergen (`menu/configure.py`).
 - `conversations`: id, user_id, restaurant_id, started_at
+- `carts`: id, user_id (unique: one open cart per user), restaurant_id, updated_at
+- `cart_lines`: id, cart_id, item_id, quantity (1 to 20), option_ids int[],
+  removed text[], created_at. No price: it is computed on every read.
+- `orders`: id, user_id, restaurant_id, fulfilment (pickup or dine_in),
+  total_sar, placed_at
+- `order_lines`: id, order_id, item_id (kept null if the dish leaves the
+  menu), item_name, category, quantity, unit_price_sar, option_names,
+  removed, allergens: a snapshot of what was bought
 - `messages`: id, conversation_id, role, content, recommended_item_ids int[], created_at
 - `preferences`: id, user_id, kind, value, status (active, superseded or
   removed), superseded_by, source_message_id, created_at
@@ -137,12 +151,28 @@ and spice per user, and one active row per kind and value.
 `is_hard` is derived, not stored: true for allergy and diet only; these are
 enforced by `safety/`. Everything else is a soft preference the model weighs.
 
+## Ordering by hand (phase 11)
+1. `GET /api/restaurants/{slug}/menu`: every dish as `GuestItem`, with what
+   conflicts with this guest's saved allergies and diet.
+2. `POST /api/cart/lines {restaurant, item_id, quantity, option_ids, removed}`:
+   the server resolves the choice (`menu/configure.py`), refuses an invalid
+   one (422), and asks for consent (409 `conflict`, or `other_restaurant`
+   when the cart is elsewhere). The cart row is locked for the write.
+3. Every cart read re-prices and re-checks each line against today's menu;
+   a line whose options changed is marked unavailable.
+4. `POST /api/orders {fulfilment}`: locks the cart, checks it all again
+   (the profile may have changed), snapshots names, options, removals,
+   allergens and prices into `order_lines`, and empties the cart. No payment;
+   status (placed, preparing, ready) comes from the time since placing.
+
 ## Where each guarantee lives
 | Guarantee | Enforced in |
 |---|---|
 | No allergen or diet violation | `HardConstraints.restrict` in `search_menu` + `safety/guard.py` on every card, options included |
 | No invented dishes or prices | ID-only answers + DB-rendered cards |
 | One restaurant per chat | every menu read takes the conversation's `restaurant_id` from `ToolContext` |
-| User isolation | `user_id` from session; never a tool argument |
+| User isolation | `user_id` from session; never a tool argument; every cart and order query filters by it |
+| Prices are real | cart and order prices come from `menu/configure.py`; the request has no price field |
+| Only the guest orders | `POST /api/orders` from the checkout button; conflicts need the guest's explicit consent |
 | Outdated facts replaced | `memory/supersede.py`, status column |
 | Facts survive long chats | profile stored in DB, injected every turn |

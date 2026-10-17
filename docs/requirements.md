@@ -47,3 +47,4 @@ verified. Update the last two columns as phases finish.
 | # | Feature | Where | Evidence |
 |---|---|---|---|
 | V1 | Many restaurants with options, add-ons and removals (phase 10) | ADR 0018, `menu/` (`restaurant.py`, `models.py`, `configure.py`, `constraints.py`), `data/restaurants/`, `tools/context.py` | `tests/menu/test_configure.py`, `test_fit.py`, `tests/safety/test_guard_exhaustive.py`, `tests/tools/test_option_tools.py`, `tests/api/test_restaurants.py`; evals marked phase 10 |
+| V2 | Browse, cart and checkout by hand (phase 11) | ADRs 0019, 0021, `app/orders/`, `app/api/cart.py`, `orders.py`, `frontend/src/features/{menu,cart,orders}` | `tests/orders/`, `tests/api/test_cart_api.py`, `test_orders_api.py`; frontend `ItemSheet`, `CartDrawer`, `Checkout` tests |

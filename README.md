@@ -39,11 +39,16 @@ to a minute.
    and ask "What should I get?"
 6. **Isolation.** Log in as `demo_bob`: his profile is empty and nothing from
    Alice or you carries over.
-7. **Restaurants and options.** Pick Bean & Bloom in the header and say "I'm
-   allergic to dairy, can I have a latte?" The latte card lists every milk and
-   strikes through whole, skimmed and lactose-free (all dairy). At Golden
+7. **Restaurants and options.** Open Bean & Bloom from the home page and say
+   "I'm allergic to dairy, can I have a latte?" The latte card lists every milk
+   and strikes through whole, skimmed and lactose-free (all dairy). At Golden
    Dragon, `demo_alice` asking for kung pao "without the peanuts" is refused:
    leaving an ingredient out never removes an allergen.
+8. **Order a meal.** On the menu (or from a card in the chat), choose options:
+   the price updates as you go. Picking whole milk with a dairy allergy asks
+   "Add it anyway?" before it goes in. Open the cart, check out for pickup,
+   and the order appears under Orders with its status. Adding a dish from
+   another restaurant asks before it empties your cart.
 
 ## How it works
 ```
@@ -71,6 +76,10 @@ Each links to its decision record in [docs/decisions/](docs/decisions/README.md)
 - **Allergens and diet enforced in code, not in the prompt**
   ([0009](docs/decisions/0009-hard-constraints-enforced-in-code.md)): a filter on
   every search plus a guard on every card.
+- **Cart and orders on the server** ([0019](docs/decisions/0019-cart-orders-and-confirmed-checkout.md)):
+  prices are always computed from the menu, a choice that breaks your
+  allergies or diet needs your consent, and only your checkout button
+  places an order.
 - **Restaurants with options** ([0018](docs/decisions/0018-multiple-restaurants-with-options.md),
   [0020](docs/decisions/0020-tool-context-from-the-server.md)): a dish fits a guest
   only if its base fits and every required choice still has a safe option.
@@ -192,10 +201,11 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
   dish. The evals found no such case.
 - **Conversations:** reloading the page starts a new conversation; old ones
   are kept but not listed. Memory carries over either way, across restaurants.
-- **Options (phase 10):** cards show every choice and which ones conflict
-  with your profile, but you cannot pick options or order yet (phase 11).
-  Search price limits apply to the base price; options can add to it. The
-  eval price grader only checks dish prices, not option prices.
+- **Ordering:** no payment ("pay at the counter"), and the status moves on
+  by time, not by a kitchen. One cart per guest, at one restaurant. The chat
+  cannot change the cart yet (phase 12). Search price limits apply to the
+  base price; options can add to it. The eval price grader only checks dish
+  prices, not option prices.
 - **Concurrency:** a turn holds one DB transaction across its LLM calls, so
   each open turn uses one connection. Fine at demo scale.
 - **Evals:** 42 cases, written by the same team that built the system, and the
@@ -207,7 +217,7 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
 ## Repository map
 | Path | What |
 |---|---|
-| `backend/app/` | FastAPI app: `api`, `agent`, `tools`, `memory`, `safety`, `menu`, `users`, `db` |
+| `backend/app/` | FastAPI app: `api`, `agent`, `tools`, `memory`, `safety`, `orders`, `menu`, `users`, `db` |
 | `backend/evals/` | eval cases, graders, runner, committed results |
 | `backend/data/restaurants/` | one menu file per restaurant |
 | `backend/tests/` | 270+ tests, real Postgres, fake LLM |

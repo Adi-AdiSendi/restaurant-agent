@@ -16,7 +16,8 @@ These are plain paths, not imports. Open them when the task needs them.
 v2 (phases 9 to 18, ADRs 0018 to 0023) adds restaurants with options, a
 cart and orders, React Router, voice input and CRMs. Update these lines as
 each lands. Landed: six restaurants with options (phase 10); tools take a
-server-built `ToolContext` (ADR 0020).
+server-built `ToolContext` (ADR 0020); cart, checkout and orders in
+`app/orders/` and React Router pages (phase 11).
 - Backend: Python 3.12, FastAPI, Pydantic v2, SQLAlchemy 2 (async) + asyncpg, Alembic
 - Database: PostgreSQL 16
 - LLM: OpenAI GPT-6 Luna via the Responses API (model ID from `OPENAI_MODEL`)
@@ -50,7 +51,7 @@ server-built `ToolContext` (ADR 0020).
    tool arguments. Every memory query is scoped by it.
 5. **No secrets in the repo.** Settings come from env via `app/config.py`;
    keep `.env.example` updated when adding a setting.
-6. **One-way dependencies**: `api -> agent -> tools | memory | safety -> menu | users -> db`.
+6. **One-way dependencies**: `api -> agent -> tools | memory | safety -> orders -> menu | users -> db`.
    Lower layers never import higher ones.
 
 ## How we work
