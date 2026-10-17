@@ -1,0 +1,26 @@
+# Backend on Render free, native Python with uv (ADR 0017). No Docker.
+# Migrations and seed run in the build, once per deploy, not on every wake-up.
+services:
+  - type: web
+    name: restaurant-agent-api
+    runtime: python
+    plan: free
+    region: frankfurt
+    rootDir: backend
+    buildCommand: >-
+      uv sync --locked --no-dev
+      && uv run --no-sync alembic upgrade head
+      && uv run --no-sync python -m scripts.seed_menu
+    startCommand: ./start.sh
+    healthCheckPath: /api/health
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: OPENAI_MODEL
+        value: gpt-6-luna
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false

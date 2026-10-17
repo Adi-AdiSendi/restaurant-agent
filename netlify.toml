@@ -1,0 +1,21 @@
+# Netlify serves the React build and is the public URL (ADR 0017).
+# /api/* is proxied to the backend on Render, so the browser only sees this
+# domain and the session cookie stays first-party.
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://restaurant-agent-api.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
