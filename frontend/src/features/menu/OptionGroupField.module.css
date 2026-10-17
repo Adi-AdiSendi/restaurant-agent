@@ -1,0 +1,47 @@
+.group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+.legend {
+  padding: 0 4px;
+  font-weight: 700;
+}
+
+.rule,
+.optionMeta {
+  font-weight: 400;
+  color: var(--ink-faint);
+  font-size: 13px;
+}
+
+.option,
+.conflict {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  min-height: 36px;
+}
+
+.conflict .optionName {
+  text-decoration: line-through;
+  color: var(--ink-faint);
+}
+
+.reason {
+  color: var(--danger);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.hint {
+  margin: 0;
+  color: var(--ink-muted);
+  font-size: 12px;
+}

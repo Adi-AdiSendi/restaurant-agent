@@ -8,11 +8,13 @@ const allergenLabel = (allergen: Allergen) => allergen.replace('_', ' ')
 
 interface Props {
   item: Card
+  /** Opens the options sheet, so the guest can add it to the cart. */
+  onChoose?: () => void
 }
 
 // Every detail comes from the card data the backend loaded from the database,
 // never from the assistant's text. Allergens are always visible.
-function ItemCard({ item }: Props) {
+function ItemCard({ item, onChoose }: Props) {
   const diet = item.is_vegan ? 'Vegan' : item.is_vegetarian ? 'Vegetarian' : null
   const traces = item.may_contain.filter((a) => !item.may_contain_warnings.includes(a))
   return (
@@ -56,6 +58,11 @@ function ItemCard({ item }: Props) {
         <p className={styles.traces}>
           May contain traces of {traces.map(allergenLabel).join(', ')}.
         </p>
+      )}
+      {onChoose && (
+        <button className={styles.choose} type="button" onClick={onChoose}>
+          {item.option_groups.length > 0 ? 'Choose options' : 'Add to cart'}
+        </button>
       )}
     </article>
   )

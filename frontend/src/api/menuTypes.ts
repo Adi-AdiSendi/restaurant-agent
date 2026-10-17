@@ -75,3 +75,9 @@ export interface Restaurant {
   accent_color: string
   categories: string[]
 }
+
+export interface GuestMenu {
+  restaurant: Restaurant
+  /** Every dish, in the restaurant's category order; ones that do not suit the guest say why. */
+  items: Card[]
+}

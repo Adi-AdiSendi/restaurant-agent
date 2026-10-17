@@ -1,0 +1,36 @@
+.confirm,
+.confirmDanger {
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--info-tint);
+}
+
+.confirmDanger {
+  background: var(--danger-tint);
+}
+
+.confirmText {
+  margin: 0 0 8px;
+}
+
+.confirmActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.danger,
+.secondary {
+  padding: 10px 16px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--danger);
+  color: #fff;
+  font-weight: 700;
+}
+
+.secondary {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+}

@@ -4,7 +4,8 @@ import { afterEach, expect, test, vi } from 'vitest'
 import App from './App'
 import { GIVE_UP_MS, RETRY_MS, SLOW_MS } from './features/startup/useServerReady'
 import { mockFetch } from './test/fetchMock'
-import { restaurants } from './test/restaurants'
+import { cartRoute } from './test/carts'
+import { dragonMenu, restaurants } from './test/restaurants'
 
 const UP = { body: { status: 'ok' } }
 const LOGGED_OUT = { status: 401, body: { detail: 'Please log in.' } }
@@ -27,6 +28,8 @@ const SIGNED_IN = {
   'GET /api/auth/me': { body: { username: 'sara' } },
   'POST /api/conversations': { status: 201, body: { id: 5 } },
   ...restaurants,
+  ...dragonMenu,
+  ...cartRoute,
   'GET /api/preferences': { body: [] },
 }
 
@@ -39,13 +42,15 @@ test('a returning session opens the restaurants page with the app header', async
   expect(screen.getByText('Hi, sara')).toBeInTheDocument()
 })
 
-test('a restaurant link opens its chat and the memory panel', async () => {
+test('a restaurant link opens its menu, chat and memory panel', async () => {
   window.history.pushState({}, '', '/r/golden-dragon')
   mockFetch(SIGNED_IN)
   render(<App />)
   expect(await screen.findByText(/Welcome back, sara!/)).toBeInTheDocument()
+  expect(await screen.findByRole('heading', { name: 'Golden Dragon' })).toBeInTheDocument()
+  fireEvent.click(screen.getByRole('button', { name: 'What I remember' }))
   expect(
-    screen.getByRole('complementary', { name: 'What I remember about you' }),
+    await screen.findByRole('complementary', { name: 'What I remember about you' }),
   ).toBeInTheDocument()
   window.history.pushState({}, '', '/')
 })

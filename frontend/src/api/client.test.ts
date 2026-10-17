@@ -30,4 +30,24 @@ describe('api client', () => {
     mockFetch({ 'POST /api/auth/logout': { status: 204 } })
     await expect(api.logout()).resolves.toBeUndefined()
   })
+
+  test('a cart error keeps its code and details for the UI', async () => {
+    const detail = {
+      code: 'conflict',
+      message: 'Latte is not suitable: dairy.',
+      reasons: ['dairy'],
+    }
+    mockFetch({ 'POST /api/cart/lines': { status: 409, body: { detail } } })
+    const line = {
+      restaurant: 'bean-and-bloom',
+      item_id: 1,
+      quantity: 1,
+      option_ids: [],
+      removed: [],
+      accept_conflict: false,
+      replace_cart: false,
+    }
+    const error = await api.addCartLine(line).catch((e: unknown) => e)
+    expect(error).toMatchObject({ status: 409, message: 'Latte is not suitable: dairy.', detail })
+  })
 })
