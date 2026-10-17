@@ -1,0 +1,1662 @@
+{
+  "slug": "bean-and-bloom",
+  "name": "Bean & Bloom",
+  "cuisine": "Cafe",
+  "tagline": "Specialty coffee, fresh bakes and all-day breakfast.",
+  "accent_color": "#2b8a3e",
+  "categories": [
+    "coffee",
+    "tea_and_cold_drinks",
+    "breakfast",
+    "bakery_and_cakes"
+  ],
+  "items": [
+    {
+      "name": "Espresso",
+      "category": "coffee",
+      "description": "A short, intense shot of our house blend.",
+      "price_sar": "10.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "espresso"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Shots",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Single",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Double",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Americano",
+      "category": "coffee",
+      "description": "Espresso lengthened with hot water.",
+      "price_sar": "12.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "espresso",
+        "hot water"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Size",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Small",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Medium",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Large",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extra shot",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Extra espresso shot",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cappuccino",
+      "category": "coffee",
+      "description": "Espresso with steamed milk and deep foam.",
+      "price_sar": "15.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "espresso",
+        "steamed milk of your choice"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Size",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Small",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Medium",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Large",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Milk",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Whole milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Skimmed milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Lactose-free milk",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Oat milk",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Almond milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Soy milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Syrup",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Vanilla",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Caramel",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Hazelnut",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Honey",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extra shot",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Extra espresso shot",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Latte",
+      "category": "coffee",
+      "description": "Espresso with plenty of silky steamed milk.",
+      "price_sar": "16.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "espresso",
+        "steamed milk of your choice"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Size",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Small",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Medium",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Large",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Milk",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Whole milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Skimmed milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Lactose-free milk",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Oat milk",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Almond milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Soy milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Syrup",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Vanilla",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Caramel",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Hazelnut",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Honey",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extra shot",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Extra espresso shot",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Flat White",
+      "category": "coffee",
+      "description": "A double ristretto with a thin layer of milk.",
+      "price_sar": "17.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "double ristretto",
+        "steamed milk of your choice"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Milk",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Whole milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Skimmed milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Lactose-free milk",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Oat milk",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Almond milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Soy milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extra shot",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Extra espresso shot",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Spanish Latte",
+      "category": "coffee",
+      "description": "Latte sweetened with condensed milk.",
+      "price_sar": "19.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "espresso",
+        "condensed milk",
+        "steamed milk of your choice"
+      ],
+      "allergens": [
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Size",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Small",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Medium",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Large",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Milk",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Whole milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Skimmed milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Lactose-free milk",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Oat milk",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Almond milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Soy milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extra shot",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Extra espresso shot",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Mocha",
+      "category": "coffee",
+      "description": "Espresso, chocolate sauce and steamed milk.",
+      "price_sar": "19.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "espresso",
+        "chocolate sauce (contains milk)",
+        "steamed milk of your choice"
+      ],
+      "allergens": [
+        "dairy"
+      ],
+      "may_contain": [
+        "soy"
+      ],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Size",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Small",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Medium",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Large",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Milk",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Whole milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Skimmed milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Lactose-free milk",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Oat milk",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Almond milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Soy milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Syrup",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Vanilla",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Caramel",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Hazelnut",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Honey",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extra shot",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Extra espresso shot",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Saudi Coffee",
+      "category": "coffee",
+      "description": "Light roast gahwa with cardamom and saffron.",
+      "price_sar": "12.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "light roast coffee",
+        "cardamom",
+        "saffron"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "With",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Three Khalas dates",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Iced Latte",
+      "category": "tea_and_cold_drinks",
+      "description": "Espresso and cold milk over ice.",
+      "price_sar": "18.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "espresso",
+        "cold milk of your choice",
+        "ice"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Size",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Small",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Medium",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Large",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Milk",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Whole milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Skimmed milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Lactose-free milk",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Oat milk",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Almond milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Soy milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Syrup",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Vanilla",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Caramel",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Hazelnut",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Honey",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Extra shot",
+          "min_choices": 0,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Extra espresso shot",
+              "price_delta_sar": "4.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Matcha Latte",
+      "category": "tea_and_cold_drinks",
+      "description": "Ceremonial matcha whisked into milk.",
+      "price_sar": "20.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "matcha",
+        "steamed milk of your choice"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Size",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Small",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Medium",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Large",
+              "price_delta_sar": "6.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Milk",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Whole milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Skimmed milk",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Lactose-free milk",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Oat milk",
+              "price_delta_sar": "3.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Almond milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Soy milk",
+              "price_delta_sar": "3.00",
+              "allergens": [
+                "soy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        },
+        {
+          "name": "Syrup",
+          "min_choices": 0,
+          "max_choices": 2,
+          "options": [
+            {
+              "name": "Vanilla",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Caramel",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Hazelnut",
+              "price_delta_sar": "2.00",
+              "allergens": [
+                "tree_nut"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Honey",
+              "price_delta_sar": "2.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Karak Chai",
+      "category": "tea_and_cold_drinks",
+      "description": "Strong tea boiled with milk and cardamom.",
+      "price_sar": "10.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "black tea",
+        "evaporated milk",
+        "cardamom",
+        "sugar"
+      ],
+      "allergens": [
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Mango Smoothie",
+      "category": "tea_and_cold_drinks",
+      "description": "Alphonso mango blended to order.",
+      "price_sar": "21.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "mango",
+        "ice"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Base",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Yogurt",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Coconut water",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Avocado Toast",
+      "category": "breakfast",
+      "description": "Smashed avocado on toasted sourdough, lime.",
+      "price_sar": "29.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "sourdough",
+        "avocado",
+        "lime",
+        "olive oil"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": [
+        {
+          "name": "Toppings",
+          "min_choices": 0,
+          "max_choices": 3,
+          "options": [
+            {
+              "name": "Poached egg",
+              "price_delta_sar": "5.00",
+              "allergens": [
+                "egg"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Feta",
+              "price_delta_sar": "4.00",
+              "allergens": [
+                "dairy"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Smoked salmon",
+              "price_delta_sar": "10.00",
+              "allergens": [
+                "fish"
+              ],
+              "may_contain": [],
+              "is_vegetarian": false,
+              "is_vegan": false,
+              "spice_level": 0
+            },
+            {
+              "name": "Chilli flakes",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Shakshuka",
+      "category": "breakfast",
+      "description": "Eggs baked in spiced tomato and peppers.",
+      "price_sar": "32.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 1,
+      "ingredients": [
+        "eggs",
+        "tomato",
+        "peppers",
+        "onion",
+        "cumin"
+      ],
+      "allergens": [
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [
+        "onion"
+      ],
+      "option_groups": [
+        {
+          "name": "Bread",
+          "min_choices": 1,
+          "max_choices": 1,
+          "options": [
+            {
+              "name": "Toasted sourdough",
+              "price_delta_sar": "0.00",
+              "allergens": [
+                "gluten"
+              ],
+              "may_contain": [],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            },
+            {
+              "name": "Gluten-free bread",
+              "price_delta_sar": "0.00",
+              "allergens": [],
+              "may_contain": [
+                "gluten"
+              ],
+              "is_vegetarian": true,
+              "is_vegan": true,
+              "spice_level": 0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Halloumi Croissant",
+      "category": "breakfast",
+      "description": "Butter croissant with grilled halloumi, tomato and za'atar.",
+      "price_sar": "26.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "butter croissant",
+        "grilled halloumi",
+        "tomato",
+        "za'atar"
+      ],
+      "allergens": [
+        "gluten",
+        "dairy",
+        "egg",
+        "sesame"
+      ],
+      "may_contain": [],
+      "removable": [
+        "tomato"
+      ],
+      "option_groups": []
+    },
+    {
+      "name": "Granola Bowl",
+      "category": "breakfast",
+      "description": "House granola, Greek yogurt, berries and honey.",
+      "price_sar": "27.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "oat granola with almonds",
+        "Greek yogurt",
+        "berries",
+        "honey"
+      ],
+      "allergens": [
+        "gluten",
+        "tree_nut",
+        "dairy"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Butter Croissant",
+      "category": "bakery_and_cakes",
+      "description": "Flaky, all-butter croissant.",
+      "price_sar": "12.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "wheat flour",
+        "butter",
+        "egg",
+        "yeast"
+      ],
+      "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Pistachio Croissant",
+      "category": "bakery_and_cakes",
+      "description": "Croissant filled with pistachio cream.",
+      "price_sar": "18.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "croissant",
+        "pistachio cream",
+        "pistachios"
+      ],
+      "allergens": [
+        "gluten",
+        "dairy",
+        "egg",
+        "tree_nut"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "Vegan Banana Bread",
+      "category": "bakery_and_cakes",
+      "description": "Moist banana loaf, egg-free and dairy-free.",
+      "price_sar": "15.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "banana",
+        "wheat flour",
+        "coconut oil",
+        "brown sugar"
+      ],
+      "allergens": [
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    },
+    {
+      "name": "San Sebastian Cheesecake",
+      "category": "bakery_and_cakes",
+      "description": "Burnt Basque-style cheesecake.",
+      "price_sar": "26.00",
+      "is_vegetarian": true,
+      "is_vegan": false,
+      "spice_level": 0,
+      "ingredients": [
+        "cream cheese",
+        "cream",
+        "eggs",
+        "sugar",
+        "a little wheat flour"
+      ],
+      "allergens": [
+        "dairy",
+        "egg",
+        "gluten"
+      ],
+      "may_contain": [],
+      "removable": [],
+      "option_groups": []
+    }
+  ]
+}
