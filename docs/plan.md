@@ -131,17 +131,33 @@ rewrite was rejected on cost and risk, so:
   6. `netlify.toml` with the proxy and SPA fallback. Done.
   7. Startup gate in the UI (`features/startup/`). Done.
   8. Keep-awake scheduled function. Done.
-  9. Spike on the live setup. Done so far: Netlify DB is reachable from
-     outside Netlify over TLS 1.3 (plain text refused); the string is direct,
-     not a pooler; Postgres 18.6 in us-east-2, so Render runs in Ohio;
-     migrations and both seeds ran on it. Open: `Set-Cookie` through the
-     proxy; the Render hostname in `netlify.toml`; Render uses Python 3.12
-     and finds `uv` at start; what a waking backend returns; the proxy really
-     stops at 26 s; the DB sleeps when idle (production uses NullPool).
+  9. Spike on the live setup. Done: Netlify DB is reachable from outside
+     Netlify over TLS 1.3 (plain text refused); the string is direct, not a
+     pooler; Postgres 18.6 in us-east-2, so Render runs in Ohio; migrations
+     and seeds ran on it. Render builds with Python 3.12 and uv and answers at
+     `restaurant-agent-api.onrender.com`. Through `restaurant-agent.netlify.app`:
+     `Set-Cookie` arrives first-party (`HttpOnly; Secure; SameSite=Lax`) and
+     comes back; SPA deep links work. Found live: values pasted into Render
+     carried spaces, which broke the OpenAI key (every turn 503); settings now
+     strip whitespace. Still to observe: a cold start after a missed ping, and
+     that the DB sleeps when idle (Netlify DB usage page).
   10. Docs and ADRs. Done. Then `code-reviewer`.
 - Done when: the baseline works on the Netlify URL from a fresh browser
   (login, memory across chats, a correction, isolation, an allergen block),
   10 real turns stay under 22 s (record p95 here), and the DB sleeps when idle.
+- Live run 2026-10-17, 10 real turns through the Netlify proxy on gpt-6-luna:
+  min 4.6 s, median 5.2 s, **p95 7.5 s**, max 7.5 s. All passed:
+  | Check | Result |
+  |---|---|
+  | demo_alice "What should I get today?" | mild vegetarian picks from memory |
+  | "Can I get the Thai Peanut Noodle Bowl?" | refused, peanut allergy, no card |
+  | "Show me your chicken dishes" | none, vegetarian |
+  | "Something sweet and chocolatey" | lava cake with the may-contain tree nut note |
+  | demo_bob vegan, no spice; new chat | memory carried over |
+  | "not vegan anymore, just vegetarian" | vegan superseded, vegetarian active |
+  | bob on alice's conversation | 404; alice's memory unchanged |
+- Eval idea for phase 7: bob ("no spice", soft) asked for a burger and was
+  told none fit; the Plant-Based Burger (spice 1) was not even offered.
 
 ## Phase 7: Part 2, reliability and evals (about 2.5 h)
 - Eval cases per category, deterministic graders, runner, committed results.

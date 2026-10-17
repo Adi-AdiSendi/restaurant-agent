@@ -14,7 +14,7 @@ verified. Update the last two columns as phases finish.
 | R6 | Corrections and changes replace old facts (2.4) | `memory/supersede.py` | `tests/memory/test_supersede.py`, `tests/api/test_memory_flow.py`; evals: preference_update |
 | R7 | Returning users identified (2.5) | `users/`, username + PIN, signed cookie | `tests/users/test_service.py`, `tests/api/test_auth.py` |
 | R8 | Users' memories isolated (2.5) | `user_id` from session only (`api/deps.py`), queries scoped by it | `tests/api/test_memory_flow.py`, `tests/memory/test_supersede.py`; evals: isolation |
-| R9 | Deployed, usable interface (2.6) | `frontend/` on Netlify, backend on Render free (`netlify.toml`, `render.yaml`, ADR 0017) | frontend tests incl. startup gate; live checks in phase 6 |
+| R9 | Deployed, usable interface (2.6) | `frontend/` on Netlify, backend on Render free (`netlify.toml`, `render.yaml`, ADR 0017) | frontend tests incl. startup gate; live run in `docs/plan.md` phase 6 |
 
 ## Menu (section 3)
 | # | Requirement | Verified by |
@@ -37,7 +37,7 @@ verified. Update the last two columns as phases finish.
 ## Deliverables (section 6)
 | # | Deliverable | Status |
 |---|---|---|
-| D1 | Live URL, available through evaluation, test instructions | in progress: config done, live URL after the phase 6 spike; keep-awake ping; demo accounts in README |
+| D1 | Live URL, available through evaluation, test instructions | live at https://restaurant-agent.netlify.app; keep-awake ping; demo accounts in README |
 | D2 | Repo with README: local run, architecture, decisions, setup, limitations | not started |
 | D3 | No secrets committed | CI secret scan |
 | D4 | Video 8 to 12 min: baseline demo, challenge, deep dive, trade-offs, results | not started |

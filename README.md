@@ -16,6 +16,8 @@ cd frontend && npm install && npm run dev
 ```
 
 ## Deployed
+Live: https://restaurant-agent.netlify.app (log in with a demo account below).
+
 - Netlify serves the UI and proxies `/api/*` to the FastAPI backend on Render
   free; the database is Netlify DB (ADR 0017). Config: `netlify.toml`, `render.yaml`.
 - Netlify deploys on every push to `main`. Render deploys when files under

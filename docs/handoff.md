@@ -6,7 +6,7 @@ Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 | Phase | State |
 |---|---|
 | 0 to 5 | done, reviewed, committed |
-| 6 Deploy | code, config and docs done and reviewed; **live spike not run** |
+| 6 Deploy | **live** at https://restaurant-agent.netlify.app; two checks left |
 | 7 Evals (Part 2) | not started |
 | 8 Submission | not started |
 
@@ -22,14 +22,14 @@ Commits are allowed now (one logical change each); see ADR 0017 for the deploy.
 - Demo users reset on every Render build: `demo_alice` / 1234, `demo_bob` / 5678.
 
 ## Next steps
-1. Done: Netlify project `jovial-gelato-6307c0`, Netlify DB (us-east-2,
-   migrated and seeded; string in `.env` as `NETLIFY_DB_URL`). Still to do:
-   the user creates the Render Blueprint (Ohio; paste `DATABASE_URL`,
-   `OPENAI_API_KEY`), then fix the Render hostname in `netlify.toml` if needed.
-2. Run the spike checklist in `docs/plan.md` phase 6 step 9. If Netlify DB is
-   not reachable from Render, switch to Neon free and record it in ADR 0017.
-3. Live checks from a fresh browser; time 10 turns, record p95 in plan.md.
-4. Mark phase 6 done in plan.md and requirements D1. Then phase 7.
+1. Done: Netlify project `restaurant-agent` (was `jovial-gelato-6307c0`)
+   with Netlify DB (us-east-2); Render Blueprint `restaurant-agent-api` in Ohio.
+   Live run passed, p95 7.5 s (see plan.md phase 6). Local `.env` has the DB
+   string as `NETLIFY_DB_URL`; scripts that touch it must check the host.
+2. Left: observe a cold start after a missed ping, and that the DB sleeps
+   when idle (Netlify DB usage page). The user should delete the backend
+   secrets they copied into Netlify env vars (only Render needs them).
+3. Then mark phase 6 done in plan.md and start phase 7.
 
 ## Run locally
 - `docker compose up -d db` (Docker Desktop must be running)
