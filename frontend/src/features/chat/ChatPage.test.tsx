@@ -3,6 +3,7 @@ import { describe, expect, test, vi } from 'vitest'
 
 import type { ChatReply } from '../../api/types'
 import { mockFetch } from '../../test/fetchMock'
+import { restaurants } from '../../test/restaurants'
 import ChatPage from './ChatPage'
 
 const reply: ChatReply = { reply: 'Try the sorbet.', items: [] }
@@ -16,15 +17,18 @@ function renderPage(onLogout = vi.fn()) {
 
 async function say(text: string) {
   const input = await screen.findByLabelText('Message')
-  await vi.waitFor(() => expect(input).toBeEnabled())
   fireEvent.change(input, { target: { value: text } })
-  fireEvent.click(screen.getByRole('button', { name: 'Send' }))
+  // Send stays disabled until the conversation has started.
+  const sendButton = screen.getByRole('button', { name: 'Send' })
+  await vi.waitFor(() => expect(sendButton).toBeEnabled())
+  fireEvent.click(sendButton)
 }
 
 describe('ChatPage', () => {
   test('a 503 shows Retry, and Retry resends the same message', async () => {
     const fetchMock = mockFetch({
       ...prefs,
+      ...restaurants,
       ...started,
       'POST /api/chat': [
         { status: 503, body: { detail: 'The assistant is unavailable.' } },
@@ -47,6 +51,7 @@ describe('ChatPage', () => {
   test('errors that a resend cannot fix show no Retry', async () => {
     mockFetch({
       ...prefs,
+      ...restaurants,
       ...started,
       'POST /api/chat': { status: 404, body: { detail: 'Conversation not found.' } },
     })
@@ -59,6 +64,7 @@ describe('ChatPage', () => {
   test('a failed new chat can be retried', async () => {
     mockFetch({
       ...prefs,
+      ...restaurants,
       'POST /api/conversations': [
         { status: 503, body: { detail: 'Database is busy.' } },
         { status: 201, body: { id: 2 } },
@@ -74,6 +80,7 @@ describe('ChatPage', () => {
   test('a lost session during a chat goes back to login', async () => {
     mockFetch({
       ...prefs,
+      ...restaurants,
       ...started,
       'POST /api/chat': { status: 401, body: { detail: 'Please log in.' } },
     })
@@ -83,7 +90,7 @@ describe('ChatPage', () => {
   })
 
   test('New chat is disabled while a reply is pending', async () => {
-    mockFetch({ ...prefs, ...started })
+    mockFetch({ ...prefs, ...restaurants, ...started })
     const pending = new Promise<Response>(() => undefined)
     const base = globalThis.fetch
     vi.stubGlobal(

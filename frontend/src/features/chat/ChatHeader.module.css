@@ -77,3 +77,11 @@
     display: none;
   }
 }
+
+.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 8px;
+  border-radius: 50%;
+}

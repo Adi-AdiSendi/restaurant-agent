@@ -41,7 +41,7 @@ function LoginForm({ onLoggedIn }: Props) {
     <main className={styles.page}>
       <form className={styles.card} onSubmit={(e) => void submit(e)} noValidate>
         <img className={styles.logo} src="/foodics-logo.svg" alt="Foodics" />
-        <h1 className={styles.title}>Corner Table</h1>
+        <h1 className={styles.title}>Foodics Order Assistant</h1>
         <p className={styles.subtitle}>Your ordering assistant that remembers what you like.</p>
         <label className={styles.label}>
           Username

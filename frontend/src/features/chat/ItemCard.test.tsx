@@ -16,6 +16,8 @@ const cake: Card = {
   ingredients: ['dark chocolate', 'egg'],
   allergens: ['gluten', 'dairy', 'egg'],
   may_contain: ['tree_nut'],
+  removable: [],
+  option_groups: [],
   may_contain_warnings: [],
 }
 

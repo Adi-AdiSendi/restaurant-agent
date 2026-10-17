@@ -4,6 +4,7 @@ import { afterEach, expect, test, vi } from 'vitest'
 import App from './App'
 import { GIVE_UP_MS, RETRY_MS, SLOW_MS } from './features/startup/useServerReady'
 import { mockFetch } from './test/fetchMock'
+import { restaurants } from './test/restaurants'
 
 const UP = { body: { status: 'ok' } }
 const LOGGED_OUT = { status: 401, body: { detail: 'Please log in.' } }
@@ -15,7 +16,9 @@ afterEach(() => {
 test('shows the login form when there is no session', async () => {
   mockFetch({ 'GET /api/health': UP, 'GET /api/auth/me': LOGGED_OUT })
   render(<App />)
-  expect(await screen.findByRole('heading', { name: 'Corner Table' })).toBeInTheDocument()
+  expect(
+    await screen.findByRole('heading', { name: 'Foodics Order Assistant' }),
+  ).toBeInTheDocument()
   expect(screen.getByRole('button', { name: 'Continue' })).toBeInTheDocument()
 })
 
@@ -24,6 +27,7 @@ test('a returning session opens the chat with a greeting and the memory panel', 
     'GET /api/health': UP,
     'GET /api/auth/me': { body: { username: 'sara' } },
     'POST /api/conversations': { status: 201, body: { id: 5 } },
+    ...restaurants,
     'GET /api/preferences': { body: [] },
   })
   render(<App />)

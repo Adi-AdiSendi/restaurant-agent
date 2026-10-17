@@ -1,5 +1,6 @@
 import type { Allergen, Card } from '../../api/types'
 import styles from './ItemCard.module.css'
+import ItemOptions from './ItemOptions'
 
 const SPICE = ['Not spicy', 'Mild', 'Medium', 'Hot']
 
@@ -18,7 +19,10 @@ function ItemCard({ item }: Props) {
     <article className={styles.card} aria-label={item.name}>
       <header className={styles.header}>
         <h3 className={styles.name}>{item.name}</h3>
-        <span className={styles.price}>{item.price_sar} SAR</span>
+        <span className={styles.price}>
+          {item.option_groups.length > 0 && 'from '}
+          {item.price_sar} SAR
+        </span>
       </header>
       <p className={styles.description}>{item.description}</p>
       <div className={styles.badges}>
@@ -29,6 +33,7 @@ function ItemCard({ item }: Props) {
         </span>
       </div>
       <p className={styles.ingredients}>{item.ingredients.join(', ')}</p>
+      <ItemOptions groups={item.option_groups} removable={item.removable} />
       <div className={styles.allergens}>
         <span className={styles.allergenTitle}>Allergens:</span>
         {item.allergens.length === 0 ? (

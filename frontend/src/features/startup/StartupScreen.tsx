@@ -10,7 +10,7 @@ function StartupScreen({ down, onRetry }: Props) {
     <main className={styles.page}>
       <section className={styles.card} aria-live="polite">
         <img className={styles.logo} src="/foodics-logo.svg" alt="Foodics" />
-        <h1 className={styles.title}>Corner Table</h1>
+        <h1 className={styles.title}>Foodics Order Assistant</h1>
         {down ? (
           <>
             <p className={styles.error} role="alert">
