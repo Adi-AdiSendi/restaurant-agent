@@ -4,11 +4,15 @@ Everything runs in one transaction. If any step fails nothing is committed, so
 a retry does not duplicate messages or memory. The user's row is locked for the
 turn, so a double-submit waits instead of racing on the same preferences.
 Trade-off: the transaction stays open across the LLM calls (see README).
+A turn that passes its deadline is rolled back the same way.
 """
+
+import asyncio
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.agent.context import build_input
+from app.agent.errors import TurnTimeoutError
 from app.agent.llm_client import AgentLLM
 from app.agent.loop import run_turn
 from app.agent.schemas import AgentReply
@@ -24,10 +28,19 @@ class ConversationNotFoundError(Exception):
 
 
 async def handle_message(
-    llm: AgentLLM, session: AsyncSession, user_id: int, conversation_id: int, text: str
+    llm: AgentLLM,
+    session: AsyncSession,
+    user_id: int,
+    conversation_id: int,
+    text: str,
+    deadline_seconds: float,
 ) -> AgentReply:
     try:
-        reply = await _turn(llm, session, user_id, conversation_id, text)
+        async with asyncio.timeout(deadline_seconds):
+            reply = await _turn(llm, session, user_id, conversation_id, text)
+    except TimeoutError as exc:
+        await session.rollback()
+        raise TurnTimeoutError from exc
     except Exception:
         await session.rollback()
         raise

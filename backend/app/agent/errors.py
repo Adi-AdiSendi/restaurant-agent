@@ -7,3 +7,7 @@ class AgentLoopError(Exception):
 
 class AgentAnswerError(Exception):
     """The model's final answer failed validation twice."""
+
+
+class TurnTimeoutError(Exception):
+    """The turn ran past its deadline (kept under the Netlify proxy's 26 s limit)."""

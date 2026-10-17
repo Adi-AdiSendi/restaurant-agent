@@ -38,6 +38,8 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     openai_model: str = "gpt-6-luna"
     session_secret: str = ""
+    # Seconds for one chat turn. Must stay under the Netlify proxy's fixed 26 s.
+    turn_deadline_seconds: float = 22.0
     frontend_dist: Path = REPO_ROOT / "frontend" / "dist"
 
     @field_validator("database_url")

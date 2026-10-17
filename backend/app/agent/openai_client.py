@@ -78,7 +78,7 @@ def _unavailable(exc: openai.APIError) -> LLMUnavailableError:
 def openai_client_from_settings(settings: Settings) -> OpenAIResponsesClient:
     if not settings.openai_api_key:
         raise LLMUnavailableError("OPENAI_API_KEY is not set")
-    sdk = AsyncOpenAI(api_key=settings.openai_api_key, timeout=30.0, max_retries=2)
+    sdk = AsyncOpenAI(api_key=settings.openai_api_key, timeout=15.0, max_retries=1)
     return OpenAIResponsesClient(sdk, settings.openai_model)
 
 

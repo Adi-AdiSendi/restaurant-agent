@@ -1,12 +1,16 @@
 import httpx2
+import pytest
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.agent.llm_client import LLMUnavailableError, ModelTurn
 from app.agent.tool_rounds import MAX_TOOL_ROUNDS
+from app.config import get_settings
+from app.memory.models import Message
 from app.menu.queries import search_items
 from app.menu.schemas import MenuFilter
-from tests.agent.fake_llm import EMPTY_SEARCH, FakeLLM, answer_turn, tool_turn
-from tests.api.conftest import login, new_conversation
+from tests.agent.fake_llm import EMPTY_SEARCH, FakeLLM, answer_turn, extraction, op, tool_turn
+from tests.api.conftest import active, login, new_conversation
 
 
 async def chat(http: httpx2.AsyncClient, conversation_id: int, text: str) -> httpx2.Response:
@@ -62,3 +66,20 @@ async def test_bad_body_is_422(client: httpx2.AsyncClient) -> None:
     conversation = await new_conversation(client)
     assert (await chat(client, conversation, "")).status_code == 422
     assert (await chat(client, conversation, "x" * 2001)).status_code == 422
+
+
+async def test_slow_turn_is_504_and_saves_nothing(
+    seeded: AsyncSession, llm: FakeLLM, client: httpx2.AsyncClient, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(get_settings(), "turn_deadline_seconds", 0.05)
+    await login(client, "sara")
+    conversation = await new_conversation(client)
+    llm.extractions.append(extraction(op("add", "allergy", "egg")))
+    llm.respond_delay = 5.0
+    llm.turns.append(answer_turn("too late", []))
+    response = await chat(client, conversation, "hi")
+    assert response.status_code == 504
+    assert response.json() == {"detail": "The assistant took too long. Please try again."}
+    count = await seeded.scalar(select(func.count()).where(Message.conversation_id == conversation))
+    assert count == 0
+    assert await active(client) == []
