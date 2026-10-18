@@ -10,6 +10,16 @@ class Kind(StrEnum):
     LIKE = "like"
     BUDGET = "budget"
     SPICE = "spice"
+    DAY_DISLIKE = "day_dislike"
+    """A food avoided on one weekday: "friday: meat"."""
+    CALORIES = "calories"
+    """A daily calorie goal in kcal, e.g. "1800" (soft, from estimates)."""
+
+
+WEEKDAYS = ("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday")
+DAY_DISLIKE_PATTERN = rf"^({'|'.join(WEEKDAYS)}): [a-z][a-z ,-]{{0,48}}$"
+CALORIES_PATTERN = r"^([89][0-9]{2}|[1-5][0-9]{3}|6000)$"
+"""A daily goal from 800 to 6000 kcal."""
 
 
 class Diet(StrEnum):
@@ -35,7 +45,7 @@ class Status(StrEnum):
 HARD_KINDS = frozenset({Kind.ALLERGY, Kind.DIET})
 """Enforced in code by `safety/` (phase 4). Everything else is soft."""
 
-SINGLE_VALUED_KINDS = frozenset({Kind.DIET, Kind.BUDGET, Kind.SPICE})
+SINGLE_VALUED_KINDS = frozenset({Kind.DIET, Kind.BUDGET, Kind.SPICE, Kind.CALORIES})
 """A user has at most one active row of each of these kinds."""
 
 OPPOSITE_KINDS = {Kind.LIKE: Kind.DISLIKE, Kind.DISLIKE: Kind.LIKE}

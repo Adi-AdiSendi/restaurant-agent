@@ -16,6 +16,9 @@ Kinds and values:
 - spice: how much heat they enjoy: {", ".join(s.value for s in Spice)}.
 - budget: the most they want to pay per item, a number in SAR, e.g. "50".
 - like / dislike: a short food, ingredient or dish, e.g. "mushrooms", "salmon".
+- day_dislike: a food avoided on one weekday, written "<weekday>: <food>", e.g. \
+"friday: meat" (one operation per weekday).
+- calories: the guest's own daily calorie goal in kcal, e.g. "1800".
 
 Operations:
 - add: a new fact. target_id null.
@@ -37,6 +40,9 @@ Examples (profile shown as id: kind = value):
 - profile 2: budget = 40.00; "I can spend up to 70 today and in general" -> supersede 2 \
 with budget 70
 - "Is the wagyu burger spicy?" -> []
+- "I don't eat meat on Fridays" -> add day_dislike "friday: meat"
+- "I'm keeping under 1800 calories a day" -> add calories 1800
+- "My sister is counting calories" -> []
 - "Any allergies?" was asked, guest answers "peanuts" -> add allergy peanut"""
 
 EXTRACTION_FORMAT: dict[str, object] = {

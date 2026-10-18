@@ -16,6 +16,7 @@ from app.agent.prompt import system_prompt
 from app.memory.models import Message
 from app.memory.preference import Preference
 from app.memory.profile import dislikes, hard_constraints
+from app.menu import clock
 from app.menu.queries import list_restaurants
 from app.menu.restaurant import Restaurant
 from app.orders.cart import get_cart
@@ -54,4 +55,5 @@ async def prepare_turn(
     cart_note = cart_block(cart, restaurant.slug)
     items, seen = build_input(profile, history, update_note, cart_note)
     others = [r for r in await list_restaurants(session) if r.id != restaurant.id]
-    return TurnSetup(context, items, seen, system_prompt(restaurant, others))
+    instructions = system_prompt(restaurant, others, clock.weekday())
+    return TurnSetup(context, items, seen, instructions)

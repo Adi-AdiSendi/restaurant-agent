@@ -1,11 +1,20 @@
 """Memory operations proposed by extraction, validated before they touch the DB."""
 
+import re
 from decimal import Decimal, InvalidOperation
 from typing import Literal, Self
 
 from pydantic import BaseModel, Field, field_validator, model_validator
 
-from app.memory.vocabulary import OPPOSITE_KINDS, SINGLE_VALUED_KINDS, Diet, Kind, Spice
+from app.memory.vocabulary import (
+    DAY_DISLIKE_PATTERN,
+    OPPOSITE_KINDS,
+    SINGLE_VALUED_KINDS,
+    WEEKDAYS,
+    Diet,
+    Kind,
+    Spice,
+)
 from app.menu.allergens import Allergen
 
 _VOCAB: dict[Kind, set[str]] = {
@@ -37,6 +46,10 @@ class Operation(BaseModel):
             raise ValueError(f"{self.kind} value must be one of {sorted(allowed)}")
         if self.kind == Kind.BUDGET:
             self.value = _budget(self.value)
+        if self.kind == Kind.CALORIES:
+            self.value = _calories(self.value)
+        if self.kind == Kind.DAY_DISLIKE:
+            self.value = _day_rule(self.value)
         return self
 
     def matches_target(self, kind: str, value: str) -> bool:
@@ -61,3 +74,22 @@ def _budget(value: str) -> str:
     if rounded <= 0 or rounded >= 10_000:
         raise ValueError("budget must be between 0 and 10000 SAR")
     return str(rounded)
+
+
+def _calories(value: str) -> str:
+    digits = value.removesuffix("kcal").removesuffix("calories").strip().replace(",", "")
+    if not digits.isdigit() or not 800 <= int(digits) <= 6000:
+        raise ValueError("calories must be a daily goal from 800 to 6000 kcal")
+    return str(int(digits))
+
+
+def _day_rule(value: str) -> str:
+    """ "fridays: meat" or "on friday: meat" -> "friday: meat"; the weekday must be real."""
+    day, _, food = value.partition(":")
+    day = day.removeprefix("on ").strip().removesuffix("s")
+    if day not in WEEKDAYS or not food.strip():
+        raise ValueError('day_dislike must be "<weekday>: <food>", e.g. "friday: meat"')
+    rule = f"{day}: {food.strip()}"
+    if not re.fullmatch(DAY_DISLIKE_PATTERN, rule):
+        raise ValueError("day_dislike food must be a few plain words")
+    return rule

@@ -7,7 +7,16 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from app.db.base import Base
 from app.memory.models import created_at_column
-from app.memory.vocabulary import HARD_KINDS, SINGLE_VALUED_KINDS, Diet, Kind, Spice, Status
+from app.memory.vocabulary import (
+    CALORIES_PATTERN,
+    DAY_DISLIKE_PATTERN,
+    HARD_KINDS,
+    SINGLE_VALUED_KINDS,
+    Diet,
+    Kind,
+    Spice,
+    Status,
+)
 from app.menu.allergens import Allergen
 
 
@@ -34,6 +43,13 @@ class Preference(Base):
         CheckConstraint(
             "kind <> 'budget' OR (value ~ '^[0-9]+(\\.[0-9]{1,2})?$' AND value !~ '^[0.]+$')",
             name="pref_budget_number",
+        ),
+        CheckConstraint(
+            f"kind <> 'day_dislike' OR value ~ '{DAY_DISLIKE_PATTERN}'", name="pref_day_format"
+        ),
+        # 800 to 6000 as a pattern: a cast here could run on other kinds' values.
+        CheckConstraint(
+            f"kind <> 'calories' OR value ~ '{CALORIES_PATTERN}'", name="pref_calories"
         ),
         Index(
             "one_active_single_valued",

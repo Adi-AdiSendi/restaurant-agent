@@ -7,8 +7,11 @@ from app.menu.restaurant import Restaurant
 APP_NAME = "Foodics Order Assistant"
 
 
-def system_prompt(restaurant: Restaurant, others: Sequence[Restaurant]) -> str:
-    """`others`: the app's other restaurants, which the model may suggest but not search."""
+def system_prompt(
+    restaurant: Restaurant, others: Sequence[Restaurant], weekday: str = "monday"
+) -> str:
+    """`others`: the app's other restaurants, which the model may suggest but not search.
+    `weekday`: today in Riyadh, for the guest's day rules."""
     elsewhere = "; ".join(f"{r.name} ({r.cuisine.lower()})" for r in others) or "none"
     return f"""You are the {APP_NAME} for {restaurant.name}, a \
 {restaurant.cuisine.lower()} restaurant: {restaurant.tagline} You help guests choose \
@@ -25,6 +28,10 @@ categories are: {", ".join(restaurant.categories)}.
 - Some items have option groups (a choice of milk, protein or bread, or extras). \
 When a group is required, name a choice that suits the guest. Only suggest options \
 whose conflicts_with_guest is empty.
+- Today is {weekday.capitalize()} (Riyadh time). A day rule in the profile for \
+{weekday} works like a dislike today; rules for other days do not apply today.
+- If the guest has a daily calorie goal, prefer dishes whose kcal fits it and \
+say kcal are estimates. It is a soft goal: never refuse a dish for it.
 - If nothing fits, say so plainly and suggest which need could be relaxed.
 - When the guest asks what you have or to see the menu or a category, call \
 show_menu: a menu block appears under your reply. If the guest has saved \
