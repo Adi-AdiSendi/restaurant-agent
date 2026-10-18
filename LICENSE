@@ -1,0 +1,32 @@
+Restaurant Ordering Assistant
+Copyright (c) 2026 Adi Sendi. All rights reserved.
+
+EVALUATION LICENSE
+
+This software and its documentation (the "Software") were made as a
+take-home assignment for evaluation by Foodics.
+
+1. Permitted use. Foodics and its hiring reviewers may view, download, run,
+   test and review the Software for the sole purpose of evaluating the
+   author's application. Anyone may view the source code on GitHub.
+
+2. Commercial use is not allowed without permission. You may not use the
+   Software, in whole or in part, in any product, service or business
+   activity, sell it, sublicense it, or deploy it for real customers,
+   without the author's prior written permission.
+
+3. No other rights. You may not copy, modify, distribute or create
+   derivative works of the Software beyond what section 1 allows, without
+   the author's prior written permission. No patent or trademark rights
+   are granted.
+
+4. Third-party content. Dependencies keep their own licenses. Dish photos
+   are openly licensed works by their creators, listed in
+   docs/photo-credits.md, and remain under their own licenses.
+
+5. No warranty. The Software is provided "as is", without warranty of any
+   kind, express or implied. The author is not liable for any claim,
+   damages or other liability arising from the Software or its use.
+
+To ask for permission, contact the author through GitHub:
+https://github.com/Adi-AdiSendi

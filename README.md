@@ -289,3 +289,9 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
 | `backend/tests/` | 800+ tests, real Postgres, fake LLM |
 | `frontend/` | React + Vite + TypeScript UI, Netlify keep-awake function |
 | `docs/` | [architecture](docs/architecture.md), [decisions](docs/decisions/README.md), [eval report](docs/eval-report.md), [challenges we faced](docs/challenges.md), [requirements trace](docs/requirements.md), [plan](docs/plan.md) |
+
+## License
+
+Made as a take-home assignment for evaluation by Foodics. Foodics may run
+and review it for that purpose. Commercial use, redistribution or derived
+works need the author's written permission. See [LICENSE](LICENSE).
