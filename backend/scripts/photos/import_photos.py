@@ -63,10 +63,11 @@ def main() -> None:
             updated = with_photo(record, photo)
             record.clear()
             record.update(updated)
-        path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        text = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+        path.write_text(text, encoding="utf-8", newline="\n")
     for stale in set(PUBLIC.rglob("*.webp")) - written:
         stale.unlink()
-    CREDITS.write_text(HEADER + "\n".join(credits) + "\n", encoding="utf-8")
+    CREDITS.write_text(HEADER + "\n".join(credits) + "\n", encoding="utf-8", newline="\n")
     print(f"{len(credits)} photos written; credits in {CREDITS}")
 
 

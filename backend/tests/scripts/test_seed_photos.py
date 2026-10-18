@@ -18,7 +18,8 @@ async def test_the_seed_stores_dish_and_cover_photos(session: AsyncSession) -> N
             "photo": "corner-table/cover",
             "items": [
                 first.model_copy(update={"photo": "corner-table/fries"}),
-                *CORNER_TABLE.items[1:],
+                CORNER_TABLE.items[1].model_copy(update={"photo": None}),
+                *CORNER_TABLE.items[2:],
             ],
         }
     )

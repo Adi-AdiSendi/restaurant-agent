@@ -44,7 +44,7 @@ def load() -> dict[str, dict[str, object]]:
 def save(cache: dict[str, dict[str, object]]) -> None:
     CANDIDATES.parent.mkdir(parents=True, exist_ok=True)
     text = json.dumps(cache, indent=2, ensure_ascii=False, sort_keys=True)
-    CANDIDATES.write_text(text + "\n", encoding="utf-8")
+    CANDIDATES.write_text(text + "\n", encoding="utf-8", newline="\n")
 
 
 def _thin(entry: dict[str, object] | None) -> list[Candidate]:
