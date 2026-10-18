@@ -5,7 +5,8 @@ Runs one chat turn: the model, its tool calls, and a structured final answer.
 - `chat_turn.py`: entry point for the API, `handle_message(...)`. Loads the
   conversation (it must belong to the user) and its restaurant, locks the
   user row, saves the message, runs memory extraction, builds the model input
-  and the `ToolContext`, runs the loop, saves the reply.
+  and the `ToolContext` (`turn_setup.py`), runs the loop, saves the reply and
+  returns a `ChatReply` (`turn_reply.py`).
   One transaction; any failure rolls back the whole turn. The turn has a
   deadline (`TURN_DEADLINE_SECONDS`, 22 s, under the Netlify proxy's 26 s);
   past it the turn is rolled back and `TurnTimeoutError` becomes a 504.
@@ -37,8 +38,17 @@ Runs one chat turn: the model, its tool calls, and a structured final answer.
   including `complete_json` for `memory/extract.py`. Tests use
   `tests/agent/fake_llm.py`.
 - `tool_dispatch.py`: tool specs and name-to-handler dispatch.
+- `turn_setup.py`: everything the model gets for a turn: the profile block,
+  the cart at the start of the turn (`cart_block.py`, with each line's id),
+  the history, the `ToolContext` and the system prompt.
+- `turn_reply.py`: `ChatReply` = the reply and cards, plus action cards built
+  only from successful cart tool results (`added`, `updated`, `removed`, and
+  one `checkout` card) and the cart as it is after the turn. Cart writes are
+  part of the turn's transaction, so a failed or timed-out turn undoes them.
 - `prompt.py`: `system_prompt(restaurant, others)`, built each turn for the
   conversation's restaurant: its name, cuisine and categories, how to handle
-  options, and the other restaurants (suggest by name, never search).
+  options, ordering (change the cart only when asked, explain a refused
+  add, propose checkout but never place an order), and the other restaurants
+  (suggest by name, never search).
 
-Depends on: `tools`, `memory`, `safety`, `users`, `menu`. Used by: `api/chat.py`.
+Depends on: `tools`, `memory`, `safety`, `orders`, `users`, `menu`. Used by: `api/chat.py`.

@@ -2,43 +2,10 @@
 // locally, and Netlify proxies /api to the backend when deployed.
 import type { AddLine, Cart, Fulfilment, Order, OrderSummary } from './cartTypes'
 import type { GuestMenu, Restaurant } from './menuTypes'
+import { ApiError, detailMessage } from './errors'
 import type { ChatReply, Health, LoginResponse, Me, NewConversation, Preference } from './types'
 
-/** A cart or order error: `code` says what the UI should ask (see app/api/order_errors.py). */
-export interface ErrorDetail {
-  code: string
-  message: string
-  reasons?: string[]
-  restaurant?: string
-}
-
-export class ApiError extends Error {
-  readonly status: number
-  readonly detail: ErrorDetail | null
-
-  constructor(status: number, message: string, detail: ErrorDetail | null = null) {
-    super(message)
-    this.name = 'ApiError'
-    this.status = status
-    this.detail = detail
-  }
-}
-
-function structured(detail: unknown): ErrorDetail | null {
-  if (typeof detail !== 'object' || detail === null || Array.isArray(detail)) return null
-  return 'code' in detail && 'message' in detail ? (detail as ErrorDetail) : null
-}
-
-function detailMessage(body: unknown, fallback: string): [string, ErrorDetail | null] {
-  if (typeof body === 'object' && body !== null && 'detail' in body) {
-    const { detail } = body
-    if (typeof detail === 'string') return [detail, null]
-    if (Array.isArray(detail)) return ['Please check what you entered.', null]
-    const parsed = structured(detail)
-    if (parsed) return [parsed.message, parsed]
-  }
-  return [fallback, null]
-}
+export { ApiError, type ErrorDetail } from './errors'
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
   let response: Response
@@ -90,12 +57,14 @@ export const api = {
   removeCartLine: (lineId: number) => remove<Cart>(`/cart/lines/${lineId}`),
   clearCart: () => remove<Cart>('/cart'),
   /** `expectedTotal`: the total the guest saw; the server refuses a cart that changed since. */
-  placeOrder: (fulfilment: Fulfilment, acceptedReasons: string[], expectedTotal: string) =>
-    post<Order>('/orders', {
+  placeOrder: (fulfilment: Fulfilment, acceptedReasons: string[], expectedTotal: string) => {
+    const body = {
       fulfilment,
       accepted_reasons: acceptedReasons,
       expected_total_sar: expectedTotal,
-    }),
+    }
+    return post<Order>('/orders', body)
+  },
   orders: () => request<OrderSummary[]>('/orders'),
   order: (orderId: number) => request<Order>(`/orders/${orderId}`),
 }

@@ -37,7 +37,7 @@ async def test_a_conflict_is_refused_and_the_turn_goes_on(seeded: AsyncSession) 
     assert isinstance(refused, ToolError) and refused.error_category == "conflict"
     assert "dairy" in refused.message and "Never offer to add it anyway" in refused.message
     assert not (await get_cart(seeded, user, DAIRY)).lines
-    # The refused write rolled back only itself: the session still works.
+    # The refusal leaves the session usable, so the turn can go on.
     added = await call(add_to_cart, context, **await latte_args(seeded))
     assert isinstance(added, CartChange) and added.cart.item_count == 1
 

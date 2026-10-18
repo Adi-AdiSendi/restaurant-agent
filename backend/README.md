@@ -4,7 +4,7 @@ FastAPI app that serves the API under `/api` and the built frontend at `/`.
 
 - Entry point: `app/main.py` (`create_app`).
 - Settings: `app/config.py`, read from env or the repo-root `.env`.
-- Layers, top to bottom: `api -> agent -> tools | memory | safety -> menu | users -> db -> config`.
+- Layers, top to bottom: `api -> agent -> tools | memory | safety -> orders -> menu | users -> db -> config`.
   Lower layers never import higher ones; `uv run lint-imports` enforces it.
 - Migrations: `migrations/` (Alembic, async). Tests: `tests/`, mirroring `app/`.
 - New ORM models live in their feature folder and must be imported in

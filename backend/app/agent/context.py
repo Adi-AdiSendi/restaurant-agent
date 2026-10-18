@@ -69,13 +69,19 @@ def memory_update_note(before: Sequence[Preference], after: Sequence[Preference]
 
 
 def build_input(
-    profile: Sequence[Preference], history: Sequence[Message], update_note: str | None = None
+    profile: Sequence[Preference],
+    history: Sequence[Message],
+    update_note: str | None = None,
+    cart_note: str | None = None,
 ) -> tuple[list[InputItem], set[int]]:
     """Returns the input items and the item IDs already recommended in this conversation.
 
+    `cart_note` (the cart now) follows the profile block, as standing context.
     `update_note` (see memory_update_note) goes last, right after the guest's message.
     """
     items: list[InputItem] = [{"role": "developer", "content": profile_block(profile)}]
+    if cart_note:
+        items.append({"role": "developer", "content": cart_note})
     seen: set[int] = set()
     for message in history:
         items.append({"role": message.role, "content": message.content})

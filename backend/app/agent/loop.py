@@ -90,5 +90,6 @@ def _blocked_note(blocked: list[Blocked]) -> str:
     return (
         "These recommendations were removed because they break the guest's saved "
         f"allergies or diet: {removed}. Do not recommend them. Recommend only items "
-        "that fit, or say plainly that nothing fits. Return the corrected JSON answer."
+        "that fit, or say plainly that nothing fits. Cart changes already made are kept; "
+        "do not repeat them. Return the corrected JSON answer."
     )

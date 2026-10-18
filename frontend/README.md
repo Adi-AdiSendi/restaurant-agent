@@ -6,8 +6,8 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
 
 - Entry point: `src/main.tsx`; `src/App.tsx` waits for the server, checks the
   session and shows login or chat.
-- `src/api/`: the only code that calls the backend (`client.ts`; a cart or
-  order error keeps its `detail.code`), and payload types that mirror the
+- `src/api/`: the only code that calls the backend (`client.ts`; `errors.ts`
+  keeps a cart or order error's `detail.code`), and payload types that mirror the
   Pydantic models (`types.ts`, `menuTypes.ts`, `cartTypes.ts`).
 - `src/features/startup/`: polls `/api/health` while the free backend wakes
   up ("Starting the server"), gives up after 2 minutes with a retry button.
@@ -28,8 +28,10 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
 - `src/features/cart/`: `CartProvider` holds the server's cart (every cart
   call returns the whole cart); `CartButton`, `CartDrawer`, `CartLineRow`.
 - `src/features/orders/`: `CheckoutPage` (pickup or dine-in, pay at the
-  counter, asks again on a conflict), `OrdersPage`, `OrderPage` (keys
-  `OrderView` by the order id; it reloads the status until ready).
+  counter, asks again on a conflict) and the chat's `CheckoutCard` share
+  `usePlaceOrder`; only the guest's button places an order. `OrdersPage`,
+  `OrderPage` (keys `OrderView` by the order id; it reloads the status until
+  ready).
 - `src/features/chat/`: `ChatPanel` (New chat, messages, item cards,
   composer, suggestions). State is a pure reducer (`chatReducer.ts`) driven by
   `useChat.ts`; a chat starts at the URL's restaurant, and another restaurant
@@ -37,10 +39,13 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
   backend item data: allergens are always visible, may-contain warnings are
   highlighted, and `ItemOptions` lists every option group with each option's
   allergens, striking through options that break the guest's saved
-  allergies or diet.
+  allergies or diet. A reply's `actions` render as `ActionCard`s ("Added 2 ×
+  Latte", what was left out for the guest's dislikes) or a `CheckoutCard`,
+  all from server data. `MenuPage` sets the cart from each reply's `cart`.
 - `src/features/memory/`: "What I remember about you", from `/api/preferences`,
   refreshed after each reply. Old facts are struck through. Pages (`menu`)
-  compose features; features do not import each other otherwise.
+  compose features. A few pieces cross over: the cart context, the chat's
+  `ItemCard` on the menu, and the orders `CheckoutCard` in the chat.
 - `netlify/functions/keep-awake.mts`: Netlify scheduled function that pings
   the backend's `/api/health` on Render directly every 10 minutes so the free
   backend stays awake. A test keeps its URL in sync with `../netlify.toml`.

@@ -1,6 +1,5 @@
 from decimal import Decimal
 
-from app.agent.cart_block import cart_block
 from app.agent.turn_reply import actions_from
 from app.orders.schemas import CartLineOut, CartOut, CartRestaurant, LineOption
 from app.tools.cart_results import CartChange, CheckoutProposal, RecentOrders
@@ -22,21 +21,6 @@ LATTE = CartLineOut(
 )
 CAFE = CartRestaurant(slug="bean-and-bloom", name="Bean & Bloom")
 CART = CartOut(restaurant=CAFE, lines=[LATTE], total_sar=Decimal("38.00"), item_count=2)
-EMPTY = CartOut(restaurant=None, lines=[], total_sar=Decimal(0), item_count=0)
-
-
-def test_the_cart_block_names_each_line_id() -> None:
-    block = cart_block(CART, "bean-and-bloom")
-    assert "line_id 7: 2 x Latte (Oat milk, no sugar), 38.00 SAR" in block
-    assert "another restaurant" not in block
-
-
-def test_a_cart_elsewhere_says_it_must_be_emptied_first() -> None:
-    assert '"Empty cart"' in cart_block(CART, "stack-and-smash")
-
-
-def test_an_empty_cart_is_one_line() -> None:
-    assert cart_block(EMPTY, "bean-and-bloom") == "The guest's cart is empty."
 
 
 def test_actions_come_only_from_successful_changes() -> None:

@@ -26,8 +26,8 @@ of 1 or more needs its choices. Ask the guest when a required choice is not clea
 usually [].
 Example: {"item_id": 41, "quantity": 1, "option_ids": [12, 15], "removed": [], \
 "keep_ingredients": []}
-The guest's dislikes are left out automatically where the dish allows it; the result \
-lists them in left_out_for_dislikes, and you must tell the guest.
+A removable ingredient the guest dislikes is left out and listed in left_out_for_dislikes: \
+tell the guest. This does not make disliked dishes fine to recommend.
 A choice that breaks their allergies or diet is refused (error_category "conflict"): \
 explain why and never offer to add it anyway.
 Do NOT use it to place an order, or for dishes of another restaurant."""

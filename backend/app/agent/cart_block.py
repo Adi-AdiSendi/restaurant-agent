@@ -14,6 +14,8 @@ def _line(line: CartLineOut) -> str:
         text += f" ({', '.join(details)})"
     if line.line_total_sar is not None:
         text += f", {line.line_total_sar} SAR"
+    if line.conflicts_with_guest:
+        text += f". Not suitable for the guest: {', '.join(line.conflicts_with_guest)}"
     if line.problem:
         text += f". Cannot be ordered: {line.problem}"
     return text

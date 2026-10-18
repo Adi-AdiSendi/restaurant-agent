@@ -50,9 +50,8 @@ async def prepare_turn(
         constraints,
         dislikes(profile),
     )
-    items, seen = build_input(profile, history, update_note)
     cart = await get_cart(session, user_id, constraints)
-    # Right after the profile block, so it reads as standing context, not history.
-    items.insert(1, {"role": "developer", "content": cart_block(cart, restaurant.slug)})
+    cart_note = cart_block(cart, restaurant.slug)
+    items, seen = build_input(profile, history, update_note, cart_note)
     others = [r for r in await list_restaurants(session) if r.id != restaurant.id]
     return TurnSetup(context, items, seen, system_prompt(restaurant, others))
