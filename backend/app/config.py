@@ -43,6 +43,7 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/restaurant"
     openai_api_key: str = ""
     openai_model: str = "gpt-6-luna"
+    openai_transcribe_model: str = "whisper-1"
     session_secret: str = ""
     # Seconds for one chat turn. Must stay under the Netlify proxy's fixed 26 s.
     turn_deadline_seconds: float = Field(default=22.0, gt=0, lt=26)
