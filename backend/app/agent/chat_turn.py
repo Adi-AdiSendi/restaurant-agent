@@ -19,7 +19,7 @@ from app.agent.prompt import system_prompt
 from app.agent.schemas import AgentReply
 from app.memory.conversations import add_message, owned_conversation, recent_messages
 from app.memory.extract import extract_operations
-from app.memory.profile import hard_constraints, load_profile
+from app.memory.profile import dislikes, hard_constraints, load_profile
 from app.memory.supersede import apply_operations
 from app.menu.queries import get_restaurant, list_restaurants
 from app.tools.context import ToolContext
@@ -77,8 +77,10 @@ async def _turn(
         user_id,
         conversation_id,
         restaurant.id,
+        restaurant.slug,
         tuple(restaurant.categories),
         hard_constraints(profile),
+        dislikes(profile),
     )
     others = [r for r in await list_restaurants(session) if r.id != restaurant.id]
     instructions = system_prompt(restaurant, others)

@@ -28,8 +28,11 @@ async def tool_context(
     session: AsyncSession,
     constraints: HardConstraints = NO_CONSTRAINTS,
     slug: str = "corner-table",
+    *,
+    user_id: int = 0,
+    dislikes: tuple[str, ...] = (),
 ) -> ToolContext:
-    """User and conversation IDs are placeholders: menu tools never read them."""
+    """The conversation ID is a placeholder; menu tools never read the user either."""
     restaurant = await restaurant_row(session, slug)
     categories = tuple(restaurant.categories)
-    return ToolContext(session, 0, 0, restaurant.id, categories, constraints)
+    return ToolContext(session, user_id, 0, restaurant.id, slug, categories, constraints, dislikes)

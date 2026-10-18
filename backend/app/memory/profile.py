@@ -41,6 +41,11 @@ async def preference_history(session: AsyncSession, user_id: int) -> list[Prefer
     return [PreferenceOut.model_validate(row) for row in await session.scalars(stmt)]
 
 
+def dislikes(profile: Sequence[Preference]) -> tuple[str, ...]:
+    """Soft dislikes, e.g. "pickles": a cart add leaves them out where the dish allows."""
+    return tuple(p.value for p in profile if p.kind == Kind.DISLIKE)
+
+
 def hard_constraints(profile: Sequence[Preference]) -> HardConstraints:
     """The allergies and diet that `safety/` and `search_menu` enforce in code."""
     allergens = frozenset(Allergen(p.value) for p in profile if p.kind == Kind.ALLERGY)

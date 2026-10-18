@@ -18,6 +18,9 @@ class ToolContext:
     user_id: int
     conversation_id: int
     restaurant_id: int
+    restaurant_slug: str
     categories: tuple[str, ...]
     """This restaurant's menu categories, in menu order."""
     constraints: HardConstraints
+    dislikes: tuple[str, ...] = ()
+    """The guest's active dislikes (soft), used to leave out removable ingredients."""
