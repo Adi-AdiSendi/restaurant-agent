@@ -1771,6 +1771,25 @@
       "removable": [],
       "option_groups": [],
       "kcal": 480
+    },
+    {
+      "name": "Khalas Dates (box of 3)",
+      "category": "bakery_and_cakes",
+      "description": "Three soft Khalas dates, the classic partner for Saudi coffee. Sold in boxes of 3.",
+      "price_sar": "9.00",
+      "is_vegetarian": true,
+      "is_vegan": true,
+      "spice_level": 0,
+      "ingredients": [
+        "Khalas dates"
+      ],
+      "allergens": [],
+      "may_contain": [],
+      "removable": [],
+      "kcal": 70,
+      "pack_size": 3,
+      "pack_unit": "dates",
+      "option_groups": []
     }
   ]
 }

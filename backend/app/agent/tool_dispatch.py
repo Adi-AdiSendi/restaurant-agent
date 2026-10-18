@@ -7,6 +7,7 @@ from pydantic import BaseModel
 from app.agent.llm_client import Spec, ToolCall
 from app.tools import (
     add_to_cart,
+    clear_cart,
     get_item,
     propose_checkout,
     recent_orders,
@@ -31,6 +32,7 @@ _TOOLS = (
     add_to_cart,
     update_cart_line,
     remove_cart_line,
+    clear_cart,
     recent_orders,
     propose_checkout,
 )

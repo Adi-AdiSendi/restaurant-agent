@@ -56,6 +56,9 @@ export interface Card {
   photo: string | null
   /** Estimated kcal of the base dish; null if not estimated. */
   kcal: number | null
+  /** Pieces per pack (a box of 3 dates); the quantity counts packs. 1 for most dishes. */
+  pack_size: number
+  pack_unit: string | null
   option_groups: OptionGroup[]
   /** Why no way of ordering it suits the guest; empty if one does. */
   conflicts_with_guest: string[]

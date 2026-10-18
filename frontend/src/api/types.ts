@@ -6,7 +6,7 @@ import type { Card } from './menuTypes'
 
 /** A cart change the chat made, from the server's tool result; or a checkout card. */
 export interface CartAction {
-  kind: 'added' | 'updated' | 'removed' | 'checkout'
+  kind: 'added' | 'updated' | 'removed' | 'cleared' | 'checkout'
   quantity: number
   /** The line as it is now (as it was, for a removal); null for checkout. */
   line: CartLine | null

@@ -19,6 +19,8 @@ const cake: Card = {
   removable: [],
   photo: null,
   kcal: null,
+  pack_size: 1,
+  pack_unit: null,
   taste_notes: [],
   liked: false,
   option_groups: [],

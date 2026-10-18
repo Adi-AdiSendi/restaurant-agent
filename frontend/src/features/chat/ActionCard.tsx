@@ -6,6 +6,8 @@ function headline({ kind, quantity, line }: CartAction): string {
   const name = line?.name ?? 'a dish'
   if (kind === 'added') return `Added ${quantity} × ${name}`
   if (kind === 'updated') return `Changed to ${quantity} × ${name}`
+  if (kind === 'cleared')
+    return `Emptied the cart (${quantity} ${quantity === 1 ? 'item' : 'items'})`
   return `Removed ${name}`
 }
 

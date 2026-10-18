@@ -18,7 +18,7 @@ from app.tools.show_menu import ShowMenuResult
 
 
 class Action(BaseModel):
-    kind: Literal["added", "updated", "removed", "checkout"]
+    kind: Literal["added", "updated", "removed", "cleared", "checkout"]
     quantity: int
     line: CartLineOut | None
     left_out: list[str]

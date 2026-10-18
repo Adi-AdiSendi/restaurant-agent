@@ -27,6 +27,10 @@ class MenuItemBase(BaseModel):
     """Ingredients a guest may leave out. Leaving one out never removes an allergen."""
     photo: str | None = Field(default=None, pattern=PHOTO_PATTERN, max_length=100)
     kcal: int | None = Field(default=None, ge=1, le=3000)
+    pack_size: int = Field(default=1, ge=1, le=24)
+    """Pieces per pack (a box of 3 dates); quantity counts packs. 1 for most dishes."""
+    pack_unit: str | None = Field(default=None, max_length=20)
+    """What one piece is called, e.g. "dates"."""
     """Estimated kcal of the base dish (typical portion); None if not estimated."""
     """A similar dish's photo, credited in docs/photo-credits.md; None shows an icon."""
 

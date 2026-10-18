@@ -8,6 +8,7 @@ from app.agent.tool_dispatch import TOOL_SPECS
 from app.menu.schemas import MenuFilter
 from app.tools import (
     add_to_cart,
+    clear_cart,
     get_item,
     propose_checkout,
     recent_orders,
@@ -37,6 +38,7 @@ from app.tools.update_cart_line import UpdateCartLineArgs
         (recent_orders.PARAMETERS, set(NoArguments.model_fields)),
         (propose_checkout.PARAMETERS, set(NoArguments.model_fields)),
         (show_menu.PARAMETERS, set(ShowMenuArgs.model_fields)),
+        (clear_cart.PARAMETERS, set(NoArguments.model_fields)),
     ],
 )
 def test_schema_lists_every_field_as_required(
@@ -51,4 +53,4 @@ def test_schema_lists_every_field_as_required(
 def test_no_tool_can_place_an_order() -> None:
     """ADR 0019: only the guest's checkout button places an order."""
     names = {cast(str, spec["name"]) for spec in TOOL_SPECS}
-    assert len(names) == 9 and not any("place" in name for name in names)
+    assert len(names) == 10 and not any("place" in name for name in names)

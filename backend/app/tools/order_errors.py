@@ -16,8 +16,8 @@ _ADVICE: dict[str, str] = {
     "invalid_choice": "Check the item's option groups and removable ingredients with get_item.",
     "conflict": "Tell the guest why it does not suit them and suggest something that does. "
     "Never offer to add it anyway: the chat cannot override their allergies or diet.",
-    "other_restaurant": "Tell the guest their cart holds dishes from {restaurant}. They can "
-    'empty it with the "Empty cart" button in their cart, then ask again. You cannot empty it.',
+    "other_restaurant": "Tell the guest their cart holds dishes from {restaurant} and ask "
+    "whether to empty it. Only if they agree, call clear_cart and then add again.",
     "empty_cart": "The cart is empty. Offer to add something first.",
     "unavailable": "Some lines are no longer on the menu. Ask the guest to remove them first.",
 }

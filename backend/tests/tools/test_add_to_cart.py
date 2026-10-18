@@ -70,7 +70,7 @@ async def test_a_cart_at_another_restaurant_is_never_replaced(seeded: AsyncSessi
     burgers = await guest_context(seeded, user, BURGERS)
     result = await call(add_to_cart, burgers, **await smash_args(seeded))
     assert isinstance(result, ToolError) and result.error_category == "other_restaurant"
-    assert "Bean & Bloom" in result.message and '"Empty cart"' in result.message
+    assert "Bean & Bloom" in result.message and "clear_cart" in result.message
     cart = await get_cart(seeded, user, burgers.constraints)
     assert cart.restaurant is not None and cart.restaurant.name == "Bean & Bloom"
 

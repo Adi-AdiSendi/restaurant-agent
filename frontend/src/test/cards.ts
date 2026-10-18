@@ -34,6 +34,8 @@ export const latte: Card = {
   removable: ['sugar'],
   photo: null,
   kcal: 150,
+  pack_size: 1,
+  pack_unit: null,
   option_groups: [
     {
       id: 7,

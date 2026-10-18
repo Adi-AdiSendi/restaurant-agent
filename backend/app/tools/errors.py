@@ -13,6 +13,7 @@ ErrorCategory = Literal[
     "other_restaurant",
     "empty_cart",
     "unavailable",
+    "needs_confirmation",
 ]
 
 

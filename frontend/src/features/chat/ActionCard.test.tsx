@@ -20,3 +20,8 @@ test('a change and a removal say what happened to the line', () => {
   expect(screen.getByText('Removed Latte')).toBeInTheDocument()
   expect(screen.queryByText(/as you prefer/)).not.toBeInTheDocument()
 })
+
+test('an emptied cart says how many items went', () => {
+  render(<ActionCard action={{ kind: 'cleared', quantity: 3, line: null, left_out: [] }} />)
+  expect(screen.getByText('Emptied the cart (3 items)')).toBeInTheDocument()
+})

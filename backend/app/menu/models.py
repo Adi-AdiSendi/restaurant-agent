@@ -71,6 +71,7 @@ class MenuItem(Base):
         CheckConstraint(f"may_contain <@ {ALLERGENS_SQL}", name="known_may_contain"),
         CheckConstraint("removable <@ ingredients", name="removable_are_ingredients"),
         CheckConstraint(f"photo ~ '{PHOTO_PATTERN}'", name="photo_format"),
+        CheckConstraint("pack_size BETWEEN 1 AND 24", name="pack_size_range"),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -90,6 +91,8 @@ class MenuItem(Base):
     removable: Mapped[list[str]] = mapped_column(ARRAY(Text), server_default=text("'{}'"))
     photo: Mapped[str | None] = mapped_column(String(100))
     kcal: Mapped[int | None]
+    pack_size: Mapped[int] = mapped_column(server_default=text("1"))
+    pack_unit: Mapped[str | None] = mapped_column(String(20))
     option_groups: Mapped[list[OptionGroup]] = relationship(
         order_by=OptionGroup.position, lazy="selectin"
     )

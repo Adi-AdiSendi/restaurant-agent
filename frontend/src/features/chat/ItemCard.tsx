@@ -44,6 +44,11 @@ function ItemCard({ item, onChoose, quickAdd }: Props) {
         {item.liked && <span className={styles.diet}>You like this</span>}
       </div>
       <p className={styles.ingredients}>{item.ingredients.join(', ')}</p>
+      {item.pack_size > 1 && (
+        <p className={styles.traces}>
+          Sold in packs of {item.pack_size} {item.pack_unit ?? 'pieces'}.
+        </p>
+      )}
       <ItemOptions groups={item.option_groups} removable={item.removable} />
       <div className={styles.allergens}>
         <span className={styles.allergenTitle}>Allergens:</span>

@@ -14,8 +14,8 @@ NAME = "remove_cart_line"
 DESCRIPTION = """Remove one line from the guest's cart, when the guest asks.
 Input: line_id, from the cart in your context or view_cart.
 Example: {"line_id": 7}
-Do NOT use it to lower a quantity (use update_cart_line). There is no tool to empty \
-the whole cart: the guest can use the "Empty cart" button in their cart."""
+Do NOT use it to lower a quantity (use update_cart_line), or to empty the whole \
+cart (use clear_cart)."""
 
 PARAMETERS: dict[str, object] = {
     "type": "object",

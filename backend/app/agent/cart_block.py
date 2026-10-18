@@ -27,8 +27,8 @@ def cart_block(cart: CartOut, restaurant_slug: str) -> str:
     elsewhere = (
         ""
         if cart.restaurant.slug == restaurant_slug
-        else " It is from another restaurant: nothing from here can be added until the "
-        'guest empties it with the "Empty cart" button in their cart.'
+        else " It is from another restaurant: nothing from here can be added until it "
+        "is emptied. Ask the guest before using clear_cart."
     )
     lines = "\n".join(_line(line) for line in cart.lines)
     return (

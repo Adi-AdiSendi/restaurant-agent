@@ -25,3 +25,8 @@ test('a card shows its estimate', () => {
   render(<ItemCard item={latte} />)
   expect(screen.getByText('about 150 kcal (estimate)')).toBeInTheDocument()
 })
+
+test('a dish sold in packs says so', () => {
+  render(<ItemCard item={{ ...latte, name: 'Khalas Dates', pack_size: 3, pack_unit: 'dates' }} />)
+  expect(screen.getByText('Sold in packs of 3 dates.')).toBeInTheDocument()
+})

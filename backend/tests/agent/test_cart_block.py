@@ -14,7 +14,7 @@ def test_the_cart_block_names_each_line_id() -> None:
 
 
 def test_a_cart_elsewhere_says_it_must_be_emptied_first() -> None:
-    assert '"Empty cart"' in cart_block(CART, "stack-and-smash")
+    assert "Ask the guest before using clear_cart" in cart_block(CART, "stack-and-smash")
 
 
 def test_an_empty_cart_is_one_line() -> None:
