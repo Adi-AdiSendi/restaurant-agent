@@ -1,0 +1,41 @@
+{
+  "corner-table/cover": [
+    "burger and fries",
+    "restaurant food plate"
+  ],
+  "corner-table/edamame-with-chili-salt": [
+    "edamame"
+  ],
+  "red-sea-catch/sayadiyah": [
+    "fish and rice",
+    "sayadieh"
+  ],
+  "bean-and-bloom/karak-chai": [
+    "masala chai",
+    "milk tea"
+  ],
+  "bean-and-bloom/spanish-latte": [
+    "latte",
+    "iced latte"
+  ],
+  "bean-and-bloom/halloumi-croissant": [
+    "croissant sandwich",
+    "halloumi"
+  ],
+  "corner-table/crispy-halloumi-sticks": [
+    "fried halloumi",
+    "halloumi"
+  ],
+  "red-sea-catch/grilled-hammour-fillet": [
+    "grilled fish fillet",
+    "grouper fillet"
+  ],
+  "shawarma-street/kunafa": [
+    "knafeh",
+    "kanafeh"
+  ],
+  "shawarma-street/moutabal": [
+    "baba ghanoush",
+    "mutabbal"
+  ]
+}
