@@ -1,6 +1,7 @@
 {
   "slug": "corner-table",
   "name": "Corner Table",
+  "photo": "corner-table/cover",
   "cuisine": "International casual",
   "tagline": "Burgers, bowls, pasta and desserts from around the world.",
   "accent_color": "#440099",
@@ -13,6 +14,7 @@
   "items": [
     {
       "name": "Truffle Parmesan Fries",
+      "photo": "corner-table/truffle-parmesan-fries",
       "category": "starters",
       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
       "price_sar": "24.00",
@@ -33,6 +35,7 @@
     },
     {
       "name": "Buffalo Chicken Wings",
+      "photo": "corner-table/buffalo-chicken-wings",
       "category": "starters",
       "description": "Six wings in a hot buffalo butter sauce with a blue cheese dip.",
       "price_sar": "38.00",
@@ -53,6 +56,7 @@
     },
     {
       "name": "Crispy Halloumi Sticks",
+      "photo": "corner-table/crispy-halloumi-sticks",
       "category": "starters",
       "description": "Breaded halloumi fingers with a sweet chili dip.",
       "price_sar": "32.00",
@@ -75,6 +79,7 @@
     },
     {
       "name": "Edamame with Chili Salt",
+      "photo": "corner-table/edamame-with-chili-salt",
       "category": "starters",
       "description": "Steamed edamame pods with chili flakes and flaky salt.",
       "price_sar": "18.00",
@@ -94,6 +99,7 @@
     },
     {
       "name": "Classic Smash Burger",
+      "photo": "corner-table/classic-smash-burger",
       "category": "burgers_and_mains",
       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
       "price_sar": "52.00",
@@ -119,6 +125,7 @@
     },
     {
       "name": "Double Wagyu Burger",
+      "photo": "corner-table/double-wagyu-burger",
       "category": "burgers_and_mains",
       "description": "Wagyu beef, aged cheddar, caramelized onions and truffle mayo in a sesame bun.",
       "price_sar": "85.00",
@@ -143,6 +150,7 @@
     },
     {
       "name": "Nashville Hot Chicken Sandwich",
+      "photo": "corner-table/nashville-hot-chicken-sandwich",
       "category": "burgers_and_mains",
       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
       "price_sar": "48.00",
@@ -165,6 +173,7 @@
     },
     {
       "name": "Plant-Based Burger",
+      "photo": "corner-table/plant-based-burger",
       "category": "burgers_and_mains",
       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
       "price_sar": "49.00",
@@ -188,6 +197,7 @@
     },
     {
       "name": "Grilled Salmon Plate",
+      "photo": "corner-table/grilled-salmon-plate",
       "category": "burgers_and_mains",
       "description": "Grilled salmon fillet with lemon butter, herbed rice and greens.",
       "price_sar": "78.00",
@@ -209,6 +219,7 @@
     },
     {
       "name": "Pesto Penne",
+      "photo": "corner-table/pesto-penne",
       "category": "bowls_and_pasta",
       "description": "Penne in basil pesto with pine nuts, parmesan and cherry tomatoes.",
       "price_sar": "46.00",
@@ -232,6 +243,7 @@
     },
     {
       "name": "Penne Arrabbiata",
+      "photo": "corner-table/penne-arrabbiata",
       "category": "bowls_and_pasta",
       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
       "price_sar": "42.00",
@@ -253,6 +265,7 @@
     },
     {
       "name": "Thai Peanut Noodle Bowl",
+      "photo": "corner-table/thai-peanut-noodle-bowl",
       "category": "bowls_and_pasta",
       "description": "Wheat noodles, crunchy vegetables and tofu in a spicy peanut sauce.",
       "price_sar": "44.00",
@@ -278,6 +291,7 @@
     },
     {
       "name": "Mediterranean Veggie Bowl",
+      "photo": "corner-table/mediterranean-veggie-bowl",
       "category": "bowls_and_pasta",
       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
       "price_sar": "39.00",
@@ -299,6 +313,7 @@
     },
     {
       "name": "Shrimp Poke Bowl",
+      "photo": "corner-table/shrimp-poke-bowl",
       "category": "bowls_and_pasta",
       "description": "Marinated shrimp over sushi rice with avocado, edamame and spicy mayo.",
       "price_sar": "62.00",
@@ -325,6 +340,7 @@
     },
     {
       "name": "Chocolate Lava Cake",
+      "photo": "corner-table/chocolate-lava-cake",
       "category": "desserts_and_drinks",
       "description": "Warm chocolate cake with a molten center and vanilla ice cream.",
       "price_sar": "34.00",
@@ -350,6 +366,7 @@
     },
     {
       "name": "Pistachio Cheesecake",
+      "photo": "corner-table/pistachio-cheesecake",
       "category": "desserts_and_drinks",
       "description": "Baked cheesecake with pistachio cream on a biscuit base.",
       "price_sar": "36.00",
@@ -374,6 +391,7 @@
     },
     {
       "name": "Mango Sorbet",
+      "photo": "corner-table/mango-sorbet",
       "category": "desserts_and_drinks",
       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
       "price_sar": "22.00",
@@ -390,6 +408,7 @@
     },
     {
       "name": "Fresh Lemon Mint",
+      "photo": "corner-table/fresh-lemon-mint",
       "category": "desserts_and_drinks",
       "description": "Blended lemon, fresh mint and ice.",
       "price_sar": "16.00",

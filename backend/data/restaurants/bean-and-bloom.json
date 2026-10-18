@@ -13,6 +13,7 @@
   "items": [
     {
       "name": "Espresso",
+      "photo": "bean-and-bloom/espresso",
       "category": "coffee",
       "description": "A short, intense shot of our house blend.",
       "price_sar": "10.00",
@@ -123,6 +124,7 @@
     },
     {
       "name": "Cappuccino",
+      "photo": "bean-and-bloom/cappuccino",
       "category": "coffee",
       "description": "Espresso with steamed milk and deep foam.",
       "price_sar": "15.00",
@@ -309,6 +311,7 @@
     },
     {
       "name": "Latte",
+      "photo": "bean-and-bloom/latte",
       "category": "coffee",
       "description": "Espresso with plenty of silky steamed milk.",
       "price_sar": "16.00",
@@ -495,6 +498,7 @@
     },
     {
       "name": "Flat White",
+      "photo": "bean-and-bloom/flat-white",
       "category": "coffee",
       "description": "A double ristretto with a thin layer of milk.",
       "price_sar": "17.00",
@@ -602,6 +606,7 @@
     },
     {
       "name": "Spanish Latte",
+      "photo": "bean-and-bloom/spanish-latte",
       "category": "coffee",
       "description": "Latte sweetened with condensed milk.",
       "price_sar": "19.00",
@@ -746,6 +751,7 @@
     },
     {
       "name": "Mocha",
+      "photo": "bean-and-bloom/mocha",
       "category": "coffee",
       "description": "Espresso, chocolate sauce and steamed milk.",
       "price_sar": "19.00",
@@ -937,6 +943,7 @@
     },
     {
       "name": "Saudi Coffee",
+      "photo": "bean-and-bloom/saudi-coffee",
       "category": "coffee",
       "description": "Light roast gahwa with cardamom and saffron.",
       "price_sar": "12.00",
@@ -972,6 +979,7 @@
     },
     {
       "name": "Iced Latte",
+      "photo": "bean-and-bloom/iced-latte",
       "category": "tea_and_cold_drinks",
       "description": "Espresso and cold milk over ice.",
       "price_sar": "18.00",
@@ -1159,6 +1167,7 @@
     },
     {
       "name": "Matcha Latte",
+      "photo": "bean-and-bloom/matcha-latte",
       "category": "tea_and_cold_drinks",
       "description": "Ceremonial matcha whisked into milk.",
       "price_sar": "20.00",
@@ -1329,6 +1338,7 @@
     },
     {
       "name": "Karak Chai",
+      "photo": "bean-and-bloom/karak-chai",
       "category": "tea_and_cold_drinks",
       "description": "Strong tea boiled with milk and cardamom.",
       "price_sar": "10.00",
@@ -1350,6 +1360,7 @@
     },
     {
       "name": "Mango Smoothie",
+      "photo": "bean-and-bloom/mango-smoothie",
       "category": "tea_and_cold_drinks",
       "description": "Alphonso mango blended to order.",
       "price_sar": "21.00",
@@ -1395,6 +1406,7 @@
     },
     {
       "name": "Avocado Toast",
+      "photo": "bean-and-bloom/avocado-toast",
       "category": "breakfast",
       "description": "Smashed avocado on toasted sourdough, lime.",
       "price_sar": "29.00",
@@ -1466,6 +1478,7 @@
     },
     {
       "name": "Shakshuka",
+      "photo": "bean-and-bloom/shakshuka",
       "category": "breakfast",
       "description": "Eggs baked in spiced tomato and peppers.",
       "price_sar": "32.00",
@@ -1520,6 +1533,7 @@
     },
     {
       "name": "Halloumi Croissant",
+      "photo": "bean-and-bloom/halloumi-croissant",
       "category": "breakfast",
       "description": "Butter croissant with grilled halloumi, tomato and za'atar.",
       "price_sar": "26.00",
@@ -1546,6 +1560,7 @@
     },
     {
       "name": "Granola Bowl",
+      "photo": "bean-and-bloom/granola-bowl",
       "category": "breakfast",
       "description": "House granola, Greek yogurt, berries and honey.",
       "price_sar": "27.00",
@@ -1569,6 +1584,7 @@
     },
     {
       "name": "Butter Croissant",
+      "photo": "bean-and-bloom/butter-croissant",
       "category": "bakery_and_cakes",
       "description": "Flaky, all-butter croissant.",
       "price_sar": "12.00",
@@ -1592,6 +1608,7 @@
     },
     {
       "name": "Pistachio Croissant",
+      "photo": "bean-and-bloom/pistachio-croissant",
       "category": "bakery_and_cakes",
       "description": "Croissant filled with pistachio cream.",
       "price_sar": "18.00",
@@ -1615,6 +1632,7 @@
     },
     {
       "name": "Vegan Banana Bread",
+      "photo": "bean-and-bloom/vegan-banana-bread",
       "category": "bakery_and_cakes",
       "description": "Moist banana loaf, egg-free and dairy-free.",
       "price_sar": "15.00",
@@ -1636,6 +1654,7 @@
     },
     {
       "name": "San Sebastian Cheesecake",
+      "photo": "bean-and-bloom/san-sebastian-cheesecake",
       "category": "bakery_and_cakes",
       "description": "Burnt Basque-style cheesecake.",
       "price_sar": "26.00",

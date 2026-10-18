@@ -1,6 +1,7 @@
 {
   "slug": "shawarma-street",
   "name": "Shawarma Street",
+  "photo": "shawarma-street/cover",
   "cuisine": "Shawarma and grill",
   "tagline": "Charcoal shawarma, grills and fresh mezze.",
   "accent_color": "#c92a2a",
@@ -13,6 +14,7 @@
   "items": [
     {
       "name": "Classic Shawarma Wrap",
+      "photo": "shawarma-street/classic-shawarma-wrap",
       "category": "shawarma",
       "description": "Our signature wrap with your choice of protein, garlic toum, pickles and fries.",
       "price_sar": "16.00",
@@ -209,6 +211,7 @@
     },
     {
       "name": "Arabic Shawarma Platter",
+      "photo": "shawarma-street/arabic-shawarma-platter",
       "category": "shawarma",
       "description": "A shawarma wrap cut into bites, with fries, garlic toum and pickles.",
       "price_sar": "32.00",
@@ -314,6 +317,7 @@
     },
     {
       "name": "Shawarma Fatteh",
+      "photo": "shawarma-street/shawarma-fatteh",
       "category": "shawarma",
       "description": "Crispy bread, chickpeas and warm yogurt, topped with shawarma and pine nuts.",
       "price_sar": "34.00",
@@ -375,6 +379,7 @@
     },
     {
       "name": "Falafel Wrap",
+      "photo": "shawarma-street/falafel-wrap",
       "category": "shawarma",
       "description": "Fresh falafel, tahini, tomato, pickles and parsley.",
       "price_sar": "13.00",
@@ -614,6 +619,7 @@
     },
     {
       "name": "Grilled Halloumi Plate",
+      "photo": "shawarma-street/grilled-halloumi-plate",
       "category": "plates_and_grills",
       "description": "Grilled halloumi and vegetables with za'atar and olive oil.",
       "price_sar": "36.00",
@@ -746,6 +752,7 @@
     },
     {
       "name": "Fattoush",
+      "photo": "shawarma-street/fattoush",
       "category": "mezze",
       "description": "Crisp salad with radish, sumac, pomegranate molasses and fried pita.",
       "price_sar": "16.00",
@@ -773,6 +780,7 @@
     },
     {
       "name": "Tabbouleh",
+      "photo": "shawarma-street/tabbouleh",
       "category": "mezze",
       "description": "Parsley, bulgur, tomato and lemon.",
       "price_sar": "15.00",
@@ -795,6 +803,7 @@
     },
     {
       "name": "Cheese Sambousek",
+      "photo": "shawarma-street/cheese-sambousek",
       "category": "mezze",
       "description": "Golden pastries filled with akkawi cheese.",
       "price_sar": "16.00",
@@ -838,6 +847,7 @@
     },
     {
       "name": "Mint Lemonade",
+      "photo": "shawarma-street/mint-lemonade",
       "category": "drinks_and_sweets",
       "description": "Lemon and fresh mint, blended with ice.",
       "price_sar": "12.00",

@@ -1,6 +1,7 @@
 {
   "slug": "stack-and-smash",
   "name": "Stack & Smash",
+  "photo": "stack-and-smash/cover",
   "cuisine": "Burger house",
   "tagline": "Smashed burgers, crispy chicken, fries and thick shakes.",
   "accent_color": "#e8590c",
@@ -167,6 +168,7 @@
     },
     {
       "name": "Smoky BBQ Burger",
+      "photo": "stack-and-smash/smoky-bbq-burger",
       "category": "burgers",
       "description": "Beef, aged cheddar, crispy onion strings and smoky barbecue sauce.",
       "price_sar": "38.00",
@@ -463,6 +465,7 @@
     },
     {
       "name": "Truffle Wagyu Burger",
+      "photo": "stack-and-smash/truffle-wagyu-burger",
       "category": "burgers",
       "description": "A thick wagyu patty, truffle mayo, shaved parmesan and rocket.",
       "price_sar": "64.00",
@@ -789,6 +792,7 @@
     },
     {
       "name": "Crispy Chicken Sandwich",
+      "photo": "stack-and-smash/crispy-chicken-sandwich",
       "category": "chicken",
       "description": "Buttermilk-free crispy chicken breast with slaw and pickles. Classic or Nashville hot.",
       "price_sar": "33.00",
@@ -879,6 +883,7 @@
     },
     {
       "name": "Grilled Chicken Burger",
+      "photo": "stack-and-smash/grilled-chicken-burger",
       "category": "chicken",
       "description": "Herb-marinated grilled chicken with lettuce, tomato and garlic mayo.",
       "price_sar": "31.00",
@@ -1001,6 +1006,7 @@
     },
     {
       "name": "Chicken Tenders",
+      "photo": "stack-and-smash/chicken-tenders",
       "category": "chicken",
       "description": "Five crispy chicken tenders with your dips.",
       "price_sar": "29.00",
@@ -1120,6 +1126,7 @@
     },
     {
       "name": "Cheese Fries",
+      "photo": "stack-and-smash/cheese-fries",
       "category": "sides",
       "description": "Fries under warm cheddar sauce and spring onion.",
       "price_sar": "18.00",
@@ -1144,6 +1151,7 @@
     },
     {
       "name": "Onion Rings",
+      "photo": "stack-and-smash/onion-rings",
       "category": "sides",
       "description": "Thick-cut onion rings in a crisp batter.",
       "price_sar": "15.00",
@@ -1163,6 +1171,7 @@
     },
     {
       "name": "Vanilla Shake",
+      "photo": "stack-and-smash/vanilla-shake",
       "category": "shakes_and_drinks",
       "description": "Thick vanilla ice cream shake.",
       "price_sar": "22.00",
@@ -1225,6 +1234,7 @@
     },
     {
       "name": "Lotus Biscoff Shake",
+      "photo": "stack-and-smash/lotus-biscoff-shake",
       "category": "shakes_and_drinks",
       "description": "Vanilla ice cream blended with caramelised Biscoff biscuits.",
       "price_sar": "25.00",

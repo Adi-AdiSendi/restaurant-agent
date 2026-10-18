@@ -1,6 +1,7 @@
 {
   "slug": "red-sea-catch",
   "name": "Red Sea Catch",
+  "photo": "red-sea-catch/cover",
   "cuisine": "Seafood",
   "tagline": "Gulf fish and shellfish from the grill, fried or baked.",
   "accent_color": "#1c7ed6",
@@ -13,6 +14,7 @@
   "items": [
     {
       "name": "Shrimp Bisque",
+      "photo": "red-sea-catch/shrimp-bisque",
       "category": "starters",
       "description": "Rich shrimp soup finished with cream.",
       "price_sar": "28.00",
@@ -37,6 +39,7 @@
     },
     {
       "name": "Tuna Tartare",
+      "photo": "red-sea-catch/tuna-tartare",
       "category": "starters",
       "description": "Diced yellowfin tuna with avocado, soy and sesame.",
       "price_sar": "42.00",
@@ -64,6 +67,7 @@
     },
     {
       "name": "Lentil Soup",
+      "photo": "red-sea-catch/lentil-soup",
       "category": "starters",
       "description": "Red lentils, cumin and lemon. Vegan.",
       "price_sar": "16.00",
@@ -83,6 +87,7 @@
     },
     {
       "name": "Fattoush Salad",
+      "photo": "red-sea-catch/fattoush-salad",
       "category": "starters",
       "description": "Crisp salad with sumac and fried pita.",
       "price_sar": "18.00",
@@ -107,6 +112,7 @@
     },
     {
       "name": "Grilled Hammour Fillet",
+      "photo": "red-sea-catch/grilled-hammour-fillet",
       "category": "from_the_grill",
       "description": "Gulf hammour, cooked your way, with a side and your sauces.",
       "price_sar": "68.00",
@@ -365,6 +371,7 @@
     },
     {
       "name": "Salmon Steak",
+      "photo": "red-sea-catch/salmon-steak",
       "category": "from_the_grill",
       "description": "Norwegian salmon, grilled or teriyaki.",
       "price_sar": "72.00",
@@ -460,6 +467,7 @@
     },
     {
       "name": "Jumbo Shrimp Skewers",
+      "photo": "red-sea-catch/jumbo-shrimp-skewers",
       "category": "from_the_grill",
       "description": "Charcoal-grilled jumbo shrimp with garlic and chilli.",
       "price_sar": "74.00",
@@ -586,6 +594,7 @@
     },
     {
       "name": "Lobster Tail",
+      "photo": "red-sea-catch/lobster-tail",
       "category": "from_the_grill",
       "description": "Grilled lobster tail with garlic butter.",
       "price_sar": "145.00",
@@ -655,6 +664,7 @@
     },
     {
       "name": "Mixed Seafood Grill",
+      "photo": "red-sea-catch/mixed-seafood-grill",
       "category": "from_the_grill",
       "description": "Hammour, jumbo shrimp and calamari from the grill, for one hungry guest.",
       "price_sar": "118.00",
@@ -783,6 +793,7 @@
     },
     {
       "name": "Fish and Chips",
+      "photo": "red-sea-catch/fish-and-chips",
       "category": "fried_and_platters",
       "description": "Battered cod with fries and tartare sauce.",
       "price_sar": "49.00",
@@ -809,6 +820,7 @@
     },
     {
       "name": "Fried Calamari",
+      "photo": "red-sea-catch/fried-calamari",
       "category": "fried_and_platters",
       "description": "Crispy calamari rings with aioli.",
       "price_sar": "39.00",
@@ -832,6 +844,7 @@
     },
     {
       "name": "Sayadiyah",
+      "photo": "red-sea-catch/sayadiyah",
       "category": "fried_and_platters",
       "description": "Spiced fish over caramelised onion rice, with pine nuts and tahini.",
       "price_sar": "58.00",
@@ -858,6 +871,7 @@
     },
     {
       "name": "Shrimp Tacos",
+      "photo": "red-sea-catch/shrimp-tacos",
       "category": "fried_and_platters",
       "description": "Three corn tortillas with crispy shrimp, slaw and chipotle mayo.",
       "price_sar": "44.00",
@@ -881,6 +895,7 @@
     },
     {
       "name": "Saffron Rice",
+      "photo": "red-sea-catch/saffron-rice",
       "category": "sides_and_drinks",
       "description": "Fluffy basmati with saffron.",
       "price_sar": "12.00",
@@ -899,6 +914,7 @@
     },
     {
       "name": "Fresh Orange Juice",
+      "photo": "red-sea-catch/fresh-orange-juice",
       "category": "sides_and_drinks",
       "description": "Squeezed to order.",
       "price_sar": "14.00",

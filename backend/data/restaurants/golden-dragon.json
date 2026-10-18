@@ -1,6 +1,7 @@
 {
   "slug": "golden-dragon",
   "name": "Golden Dragon",
+  "photo": "golden-dragon/cover",
   "cuisine": "Chinese",
   "tagline": "Wok dishes, noodles and dumplings, Sichuan heat on request.",
   "accent_color": "#d4a017",
@@ -13,6 +14,7 @@
   "items": [
     {
       "name": "Vegetable Spring Rolls",
+      "photo": "golden-dragon/vegetable-spring-rolls",
       "category": "starters",
       "description": "Four crisp rolls of cabbage, carrot and glass noodles, with sweet chilli dip.",
       "price_sar": "18.00",
@@ -35,6 +37,7 @@
     },
     {
       "name": "Prawn Har Gow",
+      "photo": "golden-dragon/prawn-har-gow",
       "category": "starters",
       "description": "Four steamed shrimp dumplings in translucent wrappers.",
       "price_sar": "26.00",
@@ -58,6 +61,7 @@
     },
     {
       "name": "Chicken Dumplings",
+      "photo": "golden-dragon/chicken-dumplings",
       "category": "starters",
       "description": "Six chicken and ginger dumplings with soy and black vinegar dip.",
       "price_sar": "24.00",
@@ -107,6 +111,7 @@
     },
     {
       "name": "Salt and Pepper Calamari",
+      "photo": "golden-dragon/salt-and-pepper-calamari",
       "category": "starters",
       "description": "Lightly floured squid tossed with chilli, garlic and Sichuan pepper.",
       "price_sar": "32.00",
@@ -130,6 +135,7 @@
     },
     {
       "name": "Kung Pao",
+      "photo": "golden-dragon/kung-pao",
       "category": "wok_dishes",
       "description": "Wok-fried with roasted peanuts, dried chilli and spring onion in a tangy sauce.",
       "price_sar": "42.00",
@@ -255,6 +261,7 @@
     },
     {
       "name": "Sweet and Sour",
+      "photo": "golden-dragon/sweet-and-sour",
       "category": "wok_dishes",
       "description": "Crispy battered pieces with pineapple and peppers in sweet and sour sauce.",
       "price_sar": "39.00",
@@ -378,6 +385,7 @@
     },
     {
       "name": "Beef with Broccoli",
+      "photo": "golden-dragon/beef-with-broccoli",
       "category": "wok_dishes",
       "description": "Tender beef and broccoli in oyster and soy sauce.",
       "price_sar": "46.00",
@@ -453,6 +461,7 @@
     },
     {
       "name": "General Tso's Chicken",
+      "photo": "golden-dragon/general-tso-s-chicken",
       "category": "wok_dishes",
       "description": "Crispy chicken in a sticky, gently spicy glaze with sesame seeds.",
       "price_sar": "41.00",
@@ -530,6 +539,7 @@
     },
     {
       "name": "Mapo Tofu",
+      "photo": "golden-dragon/mapo-tofu",
       "category": "wok_dishes",
       "description": "Silken tofu in a fiery chilli bean sauce with Sichuan pepper. Vegan.",
       "price_sar": "34.00",
@@ -624,6 +634,7 @@
     },
     {
       "name": "Chow Mein",
+      "photo": "golden-dragon/chow-mein",
       "category": "noodles_and_rice",
       "description": "Wok-tossed egg noodles with cabbage, bean sprouts and soy.",
       "price_sar": "36.00",
@@ -706,6 +717,7 @@
     },
     {
       "name": "Singapore Rice Noodles",
+      "photo": "golden-dragon/singapore-rice-noodles",
       "category": "noodles_and_rice",
       "description": "Thin rice noodles with curry spices, egg, peppers and onion.",
       "price_sar": "38.00",
@@ -781,6 +793,7 @@
     },
     {
       "name": "Yangzhou Fried Rice",
+      "photo": "golden-dragon/yangzhou-fried-rice",
       "category": "noodles_and_rice",
       "description": "Fried rice with egg, peas and spring onion.",
       "price_sar": "34.00",
@@ -853,6 +866,7 @@
     },
     {
       "name": "Dan Dan Noodles",
+      "photo": "golden-dragon/dan-dan-noodles",
       "category": "noodles_and_rice",
       "description": "Wheat noodles in sesame chilli sauce with minced beef and crushed peanuts.",
       "price_sar": "37.00",
@@ -879,6 +893,7 @@
     },
     {
       "name": "Hot and Sour Soup",
+      "photo": "golden-dragon/hot-and-sour-soup",
       "category": "soups_and_desserts",
       "description": "Tofu, mushrooms and egg ribbons in a peppery, tangy broth.",
       "price_sar": "18.00",
@@ -904,6 +919,7 @@
     },
     {
       "name": "Mango Pudding",
+      "photo": "golden-dragon/mango-pudding",
       "category": "soups_and_desserts",
       "description": "Chilled mango pudding set with agar, with a splash of milk.",
       "price_sar": "16.00",
@@ -925,6 +941,7 @@
     },
     {
       "name": "Sesame Balls",
+      "photo": "golden-dragon/sesame-balls",
       "category": "soups_and_desserts",
       "description": "Chewy glutinous rice balls filled with red bean and rolled in sesame.",
       "price_sar": "15.00",
