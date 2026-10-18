@@ -539,6 +539,28 @@ Reused from sibling projects, adapted rather than rebuilt:
 - Done when: Alice's `/me` shows both habits with their evidence, and the
   chat uses them.
 
+## Preferences page and chat parity (2026-10-18, before phase 18)
+- Asked by the user after the build: a Preferences page next to Restaurants
+  and Orders, days when the guest wants a food, and a rule that anything the
+  chat can do can be done by hand (ADR 0026).
+- **Audit:** every cart and order tool already had a manual route and
+  screen. Preferences were the only gap: the chat could add, replace and
+  remove them, and the UI could only show them.
+- **Built:**
+  - `day_like` ("friday: fish", migration 0009), the opposite of a day rule,
+    with a "Today's pick for you" badge;
+  - `memory/manual_edit.py` reusing the extraction's validation and
+    `apply_operations` under the chat turn's user lock;
+  - `POST`, `PATCH`, `DELETE /api/preferences`, and
+    `GET /api/preferences/vocabulary` for the allowed values;
+  - the `/preferences` page; removing an allergy asks first.
+- **Governance:** CLAUDE.md rule 7, the code-reviewer check, a parity table
+  in `docs/architecture.md`, and `tests/test_chat_parity.py`, which fails
+  when a tool or memory operation has no manual route or the UI misses a
+  preference kind.
+- Done when: every kind can be added, changed and removed on the page, the
+  chat sees the edits on its next turn, and the parity test is in CI.
+
 ## Phase 18: evals, docs and submission v2 (about 4 h)
 - A full eval run (all categories, 3 runs) and an updated eval report.
 - README, architecture, requirements, challenges and fresh screenshots.

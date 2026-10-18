@@ -2,12 +2,14 @@ from datetime import UTC, datetime
 
 import pytest
 from pydantic import ValidationError
+from sqlalchemy import select
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.agent.prompt import system_prompt
 from app.memory.operations import Operation
 from app.memory.preference import Preference
+from app.memory.supersede import apply_operations
 from app.memory.vocabulary import Kind
 from app.menu import clock
 from app.menu.restaurant import Restaurant
@@ -26,14 +28,16 @@ def add(kind: str, value: str) -> Operation:
         ("on monday: pork", "monday: pork"),
     ],
 )
-def test_a_day_rule_is_normalised(said: str, stored: str) -> None:
-    assert add("day_dislike", said).value == stored
+@pytest.mark.parametrize("kind", ["day_dislike", "day_like"])
+def test_a_day_rule_is_normalised(kind: str, said: str, stored: str) -> None:
+    assert add(kind, said).value == stored
 
 
 @pytest.mark.parametrize("said", ["meat", "someday: meat", "friday:", "friday: <b>"])
-def test_a_day_rule_needs_a_real_weekday_and_plain_food(said: str) -> None:
-    with pytest.raises(ValidationError):
-        add("day_dislike", said)
+@pytest.mark.parametrize("kind", ["day_dislike", "day_like"])
+def test_a_day_rule_needs_a_real_weekday_and_plain_food(kind: str, said: str) -> None:
+    with pytest.raises(ValidationError, match="day rule"):
+        add(kind, said)
 
 
 def test_a_calorie_goal_is_a_daily_number_in_range() -> None:
@@ -45,11 +49,21 @@ def test_a_calorie_goal_is_a_daily_number_in_range() -> None:
 
 async def test_the_database_refuses_a_malformed_rule_or_goal(session: AsyncSession) -> None:
     user = await make_user(session, "rules_db")
-    for kind, value in (("day_dislike", "friday meat"), ("calories", "100")):
+    bad = (("day_dislike", "friday meat"), ("day_like", "fish"), ("calories", "100"))
+    for kind, value in bad:
         async with session.begin_nested():
             session.add(Preference(user_id=user, kind=kind, value=value))
             with pytest.raises(IntegrityError):
                 await session.flush()
+
+
+async def test_a_day_like_replaces_the_opposite_day_rule(session: AsyncSession) -> None:
+    user = await make_user(session, "rules_flip")
+    await apply_operations(session, user, [add("day_dislike", "friday: fish")], None)
+    await apply_operations(session, user, [add("day_like", "friday: fish")], None)
+    stmt = select(Preference.kind, Preference.status).where(Preference.user_id == user)
+    got = sorted((k, s) for k, s in await session.execute(stmt))
+    assert got == [("day_dislike", "superseded"), ("day_like", "active")]
 
 
 def test_riyadh_weekday_and_midnight() -> None:

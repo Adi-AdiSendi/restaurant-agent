@@ -55,6 +55,15 @@ test('a restaurant link opens its menu, chat and memory panel', async () => {
   window.history.pushState({}, '', '/')
 })
 
+test('the header opens the Preferences page', async () => {
+  window.history.pushState({}, '', '/')
+  mockFetch({ ...SIGNED_IN, 'GET /api/preferences/vocabulary': { status: 500 } })
+  render(<App />)
+  fireEvent.click(await screen.findByRole('link', { name: 'Preferences' }))
+  expect(await screen.findByRole('heading', { name: 'Your preferences' })).toBeInTheDocument()
+  window.history.pushState({}, '', '/')
+})
+
 test('an unknown path goes back to the restaurants', async () => {
   window.history.pushState({}, '', '/nowhere')
   mockFetch(SIGNED_IN)

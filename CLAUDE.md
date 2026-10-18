@@ -19,7 +19,8 @@ each lands. Landed: six restaurants with options (phase 10); tools take a
 server-built `ToolContext` (ADR 0020); cart, checkout and orders in
 `app/orders/` and React Router pages (phase 11); cart tools in the chat
 with action and checkout cards (phase 12); Openverse photos, menu blocks
-and quick Add (phase 13, ADR 0024).
+and quick Add (phase 13, ADR 0024); a Preferences page and day likes
+(ADR 0026).
 - Backend: Python 3.12, FastAPI, Pydantic v2, SQLAlchemy 2 (async) + asyncpg, Alembic
 - Database: PostgreSQL 16
 - LLM: OpenAI GPT-6 Luna via the Responses API (model ID from `OPENAI_MODEL`)
@@ -55,6 +56,9 @@ and quick Add (phase 13, ADR 0024).
    keep `.env.example` updated when adding a setting.
 6. **One-way dependencies**: `api -> agent -> tools | memory | safety -> orders -> menu | users -> db`.
    Lower layers never import higher ones.
+7. **Chat parity** (ADR 0026): whatever the chat can change, the guest can
+   change by hand, through the same domain function. A new tool or memory
+   operation ships with its manual route and UI; `tests/test_chat_parity.py` checks it.
 
 ## How we work
 - Spec first. For a new module, use plan mode and agree the design before

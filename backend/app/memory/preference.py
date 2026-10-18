@@ -9,7 +9,7 @@ from app.db.base import Base
 from app.memory.models import created_at_column
 from app.memory.vocabulary import (
     CALORIES_PATTERN,
-    DAY_DISLIKE_PATTERN,
+    DAY_RULE_PATTERN,
     HARD_KINDS,
     SINGLE_VALUED_KINDS,
     Diet,
@@ -45,7 +45,10 @@ class Preference(Base):
             name="pref_budget_number",
         ),
         CheckConstraint(
-            f"kind <> 'day_dislike' OR value ~ '{DAY_DISLIKE_PATTERN}'", name="pref_day_format"
+            f"kind <> 'day_dislike' OR value ~ '{DAY_RULE_PATTERN}'", name="pref_day_format"
+        ),
+        CheckConstraint(
+            f"kind <> 'day_like' OR value ~ '{DAY_RULE_PATTERN}'", name="pref_day_like_format"
         ),
         # 800 to 6000 as a pattern: a cast here could run on other kinds' values.
         CheckConstraint(

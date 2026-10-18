@@ -26,6 +26,7 @@
 | [0022](0022-free-stock-photos-for-dishes.md) | Free stock photos for dishes (v2) | Superseded by 0024 |
 | [0023](0023-staff-role-for-the-restaurant-crm.md) | A staff role for the restaurant CRM (v2) | Accepted, not built |
 | [0024](0024-openverse-photos-for-dishes.md) | Openly licensed photos from Openverse (supersedes 0022) | Accepted |
-| [0025](0025-soft-tastes-day-rules-and-calories.md) | Soft tastes: day rules, a calorie goal, estimated calories | Accepted |
+| [0025](0025-soft-tastes-day-rules-and-calories.md) | Soft tastes: day rules, a calorie goal, estimated calories | Accepted, amended by 0026 |
+| [0026](0026-chat-parity.md) | Chat parity: whatever the chat can do, the guest can do by hand; day likes | Accepted |
 
 New ADR: copy the format, take the next number, add a row here.

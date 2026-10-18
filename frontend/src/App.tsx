@@ -7,6 +7,7 @@ import MenuRoute from './features/menu/MenuRoute'
 import CheckoutPage from './features/orders/CheckoutPage'
 import OrderPage from './features/orders/OrderPage'
 import OrdersPage from './features/orders/OrdersPage'
+import PreferencesPage from './features/preferences/PreferencesPage'
 import RestaurantsPage from './features/restaurants/RestaurantsPage'
 import AppShell from './features/shell/AppShell'
 import StartupScreen from './features/startup/StartupScreen'
@@ -57,6 +58,7 @@ function App() {
           <Route path="checkout" element={<CheckoutPage />} />
           <Route path="orders" element={<OrdersPage />} />
           <Route path="orders/:id" element={<OrderPage />} />
+          <Route path="preferences" element={<PreferencesPage onUnauthorized={logout} />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

@@ -40,6 +40,7 @@ const latte: Card = {
   pack_unit: null,
   taste_notes: [],
   liked: false,
+  today_pick: false,
   option_groups: [
     {
       id: 7,

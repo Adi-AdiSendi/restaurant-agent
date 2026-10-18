@@ -25,7 +25,9 @@ Report the actual output. Do not claim a check passed without running it.
 3. **Correctness**: does it do what the plan phase says? Edge cases: empty
    results, unknown item IDs, first-time user, contradictory preferences.
 4. **Structure**: right folder, one responsibility per file, dependency
-   direction respected, names say what things do.
+   direction respected, names say what things do. Chat parity (ADR 0026):
+   a new chat capability has a manual route and UI that call the same
+   domain function.
 5. **Tests**: do tests cover the risky branches, or only the happy path? Do
    unit tests avoid the real LLM?
 6. **Debt**: dead code, commented-out code, TODOs, duplicated logic,

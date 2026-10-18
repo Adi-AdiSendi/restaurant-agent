@@ -23,6 +23,7 @@ const cake: Card = {
   pack_unit: null,
   taste_notes: [],
   liked: false,
+  today_pick: false,
   option_groups: [],
   conflicts_with_guest: [],
   may_contain_warnings: [],
@@ -55,5 +56,12 @@ describe('ItemCard', () => {
     render(<ItemCard item={{ ...cake, allergens: [], may_contain: [], is_vegan: true }} />)
     expect(screen.getByText('none listed')).toBeInTheDocument()
     expect(screen.getByText('Vegan')).toBeInTheDocument()
+  })
+
+  test("marks a dish that matches today's day like", () => {
+    const { rerender } = render(<ItemCard item={cake} />)
+    expect(screen.queryByText("Today's pick for you")).not.toBeInTheDocument()
+    rerender(<ItemCard item={{ ...cake, today_pick: true }} />)
+    expect(screen.getByText("Today's pick for you")).toBeInTheDocument()
   })
 })

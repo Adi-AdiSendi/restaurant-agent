@@ -5,7 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.memory.preference import Preference
 from app.memory.profile import tastes
 from app.menu import clock
-from app.menu.taste import NO_TASTES, Tastes, liked, mentions, taste_notes
+from app.menu.taste import NO_TASTES, Tastes, liked, mentions, taste_notes, today_pick
 from app.orders.cart_add import add_line
 from app.orders.checkout import place_order
 from app.orders.orders import kcal_since
@@ -56,11 +56,15 @@ def test_the_profile_keeps_only_todays_day_rules_and_counts_the_goal_down() -> N
     rows = [
         Preference(kind="day_dislike", value="friday: meat"),
         Preference(kind="day_dislike", value="monday: rice"),
+        Preference(kind="day_like", value="friday: mushrooms"),
+        Preference(kind="day_like", value="sunday: fish"),
         Preference(kind="calories", value="1800"),
         Preference(kind="spice", value="mild"),
     ]
     got = tastes(rows, "friday", kcal_today=1200)
     assert got.today_avoid == ("meat",) and got.kcal_left == 600 and got.max_spice == 1
+    assert got.today_want == ("mushrooms",)
+    assert today_pick(BURGER, got) and not today_pick(BURGER, tastes(rows, "sunday", 0))
 
 
 async def test_todays_kcal_counts_only_this_guests_orders_today(seeded: AsyncSession) -> None:

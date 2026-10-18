@@ -7,7 +7,10 @@ from typing import Literal, Self
 from pydantic import BaseModel, Field, field_validator, model_validator
 
 from app.memory.vocabulary import (
-    DAY_DISLIKE_PATTERN,
+    CALORIES_MAX,
+    CALORIES_MIN,
+    DAY_RULE_KINDS,
+    DAY_RULE_PATTERN,
     OPPOSITE_KINDS,
     SINGLE_VALUED_KINDS,
     WEEKDAYS,
@@ -48,7 +51,7 @@ class Operation(BaseModel):
             self.value = _budget(self.value)
         if self.kind == Kind.CALORIES:
             self.value = _calories(self.value)
-        if self.kind == Kind.DAY_DISLIKE:
+        if self.kind in DAY_RULE_KINDS:
             self.value = _day_rule(self.value)
         return self
 
@@ -78,8 +81,10 @@ def _budget(value: str) -> str:
 
 def _calories(value: str) -> str:
     digits = value.removesuffix("kcal").removesuffix("calories").strip().replace(",", "")
-    if not digits.isdigit() or not 800 <= int(digits) <= 6000:
-        raise ValueError("calories must be a daily goal from 800 to 6000 kcal")
+    if not digits.isdigit() or not CALORIES_MIN <= int(digits) <= CALORIES_MAX:
+        raise ValueError(
+            f"calories must be a daily goal from {CALORIES_MIN} to {CALORIES_MAX} kcal"
+        )
     return str(int(digits))
 
 
@@ -88,8 +93,8 @@ def _day_rule(value: str) -> str:
     day, _, food = value.partition(":")
     day = day.removeprefix("on ").strip().removesuffix("s")
     if day not in WEEKDAYS or not food.strip():
-        raise ValueError('day_dislike must be "<weekday>: <food>", e.g. "friday: meat"')
+        raise ValueError('a day rule must be "<weekday>: <food>", e.g. "friday: fish"')
     rule = f"{day}: {food.strip()}"
-    if not re.fullmatch(DAY_DISLIKE_PATTERN, rule):
-        raise ValueError("day_dislike food must be a few plain words")
+    if not re.fullmatch(DAY_RULE_PATTERN, rule):
+        raise ValueError("the food in a day rule must be a few plain words")
     return rule

@@ -18,6 +18,12 @@ def test_profile_block_lists_hard_constraints_first() -> None:
     assert "salmon" in lines[3]
 
 
+def test_profile_block_lists_both_kinds_of_day_rule() -> None:
+    block = profile_block([pref("day_like", "friday: fish"), pref("day_dislike", "friday: meat")])
+    assert 'Avoids on one weekday (weekday: food): "friday: meat"' in block
+    assert 'Wants on one weekday (weekday: food): "friday: fish"' in block
+
+
 def test_empty_profile_says_so() -> None:
     assert "nothing saved yet" in profile_block([])
 

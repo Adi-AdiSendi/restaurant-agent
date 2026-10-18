@@ -11,6 +11,7 @@ for the video and the submission.
 | 15 Voice | done and live in English only (mic next to Send) |
 | 14, 16, 17 | cut for the deadline by the user: mobile pass, Arabic, both CRMs |
 | Extras (2026-10-18) | storefront list, Auto send for voice, day rules, calorie goal and estimates, "Matches my tastes", the chat emptying and refilling the cart, dates in boxes of 3 (ADR 0025, 0019 amended) |
+| Preferences (2026-10-18) | `/preferences` edits every remembered fact by hand, day likes ("Fridays: fish"), chat parity as a tested rule (ADR 0026) |
 | 18 | left for the final session: video and submission |
 
 Repo: GitHub `Adi-AdiSendi/restaurant-agent` (private), `main`, all pushed.

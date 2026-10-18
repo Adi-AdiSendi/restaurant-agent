@@ -96,3 +96,20 @@
   profiles:
     u:
       active: [[allergy, dairy], [spice, mild]]
+
+- id: update-day-rule-to-day-like
+  category: preference_update
+  added_after_baseline: true
+  description: Wanting a food on a weekday replaces avoiding it on that day (ADR 0026).
+  users: [u]
+  steps:
+    - user: u
+      say: I don't eat fish on Fridays.
+    - user: u
+      new_conversation: true
+      say: I changed my mind, Fridays are my fish day now. I want fish every Friday.
+  profiles:
+    u:
+      active: [[day_like, "friday: fish"]]
+      not_active: [[day_dislike, "friday: fish"]]
+      exact: true

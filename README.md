@@ -73,6 +73,13 @@ to a minute.
     order me a Classic Smash with a single patty". At Bean & Bloom, ask for "5
     Khalas dates": they come in boxes of 3, so the assistant asks whether you
     want 6 (or 3) before adding anything.
+14. **Edit by hand.** Open **Preferences** in the header. Everything the chat
+    learned is there, and anything the chat can change you can change here:
+    tick an allergy, pick a diet or spice level, set a budget or calorie goal,
+    add likes and dislikes, and add days you avoid or want a food ("Fridays:
+    fish"). Removing an allergy asks first. Then ask the chat "What should I
+    get?": it uses the edited profile. Say "no fish on Fridays" in the chat,
+    and the page shows the day like replaced.
 
 ## How it works
 ```
@@ -113,6 +120,10 @@ Each links to its decision record in [docs/decisions/](docs/decisions/README.md)
   [0016](docs/decisions/0016-removed-status-and-target-checks.md)): typed facts
   (allergy, diet, budget, spice, likes, dislikes) with a status, so a correction
   replaces the old fact and the history stays visible.
+- **Chat parity** ([0026](docs/decisions/0026-chat-parity.md)): whatever the
+  chat can change, you can change by hand on the Preferences page or in the
+  cart, through the same code. A test fails if a new chat ability has no
+  manual route.
 - **Username + 4-digit PIN** ([0013](docs/decisions/0013-identity-username-and-pin.md)):
   enough to identify returning users for a demo, nothing more.
 - **Python, FastAPI, Postgres, React** ([0002](docs/decisions/0002-frontend-react-vite-typescript.md),

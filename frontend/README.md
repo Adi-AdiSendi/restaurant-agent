@@ -23,9 +23,9 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
 - `src/features/login/`: username + 4-digit PIN.
 - Routes (React Router, ADR 0021) in `src/App.tsx`, after the startup gate
   and login: `/` restaurants, `/r/:slug` one restaurant, `/checkout`,
-  `/orders`, `/orders/:id`; anything else goes back to `/`.
+  `/orders`, `/orders/:id`, `/preferences`; anything else goes back to `/`.
 - `src/features/shell/`: `AppShell`, the header on every page (logo, app
-  name, Restaurants and Orders links, cart button, user, Log out). It holds
+  name, Restaurants, Orders and Preferences links, cart button, user, Log out). It holds
   `CartProvider`.
 - `src/features/restaurants/`: the home page grid, from `/api/restaurants`.
 - `src/features/menu/`: `MenuRoute` keys `MenuPage` by `/r/:slug`, so each
@@ -58,9 +58,15 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
   `/api/transcribe` elsewhere. The text goes into the box for the guest to
   send, or with the **Auto** toggle (saved in `localStorage`) it is sent at once.
 - `src/features/memory/`: "What I remember about you", from `/api/preferences`,
-  refreshed after each reply. Old facts are struck through. Pages (`menu`)
+  refreshed after each reply, with an "Edit preferences" link. Old facts are
+  struck through (`PastFacts`, also on the Preferences page). Pages (`menu`)
   compose features. A few pieces cross over: the cart context, the chat's
   `ItemCard` on the menu, and the orders `CheckoutCard` in the chat.
+- `src/features/preferences/`: `/preferences`, every remembered fact edited
+  by hand (ADR 0026): `HardRules` (allergies, removal asks first; diet),
+  `SoftLimits` (spice, budget, calorie goal), `FoodTastes` (likes,
+  dislikes, days you avoid and want). `usePreferences` loads the facts and
+  the allowed values from the server; each edit returns the whole history.
 - `netlify/functions/keep-awake.mts`: Netlify scheduled function that pings
   the backend's `/api/health` on Render directly every 10 minutes so the free
   backend stays awake. A test keeps its URL in sync with `../netlify.toml`.

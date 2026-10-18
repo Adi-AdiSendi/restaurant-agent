@@ -10,6 +10,8 @@ import type {
   Me,
   NewConversation,
   Preference,
+  PreferenceKind,
+  PreferenceVocabulary,
   Today,
 } from './types'
 
@@ -59,6 +61,13 @@ export const api = {
     post<ChatReply>('/chat', { conversation_id: conversationId, message }),
   getPreferences: () => request<Preference[]>('/preferences'),
   today: () => request<Today>('/preferences/today'),
+  preferenceVocabulary: () => request<PreferenceVocabulary>('/preferences/vocabulary'),
+  // Each edit returns the whole history, like getPreferences.
+  addPreference: (kind: PreferenceKind, value: string) =>
+    post<Preference[]>('/preferences', { kind, value }),
+  changePreference: (id: number, value: string) =>
+    patch<Preference[]>(`/preferences/${id}`, { value }),
+  removePreference: (id: number) => remove<Preference[]>(`/preferences/${id}`),
   cart: () => request<Cart>('/cart'),
   addCartLine: (line: AddLine) => post<Cart>('/cart/lines', line),
   setQuantity: (lineId: number, quantity: number) =>

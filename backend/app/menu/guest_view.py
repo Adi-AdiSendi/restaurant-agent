@@ -10,7 +10,7 @@ from app.menu.allergens import Allergen
 from app.menu.constraints import HardConstraints
 from app.menu.option_schemas import OptionGroupBase, OptionOut
 from app.menu.schemas import MenuItemBase, MenuItemOut
-from app.menu.taste import NO_TASTES, Tastes, liked, taste_notes
+from app.menu.taste import NO_TASTES, Tastes, liked, taste_notes, today_pick
 
 
 class GuestOption(OptionOut):
@@ -35,6 +35,8 @@ class GuestItem(MenuItemBase):
     taste_notes: list[str] = Field(default_factory=list[str])
     """Soft reasons it may not suit the guest today (dislikes, budget, ...); never a block."""
     liked: bool = False
+    today_pick: bool = False
+    """It has a food the guest wants on this weekday (a day like)."""
 
 
 def guest_item(
@@ -62,4 +64,5 @@ def guest_item(
         may_contain_warnings=constraints.item_may_contain_warnings(item),
         taste_notes=taste_notes(item, tastes),
         liked=liked(item, tastes),
+        today_pick=today_pick(item, tastes),
     )

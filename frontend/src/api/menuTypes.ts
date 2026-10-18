@@ -67,6 +67,8 @@ export interface Card {
   taste_notes: string[]
   /** It has something the guest likes. */
   liked: boolean
+  /** It has a food the guest wants on this weekday (a day like). */
+  today_pick: boolean
 }
 
 export interface Restaurant {

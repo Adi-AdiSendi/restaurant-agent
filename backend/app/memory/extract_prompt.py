@@ -18,6 +18,7 @@ Kinds and values:
 - like / dislike: a short food, ingredient or dish, e.g. "mushrooms", "salmon".
 - day_dislike: a food avoided on one weekday, written "<weekday>: <food>", e.g. \
 "friday: meat" (one operation per weekday).
+- day_like: a food the guest wants on one weekday, same format, e.g. "friday: fish".
 - calories: the guest's own daily calorie goal in kcal, e.g. "1800".
 
 Operations:
@@ -41,6 +42,8 @@ Examples (profile shown as id: kind = value):
 with budget 70
 - "Is the wagyu burger spicy?" -> []
 - "I don't eat meat on Fridays" -> add day_dislike "friday: meat"
+- "I always have fish on Fridays" -> add day_like "friday: fish"
+- "I feel like fish today" -> []
 - "I'm keeping under 1800 calories a day" -> add calories 1800
 - "My sister is counting calories" -> []
 - "Any allergies?" was asked, guest answers "peanuts" -> add allergy peanut"""

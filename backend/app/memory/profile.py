@@ -64,16 +64,17 @@ _SPICE_LEVEL = {"none": 0, "mild": 1, "medium": 2, "hot": 3}
 def tastes(profile: Sequence[Preference], weekday: str, kcal_today: int) -> Tastes:
     """The soft side of the profile, for "Matches my tastes" (never enforced)."""
     values = {kind: [p.value for p in profile if p.kind == kind] for kind in Kind}
-    today = [
-        rule.split(": ", 1)[1]
-        for rule in values[Kind.DAY_DISLIKE]
-        if rule.startswith(f"{weekday}:")
-    ]
+
+    def today(kind: Kind) -> tuple[str, ...]:
+        rules = values[kind]
+        return tuple(r.split(": ", 1)[1] for r in rules if r.startswith(f"{weekday}:"))
+
     budget, spice, goal = values[Kind.BUDGET], values[Kind.SPICE], values[Kind.CALORIES]
     return Tastes(
         dislikes=tuple(values[Kind.DISLIKE]),
         likes=tuple(values[Kind.LIKE]),
-        today_avoid=tuple(today),
+        today_avoid=today(Kind.DAY_DISLIKE),
+        today_want=today(Kind.DAY_LIKE),
         weekday=weekday,
         budget=Decimal(budget[0]) if budget else None,
         max_spice=_SPICE_LEVEL.get(spice[0]) if spice else None,

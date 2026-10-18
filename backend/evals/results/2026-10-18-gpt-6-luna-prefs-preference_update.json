@@ -1,0 +1,3066 @@
+{
+ "model": "gpt-6-luna",
+ "started": "2026-10-18T10:07:57+00:00",
+ "finished": "2026-10-18T10:08:58+00:00",
+ "label": "prefs-preference_update",
+ "runs_per_case": 3,
+ "case_count": 7,
+ "summary": [
+  {
+   "category": "preference_update",
+   "safety": false,
+   "cases": 7,
+   "cases_passed": 7,
+   "runs": 21,
+   "runs_passed": 21,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 3,
+   "answered": 42,
+   "p95_seconds": 6.98
+  }
+ ],
+ "results": [
+  {
+   "case_id": "update-vegan-to-vegetarian",
+   "category": "preference_update",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegan.",
+     "status": "ok",
+     "seconds": 4.53,
+     "reply": "I\u2019ll remember that you\u2019re vegan. The Mediterranean Veggie Bowl and Penne Arrabbiata both fit; are you in the mood for a bowl or pasta?",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Actually I'm vegetarian now, not vegan anymore. What dessert would you suggest?",
+     "status": "ok",
+     "seconds": 5.7,
+     "reply": "Got it\u2014I\u2019ll remember that you\u2019re vegetarian, not vegan. I\u2019d suggest the Mango Sorbet for a light, fruity dessert; it fits your vegetarian diet. Or try the Chocolate Lava Cake for something warm and rich; it also fits your diet, but may contain tree nuts.",
+     "cards": [
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mango-sorbet",
+       "kcal": 180,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Chocolate Lava Cake",
+       "category": "desserts_and_drinks",
+       "description": "Warm chocolate cake with a molten center and vanilla ice cream.",
+       "price_sar": "34.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "dark chocolate",
+        "butter",
+        "egg",
+        "flour",
+        "sugar",
+        "vanilla ice cream"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [
+        "tree_nut"
+       ],
+       "removable": [],
+       "photo": "corner-table/chocolate-lava-cake",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 15,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     },
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explicitly acknowledges that the user is vegetarian, not vegan. It also recommends desserts as requested."
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u superseded",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-vegan-to-vegetarian",
+   "category": "preference_update",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegan.",
+     "status": "ok",
+     "seconds": 5.92,
+     "reply": "Got it\u2014I\u2019ll remember you\u2019re vegan. What are you in the mood for: a hearty meal, a snack, or something sweet?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Actually I'm vegetarian now, not vegan anymore. What dessert would you suggest?",
+     "status": "ok",
+     "seconds": 6.03,
+     "reply": "Got it\u2014I\u2019ll remember that you\u2019re vegetarian. Mango Sorbet is a light, dairy-free option, and Chocolate Lava Cake is a richer treat; both fit your vegetarian diet. The cake may contain tree nuts, so please confirm with staff if that\u2019s a concern.",
+     "cards": [
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mango-sorbet",
+       "kcal": 180,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Chocolate Lava Cake",
+       "category": "desserts_and_drinks",
+       "description": "Warm chocolate cake with a molten center and vanilla ice cream.",
+       "price_sar": "34.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "dark chocolate",
+        "butter",
+        "egg",
+        "flour",
+        "sugar",
+        "vanilla ice cream"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [
+        "tree_nut"
+       ],
+       "removable": [],
+       "photo": "corner-table/chocolate-lava-cake",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 15,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     },
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explicitly acknowledges that the user is now vegetarian. It also recommends desserts as suitable for a vegetarian diet."
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u superseded",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-vegan-to-vegetarian",
+   "category": "preference_update",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegan.",
+     "status": "ok",
+     "seconds": 3.83,
+     "reply": "I\u2019ll remember that you\u2019re vegan. What are you in the mood for\u2014something hearty, light, or sweet?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Actually I'm vegetarian now, not vegan anymore. What dessert would you suggest?",
+     "status": "ok",
+     "seconds": 6.46,
+     "reply": "Got it\u2014I\u2019ll remember that you\u2019re vegetarian. Mango Sorbet is a refreshing, dairy-free option, and Chocolate Lava Cake is a richer warm treat; both fit your vegetarian diet. The lava cake may contain tree nuts, so please confirm with staff if that\u2019s a concern.",
+     "cards": [
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mango-sorbet",
+       "kcal": 180,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Chocolate Lava Cake",
+       "category": "desserts_and_drinks",
+       "description": "Warm chocolate cake with a molten center and vanilla ice cream.",
+       "price_sar": "34.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "dark chocolate",
+        "butter",
+        "egg",
+        "flour",
+        "sugar",
+        "vanilla ice cream"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [
+        "tree_nut"
+       ],
+       "removable": [],
+       "photo": "corner-table/chocolate-lava-cake",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 15,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     },
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explicitly acknowledges that the user is now vegetarian and says it will remember that. It also recommends desserts as fitting a vegetarian diet."
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u superseded",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-spice-hot-to-mild",
+   "category": "preference_update",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I like my food hot and spicy.",
+     "status": "ok",
+     "seconds": 5.76,
+     "reply": "I\u2019ll remember that you like your food hot and spicy. The Buffalo Chicken Wings are the hottest starter, with hot buffalo sauce; the Thai Peanut Noodle Bowl brings serious heat with bird\u2019s eye chili; or try the Nashville Hot Chicken Sandwich for a fiery cayenne glaze.",
+     "cards": [
+      {
+       "name": "Buffalo Chicken Wings",
+       "category": "starters",
+       "description": "Six wings in a hot buffalo butter sauce with a blue cheese dip.",
+       "price_sar": "38.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken wings",
+        "hot sauce",
+        "butter",
+        "blue cheese",
+        "celery"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/buffalo-chicken-wings",
+       "kcal": 640,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 2,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Thai Peanut Noodle Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Wheat noodles, crunchy vegetables and tofu in a spicy peanut sauce.",
+       "price_sar": "44.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 3,
+       "ingredients": [
+        "wheat noodles",
+        "tofu",
+        "peanut sauce",
+        "red cabbage",
+        "carrot",
+        "bird's eye chili",
+        "sesame seeds"
+       ],
+       "allergens": [
+        "peanut",
+        "soy",
+        "gluten",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/thai-peanut-noodle-bowl",
+       "kcal": 690,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 12,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Change of plan, mild food only from now on.",
+     "status": "ok",
+     "seconds": 5.26,
+     "reply": "Got it\u2014I\u2019ll remember that you want mild food only from now on. Want a mild burger, bowl, or pasta?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "spice",
+      "value": "mild",
+      "status": "active"
+     },
+     {
+      "kind": "spice",
+      "value": "hot",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u superseded",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-spice-hot-to-mild",
+   "category": "preference_update",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I like my food hot and spicy.",
+     "status": "ok",
+     "seconds": 6.39,
+     "reply": "I\u2019ll remember that you like your food hot and spicy. Try the Buffalo Chicken Wings for their hot buffalo sauce, the Thai Peanut Noodle Bowl for its bird\u2019s-eye chili, or the Nashville Hot Chicken Sandwich for its fiery cayenne glaze.",
+     "cards": [
+      {
+       "name": "Buffalo Chicken Wings",
+       "category": "starters",
+       "description": "Six wings in a hot buffalo butter sauce with a blue cheese dip.",
+       "price_sar": "38.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken wings",
+        "hot sauce",
+        "butter",
+        "blue cheese",
+        "celery"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/buffalo-chicken-wings",
+       "kcal": 640,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 2,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Thai Peanut Noodle Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Wheat noodles, crunchy vegetables and tofu in a spicy peanut sauce.",
+       "price_sar": "44.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 3,
+       "ingredients": [
+        "wheat noodles",
+        "tofu",
+        "peanut sauce",
+        "red cabbage",
+        "carrot",
+        "bird's eye chili",
+        "sesame seeds"
+       ],
+       "allergens": [
+        "peanut",
+        "soy",
+        "gluten",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/thai-peanut-noodle-bowl",
+       "kcal": 690,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 12,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Change of plan, mild food only from now on.",
+     "status": "ok",
+     "seconds": 4.93,
+     "reply": "Got it\u2014I\u2019ll remember that you want mild food only from now on. The Classic Smash Burger is a mild, savory option, and the Mediterranean Veggie Bowl is a mild plant-based choice.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/classic-smash-burger",
+       "kcal": 780,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "spice",
+      "value": "mild",
+      "status": "active"
+     },
+     {
+      "kind": "spice",
+      "value": "hot",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u superseded",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-spice-hot-to-mild",
+   "category": "preference_update",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I like my food hot and spicy.",
+     "status": "ok",
+     "seconds": 6.28,
+     "reply": "Got it\u2014I\u2019ll remember that you like your food hot and spicy. What are you in the mood for: burgers, bowls, pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Change of plan, mild food only from now on.",
+     "status": "ok",
+     "seconds": 4.38,
+     "reply": "Got it\u2014I\u2019ll remember that you prefer mild food. What are you in the mood for: burgers, bowls, pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "spice",
+      "value": "mild",
+      "status": "active"
+     },
+     {
+      "kind": "spice",
+      "value": "hot",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u superseded",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-budget",
+   "category": "preference_update",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My budget is 40 SAR.",
+     "status": "ok",
+     "seconds": 4.88,
+     "reply": "Got it\u2014I\u2019ll remember your budget is 40 SAR per item. What are you in the mood for: burgers, bowls, pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Actually my budget is 25 SAR now. What can I get?",
+     "status": "ok",
+     "seconds": 6.53,
+     "reply": "I\u2019ll remember your budget is 25 SAR per item. Within that budget, you could try Truffle Parmesan Fries, Mango Sorbet, Edamame with Chili Salt, or Fresh Lemon Mint.",
+     "cards": [
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mango-sorbet",
+       "kcal": 180,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Fresh Lemon Mint",
+       "category": "desserts_and_drinks",
+       "description": "Blended lemon, fresh mint and ice.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "lemon",
+        "mint",
+        "sugar syrup",
+        "ice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/fresh-lemon-mint",
+       "kcal": 120,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 18,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "budget",
+      "value": "25.00",
+      "status": "active"
+     },
+     {
+      "kind": "budget",
+      "value": "40.00",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Truffle Parmesan Fries', 'Mango Sorbet', 'Edamame with Chili Salt', 'Fresh Lemon Mint']"
+    },
+    {
+     "name": "turn 2 max price 25",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u superseded",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-budget",
+   "category": "preference_update",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My budget is 40 SAR.",
+     "status": "ok",
+     "seconds": 4.81,
+     "reply": "I\u2019ll remember your budget is 40 SAR per item. What are you in the mood for\u2014burgers, bowls, pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Actually my budget is 25 SAR now. What can I get?",
+     "status": "ok",
+     "seconds": 6.14,
+     "reply": "I\u2019ll remember your budget is 25 SAR per item. You could get Edamame with Chili Salt for a savory starter, Mango Sorbet for a fruity dessert, or Fresh Lemon Mint for a refreshing drink.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mango-sorbet",
+       "kcal": 180,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Fresh Lemon Mint",
+       "category": "desserts_and_drinks",
+       "description": "Blended lemon, fresh mint and ice.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "lemon",
+        "mint",
+        "sugar syrup",
+        "ice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/fresh-lemon-mint",
+       "kcal": 120,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 18,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "budget",
+      "value": "25.00",
+      "status": "active"
+     },
+     {
+      "kind": "budget",
+      "value": "40.00",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Edamame with Chili Salt', 'Mango Sorbet', 'Fresh Lemon Mint']"
+    },
+    {
+     "name": "turn 2 max price 25",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u superseded",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-budget",
+   "category": "preference_update",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My budget is 40 SAR.",
+     "status": "ok",
+     "seconds": 4.99,
+     "reply": "Got it\u2014I\u2019ll remember your budget is 40 SAR per item. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Actually my budget is 25 SAR now. What can I get?",
+     "status": "ok",
+     "seconds": 5.39,
+     "reply": "Got it\u2014I\u2019ll remember your budget is 25 SAR per item. You could get Truffle Parmesan Fries for a savory snack, Mango Sorbet for a sweet treat, or Fresh Lemon Mint for a refreshing drink.",
+     "cards": [
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mango-sorbet",
+       "kcal": 180,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Fresh Lemon Mint",
+       "category": "desserts_and_drinks",
+       "description": "Blended lemon, fresh mint and ice.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "lemon",
+        "mint",
+        "sugar syrup",
+        "ice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/fresh-lemon-mint",
+       "kcal": 120,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 18,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "budget",
+      "value": "25.00",
+      "status": "active"
+     },
+     {
+      "kind": "budget",
+      "value": "40.00",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Truffle Parmesan Fries', 'Mango Sorbet', 'Fresh Lemon Mint']"
+    },
+    {
+     "name": "turn 2 max price 25",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u superseded",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-allergy-removed",
+   "category": "preference_update",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.56,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What kind of dish are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Good news, turns out I'm not allergic to dairy after all.",
+     "status": "ok",
+     "seconds": 3.97,
+     "reply": "Got it\u2014I\u2019ll remember that dairy is no longer an allergy for you. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "removed"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-allergy-removed",
+   "category": "preference_update",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.37,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Good news, turns out I'm not allergic to dairy after all.",
+     "status": "ok",
+     "seconds": 4.1,
+     "reply": "Got it\u2014I\u2019ll remember that dairy is no longer an allergy for you. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "removed"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-allergy-removed",
+   "category": "preference_update",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.48,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Good news, turns out I'm not allergic to dairy after all.",
+     "status": "ok",
+     "seconds": 3.66,
+     "reply": "Got it\u2014I\u2019ll remember that dairy is no longer an allergy. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "removed"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-eats-meat-again",
+   "category": "preference_update",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian.",
+     "status": "ok",
+     "seconds": 7.21,
+     "reply": "Got it\u2014I\u2019ll remember you\u2019re vegetarian. The Mediterranean Veggie Bowl is a hearty plant-based option; the Plant-Based Burger is a satisfying burger choice; and Truffle Parmesan Fries make a tasty starter. All fit your vegetarian diet.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "I eat meat again these days. Recommend me a burger.",
+     "status": "ok",
+     "seconds": 4.91,
+     "reply": "Got it\u2014I\u2019ll remember that you eat meat again. The Classic Smash Burger is a great pick for a straightforward, savory beef burger.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/classic-smash-burger",
+       "kcal": 780,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "removed"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Classic Smash Burger']"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-eats-meat-again",
+   "category": "preference_update",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian.",
+     "status": "ok",
+     "seconds": 15.16,
+     "reply": "Got it\u2014I\u2019ll remember that you\u2019re vegetarian. What are you in the mood for: a burger, a bowl, pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "I eat meat again these days. Recommend me a burger.",
+     "status": "ok",
+     "seconds": 5.89,
+     "reply": "Got it\u2014I\u2019ll remember that you eat meat again. The Classic Smash Burger is a straightforward, mild beef burger with cheddar and pickles; the Double Wagyu Burger is a richer choice with caramelized onions and truffle mayo.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/classic-smash-burger",
+       "kcal": 780,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Double Wagyu Burger",
+       "category": "burgers_and_mains",
+       "description": "Wagyu beef, aged cheddar, caramelized onions and truffle mayo in a sesame bun.",
+       "price_sar": "85.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "wagyu beef",
+        "aged cheddar",
+        "sesame bun",
+        "caramelized onion",
+        "truffle mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/double-wagyu-burger",
+       "kcal": 1100,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 6,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "removed"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Classic Smash Burger', 'Double Wagyu Burger']"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-eats-meat-again",
+   "category": "preference_update",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian.",
+     "status": "ok",
+     "seconds": 3.36,
+     "reply": "Got it\u2014I\u2019ll remember you\u2019re vegetarian. What sounds good: a burger, bowl, pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "I eat meat again these days. Recommend me a burger.",
+     "status": "ok",
+     "seconds": 5.36,
+     "reply": "Got it\u2014I\u2019ll remember that you eat meat again. The Classic Smash Burger is a solid pick: beef patties with cheddar and pickles, and it isn\u2019t spicy.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/classic-smash-burger",
+       "kcal": 780,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "removed"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Classic Smash Burger']"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-new-allergy-acknowledged",
+   "category": "preference_update",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I like mild food.",
+     "status": "ok",
+     "seconds": 6.75,
+     "reply": "Got it\u2014I\u2019ll remember that you prefer mild food. The Classic Smash Burger is mild and satisfying; the Mediterranean Veggie Bowl is a mild plant-based option; or try the Grilled Salmon Plate for a mild, lighter meal.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/classic-smash-burger",
+       "kcal": 780,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Grilled Salmon Plate",
+       "category": "burgers_and_mains",
+       "description": "Grilled salmon fillet with lemon butter, herbed rice and greens.",
+       "price_sar": "78.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "salmon",
+        "lemon butter",
+        "rice",
+        "mixed greens",
+        "dill"
+       ],
+       "allergens": [
+        "fish",
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/grilled-salmon-plate",
+       "kcal": 620,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 9,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Since my last visit I found out I'm allergic to dairy. What starter would you suggest?",
+     "status": "ok",
+     "seconds": 6.98,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. Edamame with Chili Salt is a mild, dairy-free starter that should suit you.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     },
+     {
+      "kind": "spice",
+      "value": "mild",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explicitly acknowledges the new dairy allergy and recommends a starter described as dairy-free, making clear it took the allergy into account."
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-new-allergy-acknowledged",
+   "category": "preference_update",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I like mild food.",
+     "status": "ok",
+     "seconds": 4.71,
+     "reply": "I\u2019ll remember that you prefer mild food. What are you in the mood for\u2014burgers, bowls, pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Since my last visit I found out I'm allergic to dairy. What starter would you suggest?",
+     "status": "ok",
+     "seconds": 5.13,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. I suggest the Edamame with Chili Salt; it fits your dairy allergy and has mild spice.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     },
+     {
+      "kind": "spice",
+      "value": "mild",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explicitly acknowledges the dairy allergy and says the suggested starter fits it."
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-new-allergy-acknowledged",
+   "category": "preference_update",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I like mild food.",
+     "status": "ok",
+     "seconds": 4.01,
+     "reply": "I\u2019ll remember that you prefer mild food. What are you in the mood for\u2014burgers, bowls, pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Since my last visit I found out I'm allergic to dairy. What starter would you suggest?",
+     "status": "ok",
+     "seconds": 4.15,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. I\u2019d suggest Edamame with Chili Salt\u2014it\u2019s mild and fits your dairy allergy.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     },
+     {
+      "kind": "spice",
+      "value": "mild",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explicitly acknowledges the dairy allergy and recommends a starter as fitting that allergy. That makes clear it took the new allergy into account."
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-day-rule-to-day-like",
+   "category": "preference_update",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I don't eat fish on Fridays.",
+     "status": "ok",
+     "seconds": 5.34,
+     "reply": "Got it\u2014I\u2019ll remember that you avoid fish on Fridays. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "I changed my mind, Fridays are my fish day now. I want fish every Friday.",
+     "status": "ok",
+     "seconds": 5.58,
+     "reply": "Got it\u2014I\u2019ll remember that Friday is your fish day. What kind of fish dish are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "day_like",
+      "value": "friday: fish",
+      "status": "active"
+     },
+     {
+      "kind": "day_dislike",
+      "value": "friday: fish",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-day-rule-to-day-like",
+   "category": "preference_update",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I don't eat fish on Fridays.",
+     "status": "ok",
+     "seconds": 3.43,
+     "reply": "Got it\u2014I\u2019ll remember that you avoid fish on Fridays.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "I changed my mind, Fridays are my fish day now. I want fish every Friday.",
+     "status": "ok",
+     "seconds": 3.86,
+     "reply": "Got it\u2014I\u2019ll remember that Friday is your fish day.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "day_like",
+      "value": "friday: fish",
+      "status": "active"
+     },
+     {
+      "kind": "day_dislike",
+      "value": "friday: fish",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "update-day-rule-to-day-like",
+   "category": "preference_update",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I don't eat fish on Fridays.",
+     "status": "ok",
+     "seconds": 3.88,
+     "reply": "Got it\u2014I\u2019ll remember that you avoid fish on Fridays. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "I changed my mind, Fridays are my fish day now. I want fish every Friday.",
+     "status": "ok",
+     "seconds": 3.6,
+     "reply": "Got it\u2014I\u2019ll remember that Friday is your fish day.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "day_like",
+      "value": "friday: fish",
+      "status": "active"
+     },
+     {
+      "kind": "day_dislike",
+      "value": "friday: fish",
+      "status": "superseded"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  }
+ ]
+}

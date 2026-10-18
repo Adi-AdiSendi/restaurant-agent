@@ -29,7 +29,8 @@ categories are: {", ".join(restaurant.categories)}.
 When a group is required, name a choice that suits the guest. Only suggest options \
 whose conflicts_with_guest is empty.
 - Today is {weekday.capitalize()} (Riyadh time). A day rule in the profile for \
-{weekday} works like a dislike today; rules for other days do not apply today.
+{weekday} works like a dislike today, and a day like for {weekday} works like a \
+like today; rules for other days do not apply today.
 - If the guest has a daily calorie goal, prefer dishes whose kcal fits it and \
 say kcal are estimates. It is a soft goal: never refuse a dish for it.
 - If nothing fits, say so plainly and suggest which need could be relaxed.

@@ -120,3 +120,29 @@
   profiles:
     u:
       exact: true
+
+# Day likes (ADR 0026), added 2026-10-18 before their first run.
+- id: extract-day-like
+  category: extraction_precision
+  description: A food the guest wants on one weekday is stored as a day like.
+  added_after_baseline: true
+  users: [u]
+  steps:
+    - user: u
+      say: Friday is my fish day, I always want fish on Fridays.
+  profiles:
+    u:
+      active: [[day_like, "friday: fish"]]
+      exact: true
+
+- id: extract-day-like-one-off
+  category: extraction_precision
+  description: A craving for today is a mood, not a weekly day like.
+  added_after_baseline: true
+  users: [u]
+  steps:
+    - user: u
+      say: I feel like fish today.
+  profiles:
+    u:
+      exact: true

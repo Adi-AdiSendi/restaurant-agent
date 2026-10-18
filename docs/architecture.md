@@ -23,7 +23,7 @@ backend/
     main.py       creates the FastAPI app, mounts routes and the frontend build
     config.py     settings from env (pydantic-settings)
     api/          HTTP routes only: auth, chat, conversations, restaurants (and a
-                  guest's menu), preferences, cart, orders, transcribe (voice), health; plus the session
+                  guest's menu), preferences (and edits by hand), cart, orders, transcribe (voice), health; plus the session
                   cookie (session.py) and the user and constraints dependencies (deps.py)
     agent/        LLM loop, system prompt, context builder, final-answer schema
     tools/        tools the model can call (menu search and lookup, cart changes,
@@ -31,7 +31,8 @@ backend/
                   ToolContext they receive (ADR 0020)
     menu/         restaurants, menu items and options, queries, filters, the fit
                   rule, the order resolver (configure.py), allergen vocabulary
-    memory/       extract preferences, store them, supersede outdated ones
+    memory/       extract preferences, store them, supersede outdated ones; the same
+                  path for edits by hand (manual_edit.py, ADR 0026)
     orders/       the cart, checkout and orders, priced by menu/configure.py (ADR 0019)
     safety/       hard-constraint guard for allergens and diet
     users/        users, PIN hashing, login or register
@@ -52,6 +53,7 @@ frontend/
   src/features/chat/    chat panel, messages, item cards with their options
   src/features/login/   username + PIN entry
   src/features/memory/  "What I remember about you" panel
+  src/features/preferences/  /preferences: every remembered fact, edited by hand
   src/features/startup/ "Starting the server" while the backend wakes up
   netlify/functions/    keep-awake scheduled function
   src/api/              backend client and payload types
@@ -164,10 +166,12 @@ past it the turn is rolled back and the API returns 504.
   removed), superseded_by, source_message_id, created_at
 
 `kind` is one of: allergy, diet, dislike, like, budget, spice, day_dislike
-("friday: meat"), calories (a daily goal); the last two are soft (ADR 0025). CHECKs keep
+("friday: meat"), day_like ("friday: fish", ADR 0026), calories (a daily
+goal); the last three were added by ADRs 0025 and 0026. CHECKs keep
 values in their vocabularies (allergens, vegetarian/vegan, none/mild/medium/hot,
-a positive SAR amount). Partial unique indexes allow one active diet, budget
-and spice per user, and one active row per kind and value.
+a positive SAR amount, a weekday rule). Partial unique indexes allow one active diet, budget,
+spice and calorie goal per user, and one active row per kind and value. A
+like replaces a dislike of the same food, and a day like a day dislike.
 `is_hard` is derived, not stored: true for allergy and diet only; these are
 enforced by `safety/`. Everything else is a soft preference the model weighs.
 
@@ -185,6 +189,27 @@ enforced by `safety/`. Everything else is a soft preference the model weighs.
    allergens and prices into `order_lines`, and empties the cart. No payment;
    status (placed, preparing, ready) comes from the time since placing.
 
+## Chat and manual parity (ADR 0026)
+Whatever the chat can change, the guest can change by hand, and both paths
+call the same domain function. The chat is a convenience, never the only way
+to do something. The reverse is not required: only the guest's button places
+an order.
+
+| The chat | Shared function | By hand (route, screen) |
+|---|---|---|
+| extraction `add` | `memory/supersede.apply_operations` (via `memory/manual_edit.py`) | `POST /api/preferences`, Preferences page |
+| extraction `supersede` | same | `PATCH /api/preferences/{id}` (a new diet, spice, budget or goal) |
+| extraction `remove` | same | `DELETE /api/preferences/{id}` (allergy removal asks first) |
+| `add_to_cart` | `orders/cart_add.add_line` | `POST /api/cart/lines`, item sheet |
+| `update_cart_line`, `remove_cart_line`, `clear_cart` | `orders/cart_edit.py` | `/api/cart/lines/{id}`, `/api/cart`, cart drawer |
+| `view_cart`, `recent_orders` | `orders/cart.py`, `orders/orders.py` | cart drawer, Orders |
+| `propose_checkout` | (shows a card only) | `POST /api/orders`, Checkout |
+| `search_menu`, `get_item`, `show_menu` | `menu/` queries, `guest_view.py` | `GET /api/restaurants/{slug}/menu`, the menu |
+
+`backend/tests/test_chat_parity.py` fails if a tool or a memory operation has
+no route here, or if the UI's list of preference kinds misses one. The page
+gets each kind's allowed values from `GET /api/preferences/vocabulary`.
+
 ## Where each guarantee lives
 | Guarantee | Enforced in |
 |---|---|
@@ -196,3 +221,4 @@ enforced by `safety/`. Everything else is a soft preference the model weighs.
 | Only the guest orders | `POST /api/orders` from the checkout button; conflicts need the guest's explicit consent |
 | Outdated facts replaced | `memory/supersede.py`, status column |
 | Facts survive long chats | profile stored in DB, injected every turn |
+| The chat is never the only way | one domain function per change; `tests/test_chat_parity.py` |

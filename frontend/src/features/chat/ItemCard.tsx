@@ -1,12 +1,10 @@
 import type { Allergen, Card } from '../../api/menuTypes'
 import { categoryIcon } from '../../components/categoryIcon'
 import DishPhoto from '../../components/DishPhoto'
-import { kcalLabel } from '../../components/kcal'
+import ItemBadges from './ItemBadges'
 import styles from './ItemCard.module.css'
 import ItemOptions from './ItemOptions'
 import { addLabel, canQuickAdd, type QuickAdd } from './quickAdd'
-
-const SPICE = ['Not spicy', 'Mild', 'Medium', 'Hot']
 
 const allergenLabel = (allergen: Allergen) => allergen.replace('_', ' ')
 
@@ -21,7 +19,6 @@ interface Props {
 // Every detail comes from the card data the backend loaded from the database,
 // never from the assistant's text. Allergens are always visible.
 function ItemCard({ item, onChoose, quickAdd }: Props) {
-  const diet = item.is_vegan ? 'Vegan' : item.is_vegetarian ? 'Vegetarian' : null
   const traces = item.may_contain.filter((a) => !item.may_contain_warnings.includes(a))
   return (
     <article className={styles.card} aria-label={item.name}>
@@ -34,15 +31,7 @@ function ItemCard({ item, onChoose, quickAdd }: Props) {
         </span>
       </header>
       <p className={styles.description}>{item.description}</p>
-      <div className={styles.badges}>
-        {diet && <span className={styles.diet}>{diet}</span>}
-        <span className={styles.spice}>
-          <span aria-hidden="true">{'🌶'.repeat(item.spice_level)}</span>{' '}
-          {SPICE[item.spice_level] ?? ''}
-        </span>
-        {item.kcal !== null && <span className={styles.spice}>{kcalLabel(item.kcal)}</span>}
-        {item.liked && <span className={styles.diet}>You like this</span>}
-      </div>
+      <ItemBadges item={item} />
       <p className={styles.ingredients}>{item.ingredients.join(', ')}</p>
       {item.pack_size > 1 && (
         <p className={styles.traces}>

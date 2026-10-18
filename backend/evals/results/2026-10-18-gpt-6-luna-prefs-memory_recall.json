@@ -1,0 +1,2916 @@
+{
+ "model": "gpt-6-luna",
+ "started": "2026-10-18T10:08:59+00:00",
+ "finished": "2026-10-18T10:09:56+00:00",
+ "label": "prefs-memory_recall",
+ "runs_per_case": 3,
+ "case_count": 6,
+ "summary": [
+  {
+   "category": "memory_recall",
+   "safety": false,
+   "cases": 6,
+   "cases_passed": 6,
+   "runs": 18,
+   "runs_passed": 18,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 0,
+   "answered": 36,
+   "p95_seconds": 8.21
+  }
+ ],
+ "results": [
+  {
+   "case_id": "recall-peanut",
+   "category": "memory_recall",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to peanuts, by the way.",
+     "status": "ok",
+     "seconds": 4.1,
+     "reply": "I\u2019ll remember that you\u2019re allergic to peanuts. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "What should I get today?",
+     "status": "ok",
+     "seconds": 7.58,
+     "reply": "For something hearty, try the Classic Smash Burger. If you\u2019d rather have a lighter, plant-based meal, the Mediterranean Veggie Bowl is a good pick.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/classic-smash-burger",
+       "kcal": 780,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "peanut",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Classic Smash Burger', 'Mediterranean Veggie Bowl']"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-peanut",
+   "category": "memory_recall",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to peanuts, by the way.",
+     "status": "ok",
+     "seconds": 4.18,
+     "reply": "I\u2019ll remember that you\u2019re allergic to peanuts. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "What should I get today?",
+     "status": "ok",
+     "seconds": 6.5,
+     "reply": "For a balanced meal, try the Mediterranean Veggie Bowl. If you\u2019re in the mood for a burger, the Classic Smash Burger is a hearty pick; Fresh Lemon Mint makes a refreshing drink alongside either one.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/classic-smash-burger",
+       "kcal": 780,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Fresh Lemon Mint",
+       "category": "desserts_and_drinks",
+       "description": "Blended lemon, fresh mint and ice.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "lemon",
+        "mint",
+        "sugar syrup",
+        "ice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/fresh-lemon-mint",
+       "kcal": 120,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 18,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "peanut",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Mediterranean Veggie Bowl', 'Classic Smash Burger', 'Fresh Lemon Mint']"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-peanut",
+   "category": "memory_recall",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to peanuts, by the way.",
+     "status": "ok",
+     "seconds": 4.19,
+     "reply": "I\u2019ll remember that you\u2019re allergic to peanuts. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "What should I get today?",
+     "status": "ok",
+     "seconds": 7.65,
+     "reply": "For a satisfying meal, I\u2019d go with the Classic Smash Burger, then a Fresh Lemon Mint for something cool and refreshing.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/classic-smash-burger",
+       "kcal": 780,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Fresh Lemon Mint",
+       "category": "desserts_and_drinks",
+       "description": "Blended lemon, fresh mint and ice.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "lemon",
+        "mint",
+        "sugar syrup",
+        "ice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/fresh-lemon-mint",
+       "kcal": 120,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 18,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "peanut",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Classic Smash Burger', 'Fresh Lemon Mint']"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-vegetarian",
+   "category": "memory_recall",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian.",
+     "status": "ok",
+     "seconds": 4.48,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. What are you in the mood for\u2014something hearty, light, or sweet?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Any burger for me?",
+     "status": "ok",
+     "seconds": 4.74,
+     "reply": "Yes\u2014the Plant-Based Burger is a vegetarian option, with a soy-based patty and vegan cheese.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-vegetarian",
+   "category": "memory_recall",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian.",
+     "status": "ok",
+     "seconds": 6.69,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. These all fit: the Mediterranean Veggie Bowl for a fresh, hearty option; the Plant-Based Burger if you\u2019re in the mood for a burger; or Penne Arrabbiata for a spicy pasta choice.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Any burger for me?",
+     "status": "ok",
+     "seconds": 4.96,
+     "reply": "Yes\u2014the Plant-Based Burger is vegetarian, with a soy-based patty and vegan cheese. It\u2019s the burger option that fits your diet.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-vegetarian",
+   "category": "memory_recall",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian.",
+     "status": "ok",
+     "seconds": 3.97,
+     "reply": "Got it\u2014I\u2019ll remember you\u2019re vegetarian. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Any burger for me?",
+     "status": "ok",
+     "seconds": 4.55,
+     "reply": "Yes\u2014the Plant-Based Burger is a vegetarian option, with a soy-based patty and vegan cheese.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-spicy",
+   "category": "memory_recall",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I love really spicy food, the hotter the better.",
+     "status": "ok",
+     "seconds": 5.47,
+     "reply": "I\u2019ll remember that you love your food really spicy. For maximum heat, try the Thai Peanut Noodle Bowl or Nashville Hot Chicken Sandwich\u2014both are spice level 3; Buffalo Chicken Wings are another fiery pick.",
+     "cards": [
+      {
+       "name": "Thai Peanut Noodle Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Wheat noodles, crunchy vegetables and tofu in a spicy peanut sauce.",
+       "price_sar": "44.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 3,
+       "ingredients": [
+        "wheat noodles",
+        "tofu",
+        "peanut sauce",
+        "red cabbage",
+        "carrot",
+        "bird's eye chili",
+        "sesame seeds"
+       ],
+       "allergens": [
+        "peanut",
+        "soy",
+        "gluten",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/thai-peanut-noodle-bowl",
+       "kcal": 690,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 12,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Buffalo Chicken Wings",
+       "category": "starters",
+       "description": "Six wings in a hot buffalo butter sauce with a blue cheese dip.",
+       "price_sar": "38.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken wings",
+        "hot sauce",
+        "butter",
+        "blue cheese",
+        "celery"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/buffalo-chicken-wings",
+       "kcal": 640,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 2,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Pick a main for me.",
+     "status": "ok",
+     "seconds": 5.14,
+     "reply": "The Nashville Hot Chicken Sandwich should suit your love of heat\u2014it has a fiery cayenne glaze and is the spiciest main I found.",
+     "cards": [
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "spice",
+      "value": "hot",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Nashville Hot Chicken Sandwich']"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply recommends a spicy main and explicitly says it suits the user's love of heat. It also identifies it as the spiciest main found."
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-spicy",
+   "category": "memory_recall",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I love really spicy food, the hotter the better.",
+     "status": "ok",
+     "seconds": 5.66,
+     "reply": "I\u2019ll remember that you love the heat. For the spiciest picks, try the Thai Peanut Noodle Bowl with bird\u2019s-eye chili, Buffalo Chicken Wings in hot buffalo sauce, or the Nashville Hot Chicken Sandwich with fiery cayenne glaze.",
+     "cards": [
+      {
+       "name": "Thai Peanut Noodle Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Wheat noodles, crunchy vegetables and tofu in a spicy peanut sauce.",
+       "price_sar": "44.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 3,
+       "ingredients": [
+        "wheat noodles",
+        "tofu",
+        "peanut sauce",
+        "red cabbage",
+        "carrot",
+        "bird's eye chili",
+        "sesame seeds"
+       ],
+       "allergens": [
+        "peanut",
+        "soy",
+        "gluten",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/thai-peanut-noodle-bowl",
+       "kcal": 690,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 12,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Buffalo Chicken Wings",
+       "category": "starters",
+       "description": "Six wings in a hot buffalo butter sauce with a blue cheese dip.",
+       "price_sar": "38.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken wings",
+        "hot sauce",
+        "butter",
+        "blue cheese",
+        "celery"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/buffalo-chicken-wings",
+       "kcal": 640,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 2,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Pick a main for me.",
+     "status": "ok",
+     "seconds": 4.71,
+     "reply": "The Nashville Hot Chicken Sandwich is my pick\u2014it\u2019s fiery and suits your love of hot spice.",
+     "cards": [
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "spice",
+      "value": "hot",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Nashville Hot Chicken Sandwich']"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply picks a fiery dish and explicitly says it suits the user's love of hot spice."
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-spicy",
+   "category": "memory_recall",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I love really spicy food, the hotter the better.",
+     "status": "ok",
+     "seconds": 5.88,
+     "reply": "Got it\u2014I\u2019ll remember that you love the heat. For the hottest picks, try the Thai Peanut Noodle Bowl with bird\u2019s eye chili, Buffalo Chicken Wings in hot buffalo sauce, or the Nashville Hot Chicken Sandwich with fiery cayenne glaze.",
+     "cards": [
+      {
+       "name": "Thai Peanut Noodle Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Wheat noodles, crunchy vegetables and tofu in a spicy peanut sauce.",
+       "price_sar": "44.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 3,
+       "ingredients": [
+        "wheat noodles",
+        "tofu",
+        "peanut sauce",
+        "red cabbage",
+        "carrot",
+        "bird's eye chili",
+        "sesame seeds"
+       ],
+       "allergens": [
+        "peanut",
+        "soy",
+        "gluten",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/thai-peanut-noodle-bowl",
+       "kcal": 690,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 12,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Buffalo Chicken Wings",
+       "category": "starters",
+       "description": "Six wings in a hot buffalo butter sauce with a blue cheese dip.",
+       "price_sar": "38.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken wings",
+        "hot sauce",
+        "butter",
+        "blue cheese",
+        "celery"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/buffalo-chicken-wings",
+       "kcal": 640,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 2,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Pick a main for me.",
+     "status": "ok",
+     "seconds": 5.09,
+     "reply": "Try the Nashville Hot Chicken Sandwich\u2014it\u2019s the spiciest main, with a fiery cayenne glaze.",
+     "cards": [
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "spice",
+      "value": "hot",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Nashville Hot Chicken Sandwich']"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply recommends the spiciest main and describes its fiery cayenne glaze, so it favors a spicy dish."
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-budget",
+   "category": "memory_recall",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My budget is usually around 40 SAR.",
+     "status": "ok",
+     "seconds": 4.23,
+     "reply": "Got it\u2014I\u2019ll remember your usual budget is around 40 SAR per item. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "What do you recommend for lunch?",
+     "status": "ok",
+     "seconds": 8.21,
+     "reply": "For lunch, I recommend the Mediterranean Veggie Bowl\u2014hearty quinoa, roasted vegetables, chickpeas and hummus for 39 SAR, within your budget.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "budget",
+      "value": "40.00",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Mediterranean Veggie Bowl']"
+    },
+    {
+     "name": "turn 2 max price 40",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-budget",
+   "category": "memory_recall",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My budget is usually around 40 SAR.",
+     "status": "ok",
+     "seconds": 4.17,
+     "reply": "Got it\u2014I\u2019ll remember your usual budget is around 40 SAR. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "What do you recommend for lunch?",
+     "status": "ok",
+     "seconds": 5.85,
+     "reply": "For lunch, I recommend the Mediterranean Veggie Bowl: it\u2019s a satisfying quinoa and chickpea bowl with roasted vegetables, hummus and lemon dressing, for SAR 39.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "budget",
+      "value": "40.00",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Mediterranean Veggie Bowl']"
+    },
+    {
+     "name": "turn 2 max price 40",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-budget",
+   "category": "memory_recall",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My budget is usually around 40 SAR.",
+     "status": "ok",
+     "seconds": 4.04,
+     "reply": "Got it\u2014I\u2019ll keep your usual budget around SAR 40 per item in mind. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "What do you recommend for lunch?",
+     "status": "ok",
+     "seconds": 8.92,
+     "reply": "I\u2019d recommend the Mediterranean Veggie Bowl: it\u2019s a filling lunch with quinoa, roasted vegetables, chickpeas and hummus, and it fits your SAR 40 budget.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "budget",
+      "value": "40.00",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Mediterranean Veggie Bowl']"
+    },
+    {
+     "name": "turn 2 max price 40",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.55,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 8.03,
+     "reply": "The Plant-Based Burger is the burger option that fits your mustard dislike.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.48,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 7.16,
+     "reply": "The Plant-Based Burger is the burger option that avoids your mustard dislike. Would you prefer a plant-based burger, or should I look for a beef option you could customize?",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.21,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 6.29,
+     "reply": "The Plant-Based Burger is a good fit\u2014it\u2019s a burger without mustard. The beef burgers on the menu contain mustard, which you dislike.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-mild-is-not-a-ban",
+   "category": "memory_recall",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian and I prefer mild food.",
+     "status": "ok",
+     "seconds": 6.86,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian and prefer mild food. The Mediterranean Veggie Bowl is a filling, mild choice; Truffle Parmesan Fries make a mild side, and Fresh Lemon Mint is a refreshing drink. All fit your vegetarian and mild preferences.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Fresh Lemon Mint",
+       "category": "desserts_and_drinks",
+       "description": "Blended lemon, fresh mint and ice.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "lemon",
+        "mint",
+        "sugar syrup",
+        "ice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/fresh-lemon-mint",
+       "kcal": 120,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 18,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Any burger for me?",
+     "status": "ok",
+     "seconds": 4.79,
+     "reply": "Yes\u2014the Plant-Based Burger is a vegetarian, mild option with a soy-based patty and vegan cheese.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "spice",
+      "value": "mild",
+      "status": "active"
+     },
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Plant-Based Burger']"
+    },
+    {
+     "name": "turn 2 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-mild-is-not-a-ban",
+   "category": "memory_recall",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian and I prefer mild food.",
+     "status": "ok",
+     "seconds": 7.18,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian and prefer mild food. These all fit: the Mediterranean Veggie Bowl for a fresh, filling meal; Pesto Penne for a comforting pasta; or Truffle Parmesan Fries for a mild snack.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Pesto Penne",
+       "category": "bowls_and_pasta",
+       "description": "Penne in basil pesto with pine nuts, parmesan and cherry tomatoes.",
+       "price_sar": "46.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "penne",
+        "basil",
+        "pine nuts",
+        "parmesan",
+        "olive oil",
+        "cherry tomato"
+       ],
+       "allergens": [
+        "gluten",
+        "tree_nut",
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/pesto-penne",
+       "kcal": 720,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 10,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Any burger for me?",
+     "status": "ok",
+     "seconds": 4.75,
+     "reply": "Yes\u2014the Plant-Based Burger is a mild vegetarian option, with a soy-based patty, vegan cheese, lettuce and tomato.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "spice",
+      "value": "mild",
+      "status": "active"
+     },
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Plant-Based Burger']"
+    },
+    {
+     "name": "turn 2 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-mild-is-not-a-ban",
+   "category": "memory_recall",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian and I prefer mild food.",
+     "status": "ok",
+     "seconds": 6.31,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian and prefer mild food. The Mediterranean Veggie Bowl and Pesto Penne both fit your preferences and are mild.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Pesto Penne",
+       "category": "bowls_and_pasta",
+       "description": "Penne in basil pesto with pine nuts, parmesan and cherry tomatoes.",
+       "price_sar": "46.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "penne",
+        "basil",
+        "pine nuts",
+        "parmesan",
+        "olive oil",
+        "cherry tomato"
+       ],
+       "allergens": [
+        "gluten",
+        "tree_nut",
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/pesto-penne",
+       "kcal": 720,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 10,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Any burger for me?",
+     "status": "ok",
+     "seconds": 5.06,
+     "reply": "Yes\u2014the Plant-Based Burger is vegetarian and mild, so it should suit you.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "spice",
+      "value": "mild",
+      "status": "active"
+     },
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Plant-Based Burger']"
+    },
+    {
+     "name": "turn 2 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  }
+ ]
+}

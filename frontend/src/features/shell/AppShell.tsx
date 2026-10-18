@@ -29,6 +29,9 @@ function AppShell({ username, onLogout }: Props) {
             <NavLink to="/orders" className={navClass}>
               Orders
             </NavLink>
+            <NavLink to="/preferences" className={navClass}>
+              Preferences
+            </NavLink>
           </nav>
           <div className={styles.user}>
             <CartButton />

@@ -44,6 +44,9 @@ paths:
 ## Tool design
 - Tools have distinct purposes. Each description states: what it does, input
   format, an example, and what it must NOT be used for.
+- Chat parity (ADR 0026): a new tool or memory operation calls a domain
+  function that an API route also calls, and the route is mapped in
+  `tests/test_chat_parity.py`. The chat must never be the only way to do it.
 - Tools never accept `user_id`, a conversation or a restaurant. Handlers take
   `(arguments, context)`; `ToolContext` is built by the server (ADR 0020).
 - `search_menu` always applies the user's hard constraints server-side, whatever

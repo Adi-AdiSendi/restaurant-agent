@@ -1,6 +1,6 @@
 # 0025: Soft tastes: day rules, a calorie goal and estimated calories
 
-- Status: Accepted
+- Status: Accepted, amended by [0026](0026-chat-parity.md) (day likes, edited by hand)
 - Date: 2026-10-18
 
 ## Context

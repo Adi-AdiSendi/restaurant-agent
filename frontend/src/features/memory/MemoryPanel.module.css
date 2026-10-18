@@ -85,3 +85,9 @@
   margin-top: 4px;
   accent-color: var(--brand);
 }
+
+.edit {
+  align-self: flex-start;
+  color: var(--brand);
+  font-weight: 600;
+}

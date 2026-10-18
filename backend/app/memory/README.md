@@ -6,7 +6,8 @@ Every query is scoped by `user_id`.
 - `models.py`: `Conversation`, `Message` (assistant messages keep their
   recommended item IDs).
 - `preference.py`: `Preference`, typed facts (`allergy`, `diet`, `dislike`,
-  `like`, `budget`, `spice`) with `status` active, superseded or removed.
+  `like`, `budget`, `spice`, `day_dislike`, `day_like`, `calories`) with
+  `status` active, superseded or removed.
   CHECKs and partial unique indexes keep the vocabulary and "one active diet,
   budget, spice" true in the database. `vocabulary.py` holds the values.
 - `extract.py`: one structured LLM call per user message returns operations
@@ -20,8 +21,12 @@ Every query is scoped by `user_id`.
   `dislike X`. A target owned by another user, inactive, or of a different
   kind or value than the operation names is ignored (ADR 0016), so a wrong ID
   cannot delete an allergy.
+- `manual_edit.py`: add, change and remove a fact by hand (the Preferences
+  page, ADR 0026). Same `Operation` validation and `apply_operations` as
+  extraction, under the same per-user lock as a chat turn; a fact that is
+  not this user's active one is `PreferenceNotFound`.
 - `profile.py`: the active profile for the agent, and the full history for
   `GET /api/preferences`.
 - `conversations.py`: create, ownership check, last 20 messages, save a message.
 
-Depends on: `menu` (allergen vocabulary), `db`. Used by: `agent`, `api`.
+Depends on: `menu` (allergen vocabulary), `users` (the per-user lock), `db`. Used by: `agent`, `api`.

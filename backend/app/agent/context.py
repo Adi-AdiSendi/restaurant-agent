@@ -16,6 +16,7 @@ _LINES: list[tuple[Kind, str]] = [
     (Kind.LIKE, "Likes"),
     (Kind.DISLIKE, "Dislikes"),
     (Kind.DAY_DISLIKE, "Avoids on one weekday (weekday: food)"),
+    (Kind.DAY_LIKE, "Wants on one weekday (weekday: food)"),
     (Kind.CALORIES, "Daily calorie goal (kcal, soft)"),
 ]
 

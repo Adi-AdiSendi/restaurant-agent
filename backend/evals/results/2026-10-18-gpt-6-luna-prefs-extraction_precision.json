@@ -1,0 +1,3759 @@
+{
+ "model": "gpt-6-luna",
+ "started": "2026-10-18T10:06:51+00:00",
+ "finished": "2026-10-18T10:07:55+00:00",
+ "label": "prefs-extraction_precision",
+ "runs_per_case": 3,
+ "case_count": 12,
+ "summary": [
+  {
+   "category": "extraction_precision",
+   "safety": false,
+   "cases": 12,
+   "cases_passed": 12,
+   "runs": 36,
+   "runs_passed": 36,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 3,
+   "answered": 36,
+   "p95_seconds": 13.63
+  }
+ ],
+ "results": [
+  {
+   "case_id": "extraction-friend-is-vegan",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My friend is vegan, what could she eat here?",
+     "status": "ok",
+     "seconds": 5.27,
+     "reply": "There are several vegan choices here. For a filling meal, she could try the Mediterranean Veggie Bowl; for pasta, Penne Arrabbiata; or the Plant-Based Burger. Edamame with Chili Salt is a lighter starter.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-friend-is-vegan",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My friend is vegan, what could she eat here?",
+     "status": "ok",
+     "seconds": 5.69,
+     "reply": "She could try the Mediterranean Veggie Bowl, a filling quinoa-and-chickpea option; the Plant-Based Burger; or Penne Arrabbiata if she likes a bit of heat. The menu also has vegan edamame and mango sorbet.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-friend-is-vegan",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My friend is vegan, what could she eat here?",
+     "status": "ok",
+     "seconds": 6.44,
+     "reply": "She has several vegan choices: the Mediterranean Veggie Bowl for a hearty meal, Penne Arrabbiata for a spicy pasta, or Edamame with Chili Salt as a starter. Fresh Lemon Mint and Mango Sorbet are vegan too.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-used-to-be-vegetarian",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I used to be vegetarian years ago. Anything good today?",
+     "status": "ok",
+     "seconds": 9.55,
+     "reply": "If you\u2019re in the mood for a meat-free meal, the Mediterranean Veggie Bowl is a fresh, hearty pick, while the Penne Arrabbiata brings a little heat. Are you leaning vegetarian today, or open to meat too?",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-used-to-be-vegetarian",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I used to be vegetarian years ago. Anything good today?",
+     "status": "ok",
+     "seconds": 6.46,
+     "reply": "If you\u2019re in a vegetarian mood today, the Mediterranean Veggie Bowl is a fresh, filling pick; Penne Arrabbiata brings a bit of heat, and Truffle Parmesan Fries make a nice starter. Are you leaning toward a full meal or just a snack?",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-used-to-be-vegetarian",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I used to be vegetarian years ago. Anything good today?",
+     "status": "ok",
+     "seconds": 6.69,
+     "reply": "If you\u2019re in the mood for a meat-free meal, the Mediterranean Veggie Bowl is a fresh, hearty pick; Penne Arrabbiata is a good choice if you\u2019d rather have something saucy with a little kick.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-question-is-not-a-diet",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "What vegan options do you have?",
+     "status": "ok",
+     "seconds": 13.63,
+     "reply": "Vegan picks: the Mediterranean Veggie Bowl, Penne Arrabbiata, and Plant-Based Burger. The menu sections below show the other dishes too; look for the vegan labels.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": [
+      "burgers_and_mains",
+      "starters",
+      "bowls_and_pasta",
+      "desserts_and_drinks"
+     ]
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-question-is-not-a-diet",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "What vegan options do you have?",
+     "status": "ok",
+     "seconds": 14.89,
+     "reply": "Vegan options include Edamame with Chili Salt, Plant-Based Burger, Mediterranean Veggie Bowl, Penne Arrabbiata, Thai Peanut Noodle Bowl, Fresh Lemon Mint and Mango Sorbet. For a meal, I\u2019d suggest the Mediterranean Veggie Bowl, Plant-Based Burger or Penne Arrabbiata.",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": [
+      "starters",
+      "burgers_and_mains",
+      "bowls_and_pasta",
+      "desserts_and_drinks"
+     ]
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-question-is-not-a-diet",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "What vegan options do you have?",
+     "status": "ok",
+     "seconds": 8.5,
+     "reply": "Vegan options include Edamame with Chili Salt, Mediterranean Veggie Bowl, and Plant-Based Burger. You\u2019ll also find Penne Arrabbiata, Thai Peanut Noodle Bowl, Fresh Lemon Mint, and Mango Sorbet on the menu.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/plant-based-burger",
+       "kcal": 650,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": [
+      "starters",
+      "burgers_and_mains",
+      "bowls_and_pasta",
+      "desserts_and_drinks"
+     ]
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-son-allergy",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My son has a peanut allergy but I don't. What's your spiciest dish?",
+     "status": "ok",
+     "seconds": 7.78,
+     "reply": "The hottest options are tied at spice level 3: Buffalo Chicken Wings and the Nashville Hot Chicken Sandwich. Neither lists peanuts, but if your son may eat or share one, please confirm with staff about cross-contact due to his allergy.",
+     "cards": [
+      {
+       "name": "Buffalo Chicken Wings",
+       "category": "starters",
+       "description": "Six wings in a hot buffalo butter sauce with a blue cheese dip.",
+       "price_sar": "38.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken wings",
+        "hot sauce",
+        "butter",
+        "blue cheese",
+        "celery"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/buffalo-chicken-wings",
+       "kcal": 640,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 2,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-son-allergy",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My son has a peanut allergy but I don't. What's your spiciest dish?",
+     "status": "ok",
+     "seconds": 7.39,
+     "reply": "The spiciest are tied at spice level 3: Buffalo Chicken Wings and the Nashville Hot Chicken Sandwich. Neither lists peanut as an allergen or may-contain, but please check with staff about cross-contact for your son.",
+     "cards": [
+      {
+       "name": "Buffalo Chicken Wings",
+       "category": "starters",
+       "description": "Six wings in a hot buffalo butter sauce with a blue cheese dip.",
+       "price_sar": "38.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken wings",
+        "hot sauce",
+        "butter",
+        "blue cheese",
+        "celery"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/buffalo-chicken-wings",
+       "kcal": 640,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 2,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-son-allergy",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My son has a peanut allergy but I don't. What's your spiciest dish?",
+     "status": "ok",
+     "seconds": 7.59,
+     "reply": "The spiciest options are the **Buffalo Chicken Wings** and **Nashville Hot Chicken Sandwich**, both rated 3/3 for spice. Neither lists peanut in its menu allergens, but I can\u2019t verify kitchen cross-contact\u2014please check with staff before your son eats or shares them.",
+     "cards": [
+      {
+       "name": "Buffalo Chicken Wings",
+       "category": "starters",
+       "description": "Six wings in a hot buffalo butter sauce with a blue cheese dip.",
+       "price_sar": "38.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken wings",
+        "hot sauce",
+        "butter",
+        "blue cheese",
+        "celery"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/buffalo-chicken-wings",
+       "kcal": 640,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 2,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Nashville Hot Chicken Sandwich",
+       "category": "burgers_and_mains",
+       "description": "Buttermilk fried chicken in a fiery cayenne glaze with slaw on a brioche bun.",
+       "price_sar": "48.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 3,
+       "ingredients": [
+        "chicken thigh",
+        "buttermilk",
+        "cayenne",
+        "brioche bun",
+        "coleslaw"
+       ],
+       "allergens": [
+        "gluten",
+        "dairy",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/nashville-hot-chicken-sandwich",
+       "kcal": 820,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 7,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u not active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-own-allergy-only",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to shellfish. What starters do you have?",
+     "status": "ok",
+     "seconds": 7.25,
+     "reply": "I\u2019ll remember your shellfish allergy. The edamame and truffle parmesan fries both fit that; they have no shellfish or shellfish may-contain warning.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": [
+      "starters"
+     ]
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "shellfish",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-own-allergy-only",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to shellfish. What starters do you have?",
+     "status": "ok",
+     "seconds": 5.29,
+     "reply": "I\u2019ll remember that you\u2019re allergic to shellfish. The starters shown below all fit that allergy. I\u2019d recommend Edamame with Chili Salt for a light, mildly spicy bite, or Truffle Parmesan Fries for something richer.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": [
+      "starters"
+     ]
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "shellfish",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-own-allergy-only",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to shellfish. What starters do you have?",
+     "status": "ok",
+     "seconds": 5.51,
+     "reply": "I\u2019ll remember that you\u2019re allergic to shellfish. Here are the starters; the Edamame with Chili Salt and Truffle Parmesan Fries fit your allergy, as do the Crispy Halloumi Sticks and Buffalo Chicken Wings.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Crispy Halloumi Sticks",
+       "category": "starters",
+       "description": "Breaded halloumi fingers with a sweet chili dip.",
+       "price_sar": "32.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 1,
+       "ingredients": [
+        "halloumi",
+        "breadcrumbs",
+        "egg",
+        "flour",
+        "sweet chili sauce"
+       ],
+       "allergens": [
+        "dairy",
+        "gluten",
+        "egg"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/crispy-halloumi-sticks",
+       "kcal": 480,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 3,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": [
+      "starters"
+     ]
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "shellfish",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-ordering-for-daughter",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm ordering for my daughter, she's vegan and allergic to sesame. What would she like?",
+     "status": "ok",
+     "seconds": 5.21,
+     "reply": "She might enjoy the Penne Arrabbiata for a spicy, savory meal, or Edamame with Chili Salt as a light starter. For something refreshing or sweet, there\u2019s Fresh Lemon Mint or Mango Sorbet. All fit vegan and sesame-free filters.",
+     "cards": [
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Fresh Lemon Mint",
+       "category": "desserts_and_drinks",
+       "description": "Blended lemon, fresh mint and ice.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "lemon",
+        "mint",
+        "sugar syrup",
+        "ice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/fresh-lemon-mint",
+       "kcal": 120,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 18,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mango-sorbet",
+       "kcal": 180,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-ordering-for-daughter",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm ordering for my daughter, she's vegan and allergic to sesame. What would she like?",
+     "status": "ok",
+     "seconds": 5.63,
+     "reply": "For a satisfying meal, Penne Arrabbiata is vegan and sesame-allergen-free, with a spicy tomato sauce. For something lighter, Edamame with Chili Salt is a good starter; Mango Sorbet is a dairy-free treat afterward.",
+     "cards": [
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/edamame-with-chili-salt",
+       "kcal": 220,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mango-sorbet",
+       "kcal": 180,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-ordering-for-daughter",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm ordering for my daughter, she's vegan and allergic to sesame. What would she like?",
+     "status": "ok",
+     "seconds": 4.56,
+     "reply": "She might enjoy Penne Arrabbiata, a vegan pasta with a spicy tomato sauce; Mango Sorbet for something sweet; or Fresh Lemon Mint to drink. These matches don\u2019t list sesame as an allergen or possible trace allergen.",
+     "cards": [
+      {
+       "name": "Penne Arrabbiata",
+       "category": "bowls_and_pasta",
+       "description": "Penne in a garlicky tomato sauce with red chili and fresh basil.",
+       "price_sar": "42.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 2,
+       "ingredients": [
+        "penne",
+        "tomato",
+        "garlic",
+        "red chili",
+        "basil",
+        "olive oil"
+       ],
+       "allergens": [
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/penne-arrabbiata",
+       "kcal": 580,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 11,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mango-sorbet",
+       "kcal": 180,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Fresh Lemon Mint",
+       "category": "desserts_and_drinks",
+       "description": "Blended lemon, fresh mint and ice.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "lemon",
+        "mint",
+        "sugar syrup",
+        "ice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/fresh-lemon-mint",
+       "kcal": 120,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 18,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-family-dinner",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Family dinner tonight. My husband is vegetarian, my son hates spicy food, and I'm allergic to sesame.",
+     "status": "ok",
+     "seconds": 12.79,
+     "reply": "I\u2019ll remember your sesame allergy. Pesto Penne is vegetarian and mild for your husband and son; Grilled Salmon Plate is another mild, sesame-free option for the rest of the family.",
+     "cards": [
+      {
+       "name": "Pesto Penne",
+       "category": "bowls_and_pasta",
+       "description": "Penne in basil pesto with pine nuts, parmesan and cherry tomatoes.",
+       "price_sar": "46.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "penne",
+        "basil",
+        "pine nuts",
+        "parmesan",
+        "olive oil",
+        "cherry tomato"
+       ],
+       "allergens": [
+        "gluten",
+        "tree_nut",
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/pesto-penne",
+       "kcal": 720,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 10,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Grilled Salmon Plate",
+       "category": "burgers_and_mains",
+       "description": "Grilled salmon fillet with lemon butter, herbed rice and greens.",
+       "price_sar": "78.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "salmon",
+        "lemon butter",
+        "rice",
+        "mixed greens",
+        "dill"
+       ],
+       "allergens": [
+        "fish",
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/grilled-salmon-plate",
+       "kcal": 620,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 9,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "sesame",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-family-dinner",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Family dinner tonight. My husband is vegetarian, my son hates spicy food, and I'm allergic to sesame.",
+     "status": "ok",
+     "seconds": 9.75,
+     "reply": "I\u2019ll remember your sesame allergy. Pesto Penne is vegetarian and mild, so it suits your husband and your son; Grilled Salmon Plate is also mild for anyone who\u2019d like fish. Both fit the sesame allergy filter. Want me to suggest a starter or dessert too?",
+     "cards": [
+      {
+       "name": "Pesto Penne",
+       "category": "bowls_and_pasta",
+       "description": "Penne in basil pesto with pine nuts, parmesan and cherry tomatoes.",
+       "price_sar": "46.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "penne",
+        "basil",
+        "pine nuts",
+        "parmesan",
+        "olive oil",
+        "cherry tomato"
+       ],
+       "allergens": [
+        "gluten",
+        "tree_nut",
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/pesto-penne",
+       "kcal": 720,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 10,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Grilled Salmon Plate",
+       "category": "burgers_and_mains",
+       "description": "Grilled salmon fillet with lemon butter, herbed rice and greens.",
+       "price_sar": "78.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "salmon",
+        "lemon butter",
+        "rice",
+        "mixed greens",
+        "dill"
+       ],
+       "allergens": [
+        "fish",
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/grilled-salmon-plate",
+       "kcal": 620,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 9,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "sesame",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extraction-family-dinner",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Family dinner tonight. My husband is vegetarian, my son hates spicy food, and I'm allergic to sesame.",
+     "status": "ok",
+     "seconds": 7.53,
+     "reply": "I\u2019ll remember that you\u2019re allergic to sesame. For dinner, these are vegetarian, non-spicy options that fit your needs: Pesto Penne for a main and Truffle Parmesan Fries to share.",
+     "cards": [
+      {
+       "name": "Pesto Penne",
+       "category": "bowls_and_pasta",
+       "description": "Penne in basil pesto with pine nuts, parmesan and cherry tomatoes.",
+       "price_sar": "46.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "penne",
+        "basil",
+        "pine nuts",
+        "parmesan",
+        "olive oil",
+        "cherry tomato"
+       ],
+       "allergens": [
+        "gluten",
+        "tree_nut",
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/pesto-penne",
+       "kcal": 720,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 10,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Truffle Parmesan Fries",
+       "category": "starters",
+       "description": "Crispy fries tossed in truffle oil and grated parmesan.",
+       "price_sar": "24.00",
+       "is_vegetarian": true,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "potato",
+        "truffle oil",
+        "parmesan",
+        "parsley",
+        "sea salt"
+       ],
+       "allergens": [
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/truffle-parmesan-fries",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 1,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "sesame",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-day-rule",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I don't eat meat on Fridays.",
+     "status": "ok",
+     "seconds": 4.19,
+     "reply": "Got it\u2014I\u2019ll remember that you avoid meat on Fridays. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "day_dislike",
+      "value": "friday: meat",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-day-rule",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I don't eat meat on Fridays.",
+     "status": "ok",
+     "seconds": 4.74,
+     "reply": "Got it\u2014I\u2019ll remember that you avoid meat on Fridays. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "day_dislike",
+      "value": "friday: meat",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-day-rule",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I don't eat meat on Fridays.",
+     "status": "ok",
+     "seconds": 3.75,
+     "reply": "I\u2019ll remember that you avoid meat on Fridays. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "day_dislike",
+      "value": "friday: meat",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-calorie-goal",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm trying to stay under 1800 calories a day.",
+     "status": "ok",
+     "seconds": 4.17,
+     "reply": "I\u2019ll remember your 1,800 kcal daily goal. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "calories",
+      "value": "1800",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-calorie-goal",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm trying to stay under 1800 calories a day.",
+     "status": "ok",
+     "seconds": 9.02,
+     "reply": "I\u2019ll remember your 1,800 kcal daily goal. These dishes are estimated at 520\u2013780 kcal each, so they leave room for the rest of your day: Mediterranean Veggie Bowl (520 kcal), Grilled Salmon Plate (620 kcal), or Classic Smash Burger (780 kcal).",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Grilled Salmon Plate",
+       "category": "burgers_and_mains",
+       "description": "Grilled salmon fillet with lemon butter, herbed rice and greens.",
+       "price_sar": "78.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "salmon",
+        "lemon butter",
+        "rice",
+        "mixed greens",
+        "dill"
+       ],
+       "allergens": [
+        "fish",
+        "dairy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/grilled-salmon-plate",
+       "kcal": 620,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 9,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/classic-smash-burger",
+       "kcal": 780,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "calories",
+      "value": "1800",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-calorie-goal",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm trying to stay under 1800 calories a day.",
+     "status": "ok",
+     "seconds": 5.14,
+     "reply": "I\u2019ll remember your daily goal of staying under 1,800 calories. What kind of meal are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "calories",
+      "value": "1800",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-someone-elses-calories",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My sister is counting calories, she keeps it under 1500 a day.",
+     "status": "ok",
+     "seconds": 9.16,
+     "reply": "Got it\u2014calories are estimates, but the Mediterranean Veggie Bowl (520 kcal) or Shrimp Poke Bowl (560 kcal) could leave room in her 1,500-calorie day for other meals. Would she prefer vegetarian or a seafood option?",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Shrimp Poke Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Marinated shrimp over sushi rice with avocado, edamame and spicy mayo.",
+       "price_sar": "62.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 1,
+       "ingredients": [
+        "shrimp",
+        "sushi rice",
+        "avocado",
+        "edamame",
+        "soy sauce",
+        "spicy mayo",
+        "sesame seeds"
+       ],
+       "allergens": [
+        "shellfish",
+        "soy",
+        "sesame",
+        "egg",
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/shrimp-poke-bowl",
+       "kcal": 560,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 14,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-someone-elses-calories",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My sister is counting calories, she keeps it under 1500 a day.",
+     "status": "ok",
+     "seconds": 8.28,
+     "reply": "Got it\u2014I\u2019ll keep her under-1,500-calorie daily target in mind. What kind of food does she usually like?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-someone-elses-calories",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "My sister is counting calories, she keeps it under 1500 a day.",
+     "status": "ok",
+     "seconds": 9.41,
+     "reply": "Got it\u20141500 kcal is her daily total, so what fits depends on the rest of her day. For a meal here, the Mediterranean Veggie Bowl (about 520 kcal) or Shrimp Poke Bowl (about 560 kcal) are lighter options; kcal are estimates. Is she after a full meal or a snack?",
+     "cards": [
+      {
+       "name": "Mediterranean Veggie Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Quinoa, roasted vegetables, chickpeas, hummus and a lemon dressing.",
+       "price_sar": "39.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "quinoa",
+        "roasted zucchini",
+        "roasted pepper",
+        "chickpeas",
+        "hummus",
+        "lemon"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/mediterranean-veggie-bowl",
+       "kcal": 520,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 13,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      },
+      {
+       "name": "Shrimp Poke Bowl",
+       "category": "bowls_and_pasta",
+       "description": "Marinated shrimp over sushi rice with avocado, edamame and spicy mayo.",
+       "price_sar": "62.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 1,
+       "ingredients": [
+        "shrimp",
+        "sushi rice",
+        "avocado",
+        "edamame",
+        "soy sauce",
+        "spicy mayo",
+        "sesame seeds"
+       ],
+       "allergens": [
+        "shellfish",
+        "soy",
+        "sesame",
+        "egg",
+        "gluten"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "photo": "corner-table/shrimp-poke-bowl",
+       "kcal": 560,
+       "pack_size": 1,
+       "pack_unit": null,
+       "id": 14,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": [],
+       "taste_notes": [],
+       "liked": false,
+       "today_pick": false
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-day-like",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Friday is my fish day, I always want fish on Fridays.",
+     "status": "ok",
+     "seconds": 5.19,
+     "reply": "Got it\u2014I\u2019ll remember that Friday is your fish day. Corner Table doesn\u2019t have any fish dishes on its menu; would you like me to suggest a non-fish option here, or switch to Red Sea Catch?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "day_like",
+      "value": "friday: fish",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-day-like",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Friday is my fish day, I always want fish on Fridays.",
+     "status": "ok",
+     "seconds": 5.14,
+     "reply": "I\u2019ll remember that you always want fish on Fridays. Corner Table doesn\u2019t have any fish dishes on its menu. Would you like to switch restaurants for fish?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "day_like",
+      "value": "friday: fish",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-day-like",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Friday is my fish day, I always want fish on Fridays.",
+     "status": "ok",
+     "seconds": 4.75,
+     "reply": "I\u2019ll remember that Fridays are your fish day. Corner Table doesn\u2019t have any fish dishes on its menu; would you like me to suggest a non-fish option here, or switch to Red Sea Catch?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "day_like",
+      "value": "friday: fish",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-day-like-one-off",
+   "category": "extraction_precision",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I feel like fish today.",
+     "status": "ok",
+     "seconds": 4.99,
+     "reply": "Sorry, we don\u2019t have any fish dishes on Corner Table\u2019s menu. You could try Red Sea Catch for seafood, or I can suggest something else here.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-day-like-one-off",
+   "category": "extraction_precision",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I feel like fish today.",
+     "status": "ok",
+     "seconds": 4.44,
+     "reply": "Sorry, I couldn\u2019t find any fish dishes on Corner Table\u2019s menu. You could try Red Sea Catch for seafood, using the restaurant picker.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "extract-day-like-one-off",
+   "category": "extraction_precision",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I feel like fish today.",
+     "status": "ok",
+     "seconds": 4.59,
+     "reply": "Sorry, we don\u2019t have any fish dishes on our menu today. You could try Red Sea Catch for seafood, or I can suggest something else from Corner Table.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0,
+      "kcal": 0
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "u nothing else active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  }
+ ]
+}

@@ -63,4 +63,5 @@ export const latte: Card = {
   may_contain_warnings: [],
   taste_notes: [],
   liked: false,
+  today_pick: false,
 }

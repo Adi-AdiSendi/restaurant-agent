@@ -41,6 +41,8 @@ class Tastes:
     likes: tuple[str, ...] = ()
     today_avoid: tuple[str, ...] = ()
     """Foods from the guest's day rules for today, e.g. ("meat",) on a Friday."""
+    today_want: tuple[str, ...] = ()
+    """Foods the guest wants today from their day likes, e.g. ("fish",) on a Friday."""
     weekday: str = ""
     budget: Decimal | None = None
     max_spice: int | None = None
@@ -75,3 +77,8 @@ def taste_notes(item: MenuItemBase, tastes: Tastes) -> list[str]:
 
 def liked(item: MenuItemBase, tastes: Tastes) -> bool:
     return any(_has(item, like) for like in tastes.likes)
+
+
+def today_pick(item: MenuItemBase, tastes: Tastes) -> bool:
+    """The dish has a food the guest wants on this weekday ("friday: fish")."""
+    return any(_has(item, food) for food in tastes.today_want)

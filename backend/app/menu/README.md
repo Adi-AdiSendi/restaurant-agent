@@ -24,6 +24,9 @@ Restaurants, their menus and options, and every read of them.
 - `guest_view.py`: `GuestItem`, an item as one guest sees it (conflicts and
   trace warnings for the item and every option). Tools, chat cards and the
   menu page all use it.
+- `taste.py`: soft notes from the guest's tastes (dislikes, today's day
+  rules, budget, spice, calories left), `liked` and `today_pick` (day likes).
+  Never a block.
 - `configure.py`: the pure resolver. Item + option IDs + removals give the
   unit price, allergens, may-contain, diet flags and spice of that order, or
   a `ConfigurationError`. Removing an ingredient never removes an allergen.

@@ -1,0 +1,18 @@
+.confirm {
+  padding: 12px;
+  border-radius: 10px;
+  background: var(--danger-tint);
+}
+
+.confirm p {
+  margin: 0 0 8px;
+}
+
+.danger {
+  padding: 8px 18px;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--danger);
+  color: #fff;
+  font-weight: 700;
+}

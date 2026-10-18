@@ -1,6 +1,6 @@
 // Mirrors the backend Pydantic models. Keep in sync with app/agent/schemas.py,
-// app/agent/turn_reply.py, app/memory/profile.py, app/api/auth.py and
-// app/api/health.py. Menu types are in menuTypes.ts, cart types in cartTypes.ts.
+// app/agent/turn_reply.py, app/memory/profile.py, app/api/preferences.py,
+// app/api/auth.py and app/api/health.py. Menu types are in menuTypes.ts, cart types in cartTypes.ts.
 import type { Cart, CartLine } from './cartTypes'
 import type { Card } from './menuTypes'
 
@@ -46,8 +46,27 @@ export interface NewConversation {
   id: number
 }
 
+// backend/tests/test_chat_parity.py checks this list against the backend's kinds.
 export type PreferenceKind =
-  'allergy' | 'diet' | 'dislike' | 'like' | 'budget' | 'spice' | 'day_dislike' | 'calories'
+  | 'allergy'
+  | 'diet'
+  | 'dislike'
+  | 'like'
+  | 'budget'
+  | 'spice'
+  | 'day_dislike'
+  | 'day_like'
+  | 'calories'
+
+/** The values each kind accepts, from the server (the page keeps no copy). */
+export interface PreferenceVocabulary {
+  allergens: string[]
+  diets: string[]
+  spice_levels: string[]
+  weekdays: string[]
+  calories_min: number
+  calories_max: number
+}
 
 /** Today in Riyadh, and the estimated kcal the guest ordered today. */
 export interface Today {

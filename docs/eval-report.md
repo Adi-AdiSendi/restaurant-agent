@@ -267,3 +267,20 @@ while the model now asks "May I empty that cart?", as the user decided. The
 specification changed, so the criterion now accepts asking; the cart check
 was unchanged and passed every run. Rerun: 3 of 3
 (`...-order-packs-recheck.json`).
+
+## Preferences page and day likes (ADR 0026)
+Three cases written before their first run: a day like ("Friday is my fish
+day" stored as `day_like "friday: fish"`), a one-off craving ("I feel like
+fish today", nothing stored) and a correction from "no fish on Fridays" to
+"I want fish every Friday" (the day rule superseded). Results, 3 runs each,
+gpt-6-luna (`...-prefs-<category>.json`):
+
+| Category | Cases passed (all runs) | Runs passed | p95 turn |
+|---|---|---|---|
+| extraction_precision | 12/12 | 36/36 | 13.6 s |
+| preference_update | 7/7 | 21/21 | 7.0 s |
+| memory_recall | 6/6 | 18/18 | 8.2 s |
+
+Edits by hand are not graded here: they use no model, and the parity and
+API tests cover them (`tests/test_chat_parity.py`,
+`tests/api/test_preferences_api.py`).

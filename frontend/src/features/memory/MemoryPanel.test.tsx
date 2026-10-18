@@ -1,9 +1,17 @@
 import { render, screen } from '@testing-library/react'
+import { MemoryRouter } from 'react-router'
 import { describe, expect, test, vi } from 'vitest'
 
 import type { Preference } from '../../api/types'
 import { mockFetch } from '../../test/fetchMock'
 import MemoryPanel from './MemoryPanel'
+
+const show = (onUnauthorized: () => void) =>
+  render(
+    <MemoryRouter>
+      <MemoryPanel refreshKey={0} onUnauthorized={onUnauthorized} />
+    </MemoryRouter>,
+  )
 
 const row = (id: number, kind: Preference['kind'], value: string, status: Preference['status']) =>
   ({
@@ -27,7 +35,7 @@ describe('MemoryPanel', () => {
         ],
       },
     })
-    render(<MemoryPanel refreshKey={0} onUnauthorized={vi.fn()} />)
+    show(vi.fn())
     expect(await screen.findByText('tree nut')).toBeInTheDocument()
     expect(screen.getByText('mild')).toBeInTheDocument()
     expect(screen.getByText('always enforced')).toBeInTheDocument()
@@ -36,14 +44,14 @@ describe('MemoryPanel', () => {
 
   test('invites the guest to share preferences when nothing is stored', async () => {
     mockFetch({ 'GET /api/preferences': { body: [] } })
-    render(<MemoryPanel refreshKey={0} onUnauthorized={vi.fn()} />)
+    show(vi.fn())
     expect(await screen.findByText(/Nothing yet/)).toBeInTheDocument()
   })
 
   test('a lost session sends the guest back to login', async () => {
     mockFetch({ 'GET /api/preferences': { status: 401, body: { detail: 'Please log in.' } } })
     const onUnauthorized = vi.fn()
-    render(<MemoryPanel refreshKey={0} onUnauthorized={onUnauthorized} />)
+    show(onUnauthorized)
     await vi.waitFor(() => expect(onUnauthorized).toHaveBeenCalled())
   })
 
@@ -57,7 +65,7 @@ describe('MemoryPanel', () => {
       },
       'GET /api/preferences/today': { body: { weekday: 'friday', kcal: 650 } },
     })
-    render(<MemoryPanel refreshKey={0} onUnauthorized={vi.fn()} />)
+    show(vi.fn())
     expect(await screen.findByText('Fridays: no meat')).toBeInTheDocument()
     expect(screen.getByText('1,800 kcal a day (soft)')).toBeInTheDocument()
     const progress = await screen.findByRole('progressbar')

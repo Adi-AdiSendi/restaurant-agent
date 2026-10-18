@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 
 import { api, ApiError } from '../../api/client'
 import type { Preference } from '../../api/types'
 import CaloriesToday from './CaloriesToday'
 import { describe, GROUPS } from './memoryLabels'
 import styles from './MemoryPanel.module.css'
+import PastFacts from './PastFacts'
 
 interface Props {
   /** Changes after every reply, so the panel reloads what was learned. */
@@ -63,21 +65,10 @@ function MemoryPanel({ refreshKey, onUnauthorized }: Props) {
         )
       })}
       {goal && <CaloriesToday goal={Number(goal.value)} refreshKey={refreshKey} />}
-      {past.length > 0 && (
-        <section className={styles.group}>
-          <h3 className={styles.groupTitle}>Updated earlier</h3>
-          <ul className={styles.history}>
-            {past.map((p) => (
-              <li key={p.id}>
-                <s>{describe(p)}</s>{' '}
-                <span className={styles.muted}>
-                  ({p.kind}, {p.status})
-                </span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+      <PastFacts rows={past} />
+      <Link className={styles.edit} to="/preferences">
+        Edit preferences
+      </Link>
     </aside>
   )
 }
