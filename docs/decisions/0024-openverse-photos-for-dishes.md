@@ -27,6 +27,11 @@ no budget for content, and every photo must be licensed for this use.
 - No photo, or one that fails to load, shows a category icon on the
   restaurant's accent colour.
 
+- Amended 2026-10-18: the restaurants page shows each restaurant's
+  storefront sign, supplied by the project owner (not Openverse), as a 3:1
+  banner that is never cropped (`scripts/photos/storefronts.py`, files in
+  `frontend/public/storefronts/`).
+
 ## Alternatives considered
 - Pexels or Unsplash by hand: better photos, but about 110 manual downloads.
 - AI-generated photos: one consistent style, but a small cost and images of

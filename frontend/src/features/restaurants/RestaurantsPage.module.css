@@ -1,5 +1,5 @@
 .page {
-  max-width: 1080px;
+  max-width: 852px;
   margin: 0 auto;
   padding: 24px var(--gutter) 40px;
 }
@@ -15,23 +15,22 @@
   color: var(--ink-muted);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
-  gap: 14px;
+/* One restaurant per row, the next one under it. */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 820px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .card {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 16px;
+  overflow: hidden;
   border: 1px solid var(--line);
-  border-top: 5px solid var(--brand);
   border-radius: var(--radius);
   background: var(--surface);
   box-shadow: var(--shadow);
@@ -39,12 +38,22 @@
   text-decoration: none;
 }
 
-.card:hover {
-  border-color: var(--brand);
+.card:hover,
+.card:focus-visible {
+  border-color: var(--accent, var(--brand));
+}
+
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  padding: 12px 16px 14px;
+  border-top: 4px solid var(--accent, var(--brand));
 }
 
 .name {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 700;
 }
 
@@ -55,8 +64,16 @@
 }
 
 .tagline {
+  flex-basis: 100%;
   font-size: 14px;
   color: var(--ink-muted);
+}
+
+.open {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand);
 }
 
 .error {

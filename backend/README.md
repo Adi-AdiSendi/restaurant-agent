@@ -14,6 +14,7 @@ FastAPI app that serves the API under `/api` and the built frontend at `/`.
   (`find_candidates`, cached in `data/photos/candidates.json`), and
   `import_photos` turns the reviewed `data/photos/picks.json` into WebP files
   under `../frontend/public/menu/`, `photo` fields and `../docs/photo-credits.md`.
+  `storefronts <folder>` turns the owner's shop signs into 3:1 banners.
   Dev only: the deploy uses the committed files.
 - Demo users: `scripts/seed_demo_users.py` resets `demo_alice` (1234) and `demo_bob` (5678).
   It deletes and recreates them, so do not run it on data you want to keep.

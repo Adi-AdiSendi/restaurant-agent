@@ -13,6 +13,8 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
   (the WebP sizes under `public/menu/`, named by the database, with a category
   icon on the restaurant's colour when there is no photo; ADR 0024) and
   `Skeleton` (placeholders while a list loads).
+- `public/storefronts/`: each restaurant's sign (3:1, supplied by the project
+  owner), shown as a banner on the restaurants list, one restaurant per row.
 - `public/menu/<restaurant>/`: reviewed Openverse photos, credited in
   `../docs/photo-credits.md`; written by `backend/scripts/photos/`.
 - `src/features/startup/`: polls `/api/health` while the free backend wakes

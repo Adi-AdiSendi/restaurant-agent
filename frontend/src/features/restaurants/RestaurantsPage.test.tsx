@@ -26,6 +26,23 @@ describe('RestaurantsPage', () => {
     )
   })
 
+  test('restaurants are listed one per row, each with its storefront sign', async () => {
+    mockFetch(restaurants)
+    const { container } = render(
+      <MemoryRouter>
+        <RestaurantsPage />
+      </MemoryRouter>,
+    )
+    await screen.findByRole('link', { name: /Golden Dragon/ })
+    const rows = screen.getAllByRole('listitem')
+    expect(rows).toHaveLength(2)
+    const signs = [...container.querySelectorAll('img')].map((img) => img.getAttribute('src'))
+    expect(signs).toEqual([
+      '/storefronts/corner-table-1440.webp',
+      '/storefronts/golden-dragon-1440.webp',
+    ])
+  })
+
   test('placeholders show while the list loads, then the restaurants', async () => {
     mockFetch(restaurants)
     renderPage()
