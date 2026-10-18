@@ -8,7 +8,7 @@ from app.agent.chat_turn import ConversationNotFoundError, handle_message
 from app.agent.errors import AgentAnswerError, AgentLoopError, TurnTimeoutError
 from app.agent.llm_client import AgentLLM, LLMUnavailableError
 from app.agent.openai_client import default_openai_client
-from app.agent.schemas import AgentReply
+from app.agent.turn_reply import ChatReply
 from app.api.deps import current_user_id
 from app.config import Settings, get_settings
 from app.db.engine import get_session
@@ -35,7 +35,7 @@ async def chat(
     llm: AgentLLM = Depends(get_llm_client),
     session: AsyncSession = Depends(get_session),
     settings: Settings = Depends(get_settings),
-) -> AgentReply:
+) -> ChatReply:
     try:
         return await handle_message(
             llm,

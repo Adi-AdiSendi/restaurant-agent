@@ -9,20 +9,20 @@ A turn that passes its deadline is rolled back the same way.
 
 import asyncio
 
+from pydantic import BaseModel
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.agent.context import build_input, memory_update_note
+from app.agent.context import memory_update_note
 from app.agent.errors import TurnTimeoutError
 from app.agent.llm_client import AgentLLM
 from app.agent.loop import run_turn
-from app.agent.prompt import system_prompt
-from app.agent.schemas import AgentReply
+from app.agent.turn_reply import ChatReply, finish
+from app.agent.turn_setup import prepare_turn
 from app.memory.conversations import add_message, owned_conversation, recent_messages
 from app.memory.extract import extract_operations
-from app.memory.profile import dislikes, hard_constraints, load_profile
+from app.memory.profile import load_profile
 from app.memory.supersede import apply_operations
-from app.menu.queries import get_restaurant, list_restaurants
-from app.tools.context import ToolContext
+from app.menu.queries import get_restaurant
 from app.users.service import lock_user
 
 
@@ -37,7 +37,7 @@ async def handle_message(
     conversation_id: int,
     text: str,
     deadline_seconds: float,
-) -> AgentReply:
+) -> ChatReply:
     deadline = asyncio.timeout(deadline_seconds)
     try:
         async with deadline:
@@ -54,7 +54,7 @@ async def handle_message(
 
 async def _turn(
     llm: AgentLLM, session: AsyncSession, user_id: int, conversation_id: int, text: str
-) -> AgentReply:
+) -> ChatReply:
     conversation = await owned_conversation(session, user_id, conversation_id)
     if conversation is None:
         raise ConversationNotFoundError
@@ -71,21 +71,19 @@ async def _turn(
 
     profile = await load_profile(session, user_id)
     note = memory_update_note(before, profile)
-    items, seen = build_input(profile, [*history, user_message], note)
-    context = ToolContext(
-        session,
-        user_id,
-        conversation_id,
-        restaurant.id,
-        restaurant.slug,
-        tuple(restaurant.categories),
-        hard_constraints(profile),
-        dislikes(profile),
+    setup = await prepare_turn(
+        session, user_id, conversation_id, restaurant, profile, [*history, user_message], note
     )
-    others = [r for r in await list_restaurants(session) if r.id != restaurant.id]
-    instructions = system_prompt(restaurant, others)
-    reply = await run_turn(llm, context, items, seen, instructions=instructions)
+    results: list[BaseModel] = []
+    reply = await run_turn(
+        llm,
+        setup.context,
+        setup.items,
+        setup.seen_ids,
+        instructions=setup.instructions,
+        results=results,
+    )
 
     item_ids = [item.id for item in reply.items]
     await add_message(session, conversation_id, "assistant", reply.reply, item_ids)
-    return reply
+    return await finish(setup.context, reply, results)

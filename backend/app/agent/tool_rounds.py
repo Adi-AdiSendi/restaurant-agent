@@ -3,7 +3,7 @@
 import logging
 from dataclasses import dataclass, field
 
-from pydantic import ValidationError
+from pydantic import BaseModel, ValidationError
 
 from app.agent.answer import TEXT_FORMAT, FinalAnswer, retry_instruction
 from app.agent.errors import AgentAnswerError, AgentLoopError
@@ -24,6 +24,8 @@ class Turn:
     instructions: str
     items: list[InputItem]
     seen_ids: set[int] = field(default_factory=set[int])
+    results: list[BaseModel] = field(default_factory=list[BaseModel])
+    """Every tool result of the turn, in order: cart changes become action cards."""
 
 
 async def final_answer(turn: Turn, max_tool_rounds: int) -> FinalAnswer:
@@ -60,6 +62,7 @@ async def _run_until_answer(turn: Turn, max_tool_rounds: int) -> str:
             result = await run_tool(call, turn.context)
             logger.info("agent_tool_call name=%s", call.name)
             turn.seen_ids |= ids_in_tool_result(result)
+            turn.results.append(result)
             output = result.model_dump_json()
             turn.items.append(
                 {"type": "function_call_output", "call_id": call.call_id, "output": output}

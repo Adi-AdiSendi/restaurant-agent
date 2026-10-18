@@ -36,3 +36,10 @@ def test_no_other_restaurants() -> None:
 
 def test_explains_options() -> None:
     assert "Only suggest options whose conflicts_with_guest is empty." in system_prompt(CAFE, [])
+
+
+def test_ordering_never_places_or_overrides() -> None:
+    prompt = system_prompt(CAFE, [])
+    assert "call propose_checkout" in prompt
+    assert "You cannot place orders, so never say an order is placed." in prompt
+    assert "Never offer to add it anyway." in prompt

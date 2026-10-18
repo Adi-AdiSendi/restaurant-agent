@@ -12,6 +12,8 @@ retry, and 4 more if the safety retry is needed.
 import logging
 from collections.abc import Iterable, Sequence
 
+from pydantic import BaseModel
+
 from app.agent.answer import FinalAnswer
 from app.agent.errors import AgentAnswerError, AgentLoopError
 from app.agent.grounding import grounded_items
@@ -38,11 +40,14 @@ async def run_turn(
     seen_ids: Iterable[int] = (),
     *,
     instructions: str,
+    results: list[BaseModel] | None = None,
 ) -> AgentReply:
     """`seen_ids`: items recommended earlier in this conversation, allowed as cards again.
-    The context carries the guest's constraints, so no caller can skip enforcement."""
+    The context carries the guest's constraints, so no caller can skip enforcement.
+    `results` collects every tool result, so the caller can report cart changes."""
     constraints = context.constraints
-    turn = Turn(client, context, instructions, list(input_items), set(seen_ids))
+    collected = results if results is not None else []
+    turn = Turn(client, context, instructions, list(input_items), set(seen_ids), collected)
     answer = await final_answer(turn, MAX_TOOL_ROUNDS)
     guard = await _guard(turn, answer)
     if not guard.blocked:
