@@ -4,7 +4,16 @@ from typing import Literal
 
 from pydantic import BaseModel, ValidationError
 
-ErrorCategory = Literal["invalid_arguments", "not_found", "unknown_tool"]
+ErrorCategory = Literal[
+    "invalid_arguments",
+    "not_found",
+    "unknown_tool",
+    "invalid_choice",
+    "conflict",
+    "other_restaurant",
+    "empty_cart",
+    "unavailable",
+]
 
 
 class ToolError(BaseModel):

@@ -5,7 +5,16 @@ from collections.abc import Awaitable, Callable
 from pydantic import BaseModel
 
 from app.agent.llm_client import Spec, ToolCall
-from app.tools import get_item, search_menu
+from app.tools import (
+    add_to_cart,
+    get_item,
+    propose_checkout,
+    recent_orders,
+    remove_cart_line,
+    search_menu,
+    update_cart_line,
+    view_cart,
+)
 from app.tools.context import ToolContext
 from app.tools.errors import ToolError
 
@@ -13,7 +22,16 @@ from app.tools.errors import ToolError
 # never from the model's arguments.
 Handler = Callable[[str, ToolContext], Awaitable[BaseModel]]
 
-_TOOLS = (search_menu, get_item)
+_TOOLS = (
+    search_menu,
+    get_item,
+    view_cart,
+    add_to_cart,
+    update_cart_line,
+    remove_cart_line,
+    recent_orders,
+    propose_checkout,
+)
 HANDLERS: dict[str, Handler] = {tool.NAME: tool.handle for tool in _TOOLS}
 TOOL_SPECS: list[Spec] = [
     {
