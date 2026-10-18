@@ -29,6 +29,15 @@ describe('cart drawer', () => {
     expect(screen.getByRole('link', { name: 'Checkout' })).toHaveAttribute('href', '/checkout')
   })
 
+  test('Escape closes the drawer', async () => {
+    mockFetch({ 'GET /api/cart': { body: latteCart } })
+    renderCart()
+    fireEvent.click(await screen.findByRole('button', { name: 'Cart2' }))
+    expect(screen.getByRole('dialog', { name: 'Your cart' })).toBeInTheDocument()
+    fireEvent.keyDown(document, { key: 'Escape' })
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+  })
+
   test('plus and remove ask the server and show the cart it returns', async () => {
     const three = { ...oatLatte, quantity: 3, line_total_sar: '57.00' }
     const fetchMock = mockFetch({
