@@ -206,13 +206,17 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
   cannot change the cart yet (phase 12). Search price limits apply to the
   base price; options can add to it. The eval price grader only checks dish
   prices, not option prices.
+- **Order prices and records:** an order uses the price at checkout, with no
+  check against the total the guest reviewed. It does not record that the
+  guest added a dish despite a warning (that needs a new column). A dish
+  removed from the menu drops out of carts without a notice.
 - **Concurrency:** a turn holds one DB transaction across its LLM calls, so
   each open turn uses one connection. Fine at demo scale.
 - **Evals:** 42 cases, written by the same team that built the system, and the
   judge is the same model it grades. See the report for what is not covered.
 - **Brand:** the Foodics name, logo and colours are used for this prototype
-  only (ADR 0015). The restaurant is fictional. Not handled: real orders or
-  payments, multiple restaurants, voice, Arabic.
+  only (ADR 0015). The restaurants are fictional. Not handled yet: real
+  payments, voice, Arabic.
 
 ## Repository map
 | Path | What |
@@ -220,6 +224,6 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
 | `backend/app/` | FastAPI app: `api`, `agent`, `tools`, `memory`, `safety`, `orders`, `menu`, `users`, `db` |
 | `backend/evals/` | eval cases, graders, runner, committed results |
 | `backend/data/restaurants/` | one menu file per restaurant |
-| `backend/tests/` | 270+ tests, real Postgres, fake LLM |
+| `backend/tests/` | 800+ tests, real Postgres, fake LLM |
 | `frontend/` | React + Vite + TypeScript UI, Netlify keep-awake function |
 | `docs/` | [architecture](docs/architecture.md), [decisions](docs/decisions/README.md), [eval report](docs/eval-report.md), [challenges we faced](docs/challenges.md), [requirements trace](docs/requirements.md), [plan](docs/plan.md) |
