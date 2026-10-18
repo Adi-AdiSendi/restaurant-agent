@@ -26,8 +26,9 @@ backend/
                   guest's menu), preferences, cart, orders, health; plus the session
                   cookie (session.py) and the user and constraints dependencies (deps.py)
     agent/        LLM loop, system prompt, context builder, final-answer schema
-    tools/        tools the model can call (search_menu, get_item) and the
-                  server-built ToolContext they receive (ADR 0020)
+    tools/        tools the model can call (menu search and lookup, cart changes,
+                  recent orders, propose checkout) and the server-built
+                  ToolContext they receive (ADR 0020)
     menu/         restaurants, menu items and options, queries, filters, the fit
                   rule, the order resolver (configure.py), allergen vocabulary
     memory/       extract preferences, store them, supersede outdated ones
@@ -88,6 +89,7 @@ past it the turn is rolled back and the API returns 504.
 4. **Build context**: system prompt (for this restaurant: its name, cuisine and
    categories, and the other restaurants as suggestions it cannot search),
    then the profile block at the top, then
+   the guest's cart with each line's id, then
    the last 20 messages of this conversation. IDs recommended earlier in the
    conversation are noted and may be recommended again without a new search.
    If step 3 changed the profile, a short note saying what changed goes last,
@@ -100,6 +102,12 @@ past it the turn is rolled back and the API returns 504.
    of options makes safe are dropped. Every option carries its own
    `conflicts_with_guest`; `get_item` still returns a conflicting item but
    lists why.
+   Cart tools (`view_cart`, `add_to_cart`, `update_cart_line`,
+   `remove_cart_line`, `recent_orders`, `propose_checkout`) call `app/orders`
+   for the session's user, each write in a savepoint of the turn's
+   transaction. They never pass consent, so a conflicting add is refused and
+   explained (ADR 0019); a disliked removable ingredient is left out. No tool
+   places an order.
    Full tool results go back into context. Loop ends when no tools are called.
 6. **Final answer**: structured `{reply, recommended_item_ids}`.
 7. **Safety check**: every recommended ID must exist in this restaurant and
@@ -111,8 +119,11 @@ past it the turn is rolled back and the API returns 504.
    reply is replaced by a fixed safe message. The guard runs on every card,
    including IDs carried over from earlier in the conversation. Items with a
    `may_contain` allergen the guest avoids pass with a warning on the card.
-8. **Persist and respond**: save both messages; return the reply plus item
-   cards loaded from the database.
+8. **Persist and respond**: save both messages; return the reply, item cards
+   loaded from the database, action cards built from the cart tools' results
+   (never from model text), and the cart as it is after the turn. The UI sets
+   its cart from it; a checkout card's button places the order through
+   `POST /api/orders`.
 
 ## Data model
 - `users`: id, username (unique, lowercase `[a-z0-9_]{3,20}`), pin_hash (argon2), created_at

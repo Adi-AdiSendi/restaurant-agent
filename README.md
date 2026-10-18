@@ -49,6 +49,12 @@ to a minute.
    "Add it anyway?" before it goes in. Open the cart, check out for pickup,
    and the order appears under Orders with its status. Adding a dish from
    another restaurant asks before it empties your cart.
+9. **Order by chat.** At Stack & Smash, say "I don't like pickles", then "Add
+   a Classic Smash with a single patty and a brioche bun." The card under the
+   reply says the pickles were left out, and the cart updates. "Make that two",
+   then "Place my order": the assistant shows a checkout card, and only its
+   button places the order. With a dairy allergy, "add a latte with whole milk"
+   is refused and explained.
 
 ## How it works
 ```
@@ -116,8 +122,9 @@ the core works.
 
 **Scope.** An eval suite in `backend/evals/`
 ([ADR 0014](docs/decisions/0014-part-2-reliability-and-evals.md)):
-- 42 cases in 7 categories: allergen safety, diet compliance, grounding,
-  memory recall, preference update, isolation, extraction precision.
+- 56 cases in 8 categories: allergen safety, diet compliance, grounding,
+  memory recall, preference update, isolation, extraction precision, and
+  ordering (added in v2 phase 12; the table below is the Part 2 run).
 - Each case runs 3 times through the real chat path and model, in a
   rolled-back DB transaction.
 - Graders are code wherever possible; an LLM judge only reads the reply text,
@@ -194,7 +201,7 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
   (measured: 33 s, then a 7.7 s first answer). Netlify DB
   Free has a monthly compute cap; the app keeps no idle connections so it can sleep.
 - **Turn time:** a turn must finish in 22 s or it ends with "took too long,
-  please try again" (measured p95 is under 8 s).
+  please try again" (measured p95 per eval category is 6 to 10.4 s).
 - **Identity:** username and PIN with no lockout; sessions are signed cookies
   valid for 30 days. Fine for a demo, not for production. The demo PINs are
   public, so anyone can change the demo profiles until the next deploy resets them.
@@ -204,17 +211,21 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
 - **Conversations:** reloading the page starts a new conversation; old ones
   are kept but not listed. Memory carries over either way, across restaurants.
 - **Ordering:** no payment ("pay at the counter"), and the status moves on
-  by time, not by a kitchen. One cart per guest, at one restaurant. The chat
-  cannot change the cart yet (phase 12). Search price limits apply to the
-  base price; options can add to it. The eval price grader only checks dish
-  prices, not option prices.
-- **Order prices and records:** an order uses the price at checkout, with no
-  check against the total the guest reviewed. It does not record that the
-  guest added a dish despite a warning (that needs a new column). A dish
-  removed from the menu drops out of carts without a notice.
+  by time, not by a kitchen. One cart per guest, at one restaurant. Search
+  price limits apply to the base price; options can add to it. The eval price
+  grader only checks dish prices, not option prices.
+- **Ordering by chat:** the chat can add, change and remove cart lines, but
+  has no tool to place an order or empty the cart: a cart from another
+  restaurant is emptied with the "Empty cart" button. While a chat turn
+  changes the cart, a click on the cart waits for the turn (at most 22 s),
+  and the reply's cart can briefly hide a click that finished first, until
+  the next change or reload. Checkout refuses a total the guest did not see.
+- **Order records:** an order does not record that the guest added a dish
+  despite a warning (that needs a new column). A dish removed from the menu
+  drops out of carts without a notice.
 - **Concurrency:** a turn holds one DB transaction across its LLM calls, so
   each open turn uses one connection. Fine at demo scale.
-- **Evals:** 42 cases, written by the same team that built the system, and the
+- **Evals:** 56 cases, written by the same team that built the system, and the
   judge is the same model it grades. See the report for what is not covered.
 - **Brand:** the Foodics name, logo and colours are used for this prototype
   only (ADR 0015). The restaurants are fictional. Not handled yet: real
