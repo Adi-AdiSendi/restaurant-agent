@@ -64,6 +64,11 @@ to a minute.
     latte with oat milk". The words appear in the message box as you speak;
     check them and press Send. Turn on **Auto** next to the mic to send what
     you say as soon as you stop speaking.
+12. **Tastes and calories.** Say "I don't eat meat on Fridays and I'm keeping
+    under 1800 calories a day". "What I remember" shows both, with today's
+    ordered calories against the goal. Every dish shows its estimated kcal;
+    turn on **Matches my tastes** on the menu to hide dishes against your
+    dislikes, budget, spice, today's day rules or the calories left today.
 
 ## How it works
 ```
@@ -245,6 +250,11 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
   own speech recognition (which may send audio to the browser maker);
   other browsers record a clip (up to 20 s) that the server sends to
   OpenAI's transcription. No spoken replies.
+- **Calories and tastes:** calories are my estimates from typical portions,
+  not lab values, and always labelled as estimates. Day rules, the calorie
+  goal, dislikes, budget and spice are soft: they add notes and power the
+  "Matches my tastes" filter, but never block an order (ADR 0025). "Today"
+  is Riyadh time; the daily total counts only orders placed in this app.
 - **Cut for the deadline:** a mobile layout pass, Arabic voice, and the
   restaurant and personal CRM pages (plan phases 14, 16 and 17). The app
   works on a phone but was not tuned for one.

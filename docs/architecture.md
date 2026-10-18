@@ -139,8 +139,9 @@ past it the turn is rolled back and the API returns 504.
   NUMERIC(8,2), is_vegetarian, is_vegan, spice_level (0 to 3), ingredients
   text[], allergens text[] (fixed vocabulary), may_contain text[], removable
   text[] (a subset of ingredients), photo (nullable `<restaurant>/<name>`:
-  the UI loads `/menu/<photo>-{320,640}.webp`). The item's own fields
-  describe its base.
+  the UI loads `/menu/<photo>-{320,640}.webp`), kcal (an estimate; options
+  carry kcal_delta, order lines a kcal snapshot; ADR 0025). The item's own
+  fields describe its base.
   CHECK constraints enforce the vocabulary, spice range, price > 0, vegan =>
   vegetarian and removable <@ ingredients.
 - `option_groups`: id, item_id, name (unique per item), min_choices,
@@ -162,7 +163,8 @@ past it the turn is rolled back and the API returns 504.
 - `preferences`: id, user_id, kind, value, status (active, superseded or
   removed), superseded_by, source_message_id, created_at
 
-`kind` is one of: allergy, diet, dislike, like, budget, spice. CHECKs keep
+`kind` is one of: allergy, diet, dislike, like, budget, spice, day_dislike
+("friday: meat"), calories (a daily goal); the last two are soft (ADR 0025). CHECKs keep
 values in their vocabularies (allergens, vegetarian/vegan, none/mild/medium/hot,
 a positive SAR amount). Partial unique indexes allow one active diet, budget
 and spice per user, and one active row per kind and value.
