@@ -246,3 +246,24 @@ The add was refused and the cart stayed empty; the reply said "because of
 your dairy allergy" and the judge wanted "whole milk contains dairy". This
 is the same judge strictness as in phase 12, the other way round; the
 criterion was kept. Slowest category p95: 10.3 s, under the 22 s deadline.
+
+## After phase 13: tastes, calories, packs and refilling the cart
+**Tastes and calories** (`...-memory-tastes.json`, all 8 categories, 3 runs,
+plus three extraction cases written before their run: a day rule, a calorie
+goal, and someone else's calories). Every new extraction case passed every
+run (extraction 10/10 cases). Every failed check was a timeout at the 22 s
+deadline (5 turns in 149), with p95 rising to 16 to 22 s in every category,
+including ones the change did not touch. A sequential rerun of diet
+compliance passed 7/7 with p95 11.6 s; across the run the median turn was
+5.4 s and p90 9.5 s. So the timeouts were the slow tail of the model API
+while 4 cases ran in parallel, not a behaviour change. Recorded as is.
+
+**Packs and refilling the cart** (`...-order-packs.json`, ordering, 3 runs):
+the two new cases ("5 Khalas dates" asks about 6 or 3 before adding; "empty
+my cart and order me a Classic Smash" empties and refills, placing nothing)
+passed 3 of 3. `order-other-restaurant-cart` failed its judge twice: the
+criterion expected the old rule (tell the guest how to empty the cart),
+while the model now asks "May I empty that cart?", as the user decided. The
+specification changed, so the criterion now accepts asking; the cart check
+was unchanged and passed every run. Rerun: 3 of 3
+(`...-order-packs-recheck.json`).

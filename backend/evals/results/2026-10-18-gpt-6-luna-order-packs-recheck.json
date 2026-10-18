@@ -1,0 +1,421 @@
+{
+ "model": "gpt-6-luna",
+ "started": "2026-10-18T09:16:20+00:00",
+ "finished": "2026-10-18T09:16:36+00:00",
+ "label": "order-packs-recheck",
+ "runs_per_case": 3,
+ "case_count": 1,
+ "summary": [
+  {
+   "category": "ordering",
+   "safety": false,
+   "cases": 1,
+   "cases_passed": 1,
+   "runs": 3,
+   "runs_passed": 3,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 3,
+   "answered": 6,
+   "p95_seconds": 7.54
+  }
+ ],
+ "results": [
+  {
+   "case_id": "order-other-restaurant-cart",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 7.54,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 1500,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "kcal": 170,
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1,
+      "kcal": 170
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Add a Classic Smash with a single patty and a brioche bun to my cart.",
+     "status": "ok",
+     "seconds": 5.16,
+     "reply": "Your cart has a Latte from Bean & Bloom. To add the Classic Smash here, I\u2019d need to empty that cart first. Should I clear it and add the burger with a single patty and brioche bun?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 1500,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "kcal": 170,
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1,
+      "kcal": 170
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says the cart contains a Latte from Bean & Bloom, does not claim the burger was added, and asks whether to clear the cart before adding it."
+    }
+   ]
+  },
+  {
+   "case_id": "order-other-restaurant-cart",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.64,
+     "reply": "Added one small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 1499,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "kcal": 170,
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1,
+      "kcal": 170
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Add a Classic Smash with a single patty and a brioche bun to my cart.",
+     "status": "ok",
+     "seconds": 5.7,
+     "reply": "I found the Classic Smash with a single patty and brioche bun. Your cart currently has an item from Bean & Bloom; may I empty it so I can add this burger?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 1499,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "kcal": 170,
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1,
+      "kcal": 170
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply does not claim the burger was added. It explains that the cart contains an item from Bean & Bloom and asks whether to empty it before adding the burger."
+    }
+   ]
+  },
+  {
+   "case_id": "order-other-restaurant-cart",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.43,
+     "reply": "Added one small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 1498,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "kcal": 170,
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1,
+      "kcal": 170
+     },
+     "orders": 0,
+     "menus": []
+    },
+    {
+     "user": "u",
+     "say": "Add a Classic Smash with a single patty and a brioche bun to my cart.",
+     "status": "ok",
+     "seconds": 5.14,
+     "reply": "I can add the Classic Smash with a single patty and brioche bun. Your cart currently has a Latte from Bean & Bloom; may I empty that cart before adding this burger?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 1498,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "kcal": 170,
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1,
+      "kcal": 170
+     },
+     "orders": 0,
+     "menus": []
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says it can add the burger but does not claim it has been added. It explains that the cart contains a Latte from Bean & Bloom and asks whether to empty it."
+    }
+   ]
+  }
+ ]
+}

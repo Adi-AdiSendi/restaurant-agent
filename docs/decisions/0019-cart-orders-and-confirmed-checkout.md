@@ -39,3 +39,10 @@ model may change the cart, so we must decide what it is allowed to commit.
 - Cart writes in a chat turn join the turn's transaction. A timed-out turn
   changes nothing.
 - Carts and orders are scoped by the session user, like memory.
+
+## Amendment (2026-10-18)
+At the user's request the chat may empty the cart (`clear_cart`) when the
+guest asks or agrees, for example to replace a cart from another restaurant,
+and then fill it with what they asked for. Placing an order is still only
+the guest's button. Dishes can be sold in packs; a count that is not whole
+packs is refused with the nearest counts, so the chat asks before adding.

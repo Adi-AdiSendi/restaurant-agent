@@ -81,3 +81,42 @@
     u:
       active: [[allergy, sesame]]
       exact: true
+
+# Day rules and a daily calorie goal, added 2026-10-18 before their first run.
+- id: extract-day-rule
+  category: extraction_precision
+  description: A food avoided on one weekday is stored as a day rule, not a plain dislike.
+  added_after_baseline: true
+  users: [u]
+  steps:
+    - user: u
+      say: I don't eat meat on Fridays.
+  profiles:
+    u:
+      active: [[day_dislike, "friday: meat"]]
+      exact: true
+
+- id: extract-calorie-goal
+  category: extraction_precision
+  description: The guest's own daily calorie goal is stored as a number.
+  added_after_baseline: true
+  users: [u]
+  steps:
+    - user: u
+      say: I'm trying to stay under 1800 calories a day.
+  profiles:
+    u:
+      active: [[calories, "1800"]]
+      exact: true
+
+- id: extract-someone-elses-calories
+  category: extraction_precision
+  description: Another person's calorie count is not the guest's goal.
+  added_after_baseline: true
+  users: [u]
+  steps:
+    - user: u
+      say: My sister is counting calories, she keeps it under 1500 a day.
+  profiles:
+    u:
+      exact: true

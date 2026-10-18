@@ -69,6 +69,10 @@ to a minute.
     ordered calories against the goal. Every dish shows its estimated kcal;
     turn on **Matches my tastes** on the menu to hide dishes against your
     dislikes, budget, spice, today's day rules or the calories left today.
+13. **Order for me.** With something already in the cart, ask "Empty my cart and
+    order me a Classic Smash with a single patty". At Bean & Bloom, ask for "5
+    Khalas dates": they come in boxes of 3, so the assistant asks whether you
+    want 6 (or 3) before adding anything.
 
 ## How it works
 ```
@@ -228,9 +232,11 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
   by time, not by a kitchen. One cart per guest, at one restaurant. Search
   price limits apply to the base price; options can add to it. The eval price
   grader only checks dish prices, not option prices.
-- **Ordering by chat:** the chat can add, change and remove cart lines, but
-  has no tool to place an order or empty the cart: a cart from another
-  restaurant is emptied with the "Empty cart" button. While a chat turn
+- **Ordering by chat:** the chat can add, change and remove cart lines, and
+  empty the cart when the guest asks or agrees (for example to replace a
+  cart from another restaurant), but it never places an order: the guest's
+  checkout button does. Dishes sold in packs (dates, in boxes of 3) only take
+  whole packs; the chat asks before rounding. While a chat turn
   changes the cart, a click on the cart waits for the turn (at most 22 s),
   and the reply's cart can briefly hide a click that finished first, until
   the next change or reload. Checkout refuses a total the guest did not see.

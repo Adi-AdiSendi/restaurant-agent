@@ -10,6 +10,7 @@ for the video and the submission.
 | 9 to 13 (v2) | done and live: 6 restaurants with options, cart and checkout, ordering by chat, photos, menu blocks |
 | 15 Voice | done and live in English only (mic next to Send) |
 | 14, 16, 17 | cut for the deadline by the user: mobile pass, Arabic, both CRMs |
+| Extras (2026-10-18) | storefront list, Auto send for voice, day rules, calorie goal and estimates, "Matches my tastes", the chat emptying and refilling the cart, dates in boxes of 3 (ADR 0025, 0019 amended) |
 | 18 | left for the final session: video and submission |
 
 Repo: GitHub `Adi-AdiSendi/restaurant-agent` (private), `main`, all pushed.
@@ -21,7 +22,7 @@ passes every run; see `docs/eval-report.md`.
 ## Final session plan (about 5 hours)
 1. **Wake and smoke-test the live site** (Render sleeps; the first load can
    take about 30 s). Log in as `demo_alice` / 1234 and walk the README "Try
-   it" steps 1 to 11 once. In Chrome, press the mic and say "Add a small
+   it" steps 1 to 13 once. In Chrome, press the mic and say "Add a small
    latte with oat milk": the text should appear in the box (voice was only
    tested with fakes and the API; this is its first real spoken test).
    If voice fails in Chrome, the fallback is typing; note it in the README.

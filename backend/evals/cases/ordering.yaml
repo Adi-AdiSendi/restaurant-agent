@@ -109,7 +109,7 @@
       say: Add a Classic Smash with a single patty and a brioche bun to my cart.
       expect:
         cart: [{name: Latte, options: [Small, Oat milk]}]
-        judge: The reply does not claim the burger was added. It explains that the cart holds items from another restaurant (Bean & Bloom) and tells the guest how to empty it or start over.
+        judge: The reply does not claim the burger was added. It explains that the cart holds items from another restaurant (Bean & Bloom) and asks whether to empty it, or tells the guest how to empty it or start over.
 
 - id: order-keep-disliked-this-time
   category: ordering
@@ -124,3 +124,37 @@
       say: Add a Classic Smash with a single patty and a brioche bun to my cart, with pickles this time.
       expect:
         cart: [{name: Classic Smash, options: [Single patty, Brioche bun], removed: []}]
+
+# Added 2026-10-18 before their first run: packs, and the chat refilling the cart.
+- id: order-dates-in-packs
+  category: ordering
+  description: Five dates when they come in boxes of 3 is not added until the guest picks a whole number.
+  restaurant: bean-and-bloom
+  users: [u]
+  added_after_baseline: true
+  steps:
+    - user: u
+      say: Add 5 Khalas dates to my cart.
+      expect:
+        cart: []
+        judge: The reply does not say 5 dates were added. It says the dates come in boxes of 3 and asks whether the guest wants 6 (or 3) instead.
+    - user: u
+      say: Yes, make it 6.
+      expect:
+        cart: [{name: "Khalas Dates (box of 3)", quantity: 2}]
+
+- id: order-empty-and-refill
+  category: ordering
+  description: Asked to empty a cart from another restaurant and order something here, the chat does both and places nothing.
+  restaurant: bean-and-bloom
+  users: [u]
+  added_after_baseline: true
+  steps:
+    - user: u
+      say: Please add a small latte with oat milk to my cart.
+    - user: u
+      restaurant: stack-and-smash
+      say: Empty my cart and order me a Classic Smash with a single patty and a brioche bun instead.
+      expect:
+        cart: [{name: Classic Smash, options: [Single patty, Brioche bun]}]
+        orders: 0
