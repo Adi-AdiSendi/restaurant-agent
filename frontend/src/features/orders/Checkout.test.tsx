@@ -1,5 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react'
-import { MemoryRouter, Route, Routes } from 'react-router'
+import { act } from 'react'
+import { createMemoryRouter, MemoryRouter, Route, Routes, RouterProvider } from 'react-router'
 import { describe, expect, test, vi } from 'vitest'
 
 import { emptyCart, latteCart, placedOrder } from '../../test/carts'
@@ -96,5 +97,22 @@ describe('checkout and orders', () => {
     })
     renderAt('/orders/99')
     expect(await screen.findByRole('alert')).toHaveTextContent('No such order.')
+  })
+
+  test('moving to another order shows it, not the last one or its error', async () => {
+    mockFetch({
+      'GET /api/orders/99': {
+        status: 404,
+        body: { detail: { code: 'not_found', message: 'No such order.' } },
+      },
+      'GET /api/orders/31': { body: placedOrder },
+    })
+    const routes = [{ path: '/orders/:id', element: <OrderPage /> }]
+    const router = createMemoryRouter(routes, { initialEntries: ['/orders/99'] })
+    render(<RouterProvider router={router} />)
+    expect(await screen.findByRole('alert')).toHaveTextContent('No such order.')
+    await act(() => router.navigate('/orders/31'))
+    expect(await screen.findByRole('heading', { name: /Order 31/ })).toBeInTheDocument()
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
   })
 })

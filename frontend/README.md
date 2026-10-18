@@ -19,7 +19,8 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
   name, Restaurants and Orders links, cart button, user, Log out). It holds
   `CartProvider`.
 - `src/features/restaurants/`: the home page grid, from `/api/restaurants`.
-- `src/features/menu/`: `MenuPage` for `/r/:slug`: the menu (`MenuBrowser`:
+- `src/features/menu/`: `MenuRoute` keys `MenuPage` by `/r/:slug`, so each
+  restaurant starts afresh. `MenuPage` holds the menu (`MenuBrowser`:
   category tabs, search, "Fits my profile"), and tabs for the chat and the
   memory panel. `ItemSheet` configures a dish (`choice.ts` keeps the rules
   and the live price, for display only), and `useAddLine` turns a 409 into a
@@ -27,8 +28,8 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
 - `src/features/cart/`: `CartProvider` holds the server's cart (every cart
   call returns the whole cart); `CartButton`, `CartDrawer`, `CartLineRow`.
 - `src/features/orders/`: `CheckoutPage` (pickup or dine-in, pay at the
-  counter, asks again on a conflict), `OrdersPage`, `OrderPage` (reloads the
-  status until ready).
+  counter, asks again on a conflict), `OrdersPage`, `OrderPage` (keys
+  `OrderView` by the order id; it reloads the status until ready).
 - `src/features/chat/`: `ChatPanel` (New chat, messages, item cards,
   composer, suggestions). State is a pure reducer (`chatReducer.ts`) driven by
   `useChat.ts`; a chat starts at the URL's restaurant, and another restaurant

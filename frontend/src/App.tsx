@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router'
 
 import { api } from './api/client'
 import LoginForm from './features/login/LoginForm'
-import MenuPage from './features/menu/MenuPage'
+import MenuRoute from './features/menu/MenuRoute'
 import CheckoutPage from './features/orders/CheckoutPage'
 import OrderPage from './features/orders/OrderPage'
 import OrdersPage from './features/orders/OrdersPage'
@@ -52,7 +52,7 @@ function App() {
           <Route index element={<RestaurantsPage />} />
           <Route
             path="r/:slug"
-            element={<MenuPage username={username} isNew={isNew} onLogout={logout} />}
+            element={<MenuRoute username={username} isNew={isNew} onLogout={logout} />}
           />
           <Route path="checkout" element={<CheckoutPage />} />
           <Route path="orders" element={<OrdersPage />} />

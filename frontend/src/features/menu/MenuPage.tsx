@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react'
-import { Link, useParams } from 'react-router'
+import { Link } from 'react-router'
 
 import type { Card } from '../../api/menuTypes'
 import { useCart } from '../cart/cartContext'
@@ -11,6 +11,7 @@ import styles from './MenuPage.module.css'
 import { useGuestMenu } from './useGuestMenu'
 
 interface Props {
+  slug: string
   username: string
   isNew: boolean
   onLogout: () => void
@@ -19,8 +20,7 @@ interface Props {
 type Side = 'chat' | 'memory'
 
 /** One restaurant: its menu, the chat scoped to it by the URL, and the guest's memory. */
-function MenuPage({ username, isNew, onLogout }: Props) {
-  const { slug = '' } = useParams()
+function MenuPage({ slug, username, isNew, onLogout }: Props) {
   const [refreshKey, setRefreshKey] = useState(0)
   const { refresh: refreshCart } = useCart()
   const onReplied = useCallback(() => {
