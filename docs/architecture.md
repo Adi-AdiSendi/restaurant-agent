@@ -37,7 +37,8 @@ backend/
     users/        users, PIN hashing, login or register
     db/           engine, session dependency, declarative Base
   migrations/     Alembic migrations
-  scripts/        seed_menu.py (+ menu_sync.py), seed_demo_users.py (both run on every deploy)
+  scripts/        seed_menu.py (+ menu_sync.py), seed_demo_users.py (both run on every deploy);
+                  photos/ (dev only: Openverse search, import, credits; ADR 0024)
   data/restaurants/  one menu file per restaurant (source of truth for the seed)
   evals/          eval cases, graders, runner, results
   tests/          unit and integration tests, mirroring app/
@@ -107,7 +108,9 @@ past it the turn is rolled back and the API returns 504.
    for the session's user, each write in a savepoint of the turn's
    transaction. They never pass consent, so a conflicting add is refused and
    explained (ADR 0019); a disliked removable ingredient is left out. No tool
-   places an order.
+   places an order. `show_menu(category)` returns every dish in a category,
+   each with its own conflicts, for a menu block; showing is not
+   recommending.
    Full tool results go back into context. Loop ends when no tools are called.
 6. **Final answer**: structured `{reply, recommended_item_ids}`.
 7. **Safety check**: every recommended ID must exist in this restaurant and
@@ -121,19 +124,23 @@ past it the turn is rolled back and the API returns 504.
    `may_contain` allergen the guest avoids pass with a warning on the card.
 8. **Persist and respond**: save both messages; return the reply, item cards
    loaded from the database, action cards built from the cart tools' results
-   (never from model text), and the cart as it is after the turn. The UI sets
+   (never from model text), menu blocks from `show_menu` results, and the cart
+   as it is after the turn. The UI sets
    its cart from it; a checkout card's button places the order through
    `POST /api/orders`.
 
 ## Data model
 - `users`: id, username (unique, lowercase `[a-z0-9_]{3,20}`), pin_hash (argon2), created_at
 - `restaurants`: id, slug (unique), name (unique), cuisine, tagline,
-  accent_color, categories text[] (in menu order), position (ADR 0018)
+  accent_color, categories text[] (in menu order), position (ADR 0018),
+  photo (nullable `<restaurant>/<name>`, ADR 0024)
 - `menu_items`: id, restaurant_id, name (unique per restaurant), category (one
   of the restaurant's, checked by the seed), description, price_sar
   NUMERIC(8,2), is_vegetarian, is_vegan, spice_level (0 to 3), ingredients
   text[], allergens text[] (fixed vocabulary), may_contain text[], removable
-  text[] (a subset of ingredients). The item's own fields describe its base.
+  text[] (a subset of ingredients), photo (nullable `<restaurant>/<name>`:
+  the UI loads `/menu/<photo>-{320,640}.webp`). The item's own fields
+  describe its base.
   CHECK constraints enforce the vocabulary, spice range, price > 0, vegan =>
   vegetarian and removable <@ ingredients.
 - `option_groups`: id, item_id, name (unique per item), min_choices,

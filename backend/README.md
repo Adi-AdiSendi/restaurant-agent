@@ -10,6 +10,11 @@ FastAPI app that serves the API under `/api` and the built frontend at `/`.
 - New ORM models live in their feature folder and must be imported in
   `migrations/env.py`, or autogenerate will miss (or try to drop) their tables.
 - Menu seed: `data/restaurants/*.json`, loaded by `scripts/seed_menu.py`; `scripts/menu_sync.py` upserts each restaurant, item, group and option by name and deletes what its file no longer lists.
+- Photos (ADR 0024): `scripts/photos/` searches Openverse
+  (`find_candidates`, cached in `data/photos/candidates.json`), and
+  `import_photos` turns the reviewed `data/photos/picks.json` into WebP files
+  under `../frontend/public/menu/`, `photo` fields and `../docs/photo-credits.md`.
+  Dev only: the deploy uses the committed files.
 - Demo users: `scripts/seed_demo_users.py` resets `demo_alice` (1234) and `demo_bob` (5678).
   It deletes and recreates them, so do not run it on data you want to keep.
 - Deploy: Render free runs `start.sh`; the build in `../render.yaml` migrates and seeds.

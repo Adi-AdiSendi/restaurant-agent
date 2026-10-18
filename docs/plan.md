@@ -413,9 +413,9 @@ Reused from sibling projects, adapted rather than rebuilt:
     the live bundle was checked for the new UI strings.
 
 ## Phase 13: visuals (about 6 h)
-- **Photos** (ADR 0022):
-  - Pexels candidates per dish;
-  - the user picks one per dish from a contact sheet;
+- **Photos** (ADR 0024, which superseded 0022: no Pexels key):
+  - Openverse candidates per dish, ranked by a script;
+  - the user reviews every pick on a contact sheet;
   - WebP at 320 and 640 px under `frontend/public/menu/`;
   - credits in `docs/photo-credits.md`.
 
@@ -426,8 +426,8 @@ Reused from sibling projects, adapted rather than rebuilt:
   - a `show_menu(category)` tool for a grounded menu block in the chat.
 - **States:** loading skeletons, empty states and an icon fallback for
   missing photos.
-- Done when: every dish has a credited photo, and the chat shows photo
-  cards, menu blocks and cart cards.
+- Done when: every dish has a credited photo the user approved, or a
+  deliberate icon, and the chat shows photo cards, menu blocks and cart cards.
 
 ## Phase 14: mobile friendly and fluid sizing (about 4 h)
 - **Sizing:**

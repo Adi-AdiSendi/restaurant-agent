@@ -55,6 +55,11 @@ to a minute.
    then "Place my order": the assistant shows a checkout card, and only its
    button places the order. With a dairy allergy, "add a latte with whole milk"
    is refused and explained.
+10. **See the menu.** At Bean & Bloom, with a dairy allergy saved, ask "What
+    coffee do you have?" A menu block lists every coffee with its photo;
+    the ones that cannot be made without dairy are greyed with the reason and
+    have no Add button, and the assistant also recommends a few that fit.
+    Dishes with nothing to choose have a one-click "Add".
 
 ## How it works
 ```
@@ -227,6 +232,9 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
   each open turn uses one connection. Fine at demo scale.
 - **Evals:** 56 cases, written by the same team that built the system, and the
   judge is the same model it grades. See the report for what is not covered.
+- **Photos:** 91 of the 109 dishes and covers have an openly licensed
+  Openverse photo of a similar dish, not the restaurant's own; the rest show
+  an icon. The user reviewed each one. Credits: [docs/photo-credits.md](docs/photo-credits.md).
 - **Brand:** the Foodics name, logo and colours are used for this prototype
   only (ADR 0015). The restaurants are fictional. Not handled yet: real
   payments, voice, Arabic.

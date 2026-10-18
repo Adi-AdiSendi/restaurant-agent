@@ -218,3 +218,31 @@ card, not a dish card, so most ordering turns count as dead ends.
 Not covered: two cart changes in one message, a cart click during a chat
 turn (only the checkout total check is tested, in
 `tests/orders/test_checkout.py`), and Arabic (phase 15).
+
+## Phase 13: photos and menu blocks (v2)
+Two grounding cases were added before their first run: "Can you show me your
+desserts?" must give a menu block of exactly that category, and a dairy guest
+asking "What coffee do you have?" must get the coffee block with no dairy
+card. The harness records each reply's menu blocks.
+
+**First full run** (`...-phase13-all.json`): every safety check on cards
+held, but allergen safety fell to 9/10 cases and diet to 6/7. The new
+`show_menu` tool changed behaviour: "I'm allergic to tree nuts. What dessert
+do you have?" and "I'm vegetarian, show me your mains" were answered with a
+menu block only (unsuitable dishes greyed), so the "some cards" checks
+failed 3 of 3 runs each. No unsafe card was shown. The new coffee case
+failed once the other way (cards, no block).
+
+**Fix:** when the guest has saved allergies or a diet, or states a need,
+the prompt now asks for the block and 1 to 3 fitting recommendations. The
+four affected cases then passed 3 of 3 (`...-phase13-menu-fix.json`). The
+code review then narrowed the trigger (not every saved like or budget).
+
+**Final full run** (`...-phase13-final.json`): allergen safety 10/10 cases
+over 30 runs, diet 7/7 over 21, isolation 5/5 over 15, grounding 8/8 over
+24 (p95 7.7 s), memory recall 6/6, preference update 6/6, extraction 7/7.
+Ordering 8/9 over 27 runs: `order-unsafe-refused` failed its judge once.
+The add was refused and the cart stayed empty; the reply said "because of
+your dairy allergy" and the judge wanted "whole milk contains dairy". This
+is the same judge strictness as in phase 12, the other way round; the
+criterion was kept. Slowest category p95: 10.3 s, under the 22 s deadline.

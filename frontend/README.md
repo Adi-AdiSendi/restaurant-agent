@@ -9,6 +9,12 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
 - `src/api/`: the only code that calls the backend (`client.ts`; `errors.ts`
   keeps a cart or order error's `detail.code`), and payload types that mirror the
   Pydantic models (`types.ts`, `menuTypes.ts`, `cartTypes.ts`).
+- `src/components/`: pieces shared by features: `useModal`, `DishPhoto`
+  (the WebP sizes under `public/menu/`, named by the database, with a category
+  icon on the restaurant's colour when there is no photo; ADR 0024) and
+  `Skeleton` (placeholders while a list loads).
+- `public/menu/<restaurant>/`: reviewed Openverse photos, credited in
+  `../docs/photo-credits.md`; written by `backend/scripts/photos/`.
 - `src/features/startup/`: polls `/api/health` while the free backend wakes
   up ("Starting the server"), gives up after 2 minutes with a retry button.
 - `src/features/login/`: username + 4-digit PIN.
