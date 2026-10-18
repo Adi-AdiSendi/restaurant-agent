@@ -4,7 +4,7 @@ Budget: about 10 to 12 focused hours inside the 72-hour window.
 Rule: the baseline must work end to end (deployed) before Part 2 starts.
 Every phase ends with all checks green and a `code-reviewer` pass.
 
-**Current phase: 11** (v2; phases 9 and 10 done, 11 nearly done; v1 phases 0 to 8 are below, the video moved to phase 18)
+**Current phase: 12** (v2; phases 9 to 11 done; v1 phases 0 to 8 are below, the video moved to phase 18)
 
 ## Inputs
 - Menu concept: international casual (burgers, bowls, pasta, desserts), prices in SAR.
@@ -326,9 +326,25 @@ Reused from sibling projects, adapted rather than rebuilt:
   docs and the code-review fixes are committed. The review found consent
   that could cover a later conflict, a chat turn's user lock blocking
   checkout (FK key-share), stale cart warnings, non-modal dialogs and an
-  optional single choice that could not be cleared; all fixed. Left: the
-  live check, OrderPage polling and MenuPage keying, three frontend tests,
-  and three README limitations (see `docs/handoff.md`).
+  optional single choice that could not be cleared; all fixed.
+- Close-out (2026-10-18): OrderPage is keyed by order id and ignores a
+  response after unmount; MenuPage is keyed by slug; the menu hook keeps
+  only the latest response. Seven frontend tests added (73 in all), and
+  three ordering limitations in the README. Reviewed by `code-reviewer`.
+- Live check 2026-10-18 on the Netlify site, two fresh users, scripted
+  through the API (Render was asleep: ready after 32 s):
+
+  | Check | Result |
+  |---|---|
+  | latte, small, oat milk, pickup | added 0.9 s (19.00 SAR); order placed 0.9 s; cart empty after |
+  | the order under Orders, and its page | listed 0.9 s; detail 0.9 s with Small, Oat milk |
+  | another user opens that order | 404 |
+  | "I am allergic to dairy", then whole milk | chat 7.8 s; add refused 409, reason dairy |
+  | the same add with dairy accepted | added |
+
+  The browser pass was not run: Claude in Chrome was not connected. The UI
+  flow is covered by the frontend tests.
+- Status: done 2026-10-18.
 
 ## Phase 12: ordering through the chat (about 7 h)
 - **Tools:** `view_cart`, `add_to_cart`, `update_cart_line`,

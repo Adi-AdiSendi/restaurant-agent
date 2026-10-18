@@ -1,4 +1,4 @@
-# Handoff (2026-10-17, end of session: v2 phase 11 nearly done)
+# Handoff (2026-10-18: v2 phase 11 done, phase 12 next)
 
 Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 
@@ -8,73 +8,46 @@ Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 | 0 to 8 (v1) | done and live; v1 video moved to phase 18 |
 | 9 v2 foundations | done: ADRs 0018 to 0023, v2 plan in `docs/plan.md` |
 | 10 Restaurants and options | done and live: 6 restaurants, 103 dishes, 304 options, evals pass |
-| 11 Cart and checkout by hand | code, tests, docs and review fixes committed and pushed; **not yet live-checked** |
+| 11 Cart and checkout by hand | done and live-checked through the API on 2026-10-18 |
 | 12 to 18 | not started: chat ordering, visuals, mobile, voice, restaurant CRM, personal CRM, final evals and video |
 
 Repo: GitHub `Adi-AdiSendi/restaurant-agent` (private), branch `main`, all
-pushed. Commits are allowed (one logical change each). At the end of this
-session these were all green locally:
-- backend: 806 tests, ruff, pyright and the import layers;
-- frontend: 66 tests, ESLint and Prettier;
-- the line limits.
-
-Check CI on the last push with `gh run list --limit 1`.
+pushed. Commits are allowed (one logical change each). Green locally at the
+end of this session: backend 806 tests, ruff, pyright and the import layers;
+frontend 73 tests, ESLint and Prettier; the line limits. Check CI on the last
+push with `gh run list --limit 1`.
 
 ## Phase 11: what exists
-- **Backend:**
-  - migration 0004 (`carts`, `cart_lines`, `orders`, `order_lines`);
-  - `app/orders/` (cart service, checkout with a cart row lock, orders, status by time);
-  - routes `app/api/cart.py`, `app/api/orders.py` and `GET /api/restaurants/{slug}/menu`.
-
-  Cart and order errors return a `code` (conflict, other_restaurant,
-  invalid_choice, empty_cart, unavailable, not_found).
+- **Backend:** migration 0004 (`carts`, `cart_lines`, `orders`,
+  `order_lines`); `app/orders/` (cart service, checkout with a cart row
+  lock, orders, status by time); routes `app/api/cart.py`, `app/api/orders.py`
+  and `GET /api/restaurants/{slug}/menu`. Cart and order errors return a
+  `code` (conflict, other_restaurant, invalid_choice, empty_cart,
+  unavailable, not_found).
 - **Consent** (ADR 0019): a request carries `accepted_reasons`, the conflict
   reasons the guest was shown. Any other conflict gets a new 409, at add and
   at checkout. Only the checkout button places an order.
 - **Chat lock:** the chat turn's user lock is `FOR NO KEY UPDATE`, so carts
-  and orders never wait for a chat reply (`tests/orders/test_locks.py`, a
-  committed two-session test).
-- **Frontend** (react-router 7.18.4):
-  - `/` restaurants; `/r/:slug` with the menu, item sheet, and Chat and
-    Memory tabs; `/checkout`; `/orders`; `/orders/:id`;
-  - a cart button and drawer in the header;
-  - chat cards open the same item sheet;
-  - `components/useModal.ts` makes the sheet and drawer keyboard-modal.
+  and orders never wait for a chat reply (`tests/orders/test_locks.py`).
+- **Frontend** (react-router 7.18.4): `/` restaurants; `/r/:slug`
+  (`MenuRoute` keys `MenuPage` by slug) with the menu, item sheet, and Chat
+  and Memory tabs; `/checkout`; `/orders`; `/orders/:id` (`OrderView` keyed
+  by id). A cart button and drawer in the header; chat cards open the same
+  item sheet; `components/useModal.ts` makes the sheet and drawer modal.
+- **Live check script:** an API flow with two fresh users, timed (results in
+  `docs/plan.md`). It lived in the session scratchpad; rewrite it from the
+  table there if needed. The browser click-through was not done (Claude in
+  Chrome was not connected); worth a manual pass.
 
-## Next session: finish phase 11, then phase 12
-1. **Live-check phase 11.** The push at the end of this session deployed it;
-   the Render build runs migration 0004.
-   - Check, on https://restaurant-agent.netlify.app with a fresh user and timed:
-     - order a latte with oat milk for pickup;
-     - it shows under Orders;
-     - another user gets 404 for that order;
-     - whole milk with a dairy allergy asks "Add it anyway?".
-   - Record the results in the phase 11 status in `docs/plan.md` and mark the phase done.
-2. **Review findings left open** (all small):
-   - `OrderPage` polling: add a cancelled flag so a response that arrives
-     after unmount sets no timer, and reset state when `id` changes (render
-     an inner component keyed by `id`).
-   - `MenuPage`: key it by `slug` so the tab, search and an open sheet do not
-     carry over between restaurants; ignore a stale menu response in
-     `useGuestMenu`.
-   - Frontend tests for:
-     - consent resets when the choice changes;
-     - the optional single choice is a checkbox that can be cleared;
-     - Escape closes the sheet and drawer.
-   - README "Known limitations":
-     - the total is charged at the current price, with no check against
-       what the guest reviewed;
-     - an order does not record that the guest overrode a warning (would
-       need migration 0005);
-     - a dish removed from the menu drops out of carts silently (FK cascade).
-3. **Phase 12, ordering through the chat:** plan it in plan mode first
-   (`docs/plan.md` phase 12).
-   - Cart tools get the `ToolContext` and call `app/orders` (`add_line`
-     etc.) with no `accepted_reasons`, so a conflict is always refused and
-     explained.
-   - `propose_checkout` shows a card; the guest's button places the order.
-   - The reply carries the cart.
-   - Add an `ordering` eval category.
+## Next session: phase 12, ordering through the chat
+Plan it in plan mode first (`docs/plan.md` phase 12).
+- Cart tools get the `ToolContext` (`app/tools/context.py`) and call
+  `app/orders` (`add_line` etc.) with no `accepted_reasons`, so a conflict is
+  always refused and explained. Register them in `app/agent/tool_dispatch.py`.
+- `propose_checkout` shows a card; the guest's button places the order.
+- The reply (`app/agent/schemas.py` `AgentReply`) carries the cart; the
+  drawer updates from it.
+- Add an `ordering` eval category; measure p95 turn time against 22 s.
 
 ## Still open (needs the user)
 - **Before the repo goes public:** remove `docs/task/` (the brief PDF, only
