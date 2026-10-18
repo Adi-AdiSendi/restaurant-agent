@@ -17,6 +17,9 @@ Tools the model can call. One file per tool, each with `NAME`, `DESCRIPTION`,
   `conflicts_with_guest` and `may_contain_warnings`, or a `not_found` error
   (also for another restaurant's ID). The agent may describe a conflicting
   item but the safety post-check blocks it as a recommendation.
+- `show_menu.py`: every dish in one of this restaurant's categories, each
+  with its own conflicts, for a menu block in the chat (phase 13). Showing
+  is not recommending; recommended IDs still pass the guard.
 - Cart tools (phase 12, ADR 0019), each calling `app/orders` for the
   session's user:
   - `view_cart.py`, `recent_orders.py` (the last 3 orders, with lines);

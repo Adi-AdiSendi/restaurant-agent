@@ -15,7 +15,7 @@ from typing import Any
 from scripts.photos.credits import HEADER, credit_line
 from scripts.photos.find_candidates import CANDIDATES
 from scripts.photos.images import fetch, write_webp
-from scripts.photos.openverse import Candidate
+from scripts.photos.openverse import LICENCES, Candidate
 from scripts.photos.rank import slug
 
 BACKEND = Path(__file__).resolve().parents[2]
@@ -29,7 +29,10 @@ def chosen(key: str, found: dict[str, Any], picks: dict[str, str]) -> Candidate 
     options = [Candidate.model_validate(c) for c in found.get(key, {}).get("candidates", [])]
     letter = picks.get(key, "A")
     index = "ABC".find(letter)
-    return options[index] if letter != "none" and 0 <= index < len(options) else None
+    candidate = options[index] if letter != "none" and 0 <= index < len(options) else None
+    if candidate and candidate.license not in LICENCES.split(","):
+        raise ValueError(f"{key}: licence {candidate.license!r} is not allowed (ADR 0024)")
+    return candidate
 
 
 def with_photo(record: dict[str, Any], photo: str | None) -> dict[str, Any]:
@@ -48,6 +51,9 @@ def main() -> None:
     picks: dict[str, str] = json.loads(PICKS.read_text(encoding="utf-8")) if PICKS.exists() else {}
     credits: list[str] = []
     written: set[Path] = set()
+    # Data and credits are written only after every photo downloaded and converted,
+    # so a failed download leaves the menu files and credits as they were.
+    texts: dict[Path, str] = {}
     for path in sorted(RESTAURANTS.glob("*.json")):
         data: dict[str, Any] = json.loads(path.read_text(encoding="utf-8"))
         rslug = data["slug"]
@@ -63,7 +69,8 @@ def main() -> None:
             updated = with_photo(record, photo)
             record.clear()
             record.update(updated)
-        text = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+        texts[path] = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
+    for path, text in texts.items():
         path.write_text(text, encoding="utf-8", newline="\n")
     for stale in set(PUBLIC.rglob("*.webp")) - written:
         stale.unlink()

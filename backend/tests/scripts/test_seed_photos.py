@@ -5,6 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.menu.models import MenuItem
 from app.menu.restaurant import Restaurant
+from app.menu.restaurant_schemas import RestaurantFile
 from scripts.menu_sync import sync_restaurant
 from scripts.seed_menu import load_restaurants
 
@@ -39,3 +40,10 @@ async def test_the_seed_stores_dish_and_cover_photos(session: AsyncSession) -> N
 def test_a_photo_must_be_restaurant_slash_name(photo: str) -> None:
     with pytest.raises(ValidationError):
         CORNER_TABLE.items[0].model_validate(CORNER_TABLE.items[0].model_dump() | {"photo": photo})
+
+
+def test_a_photo_must_belong_to_its_own_restaurant() -> None:
+    data = CORNER_TABLE.model_dump()
+    data["items"][0]["photo"] = "golden-dragon/mapo-tofu"
+    with pytest.raises(ValidationError, match="another restaurant"):
+        RestaurantFile.model_validate(data)

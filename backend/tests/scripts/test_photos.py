@@ -2,6 +2,8 @@
 
 from typing import Any
 
+import pytest
+
 from scripts.photos.credits import credit_line
 from scripts.photos.images import crop_box, download_url
 from scripts.photos.import_photos import chosen, with_photo
@@ -78,3 +80,9 @@ def test_the_photo_field_goes_after_the_name_or_away() -> None:
     assert list(with_photo(record, "cafe/latte")) == ["name", "photo", "category"]
     assert with_photo(record, "cafe/latte")["photo"] == "cafe/latte"
     assert "photo" not in with_photo(record, None)
+
+
+def test_a_licence_outside_adr_0024_is_refused() -> None:
+    found = {"r/d": {"candidates": [photo("a", "x", license="by-nc").model_dump()]}}
+    with pytest.raises(ValueError, match="not allowed"):
+        chosen("r/d", found, {})

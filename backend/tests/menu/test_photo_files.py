@@ -1,5 +1,6 @@
 """Every named photo has its files and a credit, and every file is named and credited."""
 
+import re
 from pathlib import Path
 
 from scripts.seed_menu import load_restaurants
@@ -34,6 +35,8 @@ def test_every_file_is_named_by_a_dish_or_restaurant() -> None:
         if PUBLIC.exists()
         else set[str]()
     )
+    odd = sorted(f for f in files if not re.fullmatch(r".+-(320|640)\.webp", f))
+    assert not odd
     unnamed = {f.rsplit("-", 1)[0] for f in files} - named_photos()
     assert not unnamed
 

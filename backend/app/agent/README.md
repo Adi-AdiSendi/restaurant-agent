@@ -43,7 +43,8 @@ Runs one chat turn: the model, its tool calls, and a structured final answer.
   the history, the `ToolContext` and the system prompt.
 - `turn_reply.py`: `ChatReply` = the reply and cards, plus action cards built
   only from successful cart tool results (`added`, `updated`, `removed`, and
-  one `checkout` card) and the cart as it is after the turn. Cart writes are
+  one `checkout` card), menu blocks from `show_menu` results, and the cart
+  as it is after the turn. Cart writes are
   part of the turn's transaction, so a failed or timed-out turn undoes them.
 - `prompt.py`: `system_prompt(restaurant, others)`, built each turn for the
   conversation's restaurant: its name, cuisine and categories, how to handle

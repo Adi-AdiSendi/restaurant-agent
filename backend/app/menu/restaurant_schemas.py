@@ -44,6 +44,10 @@ class RestaurantFile(RestaurantFields):
         names = [i.name for i in self.items]
         if len(set(names)) != len(names):
             raise ValueError(f"{self.slug}: item names repeat")
+        photos = [p for p in [self.photo, *(i.photo for i in self.items)] if p]
+        foreign = [p for p in photos if not p.startswith(f"{self.slug}/")]
+        if foreign:
+            raise ValueError(f"{self.slug}: photos from another restaurant: {foreign}")
         stray = sorted({i.category for i in self.items} - set(self.categories))
         if stray:
             raise ValueError(f"{self.slug}: items use unlisted categories {stray}")
