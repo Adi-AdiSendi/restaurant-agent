@@ -5,7 +5,7 @@ It learns their preferences through normal conversation, remembers them across
 independent conversations, accepts corrections, and never recommends a dish
 that breaks a stated allergy or diet. Built for the AI Engineer take-home.
 
-Version 2 (in progress, `docs/plan.md`) adds six fictional restaurants, the
+Version 2 (`docs/plan.md`) adds six fictional restaurants, the
 kinds of business Foodics serves: Corner Table (the v1 menu), Stack & Smash
 (burgers), Shawarma Street, Golden Dragon (Chinese), Red Sea Catch (seafood)
 and Bean & Bloom (cafe). Their dishes have real-world choices (bun, protein,
@@ -183,6 +183,18 @@ Left out: production observability, load testing, automatic prompt tuning.
 - **A lesson along the way.** The first version passed every graded check
   but made replies shorter (dead ends 18 to 43). A code review caught it. It
   is now measured, and the final version is better than the start (11).
+
+## With more time
+- **Harder evals.** Cases written by someone other than the builder, a judge
+  from a different model family, and the gaps listed in the eval report:
+  prompt injection, long conversations, concurrent turns, Arabic input.
+- **Check the reply text, not only the cards.** The safety guard checks every
+  recommended item; a second check on dish names in the text would close
+  the rare case where the text names an unsuitable dish.
+- **Shorter transactions.** A turn holds one DB connection across its LLM
+  calls. Splitting it into read, call, then write would let it scale past
+  demo traffic.
+- **The cut phases.** A mobile layout pass, Arabic voice, and the CRM pages.
 
 ## Setup requirements
 - Docker (for the local Postgres), [uv](https://docs.astral.sh/uv/), Node 22+.
