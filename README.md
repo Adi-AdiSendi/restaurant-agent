@@ -14,6 +14,8 @@ rules cover every choice.
 
 **Live: https://restaurant-agent.netlify.app**
 
+**Video walkthrough: [Google Drive folder](https://drive.google.com/drive/folders/1OepyNotDN6PPGjBoQdyAHsDrzrNLz7y3?usp=sharing)**
+
 | Demo login | PIN | Profile |
 |---|---|---|
 | `demo_alice` | `1234` | peanut allergy, vegetarian, mild spice (an older "hot" shows as replaced) |
