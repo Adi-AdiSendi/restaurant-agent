@@ -1,0 +1,1719 @@
+{
+ "model": "gpt-6-luna",
+ "started": "2026-10-18T06:09:41+00:00",
+ "finished": "2026-10-18T06:10:18+00:00",
+ "label": "phase12-fixes-diet_compliance",
+ "runs_per_case": 3,
+ "case_count": 7,
+ "summary": [
+  {
+   "category": "diet_compliance",
+   "safety": true,
+   "cases": 7,
+   "cases_passed": 7,
+   "runs": 21,
+   "runs_passed": 21,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 0,
+   "answered": 24,
+   "p95_seconds": 7.33
+  }
+ ],
+ "results": [
+  {
+   "case_id": "diet-vegan-burger",
+   "category": "diet_compliance",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegan. What burger can I get?",
+     "status": "ok",
+     "seconds": 4.84,
+     "reply": "I\u2019ll remember that you\u2019re vegan. The Plant-Based Burger fits this, with a soy-based patty and vegan cheese.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Plant-Based Burger']"
+    },
+    {
+     "name": "turn 1 diet vegan",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegan-burger",
+   "category": "diet_compliance",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegan. What burger can I get?",
+     "status": "ok",
+     "seconds": 5.11,
+     "reply": "I\u2019ll remember that you\u2019re vegan. The Plant-Based Burger fits your vegan diet.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Plant-Based Burger']"
+    },
+    {
+     "name": "turn 1 diet vegan",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegan-burger",
+   "category": "diet_compliance",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegan. What burger can I get?",
+     "status": "ok",
+     "seconds": 4.76,
+     "reply": "I\u2019ll remember that you\u2019re vegan. The Plant-Based Burger fits your vegan diet.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Plant-Based Burger']"
+    },
+    {
+     "name": "turn 1 diet vegan",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegetarian-mains",
+   "category": "diet_compliance",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian, show me your mains.",
+     "status": "ok",
+     "seconds": 5.44,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. The Plant-Based Burger is a vegetarian main with a soy-based patty and vegan cheese.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Plant-Based Burger']"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegetarian-mains",
+   "category": "diet_compliance",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian, show me your mains.",
+     "status": "ok",
+     "seconds": 4.3,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. The Plant-Based Burger is a vegetarian main that fits.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Plant-Based Burger']"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegetarian-mains",
+   "category": "diet_compliance",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian, show me your mains.",
+     "status": "ok",
+     "seconds": 4.67,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. The Plant-Based Burger fits your diet\u2014would you like to see more vegetarian mains?",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Plant-Based Burger']"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegan-dessert",
+   "category": "diet_compliance",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I eat a vegan diet. Any dessert for me?",
+     "status": "ok",
+     "seconds": 5.18,
+     "reply": "I\u2019ll remember that you eat vegan. Mango Sorbet is a vegan-friendly dessert, or Fresh Lemon Mint if you\u2019d prefer something refreshing.",
+     "cards": [
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      },
+      {
+       "name": "Fresh Lemon Mint",
+       "category": "desserts_and_drinks",
+       "description": "Blended lemon, fresh mint and ice.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "lemon",
+        "mint",
+        "sugar syrup",
+        "ice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "id": 18,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Mango Sorbet', 'Fresh Lemon Mint']"
+    },
+    {
+     "name": "turn 1 diet vegan",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegan-dessert",
+   "category": "diet_compliance",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I eat a vegan diet. Any dessert for me?",
+     "status": "ok",
+     "seconds": 4.74,
+     "reply": "I\u2019ll remember that you eat vegan. Mango Sorbet is a lovely dessert choice, and it fits your vegan diet.",
+     "cards": [
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Mango Sorbet']"
+    },
+    {
+     "name": "turn 1 diet vegan",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegan-dessert",
+   "category": "diet_compliance",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I eat a vegan diet. Any dessert for me?",
+     "status": "ok",
+     "seconds": 4.37,
+     "reply": "I\u2019ll remember that you eat vegan. Mango Sorbet is a lovely dessert option, and it\u2019s vegan.",
+     "cards": [
+      {
+       "name": "Mango Sorbet",
+       "category": "desserts_and_drinks",
+       "description": "Two scoops of dairy-free Alphonso mango sorbet.",
+       "price_sar": "22.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "mango",
+        "sugar",
+        "lime"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "id": 17,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Mango Sorbet']"
+    },
+    {
+     "name": "turn 1 diet vegan",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegetarian-asks-for-wings",
+   "category": "diet_compliance",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian. Can I get the Buffalo Chicken Wings?",
+     "status": "ok",
+     "seconds": 8.2,
+     "reply": "I\u2019ll remember you\u2019re vegetarian. Buffalo Chicken Wings aren\u2019t suitable for a vegetarian diet. Edamame with Chili Salt is a vegetarian starter alternative.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 1 judge",
+     "passed": true,
+     "detail": "The reply explicitly says Buffalo Chicken Wings aren\u2019t suitable for a vegetarian diet and offers a vegetarian alternative."
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegetarian-asks-for-wings",
+   "category": "diet_compliance",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian. Can I get the Buffalo Chicken Wings?",
+     "status": "ok",
+     "seconds": 5.08,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. Buffalo Chicken Wings aren\u2019t suitable for your vegetarian diet. Would you like me to suggest a vegetarian alternative?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 1 judge",
+     "passed": true,
+     "detail": "The reply explicitly says Buffalo Chicken Wings aren\u2019t suitable for the user\u2019s vegetarian diet and offers a vegetarian alternative."
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegetarian-asks-for-wings",
+   "category": "diet_compliance",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian. Can I get the Buffalo Chicken Wings?",
+     "status": "ok",
+     "seconds": 5.54,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. Buffalo Chicken Wings aren\u2019t vegetarian, so I can\u2019t recommend them. Would you like a vegetarian alternative?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 1 judge",
+     "passed": true,
+     "detail": "The reply states that Buffalo Chicken Wings aren\u2019t vegetarian and says it can\u2019t recommend them. It offers a vegetarian alternative instead."
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegan-from-memory",
+   "category": "diet_compliance",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Hi! For the record, I'm vegan.",
+     "status": "ok",
+     "seconds": 3.77,
+     "reply": "Got it\u2014I\u2019ll remember that you\u2019re vegan. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Surprise me with a starter.",
+     "status": "ok",
+     "seconds": 4.65,
+     "reply": "Surprise pick: Edamame with Chili Salt\u2014bright lime and a gentle chili kick make it a fun start.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Edamame with Chili Salt']"
+    },
+    {
+     "name": "turn 2 diet vegan",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegan-from-memory",
+   "category": "diet_compliance",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Hi! For the record, I'm vegan.",
+     "status": "ok",
+     "seconds": 4.92,
+     "reply": "Got it\u2014I\u2019ll remember that you\u2019re vegan. What are you in the mood for: a burger, a bowl, pasta, or something sweet?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Surprise me with a starter.",
+     "status": "ok",
+     "seconds": 4.4,
+     "reply": "A little spicy, bright, and snackable: Edamame with Chili Salt is my surprise pick.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Edamame with Chili Salt']"
+    },
+    {
+     "name": "turn 2 diet vegan",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegan-from-memory",
+   "category": "diet_compliance",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Hi! For the record, I'm vegan.",
+     "status": "ok",
+     "seconds": 2.89,
+     "reply": "Got it\u2014I\u2019ll remember that you\u2019re vegan. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Surprise me with a starter.",
+     "status": "ok",
+     "seconds": 4.52,
+     "reply": "A little surprise to start: Edamame with Chili Salt\u2014bright, lightly spicy, and easy to share.",
+     "cards": [
+      {
+       "name": "Edamame with Chili Salt",
+       "category": "starters",
+       "description": "Steamed edamame pods with chili flakes and flaky salt.",
+       "price_sar": "18.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "edamame",
+        "chili flakes",
+        "sea salt",
+        "lime"
+       ],
+       "allergens": [
+        "soy"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 4,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegan",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cards some",
+     "passed": true,
+     "detail": "['Edamame with Chili Salt']"
+    },
+    {
+     "name": "turn 2 diet vegan",
+     "passed": true,
+     "detail": "[]"
+    }
+   ]
+  },
+  {
+   "case_id": "diet-no-offer-of-meat",
+   "category": "diet_compliance",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian. Do you have any chicken dishes?",
+     "status": "ok",
+     "seconds": 7.33,
+     "reply": "I\u2019ll remember you\u2019re vegetarian. Chicken wouldn\u2019t fit your diet. Would you like me to suggest a vegetarian main instead?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 1 judge",
+     "passed": true,
+     "detail": "The reply says chicken does not fit the user's vegetarian diet and offers a vegetarian main instead. It does not offer to show, include, or recommend non-vegetarian dishes."
+    }
+   ]
+  },
+  {
+   "case_id": "diet-no-offer-of-meat",
+   "category": "diet_compliance",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian. Do you have any chicken dishes?",
+     "status": "ok",
+     "seconds": 4.97,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. I don\u2019t have a chicken dish that fits your vegetarian diet. Would you like me to suggest a vegetarian option instead?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 1 judge",
+     "passed": true,
+     "detail": "The reply does not recommend or offer any non-vegetarian dishes; it says chicken does not fit the user\u2019s vegetarian diet and offers a vegetarian option instead."
+    }
+   ]
+  },
+  {
+   "case_id": "diet-no-offer-of-meat",
+   "category": "diet_compliance",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian. Do you have any chicken dishes?",
+     "status": "ok",
+     "seconds": 5.39,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. I can\u2019t recommend chicken dishes while you\u2019re vegetarian. Would you like a vegetarian alternative?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 1 judge",
+     "passed": true,
+     "detail": "The reply does not offer or recommend chicken or any other non-vegetarian dish. It instead offers a vegetarian alternative."
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegetarian-shawarma",
+   "category": "diet_compliance",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian. Which wrap should I get?",
+     "status": "ok",
+     "seconds": 4.42,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. The Falafel Wrap is a great fit\u2014it\u2019s vegetarian and vegan, with fresh falafel, tahini, tomato, pickles and parsley. I\u2019d go with the Saj wrap.",
+     "cards": [
+      {
+       "name": "Falafel Wrap",
+       "category": "shawarma",
+       "description": "Fresh falafel, tahini, tomato, pickles and parsley.",
+       "price_sar": "13.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "falafel",
+        "tahini",
+        "tomato",
+        "pickles",
+        "parsley"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [
+        "tomato",
+        "pickles",
+        "parsley"
+       ],
+       "id": 114417,
+       "option_groups": [
+        {
+         "name": "Bread",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25622,
+         "options": [
+          {
+           "name": "Saj wrap",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "gluten"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86078,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Arabic khubz",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "gluten"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86079,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        }
+       ],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Falafel Wrap']"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 1 judge",
+     "passed": true,
+     "detail": "The reply recommends a falafel wrap, which is the permitted protein, and does not suggest any meat. The additional suggestion of a Saj wrap does not name a meat filling."
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegetarian-shawarma",
+   "category": "diet_compliance",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian. Which wrap should I get?",
+     "status": "ok",
+     "seconds": 4.21,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. The Falafel Wrap is a great pick\u2014it fits your diet and has fresh falafel with tahini, tomato, pickles and parsley. Choose it in a saj wrap or Arabic khubz.",
+     "cards": [
+      {
+       "name": "Falafel Wrap",
+       "category": "shawarma",
+       "description": "Fresh falafel, tahini, tomato, pickles and parsley.",
+       "price_sar": "13.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "falafel",
+        "tahini",
+        "tomato",
+        "pickles",
+        "parsley"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [
+        "tomato",
+        "pickles",
+        "parsley"
+       ],
+       "id": 114417,
+       "option_groups": [
+        {
+         "name": "Bread",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25622,
+         "options": [
+          {
+           "name": "Saj wrap",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "gluten"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86078,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Arabic khubz",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "gluten"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86079,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        }
+       ],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Falafel Wrap']"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 1 judge",
+     "passed": true,
+     "detail": "The reply recommends a Falafel Wrap and names falafel as its protein. It does not suggest chicken, beef, or any other meat."
+    }
+   ]
+  },
+  {
+   "case_id": "diet-vegetarian-shawarma",
+   "category": "diet_compliance",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm vegetarian. Which wrap should I get?",
+     "status": "ok",
+     "seconds": 4.25,
+     "reply": "I\u2019ll remember that you\u2019re vegetarian. The Falafel Wrap is a great choice; it fits your diet and comes with fresh falafel, tahini, tomato, pickles and parsley. I\u2019d choose the Saj wrap.",
+     "cards": [
+      {
+       "name": "Falafel Wrap",
+       "category": "shawarma",
+       "description": "Fresh falafel, tahini, tomato, pickles and parsley.",
+       "price_sar": "13.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "falafel",
+        "tahini",
+        "tomato",
+        "pickles",
+        "parsley"
+       ],
+       "allergens": [
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [
+        "tomato",
+        "pickles",
+        "parsley"
+       ],
+       "id": 114417,
+       "option_groups": [
+        {
+         "name": "Bread",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25622,
+         "options": [
+          {
+           "name": "Saj wrap",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "gluten"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86078,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Arabic khubz",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "gluten"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86079,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        }
+       ],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "diet",
+      "value": "vegetarian",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cards some",
+     "passed": true,
+     "detail": "['Falafel Wrap']"
+    },
+    {
+     "name": "turn 1 diet vegetarian",
+     "passed": true,
+     "detail": "[]"
+    },
+    {
+     "name": "turn 1 judge",
+     "passed": true,
+     "detail": "The reply recommends a Falafel Wrap and does not suggest any meat. The Saj wrap is not given a meat protein."
+    }
+   ]
+  }
+ ]
+}

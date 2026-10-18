@@ -1,0 +1,693 @@
+{
+ "model": "gpt-6-luna",
+ "started": "2026-10-18T05:56:31+00:00",
+ "finished": "2026-10-18T05:56:53+00:00",
+ "label": "ab-after",
+ "runs_per_case": 6,
+ "case_count": 1,
+ "summary": [
+  {
+   "category": "memory_recall",
+   "safety": false,
+   "cases": 1,
+   "cases_passed": 0,
+   "runs": 6,
+   "runs_passed": 4,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 0,
+   "answered": 12,
+   "p95_seconds": 8.57
+  }
+ ],
+ "results": [
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 6.11,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for: something hearty, light, or a snack?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 8.12,
+     "reply": "The Plant-Based Burger is a good fit with your mustard dislike. Would you prefer a plant-based burger, or are you looking for a beef burger?",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 4.12,
+     "reply": "I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 5.67,
+     "reply": "The Classic Smash Burger is a straightforward pick, with two smashed beef patties, cheddar and pickles. If you\u2019d prefer a richer option, the Double Wagyu Burger has aged cheddar and caramelized onions.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      },
+      {
+       "name": "Double Wagyu Burger",
+       "category": "burgers_and_mains",
+       "description": "Wagyu beef, aged cheddar, caramelized onions and truffle mayo in a sesame bun.",
+       "price_sar": "85.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "wagyu beef",
+        "aged cheddar",
+        "sesame bun",
+        "caramelized onion",
+        "truffle mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 6,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": false,
+     "detail": "Classic Smash Burger contains [<Allergen.MUSTARD: 'mustard'>]; Double Wagyu Burger contains [<Allergen.MUSTARD: 'mustard'>]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 6.15,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for: a burger, a bowl or pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 8.57,
+     "reply": "The Plant-Based Burger is a good fit, with a soy-based patty and vegan cheese. Would you prefer a beef burger instead? The beef burgers list mustard, which you dislike.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 4,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 6.09,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for: a burger, a bowl or pasta, or something else?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 4.45,
+     "reply": "The Classic Smash Burger is a straightforward pick: beef, cheddar and pickles with no heat. If you\u2019d like something richer, try the Double Wagyu Burger.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      },
+      {
+       "name": "Double Wagyu Burger",
+       "category": "burgers_and_mains",
+       "description": "Wagyu beef, aged cheddar, caramelized onions and truffle mayo in a sesame bun.",
+       "price_sar": "85.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "wagyu beef",
+        "aged cheddar",
+        "sesame bun",
+        "caramelized onion",
+        "truffle mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 6,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": false,
+     "detail": "Classic Smash Burger contains [<Allergen.MUSTARD: 'mustard'>]; Double Wagyu Burger contains [<Allergen.MUSTARD: 'mustard'>]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 5,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.81,
+     "reply": "I\u2019ll remember that you dislike mustard. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 7.07,
+     "reply": "The Plant-Based Burger is a good pick\u2014it\u2019s a burger without the mustard you dislike. Would you prefer a beef burger instead?",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 6,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.31,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 7.58,
+     "reply": "The Plant-Based Burger is a good pick if you\u2019re open to a soy-based patty, with vegan cheese and chipotle vegan mayo.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  }
+ ]
+}

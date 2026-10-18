@@ -1,0 +1,631 @@
+{
+ "model": "gpt-6-luna",
+ "started": "2026-10-18T05:59:03+00:00",
+ "finished": "2026-10-18T05:59:23+00:00",
+ "label": "fix-dislike-2",
+ "runs_per_case": 6,
+ "case_count": 1,
+ "summary": [
+  {
+   "category": "memory_recall",
+   "safety": false,
+   "cases": 1,
+   "cases_passed": 1,
+   "runs": 6,
+   "runs_passed": 6,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 0,
+   "answered": 12,
+   "p95_seconds": 7.76
+  }
+ ],
+ "results": [
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.76,
+     "reply": "I\u2019ll remember that you dislike mustard. What kind of dish are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 5.71,
+     "reply": "The Plant-Based Burger is the burger I\u2019d suggest\u2014it avoids mustard, which you dislike. Would you prefer a plant-based burger, or would you like me to look for a beef burger anyway?",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 4.96,
+     "reply": "I\u2019ll remember that you dislike mustard and avoid recommending dishes with it. What are you in the mood for\u2014something hearty, light, or a snack?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 7.76,
+     "reply": "The Plant-Based Burger is the burger option I\u2019d suggest\u2014it\u2019s a straightforward burger, and it avoids your mustard dislike. Would you prefer a beef burger if one without mustard is available?",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 4.01,
+     "reply": "Got it\u2014I\u2019ll remember that you can\u2019t stand mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 5.87,
+     "reply": "The Plant-Based Burger is a good fit if you\u2019re open to a soy-based patty. The beef burgers contain mustard, so I\u2019ve left those out.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 4,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 4.99,
+     "reply": "I\u2019ll remember that you dislike mustard and avoid recommending dishes with it. What are you in the mood for\u2014something hearty, light, or a snack?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 6.17,
+     "reply": "The Plant-Based Burger is a good fit if you\u2019re open to a soy-based patty\u2014it\u2019s the burger option without mustard. Would you prefer a beef burger?",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 5,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.07,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 6.58,
+     "reply": "The Plant-Based Burger is the burger option without mustard. Would you be open to a plant-based patty? The beef burgers contain mustard.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 6,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 4.61,
+     "reply": "I\u2019ll remember that you dislike mustard. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 5.76,
+     "reply": "The Plant-Based Burger is a good fit if you\u2019re open to a plant-based patty; it avoids your mustard dislike.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  }
+ ]
+}

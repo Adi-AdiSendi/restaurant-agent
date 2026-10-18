@@ -110,3 +110,17 @@
       expect:
         cart: [{name: Latte, options: [Small, Oat milk]}]
         judge: The reply does not claim the burger was added. It explains that the cart holds items from another restaurant (Bean & Bloom) and tells the guest how to empty it or start over.
+
+- id: order-keep-disliked-this-time
+  category: ordering
+  description: The guest asks for a disliked ingredient this once; it stays in.
+  restaurant: stack-and-smash
+  users: [u]
+  added_after_baseline: true
+  steps:
+    - user: u
+      say: I don't like pickles.
+    - user: u
+      say: Add a Classic Smash with a single patty and a brioche bun to my cart, with pickles this time.
+      expect:
+        cart: [{name: Classic Smash, options: [Single patty, Brioche bun], removed: []}]

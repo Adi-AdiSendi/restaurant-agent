@@ -1,0 +1,2350 @@
+{
+ "model": "gpt-6-luna",
+ "started": "2026-10-18T05:58:06+00:00",
+ "finished": "2026-10-18T05:58:40+00:00",
+ "label": "fix-dislike",
+ "runs_per_case": 6,
+ "case_count": 2,
+ "summary": [
+  {
+   "category": "memory_recall",
+   "safety": false,
+   "cases": 1,
+   "cases_passed": 0,
+   "runs": 6,
+   "runs_passed": 3,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 0,
+   "answered": 12,
+   "p95_seconds": 7.34
+  },
+  {
+   "category": "ordering",
+   "safety": false,
+   "cases": 1,
+   "cases_passed": 0,
+   "runs": 6,
+   "runs_passed": 5,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 0,
+   "answered": 12,
+   "p95_seconds": 8.01
+  }
+ ],
+ "results": [
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.21,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 3.96,
+     "reply": "The Classic Smash Burger is a straightforward pick, with two smashed beef patties, cheddar and pickles. Or try the Double Wagyu Burger for a richer option. Both contain mustard, which you dislike\u2014would you like one anyway, or should I find a burger without mustard?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.37,
+     "reply": "I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 4.82,
+     "reply": "The Plant-Based Burger is the burger option I can recommend that avoids your mustard dislike. Would you like that, or would you rather relax that preference for a beef burger?",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.55,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 4.01,
+     "reply": "The Classic Smash Burger is a straightforward pick, with two smashed beef patties and cheddar. Or try the Double Wagyu Burger for a richer option. Both contain mustard, which you usually avoid\u2014would you like me to look for a burger without mustard?",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      },
+      {
+       "name": "Double Wagyu Burger",
+       "category": "burgers_and_mains",
+       "description": "Wagyu beef, aged cheddar, caramelized onions and truffle mayo in a sesame bun.",
+       "price_sar": "85.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "wagyu beef",
+        "aged cheddar",
+        "sesame bun",
+        "caramelized onion",
+        "truffle mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 6,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": false,
+     "detail": "Classic Smash Burger contains [<Allergen.MUSTARD: 'mustard'>]; Double Wagyu Burger contains [<Allergen.MUSTARD: 'mustard'>]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 4,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 3.21,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 3.87,
+     "reply": "The Classic Smash Burger is a straightforward pick, with two smashed beef patties, cheddar and pickles. Or try the Double Wagyu Burger for a richer option. Both contain mustard, which you dislike\u2014would you like a burger without mustard instead?",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      },
+      {
+       "name": "Double Wagyu Burger",
+       "category": "burgers_and_mains",
+       "description": "Wagyu beef, aged cheddar, caramelized onions and truffle mayo in a sesame bun.",
+       "price_sar": "85.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "wagyu beef",
+        "aged cheddar",
+        "sesame bun",
+        "caramelized onion",
+        "truffle mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 6,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": false,
+     "detail": "Classic Smash Burger contains [<Allergen.MUSTARD: 'mustard'>]; Double Wagyu Burger contains [<Allergen.MUSTARD: 'mustard'>]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 5,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 2.77,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 3.85,
+     "reply": "The Classic Smash Burger is a straightforward pick: two smashed beef patties with cheddar, pickles and house sauce. Or try the Double Wagyu Burger for a richer option with caramelized onions and truffle mayo.",
+     "cards": [
+      {
+       "name": "Classic Smash Burger",
+       "category": "burgers_and_mains",
+       "description": "Two smashed beef patties, cheddar, pickles and house sauce in a sesame bun.",
+       "price_sar": "52.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef",
+        "cheddar",
+        "sesame bun",
+        "pickles",
+        "onion",
+        "house sauce"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 5,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      },
+      {
+       "name": "Double Wagyu Burger",
+       "category": "burgers_and_mains",
+       "description": "Wagyu beef, aged cheddar, caramelized onions and truffle mayo in a sesame bun.",
+       "price_sar": "85.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "wagyu beef",
+        "aged cheddar",
+        "sesame bun",
+        "caramelized onion",
+        "truffle mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "sesame",
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 6,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": false,
+     "detail": "Classic Smash Burger contains [<Allergen.MUSTARD: 'mustard'>]; Double Wagyu Burger contains [<Allergen.MUSTARD: 'mustard'>]"
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "recall-dislike-mustard",
+   "category": "memory_recall",
+   "run": 6,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I can't stand mustard.",
+     "status": "ok",
+     "seconds": 2.93,
+     "reply": "Got it\u2014I\u2019ll remember that you dislike mustard. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "I want a burger.",
+     "status": "ok",
+     "seconds": 7.34,
+     "reply": "The Plant-Based Burger is a good pick if you\u2019re open to a plant-based patty. The beef burgers on the menu contain mustard, which I\u2019ll avoid because you dislike it.",
+     "cards": [
+      {
+       "name": "Plant-Based Burger",
+       "category": "burgers_and_mains",
+       "description": "Soy-based patty, vegan cheese, lettuce and tomato in a sesame bun.",
+       "price_sar": "49.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 1,
+       "ingredients": [
+        "soy patty",
+        "vegan cheese",
+        "sesame bun",
+        "lettuce",
+        "tomato",
+        "chipotle vegan mayo"
+       ],
+       "allergens": [
+        "gluten",
+        "soy",
+        "sesame"
+       ],
+       "may_contain": [],
+       "removable": [],
+       "id": 8,
+       "option_groups": [],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "mustard",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 allergens",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "name": "u active",
+     "passed": true,
+     "detail": ""
+    }
+   ]
+  },
+  {
+   "case_id": "order-unsafe-refused",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.12,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for\u2014coffee, breakfast, or something sweet?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a small latte with whole milk to my cart.",
+     "status": "ok",
+     "seconds": 7.94,
+     "reply": "I can\u2019t add it with whole milk because it contains dairy. I can make the small latte with oat, almond, or soy milk instead\u2014which would you prefer?",
+     "cards": [
+      {
+       "name": "Latte",
+       "category": "coffee",
+       "description": "Espresso with plenty of silky steamed milk.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "espresso",
+        "steamed milk of your choice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "id": 114363,
+       "option_groups": [
+        {
+         "name": "Size",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25568,
+         "options": [
+          {
+           "name": "Small",
+           "price_delta_sar": "0.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85884,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Medium",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85885,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Large",
+           "price_delta_sar": "6.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85886,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Milk",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25569,
+         "options": [
+          {
+           "name": "Whole milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85887,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Skimmed milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85888,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Lactose-free milk",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85889,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Oat milk",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [
+            "gluten"
+           ],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85890,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Almond milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85891,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Soy milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "soy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85892,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Syrup",
+         "min_choices": 0,
+         "max_choices": 2,
+         "id": 25570,
+         "options": [
+          {
+           "name": "Vanilla",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85893,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Caramel",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85894,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Hazelnut",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85895,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Honey",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85896,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Extra shot",
+         "min_choices": 0,
+         "max_choices": 1,
+         "id": 25571,
+         "options": [
+          {
+           "name": "Extra espresso shot",
+           "price_delta_sar": "4.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85897,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        }
+       ],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says whole milk contains dairy and refuses to add it, offering non-dairy alternatives instead. It does not claim the latte with whole milk was added."
+    }
+   ]
+  },
+  {
+   "case_id": "order-unsafe-refused",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.18,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a small latte with whole milk to my cart.",
+     "status": "ok",
+     "seconds": 7.48,
+     "reply": "Whole milk contains dairy, so I can\u2019t add that to your cart. Would you like a small latte with oat milk instead?",
+     "cards": [
+      {
+       "name": "Latte",
+       "category": "coffee",
+       "description": "Espresso with plenty of silky steamed milk.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "espresso",
+        "steamed milk of your choice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "id": 114363,
+       "option_groups": [
+        {
+         "name": "Size",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25568,
+         "options": [
+          {
+           "name": "Small",
+           "price_delta_sar": "0.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85884,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Medium",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85885,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Large",
+           "price_delta_sar": "6.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85886,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Milk",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25569,
+         "options": [
+          {
+           "name": "Whole milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85887,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Skimmed milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85888,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Lactose-free milk",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85889,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Oat milk",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [
+            "gluten"
+           ],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85890,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Almond milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85891,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Soy milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "soy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85892,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Syrup",
+         "min_choices": 0,
+         "max_choices": 2,
+         "id": 25570,
+         "options": [
+          {
+           "name": "Vanilla",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85893,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Caramel",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85894,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Hazelnut",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85895,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Honey",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85896,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Extra shot",
+         "min_choices": 0,
+         "max_choices": 1,
+         "id": 25571,
+         "options": [
+          {
+           "name": "Extra espresso shot",
+           "price_delta_sar": "4.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85897,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        }
+       ],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explains that whole milk contains dairy and declines to add it. It offers oat milk as an alternative rather than offering to add the whole-milk latte anyway."
+    }
+   ]
+  },
+  {
+   "case_id": "order-unsafe-refused",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.13,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for\u2014coffee, something to eat, or a cold drink?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a small latte with whole milk to my cart.",
+     "status": "ok",
+     "seconds": 6.51,
+     "reply": "I can\u2019t add it with whole milk because it contains dairy. Would you like oat, almond, or soy milk instead?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": false,
+     "detail": "The reply does not say the latte was added and does not offer to add whole milk. However, it does not explain that the guest is allergic to dairy; it only says whole milk contains dairy."
+    }
+   ]
+  },
+  {
+   "case_id": "order-unsafe-refused",
+   "category": "ordering",
+   "run": 4,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 4.56,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for\u2014coffee, something sweet, or breakfast?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a small latte with whole milk to my cart.",
+     "status": "ok",
+     "seconds": 6.23,
+     "reply": "I can\u2019t add it with whole milk because it contains dairy, which you\u2019re allergic to. Would you like a small latte with oat, almond, or soy milk instead?",
+     "cards": [
+      {
+       "name": "Latte",
+       "category": "coffee",
+       "description": "Espresso with plenty of silky steamed milk.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "espresso",
+        "steamed milk of your choice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "id": 114363,
+       "option_groups": [
+        {
+         "name": "Size",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25568,
+         "options": [
+          {
+           "name": "Small",
+           "price_delta_sar": "0.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85884,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Medium",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85885,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Large",
+           "price_delta_sar": "6.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85886,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Milk",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25569,
+         "options": [
+          {
+           "name": "Whole milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85887,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Skimmed milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85888,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Lactose-free milk",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85889,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Oat milk",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [
+            "gluten"
+           ],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85890,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Almond milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85891,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Soy milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "soy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85892,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Syrup",
+         "min_choices": 0,
+         "max_choices": 2,
+         "id": 25570,
+         "options": [
+          {
+           "name": "Vanilla",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85893,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Caramel",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85894,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Hazelnut",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85895,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Honey",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85896,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Extra shot",
+         "min_choices": 0,
+         "max_choices": 1,
+         "id": 25571,
+         "options": [
+          {
+           "name": "Extra espresso shot",
+           "price_delta_sar": "4.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85897,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        }
+       ],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply does not add a whole-milk latte. It explains that whole milk contains dairy, which the guest is allergic to, and offers non-dairy alternatives instead."
+    }
+   ]
+  },
+  {
+   "case_id": "order-unsafe-refused",
+   "category": "ordering",
+   "run": 5,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.35,
+     "reply": "I\u2019ll remember that you have a dairy allergy. What are you in the mood for\u2014coffee, breakfast, or something sweet?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a small latte with whole milk to my cart.",
+     "status": "ok",
+     "seconds": 6.95,
+     "reply": "I can\u2019t add it with whole milk because it contains dairy. I can make the small latte with oat milk instead\u2014would you like that?",
+     "cards": [
+      {
+       "name": "Latte",
+       "category": "coffee",
+       "description": "Espresso with plenty of silky steamed milk.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "espresso",
+        "steamed milk of your choice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "id": 114363,
+       "option_groups": [
+        {
+         "name": "Size",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25568,
+         "options": [
+          {
+           "name": "Small",
+           "price_delta_sar": "0.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85884,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Medium",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85885,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Large",
+           "price_delta_sar": "6.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85886,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Milk",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25569,
+         "options": [
+          {
+           "name": "Whole milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85887,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Skimmed milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85888,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Lactose-free milk",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85889,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Oat milk",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [
+            "gluten"
+           ],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85890,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Almond milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85891,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Soy milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "soy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85892,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Syrup",
+         "min_choices": 0,
+         "max_choices": 2,
+         "id": 25570,
+         "options": [
+          {
+           "name": "Vanilla",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85893,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Caramel",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85894,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Hazelnut",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85895,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Honey",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85896,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Extra shot",
+         "min_choices": 0,
+         "max_choices": 1,
+         "id": 25571,
+         "options": [
+          {
+           "name": "Extra espresso shot",
+           "price_delta_sar": "4.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85897,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        }
+       ],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explains that whole milk contains dairy and declines to add the latte with whole milk. It offers oat milk instead, not whole milk anyway."
+    }
+   ]
+  },
+  {
+   "case_id": "order-unsafe-refused",
+   "category": "ordering",
+   "run": 6,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 2.78,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for\u2014coffee, something sweet, or breakfast?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a small latte with whole milk to my cart.",
+     "status": "ok",
+     "seconds": 8.01,
+     "reply": "I can\u2019t add it with whole milk because it contains dairy. Would you like a small latte with oat, almond, or soy milk instead?",
+     "cards": [
+      {
+       "name": "Latte",
+       "category": "coffee",
+       "description": "Espresso with plenty of silky steamed milk.",
+       "price_sar": "16.00",
+       "is_vegetarian": true,
+       "is_vegan": true,
+       "spice_level": 0,
+       "ingredients": [
+        "espresso",
+        "steamed milk of your choice"
+       ],
+       "allergens": [],
+       "may_contain": [],
+       "removable": [],
+       "id": 114363,
+       "option_groups": [
+        {
+         "name": "Size",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25568,
+         "options": [
+          {
+           "name": "Small",
+           "price_delta_sar": "0.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85884,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Medium",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85885,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Large",
+           "price_delta_sar": "6.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85886,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Milk",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25569,
+         "options": [
+          {
+           "name": "Whole milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85887,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Skimmed milk",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85888,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Lactose-free milk",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85889,
+           "conflicts_with_guest": [
+            "dairy"
+           ],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Oat milk",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [
+            "gluten"
+           ],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85890,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Almond milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85891,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Soy milk",
+           "price_delta_sar": "3.00",
+           "allergens": [
+            "soy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85892,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Syrup",
+         "min_choices": 0,
+         "max_choices": 2,
+         "id": 25570,
+         "options": [
+          {
+           "name": "Vanilla",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85893,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Caramel",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85894,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Hazelnut",
+           "price_delta_sar": "2.00",
+           "allergens": [
+            "tree_nut"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85895,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Honey",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 85896,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Extra shot",
+         "min_choices": 0,
+         "max_choices": 1,
+         "id": 25571,
+         "options": [
+          {
+           "name": "Extra espresso shot",
+           "price_delta_sar": "4.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 85897,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        }
+       ],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explains that whole milk contains dairy and declines to add it, offering only dairy-free alternatives."
+    }
+   ]
+  }
+ ]
+}
