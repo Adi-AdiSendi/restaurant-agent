@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react'
 
+import MicButton from '../voice/MicButton'
 import styles from './Composer.module.css'
 
 interface Props {
@@ -27,6 +28,7 @@ function Composer({ disabled, onSend }: Props) {
         aria-label="Message"
         maxLength={2000}
       />
+      <MicButton disabled={disabled} onText={setText} />
       <button className={styles.send} type="submit" disabled={disabled || !text.trim()}>
         Send
       </button>

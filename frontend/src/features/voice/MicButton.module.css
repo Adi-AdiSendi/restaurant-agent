@@ -1,0 +1,43 @@
+.mic,
+.micOn {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--brand);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--brand);
+}
+
+.micOn {
+  background: var(--danger);
+  border-color: var(--danger);
+  color: #fff;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+.mic:disabled {
+  opacity: 0.5;
+}
+
+.error {
+  flex-basis: 100%;
+  order: 3;
+  margin: 0;
+  color: var(--danger);
+  font-size: 13px;
+}
+
+@keyframes pulse {
+  50% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--danger) 25%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .micOn {
+    animation: none;
+  }
+}

@@ -1,5 +1,6 @@
 .composer {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
   padding: 12px var(--gutter);
   border-top: 1px solid var(--line);
