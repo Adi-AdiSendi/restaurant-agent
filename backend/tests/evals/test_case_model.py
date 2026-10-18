@@ -1,9 +1,10 @@
 from pathlib import Path
+from typing import get_args
 
 import pytest
 
 from app.memory.operations import Operation
-from evals.case_model import Case, load_cases
+from evals.case_model import Case, Category, load_cases
 from scripts.seed_menu import load_restaurants
 
 
@@ -16,7 +17,7 @@ def test_every_category_has_at_least_five_cases(cases: list[Case]) -> None:
     counts: dict[str, int] = {}
     for case in cases:
         counts[case.category] = counts.get(case.category, 0) + 1
-    assert len(counts) == 7
+    assert set(counts) == set(get_args(Category))
     assert min(counts.values()) >= 5
 
 

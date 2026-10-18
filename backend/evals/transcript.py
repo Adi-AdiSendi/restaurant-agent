@@ -5,6 +5,7 @@ from typing import Literal
 from pydantic import BaseModel, Field
 
 from app.agent.schemas import Card
+from app.orders.schemas import CartOut
 
 TurnStatus = Literal["ok", "timeout", "refused", "error"]
 
@@ -17,6 +18,11 @@ class Turn(BaseModel):
     reply: str = ""
     cards: list[Card] = Field(default_factory=list[Card])
     error: str | None = None
+    actions: list[str] = Field(default_factory=list[str])
+    """The kinds of the reply's action cards ("added", "checkout", ...)."""
+    cart: CartOut | None = None
+    """The speaker's cart after the turn, whatever its status."""
+    orders: int = 0
 
 
 class StoredFact(BaseModel):

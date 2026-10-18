@@ -4,7 +4,7 @@ from typing import Any
 import pytest
 
 from app.agent.schemas import Card
-from evals.case_model import Expect, ProfileExpect
+from evals.expectations import Expect, ProfileExpect
 from evals.graders.cards import grade_turn
 from evals.graders.memory import grade_profile
 from evals.graders.prices import grade_prices, prices_by_restaurant, stated_prices

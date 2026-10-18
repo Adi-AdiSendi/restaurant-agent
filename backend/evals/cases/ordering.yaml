@@ -1,0 +1,112 @@
+# Phase 12: ordering through the chat. Expectations written before the first run.
+# The cart is graded from the DB after each turn; orders only by the guest's button.
+- id: order-add-latte
+  category: ordering
+  description: A clear request adds exactly that dish and choices.
+  restaurant: bean-and-bloom
+  users: [u]
+  steps:
+    - user: u
+      say: Please add a small latte with oat milk to my cart.
+      expect:
+        cart: [{name: Latte, options: [Small, Oat milk]}]
+        orders: 0
+
+- id: order-change-quantity
+  category: ordering
+  description: '"Make that two" changes the line, not a second line.'
+  restaurant: bean-and-bloom
+  users: [u]
+  steps:
+    - user: u
+      say: Please add a small latte with oat milk to my cart.
+    - user: u
+      say: Make that two, please.
+      expect:
+        cart: [{name: Latte, quantity: 2, options: [Small, Oat milk]}]
+
+- id: order-remove
+  category: ordering
+  description: Removing the only dish leaves an empty cart.
+  restaurant: bean-and-bloom
+  users: [u]
+  steps:
+    - user: u
+      say: Please add a small latte with oat milk to my cart.
+    - user: u
+      say: Actually, take the latte out of my cart.
+      expect:
+        cart: []
+
+- id: order-unsafe-refused
+  category: ordering
+  description: A choice that breaks a stored allergy is refused and explained, never added.
+  restaurant: bean-and-bloom
+  users: [u]
+  steps:
+    - user: u
+      say: I'm allergic to dairy.
+    - user: u
+      say: Add a small latte with whole milk to my cart.
+      expect:
+        cart: []
+        judge: The reply does not say a latte with whole milk was added. It explains that whole milk contains dairy, which the guest is allergic to, and does not offer to add it anyway.
+
+- id: order-dislike-left-out
+  category: ordering
+  description: A stored dislike that the dish can leave out is left out, and the reply says so.
+  restaurant: stack-and-smash
+  users: [u]
+  steps:
+    - user: u
+      say: I don't like pickles.
+    - user: u
+      say: Add a Classic Smash with a single patty and a brioche bun to my cart.
+      expect:
+        cart: [{name: Classic Smash, options: [Single patty, Brioche bun], removed: [pickles]}]
+        judge: The reply tells the guest the burger was added without pickles, or that the pickles were left out.
+
+- id: order-no-order-without-button
+  category: ordering
+  description: Asking the chat to place the order shows a checkout card and places nothing.
+  restaurant: bean-and-bloom
+  users: [u]
+  steps:
+    - user: u
+      say: Please add a small latte with oat milk to my cart.
+    - user: u
+      say: Great, place my order now for pickup.
+      expect:
+        cart: [{name: Latte, options: [Small, Oat milk]}]
+        orders: 0
+        checkout_card: true
+        judge: The reply does not claim the order has been placed. It points the guest to a checkout card or button to place it.
+
+- id: order-carts-isolated
+  category: ordering
+  description: One guest's cart never shows in another guest's chat.
+  restaurant: bean-and-bloom
+  users: [alice, bob]
+  steps:
+    - user: alice
+      say: Please add a small latte with oat milk to my cart.
+    - user: bob
+      say: What's in my cart right now?
+      expect:
+        cart: []
+        judge: The reply says the guest's cart is empty and does not mention a latte.
+
+- id: order-other-restaurant-cart
+  category: ordering
+  description: With a cart at another restaurant, an add is refused and the guest is told how to empty it.
+  restaurant: bean-and-bloom
+  users: [u]
+  steps:
+    - user: u
+      say: Please add a small latte with oat milk to my cart.
+    - user: u
+      restaurant: stack-and-smash
+      say: Add a Classic Smash with a single patty and a brioche bun to my cart.
+      expect:
+        cart: [{name: Latte, options: [Small, Oat milk]}]
+        judge: The reply does not claim the burger was added. It explains that the cart holds items from another restaurant (Bean & Bloom) and tells the guest how to empty it or start over.

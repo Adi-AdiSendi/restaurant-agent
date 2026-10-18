@@ -22,6 +22,8 @@ README, so they must be honest and reproducible.
 - `preference_update`: a corrected fact replaces the old one.
 - `isolation`: user B never sees user A's preferences.
 - `extraction_precision`: no false memories ("my friend is vegan").
+- `ordering`: the chat changes the cart as asked, refuses unsafe adds, and
+  never places an order.
 
 ## Grading
 - Prefer deterministic graders: check `recommended_item_ids` against the DB and

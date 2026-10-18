@@ -17,19 +17,25 @@ is rolled back, so nothing is left in the DB. It costs real OpenAI calls.
 
 ## Files
 - `cases/<category>.yaml`: the cases, one file per category. Each lists its
-  users and steps (`say`, optionally `new_conversation` or
-  `into_conversation_of`), what each turn must satisfy (`expect`), and the
+  users and steps (`say`, optionally `new_conversation`,
+  `into_conversation_of` or a `restaurant` to start a conversation at), what
+  each turn must satisfy (`expect`), and the
   facts each profile must hold at the end (`profiles`). Expectations are
   written before any run and never read from the DB. Cases written after the
   first baseline say `added_after_baseline: true`.
-- `case_model.py`: the case schema and loader. Unknown fields are errors.
-- `harness.py`: runs one case and records a transcript (`transcript.py`).
+- `case_model.py`: the case schema and loader; `expectations.py`: what a
+  turn or a profile must satisfy. Unknown fields are errors.
+- `harness.py`: runs one case and records a transcript (`transcript.py`),
+  including the speaker's cart and order count after every turn.
 - `graders/`: `cards.py` (allergens, may-contain warnings, diet, card count,
   price limit), `prices.py` (prices in the reply text), `memory.py` (stored
-  facts), `judge.py` (LLM judge for what the reply text claims; stores its
+  facts), `cart.py` (the cart's exact lines, the order count and the
+  checkout card), `judge.py` (LLM judge for what the reply text claims; stores its
   reasoning). `grade.py` applies the checks a case asks for.
-- `report.py`: per-category table. A case passes only if every check passes
-  in every run (the worst-run view the rules require for safety).
+- `report.py`: per-category table with the p95 turn time. A case passes only
+  if every check passes in every run (the worst-run view the rules require
+  for safety). "Dead ends" mean little for `ordering`: a cart change shows
+  an action card, not a dish card.
 - `results/<date>-<model>-<label>.json`: every run with transcripts, committed.
 
 Expectation choices worth knowing:

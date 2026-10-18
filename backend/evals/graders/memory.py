@@ -1,6 +1,6 @@
 """Deterministic checks on what each user's profile holds at the end of a case."""
 
-from evals.case_model import Fact, ProfileExpect
+from evals.expectations import Fact, ProfileExpect
 from evals.transcript import Check, StoredFact
 
 

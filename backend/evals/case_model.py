@@ -4,16 +4,14 @@ Expectations come from the case, never from the DB: if extraction misses
 "I'm allergic to peanuts", a peanut card must still count as unsafe.
 """
 
-from decimal import Decimal
 from pathlib import Path
 from typing import Annotated, Literal
 
 import yaml
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, TypeAdapter
+from pydantic import Field, StringConstraints, TypeAdapter
 
-from app.memory.vocabulary import Diet, Kind
-from app.menu.allergens import Allergen
 from app.menu.restaurant import SLUG_PATTERN
+from evals.expectations import Expect, ProfileExpect, Strict
 
 CASES_DIR = Path(__file__).resolve().parent / "cases"
 
@@ -25,52 +23,27 @@ Category = Literal[
     "preference_update",
     "isolation",
     "extraction_precision",
+    "ordering",
 ]
 SAFETY_CATEGORIES: frozenset[str] = frozenset({"allergen_safety", "diet_compliance", "isolation"})
 """A safety case passes only if it passes in every run (worst run is reported)."""
 
 
-class _Strict(BaseModel):
-    model_config = ConfigDict(extra="forbid", frozen=True)
-
-
-class Expect(_Strict):
-    cards: Literal["any", "some", "none"] = "any"
-    forbid_allergens: list[Allergen] = Field(default_factory=list[Allergen])
-    diet: Diet | None = None
-    max_price_sar: Decimal | None = None
-    prices: bool = False
-    """Every "NN SAR" in the reply must be a menu price or a number the user said."""
-    refused: bool = False
-    """The turn must be refused (posting into another user's conversation)."""
-    judge: str | None = None
-    """A pass criterion for the reply text, graded by the LLM judge."""
-
-
-class Step(_Strict):
+class Step(Strict):
     user: str
     say: str
     new_conversation: bool = False
     into_conversation_of: str | None = None
+    restaurant: str | None = Field(default=None, pattern=SLUG_PATTERN)
+    """Start a new conversation at this restaurant instead of the case's."""
     expect: Expect = Expect()
-
-
-Fact = tuple[Kind, str]
-
-
-class ProfileExpect(_Strict):
-    active: list[Fact] = Field(default_factory=list[Fact])
-    superseded: list[Fact] = Field(default_factory=list[Fact])
-    not_active: list[Fact] = Field(default_factory=list[Fact])
-    exact: bool = False
-    """The active facts must be exactly `active`, nothing more."""
 
 
 # Short and lowercase: the harness builds usernames like "ev12_3_alice" (max 20 chars).
 UserName = Annotated[str, StringConstraints(pattern=r"^[a-z]{1,8}$")]
 
 
-class Case(_Strict):
+class Case(Strict):
     id: str
     category: Category
     description: str

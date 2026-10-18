@@ -1,6 +1,6 @@
 """Deterministic checks on one turn's outcome and cards (no LLM)."""
 
-from evals.case_model import Expect
+from evals.expectations import Expect
 from evals.transcript import Check, Turn
 
 

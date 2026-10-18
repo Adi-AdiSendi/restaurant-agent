@@ -1,0 +1,2724 @@
+{
+ "model": "gpt-6-luna",
+ "started": "2026-10-18T05:48:20+00:00",
+ "finished": "2026-10-18T05:49:36+00:00",
+ "label": "phase12",
+ "runs_per_case": 3,
+ "case_count": 8,
+ "summary": [
+  {
+   "category": "ordering",
+   "safety": false,
+   "cases": 8,
+   "cases_passed": 8,
+   "runs": 24,
+   "runs_passed": 24,
+   "timeouts": 0,
+   "errors": 0,
+   "dead_ends": 35,
+   "answered": 45,
+   "p95_seconds": 8.71
+  }
+ ],
+ "results": [
+  {
+   "case_id": "order-add-latte",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 8.47,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 306,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 1 orders",
+     "passed": true,
+     "detail": "0"
+    }
+   ]
+  },
+  {
+   "case_id": "order-add-latte",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 8.86,
+     "reply": "Added a small oat milk latte to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 307,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 1 orders",
+     "passed": true,
+     "detail": "0"
+    }
+   ]
+  },
+  {
+   "case_id": "order-add-latte",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 8.71,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 305,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 1 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 1 orders",
+     "passed": true,
+     "detail": "0"
+    }
+   ]
+  },
+  {
+   "case_id": "order-change-quantity",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 9.01,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 308,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Make that two, please.",
+     "status": "ok",
+     "seconds": 4.48,
+     "reply": "Updated your cart to two small lattes with oat milk.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "updated"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 308,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 2,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "38.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "38.00",
+      "item_count": 2
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "2 x Latte (Small, Oat milk)"
+    }
+   ]
+  },
+  {
+   "case_id": "order-change-quantity",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.57,
+     "reply": "Added one small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 309,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Make that two, please.",
+     "status": "ok",
+     "seconds": 5.59,
+     "reply": "Updated your cart to two small oat milk lattes.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "updated"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 309,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 2,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "38.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "38.00",
+      "item_count": 2
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "2 x Latte (Small, Oat milk)"
+    }
+   ]
+  },
+  {
+   "case_id": "order-change-quantity",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.66,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 310,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Make that two, please.",
+     "status": "ok",
+     "seconds": 4.11,
+     "reply": "Updated your cart to two small lattes with oat milk.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "updated"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 310,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 2,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "38.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "38.00",
+      "item_count": 2
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "2 x Latte (Small, Oat milk)"
+    }
+   ]
+  },
+  {
+   "case_id": "order-remove",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.32,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 311,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Actually, take the latte out of my cart.",
+     "status": "ok",
+     "seconds": 3.89,
+     "reply": "Removed the latte from your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "removed"
+     ],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    }
+   ]
+  },
+  {
+   "case_id": "order-remove",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.63,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 312,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Actually, take the latte out of my cart.",
+     "status": "ok",
+     "seconds": 4.17,
+     "reply": "Removed the latte from your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "removed"
+     ],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    }
+   ]
+  },
+  {
+   "case_id": "order-remove",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.36,
+     "reply": "Added one small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 313,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Actually, take the latte out of my cart.",
+     "status": "ok",
+     "seconds": 4.24,
+     "reply": "Removed the latte from your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "removed"
+     ],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    }
+   ]
+  },
+  {
+   "case_id": "order-unsafe-refused",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.2,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a small latte with whole milk to my cart.",
+     "status": "ok",
+     "seconds": 6.66,
+     "reply": "Whole milk contains dairy, so I can\u2019t add it with your allergy. Would you like oat, almond, or soy milk instead?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says whole milk contains dairy and declines to add it because of the guest\u2019s allergy. It offers alternatives instead of adding whole milk."
+    }
+   ]
+  },
+  {
+   "case_id": "order-unsafe-refused",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.04,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a small latte with whole milk to my cart.",
+     "status": "ok",
+     "seconds": 6.04,
+     "reply": "Whole milk contains dairy, so I can\u2019t add it. Would you like the small latte with oat, almond, or soy milk instead?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explains that whole milk contains dairy and declines to add it because of the allergy. It does not say the latte was added and offers alternatives instead."
+    }
+   ]
+  },
+  {
+   "case_id": "order-unsafe-refused",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I'm allergic to dairy.",
+     "status": "ok",
+     "seconds": 3.13,
+     "reply": "I\u2019ll remember that you\u2019re allergic to dairy. What are you in the mood for\u2014coffee, something sweet, or breakfast?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a small latte with whole milk to my cart.",
+     "status": "ok",
+     "seconds": 6.62,
+     "reply": "Whole milk contains dairy, so I can\u2019t add it. Would you like the small latte with oat, almond, or soy milk instead?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "allergy",
+      "value": "dairy",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says whole milk contains dairy and refuses to add it. It does not offer to add whole milk anyway, and it offers dairy-free alternatives instead."
+    }
+   ]
+  },
+  {
+   "case_id": "order-dislike-left-out",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I don't like pickles.",
+     "status": "ok",
+     "seconds": 3.57,
+     "reply": "Got it\u2014I\u2019ll remember that you don\u2019t like pickles. What sounds good today: a burger, chicken, or something on the side?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a Classic Smash with a single patty and a brioche bun to my cart.",
+     "status": "ok",
+     "seconds": 6.73,
+     "reply": "Added one Classic Smash with a single patty and brioche bun. Pickles were left out.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "stack-and-smash",
+       "name": "Stack & Smash"
+      },
+      "lines": [
+       {
+        "id": 314,
+        "item_id": 114430,
+        "name": "Classic Smash",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 86094,
+          "name": "Single patty",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 86096,
+          "name": "Brioche bun",
+          "price_delta_sar": "0.00"
+         }
+        ],
+        "removed": [
+         "pickles"
+        ],
+        "unit_price_sar": "32.00",
+        "line_total_sar": "32.00",
+        "allergens": [
+         "dairy",
+         "egg",
+         "gluten",
+         "mustard"
+        ],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "32.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "pickles",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Classic Smash (Single patty, Brioche bun, no pickles)"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explicitly says the pickles were left out."
+    }
+   ]
+  },
+  {
+   "case_id": "order-dislike-left-out",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I don't like pickles.",
+     "status": "ok",
+     "seconds": 7.18,
+     "reply": "I\u2019ll remember that you don\u2019t like pickles. What are you in the mood for today?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a Classic Smash with a single patty and a brioche bun to my cart.",
+     "status": "ok",
+     "seconds": 7.0,
+     "reply": "Added a Classic Smash with a single patty and brioche bun to your cart, with the pickles left off.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "stack-and-smash",
+       "name": "Stack & Smash"
+      },
+      "lines": [
+       {
+        "id": 317,
+        "item_id": 114430,
+        "name": "Classic Smash",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 86094,
+          "name": "Single patty",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 86096,
+          "name": "Brioche bun",
+          "price_delta_sar": "0.00"
+         }
+        ],
+        "removed": [
+         "pickles"
+        ],
+        "unit_price_sar": "32.00",
+        "line_total_sar": "32.00",
+        "allergens": [
+         "dairy",
+         "egg",
+         "gluten",
+         "mustard"
+        ],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "32.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "pickles",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Classic Smash (Single patty, Brioche bun, no pickles)"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explicitly says the pickles were left off the burger. This meets the criterion."
+    }
+   ]
+  },
+  {
+   "case_id": "order-dislike-left-out",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "I don't like pickles.",
+     "status": "ok",
+     "seconds": 6.74,
+     "reply": "Got it\u2014I\u2019ll remember that you don\u2019t like pickles. What kind of burger flavors do you usually enjoy?",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a Classic Smash with a single patty and a brioche bun to my cart.",
+     "status": "ok",
+     "seconds": 5.63,
+     "reply": "Added a Classic Smash with a single patty and brioche bun. Pickles were left out.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "stack-and-smash",
+       "name": "Stack & Smash"
+      },
+      "lines": [
+       {
+        "id": 315,
+        "item_id": 114430,
+        "name": "Classic Smash",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 86094,
+          "name": "Single patty",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 86096,
+          "name": "Brioche bun",
+          "price_delta_sar": "0.00"
+         }
+        ],
+        "removed": [
+         "pickles"
+        ],
+        "unit_price_sar": "32.00",
+        "line_total_sar": "32.00",
+        "allergens": [
+         "dairy",
+         "egg",
+         "gluten",
+         "mustard"
+        ],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "32.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": [
+     {
+      "kind": "dislike",
+      "value": "pickles",
+      "status": "active"
+     }
+    ]
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Classic Smash (Single patty, Brioche bun, no pickles)"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply explicitly says the pickles were left out."
+    }
+   ]
+  },
+  {
+   "case_id": "order-no-order-without-button",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.21,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 316,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Great, place my order now for pickup.",
+     "status": "ok",
+     "seconds": 3.96,
+     "reply": "Your checkout card is ready. Choose pickup and place your order using the button.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "checkout"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 316,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 2 orders",
+     "passed": true,
+     "detail": "0"
+    },
+    {
+     "name": "turn 2 checkout card shown",
+     "passed": true,
+     "detail": "['checkout']"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says the checkout card is ready and directs the guest to use the button to place the order. It does not claim the order has already been placed."
+    }
+   ]
+  },
+  {
+   "case_id": "order-no-order-without-button",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 7.41,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 318,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Great, place my order now for pickup.",
+     "status": "ok",
+     "seconds": 3.73,
+     "reply": "Your checkout card is ready. Choose pickup and place the order using the button there.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "checkout"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 318,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 2 orders",
+     "passed": true,
+     "detail": "0"
+    },
+    {
+     "name": "turn 2 checkout card shown",
+     "passed": true,
+     "detail": "['checkout']"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says the checkout card is ready and directs the guest to choose pickup and place the order using its button. It does not claim the order has already been placed."
+    }
+   ]
+  },
+  {
+   "case_id": "order-no-order-without-button",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 5.75,
+     "reply": "Added one small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 319,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Great, place my order now for pickup.",
+     "status": "ok",
+     "seconds": 3.96,
+     "reply": "Your checkout card is ready below. Choose pickup and place the order using its button.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "checkout"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 319,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 2 orders",
+     "passed": true,
+     "detail": "0"
+    },
+    {
+     "name": "turn 2 checkout card shown",
+     "passed": true,
+     "detail": "['checkout']"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply directs the guest to the checkout card and its button to place the order. It does not claim that the order has already been placed."
+    }
+   ]
+  },
+  {
+   "case_id": "order-carts-isolated",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "alice",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 5.98,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 320,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "bob",
+     "say": "What's in my cart right now?",
+     "status": "ok",
+     "seconds": 4.31,
+     "reply": "Your cart is empty right now.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "alice": [],
+    "bob": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says the cart is empty and does not mention a latte."
+    }
+   ]
+  },
+  {
+   "case_id": "order-carts-isolated",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "alice",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.07,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 321,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "bob",
+     "say": "What's in my cart right now?",
+     "status": "ok",
+     "seconds": 3.68,
+     "reply": "Your cart is empty right now.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "alice": [],
+    "bob": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says the cart is empty and does not mention a latte."
+    }
+   ]
+  },
+  {
+   "case_id": "order-carts-isolated",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "alice",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 8.41,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 322,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "bob",
+     "say": "What's in my cart right now?",
+     "status": "ok",
+     "seconds": 4.36,
+     "reply": "Your cart is empty right now.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": null,
+      "lines": [],
+      "total_sar": "0",
+      "item_count": 0
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "alice": [],
+    "bob": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "empty"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says the cart is empty and does not mention a latte."
+    }
+   ]
+  },
+  {
+   "case_id": "order-other-restaurant-cart",
+   "category": "ordering",
+   "run": 1,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.0,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 323,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a Classic Smash with a single patty and a brioche bun to my cart.",
+     "status": "ok",
+     "seconds": 5.94,
+     "reply": "Your cart has a Latte from Bean & Bloom, so I can\u2019t add items from Stack & Smash yet. Please empty your cart using the \u201cEmpty cart\u201d button, then ask me again and I\u2019ll add the Classic Smash with a single patty and brioche bun.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 323,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says the burger cannot be added yet because the cart contains an item from Bean & Bloom. It tells the guest to empty the cart and ask again, without claiming the burger was added."
+    }
+   ]
+  },
+  {
+   "case_id": "order-other-restaurant-cart",
+   "category": "ordering",
+   "run": 2,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.31,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 324,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a Classic Smash with a single patty and a brioche bun to my cart.",
+     "status": "ok",
+     "seconds": 4.38,
+     "reply": "Your cart is from Bean & Bloom, so I can\u2019t add this yet. Please use the \u201cEmpty cart\u201d button, then ask me again for the Classic Smash with a single patty and brioche bun.",
+     "cards": [],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 324,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply does not claim the burger was added. It explains that the cart is from Bean & Bloom and tells the guest to empty it before asking again."
+    }
+   ]
+  },
+  {
+   "case_id": "order-other-restaurant-cart",
+   "category": "ordering",
+   "run": 3,
+   "turns": [
+    {
+     "user": "u",
+     "say": "Please add a small latte with oat milk to my cart.",
+     "status": "ok",
+     "seconds": 6.77,
+     "reply": "Added a small latte with oat milk to your cart.",
+     "cards": [],
+     "error": null,
+     "actions": [
+      "added"
+     ],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 325,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    },
+    {
+     "user": "u",
+     "say": "Add a Classic Smash with a single patty and a brioche bun to my cart.",
+     "status": "ok",
+     "seconds": 5.9,
+     "reply": "I found the Classic Smash with a single patty and brioche bun, but your cart has an item from Bean & Bloom. Tap \u201cEmpty cart,\u201d then ask me to add it.",
+     "cards": [
+      {
+       "name": "Classic Smash",
+       "category": "burgers",
+       "description": "A smashed beef patty with American cheese, house sauce and the classic crunch.",
+       "price_sar": "32.00",
+       "is_vegetarian": false,
+       "is_vegan": false,
+       "spice_level": 0,
+       "ingredients": [
+        "beef patty",
+        "American cheese",
+        "lettuce",
+        "tomato",
+        "pickles",
+        "onion",
+        "smash sauce (mayo, mustard)"
+       ],
+       "allergens": [
+        "dairy",
+        "egg",
+        "mustard"
+       ],
+       "may_contain": [],
+       "removable": [
+        "pickles",
+        "onion",
+        "tomato",
+        "lettuce",
+        "smash sauce (mayo, mustard)"
+       ],
+       "id": 114430,
+       "option_groups": [
+        {
+         "name": "Patty",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25628,
+         "options": [
+          {
+           "name": "Single patty",
+           "price_delta_sar": "0.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86094,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Double patty",
+           "price_delta_sar": "14.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": false,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 86095,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Bun",
+         "min_choices": 1,
+         "max_choices": 1,
+         "id": 25629,
+         "options": [
+          {
+           "name": "Brioche bun",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "gluten",
+            "egg",
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 86096,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Potato bun",
+           "price_delta_sar": "0.00",
+           "allergens": [
+            "gluten"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86097,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Lettuce wrap",
+           "price_delta_sar": "0.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86098,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        },
+        {
+         "name": "Extras",
+         "min_choices": 0,
+         "max_choices": 4,
+         "id": 25630,
+         "options": [
+          {
+           "name": "Extra cheddar",
+           "price_delta_sar": "4.00",
+           "allergens": [
+            "dairy"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 86099,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Beef bacon",
+           "price_delta_sar": "6.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": false,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 86100,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Fried egg",
+           "price_delta_sar": "4.00",
+           "allergens": [
+            "egg"
+           ],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": false,
+           "spice_level": 0,
+           "id": 86101,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Jalapenos",
+           "price_delta_sar": "2.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 2,
+           "id": 86102,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          },
+          {
+           "name": "Caramelised onions",
+           "price_delta_sar": "3.00",
+           "allergens": [],
+           "may_contain": [],
+           "is_vegetarian": true,
+           "is_vegan": true,
+           "spice_level": 0,
+           "id": 86103,
+           "conflicts_with_guest": [],
+           "may_contain_warnings": []
+          }
+         ]
+        }
+       ],
+       "conflicts_with_guest": [],
+       "may_contain_warnings": []
+      }
+     ],
+     "error": null,
+     "actions": [],
+     "cart": {
+      "restaurant": {
+       "slug": "bean-and-bloom",
+       "name": "Bean & Bloom"
+      },
+      "lines": [
+       {
+        "id": 325,
+        "item_id": 114363,
+        "name": "Latte",
+        "quantity": 1,
+        "options": [
+         {
+          "id": 85884,
+          "name": "Small",
+          "price_delta_sar": "0.00"
+         },
+         {
+          "id": 85890,
+          "name": "Oat milk",
+          "price_delta_sar": "3.00"
+         }
+        ],
+        "removed": [],
+        "unit_price_sar": "19.00",
+        "line_total_sar": "19.00",
+        "allergens": [],
+        "conflicts_with_guest": [],
+        "may_contain_warnings": [],
+        "problem": null
+       }
+      ],
+      "total_sar": "19.00",
+      "item_count": 1
+     },
+     "orders": 0
+    }
+   ],
+   "profiles": {
+    "u": []
+   },
+   "checks": [
+    {
+     "name": "turn 1 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 status",
+     "passed": true,
+     "detail": "ok"
+    },
+    {
+     "name": "turn 2 cart",
+     "passed": true,
+     "detail": "1 x Latte (Small, Oat milk)"
+    },
+    {
+     "name": "turn 2 judge",
+     "passed": true,
+     "detail": "The reply says the cart contains an item from Bean & Bloom and instructs the guest to empty the cart before asking to add the burger. It does not claim the burger was added."
+    }
+   ]
+  }
+ ]
+}

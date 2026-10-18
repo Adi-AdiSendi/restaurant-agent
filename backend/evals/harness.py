@@ -16,6 +16,9 @@ from app.agent.llm_client import AgentLLM, LLMUnavailableError
 from app.db.engine import get_engine
 from app.memory.conversations import start_conversation
 from app.memory.profile import preference_history
+from app.menu.constraints import NO_CONSTRAINTS
+from app.orders.cart import get_cart
+from app.orders.orders import list_orders
 from app.users.models import User
 from evals.case_model import Case, Step
 from evals.transcript import CaseRun, StoredFact, Turn
@@ -68,7 +71,8 @@ async def _turn(
     deadline: float,
 ) -> Turn:
     user_id = users[step.user]
-    if step.new_conversation or step.user not in conversations:
+    if step.new_conversation or step.restaurant or step.user not in conversations:
+        restaurant = step.restaurant or restaurant
         conversation_id = await start_conversation(session, user_id, restaurant)
         assert conversation_id is not None, f"seed the menu first; no restaurant {restaurant}"
         conversations[step.user] = conversation_id
@@ -78,7 +82,8 @@ async def _turn(
     result: dict[str, object] = {"user": step.user, "say": step.say}
     try:
         reply = await handle_message(llm, session, user_id, target, step.say, deadline)
-        result |= {"status": "ok", "reply": reply.reply, "cards": reply.items}
+        actions = [a.kind for a in reply.actions]
+        result |= {"status": "ok", "reply": reply.reply, "cards": reply.items, "actions": actions}
     except ConversationNotFoundError:
         result |= {"status": "refused"}
     except TurnTimeoutError:
@@ -86,4 +91,7 @@ async def _turn(
     except (LLMUnavailableError, AgentAnswerError, AgentLoopError) as exc:
         result |= {"status": "error", "error": type(exc).__name__}
     result["seconds"] = round(time.perf_counter() - started, 2)
+    # Constraints only mark conflicts; the graders check names and quantities.
+    result["cart"] = await get_cart(session, user_id, NO_CONSTRAINTS)
+    result["orders"] = len(await list_orders(session, user_id))
     return Turn.model_validate(result)

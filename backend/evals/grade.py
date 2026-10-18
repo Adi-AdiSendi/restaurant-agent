@@ -5,6 +5,7 @@ from decimal import Decimal
 
 from evals.case_model import Case
 from evals.graders.cards import grade_turn
+from evals.graders.cart import grade_cart
 from evals.graders.memory import grade_profile
 from evals.graders.prices import grade_prices
 from evals.transcript import CaseRun, Check
@@ -23,6 +24,7 @@ async def grade(
         checks += grade_turn(step.expect, turn, label)
         if turn.status != "ok":
             continue
+        checks += grade_cart(step.expect, turn, label)
         if step.expect.prices:
             said = [s.say for s in case.steps[:number] if s.user == step.user]
             checks.append(grade_prices(turn.reply, menu, said, label))
