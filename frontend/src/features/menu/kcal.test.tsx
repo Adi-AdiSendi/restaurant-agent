@@ -8,8 +8,11 @@ import ItemCard from '../chat/ItemCard'
 import { initialChoice, lineKcal } from './choice'
 
 test('kcal follow the chosen options and quantity, and say they are estimates', () => {
-  const syrups = { ...latte.option_groups[1]!, options: [option(3, 'Vanilla', { kcal_delta: 40 })] }
-  const item: Card = { ...latte, option_groups: [latte.option_groups[0]!, syrups] }
+  const [milk] = latte.option_groups
+  const syrups = { id: 8, name: 'Syrup', min_choices: 0, max_choices: 2 }
+  const vanilla = option(3, 'Vanilla', { kcal_delta: 40 })
+  const groups = milk ? [milk, { ...syrups, options: [vanilla] }] : []
+  const item: Card = { ...latte, option_groups: groups }
   const choice = initialChoice(item)
   expect(lineKcal(item, choice)).toBe(150)
   expect(lineKcal(item, { ...choice, optionIds: [...choice.optionIds, 3], quantity: 2 })).toBe(380)
