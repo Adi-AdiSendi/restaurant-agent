@@ -197,28 +197,72 @@ Left out: production observability, load testing, automatic prompt tuning.
 - **The cut phases.** A mobile layout pass, Arabic voice, and the CRM pages.
 
 ## Setup requirements
-- Docker (for the local Postgres), [uv](https://docs.astral.sh/uv/), Node 22+.
-- An OpenAI API key with access to the model in `OPENAI_MODEL`.
-- Settings come from the environment or a repo-root `.env` (see `.env.example`):
+Install these first:
+
+| Tool | Version | Used for |
+|---|---|---|
+| [Docker Desktop](https://www.docker.com/products/docker-desktop/) | any recent | runs Postgres 16 locally (`docker-compose.yml`); it must be running |
+| [uv](https://docs.astral.sh/uv/) | any recent | Python packages; it downloads Python 3.12 itself if needed |
+| [Node.js](https://nodejs.org/) | 22+ | builds and serves the React UI |
+| Git | any | to clone the repo |
+| OpenAI API key | | with access to the model in `OPENAI_MODEL` |
+
+The app runs on your machine, but chat and the voice fallback call the
+OpenAI API, so it needs internet. Menus, photos and the database are local.
+
+Settings come from the environment or a repo-root `.env` (see `.env.example`):
 
 | Variable | Needed | Meaning |
 |---|---|---|
 | `OPENAI_API_KEY` | yes | OpenAI key |
 | `OPENAI_MODEL` | yes | model ID, `gpt-6-luna` |
-| `DATABASE_URL` | yes | Postgres URL; plain `postgres://` URLs are converted |
+| `DATABASE_URL` | yes | Postgres URL; the `.env.example` value matches the Docker DB |
 | `SESSION_SECRET` | in production | 32+ random characters to sign cookies |
 | `APP_ENV` | no | `development` (default), `test` or `production` |
+| `OPENAI_TRANSCRIBE_MODEL` | no | speech-to-text model for browsers without speech recognition, default `whisper-1` |
 | `TURN_DEADLINE_SECONDS` | no | per-turn limit, default 22, must stay under 26 |
+| `FRONTEND_DIST` | no | built UI folder, default `frontend/dist` |
 
 ## Run locally
-```
-cp .env.example .env            # fill in OPENAI_API_KEY
-docker compose up -d db
-cd backend && uv sync && uv run alembic upgrade head && uv run python -m scripts.seed_menu
-uv run uvicorn app.main:app --reload          # API on http://localhost:8000
-cd ../frontend && npm install && npm run dev  # UI on http://localhost:5173
-```
-Checks (the same as CI):
+1. Clone and configure:
+   ```
+   git clone https://github.com/Adi-AdiSendi/restaurant-agent.git
+   cd restaurant-agent
+   cp .env.example .env            # Windows: copy .env.example .env
+   ```
+   Put your key in `OPENAI_API_KEY` in `.env`.
+2. Start the database (Docker Desktop must be open):
+   ```
+   docker compose up -d db
+   ```
+3. Create the tables, then load the six menus and the two demo users:
+   ```
+   cd backend
+   uv sync
+   uv run alembic upgrade head
+   uv run python -m scripts.seed_menu
+   uv run python -m scripts.seed_demo_users
+   ```
+4. Run it, either way:
+   - **One server:** build the UI once, then FastAPI serves the UI and the
+     API together on http://localhost:8000.
+     ```
+     cd frontend && npm install && npm run build
+     cd ../backend && uv run uvicorn app.main:app
+     ```
+   - **For development:** two terminals, with hot reload. The UI on
+     http://localhost:5173 proxies `/api` to port 8000.
+     ```
+     cd backend && uv run uvicorn app.main:app --reload
+     cd frontend && npm install && npm run dev
+     ```
+5. Open the app and log in as `demo_alice` / `1234`.
+   http://localhost:8000/api/health should answer `200`.
+
+To stop: `Ctrl+C` for the servers, `docker compose down` for the database
+(add `-v` to delete its data). The seed scripts are safe to run again.
+
+Checks (the same as CI; the backend tests need the Docker database):
 ```
 cd backend && uv run ruff check . && uv run ruff format --check . && uv run pyright && uv run lint-imports && uv run pytest
 cd frontend && npm run lint && npm run typecheck && npm test
