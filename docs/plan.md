@@ -344,6 +344,12 @@ Reused from sibling projects, adapted rather than rebuilt:
 
   The browser pass was not run: Claude in Chrome was not connected. The UI
   flow is covered by the frontend tests.
+- Found after the close-out: the phase 10 and 11 UI was not live. Every
+  Netlify deploy from 623186e to 241823c failed its secret scan, because
+  backend variables copied into Netlify (`APP_ENV`'s value) matched a word in
+  the frontend code. CI was green, so it went unnoticed. The user removed the
+  backend variables from Netlify; the redeploy serves `index-DBz0ewEJ.js`
+  with the phase 11 UI, and `/r/bean-and-bloom` and `/orders/1` load.
 - Status: done 2026-10-18.
 
 ## Phase 12: ordering through the chat (about 7 h)

@@ -58,8 +58,6 @@ Plan it in plan mode first (`docs/plan.md` phase 12).
     `git filter-branch --index-filter "git rm -r --cached --ignore-unmatch docs/task" -- main`,
     add `docs/task/` to `.gitignore`, re-run gitleaks, and force-push.
   - Commit hashes quoted in `docs/plan.md` will change.
-- **Netlify:** delete the backend secrets the user copied into Netlify
-  environment variables (only Render needs them).
 - **Photos (phase 13):** the user has **no Pexels key**.
   - Options offered:
     - Openverse (no key, Creative Commons, credits; recommended);
@@ -99,6 +97,10 @@ Plan it in plan mode first (`docs/plan.md` phase 12).
     transactions commits its own rows and cleans them up (`tests/orders/test_locks.py`).
 - **Model:** gpt-6-luna is a reasoning model. Reasoning items are replayed
   between tool rounds with `include=["reasoning.encrypted_content"]` and `store=False`.
+- **Netlify deploys:** CI green does not mean the site updated. Netlify
+  needs no env vars; backend values there fail its secret scan (every UI
+  deploy from 623186e to 241823c failed this way). After a push, check the
+  live `index.html` asset name or the Netlify deploy list.
 - **Hosting limits** (checked 2026-10-17):
   - Netlify proxy rewrites stop at 26 s.
   - Netlify DB Free sleeps after 5 minutes.

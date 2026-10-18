@@ -184,6 +184,8 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
   Docker). Its build runs migrations, the menu seed and the demo-user reset.
 - Secrets live only in the Render dashboard: `DATABASE_URL` (the direct, not
   pooled, Netlify DB string) and `OPENAI_API_KEY`; Render generates `SESSION_SECRET`.
+  Netlify needs no environment variables: its secret scan fails the build
+  when a backend value (even `APP_ENV`) appears in the frontend files.
 - Netlify deploys every push to `main`; Render deploys when `backend/` changes.
 
 ## Known limitations
