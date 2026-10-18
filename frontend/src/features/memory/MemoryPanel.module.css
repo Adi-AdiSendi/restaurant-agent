@@ -78,3 +78,10 @@
     border-top: 1px solid var(--line);
   }
 }
+
+.progress {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  accent-color: var(--brand);
+}

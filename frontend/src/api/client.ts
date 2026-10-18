@@ -3,7 +3,15 @@
 import type { AddLine, Cart, Fulfilment, Order, OrderSummary } from './cartTypes'
 import type { GuestMenu, Restaurant } from './menuTypes'
 import { ApiError, detailMessage } from './errors'
-import type { ChatReply, Health, LoginResponse, Me, NewConversation, Preference } from './types'
+import type {
+  ChatReply,
+  Health,
+  LoginResponse,
+  Me,
+  NewConversation,
+  Preference,
+  Today,
+} from './types'
 
 export { ApiError, type ErrorDetail } from './errors'
 
@@ -50,6 +58,7 @@ export const api = {
   sendMessage: (conversationId: number, message: string) =>
     post<ChatReply>('/chat', { conversation_id: conversationId, message }),
   getPreferences: () => request<Preference[]>('/preferences'),
+  today: () => request<Today>('/preferences/today'),
   cart: () => request<Cart>('/cart'),
   addCartLine: (line: AddLine) => post<Cart>('/cart/lines', line),
   setQuantity: (lineId: number, quantity: number) =>

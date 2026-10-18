@@ -1,22 +1,10 @@
 import { useEffect, useState } from 'react'
 
 import { api, ApiError } from '../../api/client'
-import type { Preference, PreferenceKind } from '../../api/types'
+import type { Preference } from '../../api/types'
+import CaloriesToday from './CaloriesToday'
+import { describe, GROUPS } from './memoryLabels'
 import styles from './MemoryPanel.module.css'
-
-const GROUPS: [PreferenceKind, string][] = [
-  ['allergy', 'Allergies'],
-  ['diet', 'Diet'],
-  ['budget', 'Budget'],
-  ['spice', 'Spice'],
-  ['like', 'Likes'],
-  ['dislike', 'Dislikes'],
-]
-
-function describe(p: Preference): string {
-  if (p.kind === 'budget') return `up to ${p.value} SAR per item`
-  return p.value.replace('_', ' ')
-}
 
 interface Props {
   /** Changes after every reply, so the panel reloads what was learned. */
@@ -48,6 +36,7 @@ function MemoryPanel({ refreshKey, onUnauthorized }: Props) {
 
   const active = prefs?.filter((p) => p.status === 'active') ?? []
   const past = prefs?.filter((p) => p.status !== 'active').slice(0, 6) ?? []
+  const goal = active.find((p) => p.kind === 'calories')
 
   return (
     <aside className={styles.panel} aria-label="What I remember about you">
@@ -73,6 +62,7 @@ function MemoryPanel({ refreshKey, onUnauthorized }: Props) {
           </section>
         )
       })}
+      {goal && <CaloriesToday goal={Number(goal.value)} refreshKey={refreshKey} />}
       {past.length > 0 && (
         <section className={styles.group}>
           <h3 className={styles.groupTitle}>Updated earlier</h3>

@@ -46,4 +46,22 @@ describe('MemoryPanel', () => {
     render(<MemoryPanel refreshKey={0} onUnauthorized={onUnauthorized} />)
     await vi.waitFor(() => expect(onUnauthorized).toHaveBeenCalled())
   })
+
+  test('shows day rules, the calorie goal and today against it', async () => {
+    mockFetch({
+      'GET /api/preferences': {
+        body: [
+          row(5, 'day_dislike', 'friday: meat', 'active'),
+          row(6, 'calories', '1800', 'active'),
+        ],
+      },
+      'GET /api/preferences/today': { body: { weekday: 'friday', kcal: 650 } },
+    })
+    render(<MemoryPanel refreshKey={0} onUnauthorized={vi.fn()} />)
+    expect(await screen.findByText('Fridays: no meat')).toBeInTheDocument()
+    expect(screen.getByText('1,800 kcal a day (soft)')).toBeInTheDocument()
+    const progress = await screen.findByRole('progressbar')
+    expect(progress).toHaveAttribute('value', '650')
+    expect(screen.getByText(/Today: 650 of 1,800 kcal ordered/)).toBeInTheDocument()
+  })
 })

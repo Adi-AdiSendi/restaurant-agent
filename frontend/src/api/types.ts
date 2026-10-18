@@ -46,7 +46,14 @@ export interface NewConversation {
   id: number
 }
 
-export type PreferenceKind = 'allergy' | 'diet' | 'dislike' | 'like' | 'budget' | 'spice'
+export type PreferenceKind =
+  'allergy' | 'diet' | 'dislike' | 'like' | 'budget' | 'spice' | 'day_dislike' | 'calories'
+
+/** Today in Riyadh, and the estimated kcal the guest ordered today. */
+export interface Today {
+  weekday: string
+  kcal: number
+}
 
 export interface Preference {
   id: number
