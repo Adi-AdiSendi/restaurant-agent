@@ -1,6 +1,6 @@
 # 0023: A staff role for the restaurant CRM
 
-- Status: Accepted
+- Status: Accepted, not built (phase 16 was cut for the deadline, 2026-10-18)
 - Date: 2026-10-17
 - Extends: 0013 (identity)
 

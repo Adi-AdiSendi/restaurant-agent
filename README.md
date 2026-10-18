@@ -60,6 +60,9 @@ to a minute.
     the ones that cannot be made without dairy are greyed with the reason and
     have no Add button, and the assistant also recommends a few that fit.
     Dishes with nothing to choose have a one-click "Add".
+11. **Speak your order.** Press the mic next to Send and say "Add a small
+    latte with oat milk". The words appear in the message box as you speak;
+    check them and press Send.
 
 ## How it works
 ```
@@ -235,9 +238,17 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
 - **Photos:** 91 of the 109 dishes and covers have an openly licensed
   Openverse photo of a similar dish, not the restaurant's own; the rest show
   an icon. The user reviewed each one. Credits: [docs/photo-credits.md](docs/photo-credits.md).
+- **Voice:** English only, and the guest always presses Send, so a misheard
+  order never changes the cart unseen. Chrome and Edge use the browser's
+  own speech recognition (which may send audio to the browser maker);
+  other browsers record a clip (up to 20 s) that the server sends to
+  OpenAI's transcription. No spoken replies.
+- **Cut for the deadline:** a mobile layout pass, Arabic voice, and the
+  restaurant and personal CRM pages (plan phases 14, 16 and 17). The app
+  works on a phone but was not tuned for one.
 - **Brand:** the Foodics name, logo and colours are used for this prototype
-  only (ADR 0015). The restaurants are fictional. Not handled yet: real
-  payments, voice, Arabic.
+  only (ADR 0015). The restaurants are fictional. Not handled: real
+  payments, Arabic.
 
 ## Repository map
 | Path | What |

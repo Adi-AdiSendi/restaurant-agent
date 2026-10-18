@@ -1,48 +1,50 @@
-# Handoff (2026-10-18: v2 phase 13 done, phase 14 next)
+# Handoff (2026-10-18: build finished, final session = submission)
 
-Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
+Read this first, then `README.md`. The build is done; the last session is
+for the video and the submission.
 
 ## Where we are
 | Phase | State |
 |---|---|
-| 0 to 8 (v1) | done and live; v1 video moved to phase 18 |
-| 9 to 11 (v2) | done and live: ADRs, 6 restaurants with options, cart and checkout by hand |
-| 12 Ordering through the chat | done and live-checked 2026-10-18 (see `docs/plan.md`) |
-| 13 Visuals | done and live-checked 2026-10-18: 91 reviewed Openverse photos, menu blocks, quick Add |
-| 14 to 18 | not started: mobile, voice, restaurant CRM, personal CRM, final evals and video |
+| 0 to 8 (v1) | done and live |
+| 9 to 13 (v2) | done and live: 6 restaurants with options, cart and checkout, ordering by chat, photos, menu blocks |
+| 15 Voice | done and live in English only (mic next to Send) |
+| 14, 16, 17 | cut for the deadline by the user: mobile pass, Arabic, both CRMs |
+| 18 | left for the final session: video and submission |
 
-Repo: GitHub `Adi-AdiSendi/restaurant-agent` (private), branch `main`, all
-pushed. Commits are allowed (one logical change each). Green at the end of
-this session: backend 854 tests, ruff, pyright and the import layers;
-frontend 82 tests, ESLint and Prettier; the line limits; CI. The live site
-serves bundle `index-CjJDF6BI.js`.
+Repo: GitHub `Adi-AdiSendi/restaurant-agent` (private), `main`, all pushed.
+Live: https://restaurant-agent.netlify.app (UI) proxying to Render. Green at
+the end: backend 883 tests, frontend 97, ruff, pyright, import layers, line
+limits, CI. Evals (last full run, `phase13-final`): every safety category
+passes every run; see `docs/eval-report.md`.
 
-## Phase 12: what exists
-- `app/tools/`: `view_cart`, `add_to_cart`, `update_cart_line`,
-  `remove_cart_line`, `recent_orders`, `propose_checkout`. Writes go through
-  `cart_write.py` (a savepoint); order errors map to tool errors with advice
-  (`order_errors.py`); `dislikes.py` matches removable ingredients by words.
-- `app/agent/turn_setup.py` builds the turn (cart block after the profile);
-  `turn_reply.py` returns `ChatReply` with `actions` and `cart`.
-- Checkout takes `expected_total_sar`; a different total is 409
-  `cart_changed`. Both the checkout page and the chat card send it
-  (`usePlaceOrder`).
-- Frontend: `ActionCard`, `orders/CheckoutCard`, `api/errors.ts`.
-- Evals: `ordering` category, cart grader, p95 per category.
-
-## Phase 13: what exists
-- Photos: `backend/scripts/photos/` (Openverse search with a cache, import,
-  credits). Reviewed picks in `backend/data/photos/picks.json`; files in
-  `frontend/public/menu/`; `photo` columns (migration 0005). To change a
-  photo: edit `picks.json` (A, B, C or none), run
-  `uv run python -m scripts.photos.import_photos`, commit.
-- `show_menu` tool and menu blocks; quick Add (`features/chat/quickAdd.ts`,
-  `features/menu/useQuickAdd.ts`); `components/DishPhoto`, `Skeleton`.
-
-## Next session: phase 14, mobile friendly
-Plan it in plan mode first (`docs/plan.md` phase 14). It adds Playwright
-(a new dev dependency, needs a reason in the commit) and a manual check on a
-real phone.
+## Final session plan (about 5 hours)
+1. **Wake and smoke-test the live site** (Render sleeps; the first load can
+   take about 30 s). Log in as `demo_alice` / 1234 and walk the README "Try
+   it" steps 1 to 11 once. In Chrome, press the mic and say "Add a small
+   latte with oat milk": the text should appear in the box (voice was only
+   tested with fakes and the API; this is its first real spoken test).
+   If voice fails in Chrome, the fallback is typing; note it in the README.
+2. **Video, 8 to 12 minutes** (brief section 6.3). Suggested order:
+   - the problem and the stack (README "How it works", one minute);
+   - memory: Alice's picks, a correction ("I'm vegan now"), a new chat;
+   - safety: the peanut bowl refused; allergens enforced in code
+     (`app/safety/`, `search_menu`), never only in the prompt;
+   - restaurants with options: Bean & Bloom latte with a dairy allergy;
+   - ordering by hand (sheet, "Add it anyway?", checkout) and by chat
+     (pickles left out, "make that two", the checkout card);
+   - photos and a menu block; voice;
+   - evals: the per-category table and the regressions they caught
+     (`docs/eval-report.md`: phase 7 update fix, phase 12 dislike, phase 13
+     menu blocks);
+   - decisions and limits: ADRs, README "Known limitations".
+3. **Drive folder** with the video and the repo link, then open every link
+   from a logged-out browser.
+4. **Optional, before making the repo public:** remove `docs/task/` from the
+   git history (steps below). It needs your go-ahead to force-push.
+5. Not done for lack of usage: a `code-reviewer` pass on the voice feature
+   (commits 3cc1ba0 and 311dc6a). Low risk (login, size cap, rate limit,
+   no auto-send), but run it if time allows.
 
 ## Still open (needs the user)
 - **Before the repo goes public:** remove `docs/task/` (the brief PDF, only

@@ -48,6 +48,9 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
   allergies or diet. A reply's `actions` render as `ActionCard`s ("Added 2 ×
   Latte", what was left out for the guest's dislikes) or a `CheckoutCard`,
   all from server data. `MenuPage` sets the cart from each reply's `cart`.
+- `src/features/voice/`: the mic in the composer (English). `speech.ts` uses
+  the browser's recognition where it exists; `record.ts` records a clip for
+  `/api/transcribe` elsewhere. The text goes into the box; the guest sends it.
 - `src/features/memory/`: "What I remember about you", from `/api/preferences`,
   refreshed after each reply. Old facts are struck through. Pages (`menu`)
   compose features. A few pieces cross over: the cart context, the chat's

@@ -23,7 +23,7 @@ backend/
     main.py       creates the FastAPI app, mounts routes and the frontend build
     config.py     settings from env (pydantic-settings)
     api/          HTTP routes only: auth, chat, conversations, restaurants (and a
-                  guest's menu), preferences, cart, orders, health; plus the session
+                  guest's menu), preferences, cart, orders, transcribe (voice), health; plus the session
                   cookie (session.py) and the user and constraints dependencies (deps.py)
     agent/        LLM loop, system prompt, context builder, final-answer schema
     tools/        tools the model can call (menu search and lookup, cart changes,

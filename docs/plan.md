@@ -4,7 +4,7 @@ Budget: about 10 to 12 focused hours inside the 72-hour window.
 Rule: the baseline must work end to end (deployed) before Part 2 starts.
 Every phase ends with all checks green and a `code-reviewer` pass.
 
-**Current phase: 14** (v2; phases 9 to 13 done; v1 phases 0 to 8 are below, the video moved to phase 18)
+**Current phase: 18** (v2; phases 9 to 13 done, 15 done in English only, 14, 16 and 17 cut for the deadline; v1 phases 0 to 8 are below, the video moved to phase 18)
 
 ## Inputs
 - Menu concept: international casual (burgers, bowls, pasta, desserts), prices in SAR.
@@ -452,6 +452,7 @@ Reused from sibling projects, adapted rather than rebuilt:
     The model once said the block is "above" the reply; it is below.
 
 ## Phase 14: mobile friendly and fluid sizing (about 4 h)
+- Status: cut for the deadline (2026-10-18, the user's decision).
 - **Sizing:**
   - fluid type and spacing (`clamp()`);
   - `100dvh` and safe-area insets;
@@ -471,6 +472,11 @@ Reused from sibling projects, adapted rather than rebuilt:
   real phone.
 
 ## Phase 15: voice input, English and Arabic (about 5 h)
+- Status: done 2026-10-18 in English only; Arabic was cut for the deadline.
+  `POST /api/transcribe` (OpenAI, login, 10 MB cap, 20 clips per 5 minutes)
+  and a mic in the composer ported from Aviation-Services: browser speech
+  recognition where available, else a recorded clip. The text goes into the
+  box and the guest sends it (no auto-send). Tests: 5 backend, 3 frontend.
 - **Frontend:** port `speech`, `record` and `useVoice` to TypeScript under
   `features/voice/`.
   - A mic button with an EN/AR chip.
@@ -491,6 +497,7 @@ Reused from sibling projects, adapted rather than rebuilt:
   server, and the Arabic evals pass.
 
 ## Phase 16: restaurant CRM (about 8 h)
+- Status: cut for the deadline (2026-10-18). ADR 0023 (staff role) was not built.
 - **Staff role** (ADR 0023): `users.role`, `demo_staff` and `require_staff`.
 - **Simulated history:** `scripts/seed_demo_orders.py`.
   - About 40 personas over 12 weeks, deterministic.
@@ -512,6 +519,7 @@ Reused from sibling projects, adapted rather than rebuilt:
   the live site.
 
 ## Phase 17: personal CRM (about 6 h)
+- Status: cut for the deadline (2026-10-18).
 - **`/me` page:**
   - favourite restaurants, cuisines and dishes;
   - spend over time;
@@ -539,8 +547,7 @@ Reused from sibling projects, adapted rather than rebuilt:
 
 ## Out of scope (deliberately)
 - Real payments.
-- An Arabic interface (Arabic is spoken and replied to, but screens stay
-  English).
+- Arabic, spoken or on screen.
 - Spoken replies.
 - Dark theme.
 - Real authentication.
