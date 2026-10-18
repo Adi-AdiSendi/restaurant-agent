@@ -36,6 +36,8 @@ const latte: Card = {
   removable: ['sugar'],
   photo: null,
   kcal: null,
+  taste_notes: [],
+  liked: false,
   option_groups: [
     {
       id: 7,

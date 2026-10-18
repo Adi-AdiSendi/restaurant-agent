@@ -2,6 +2,7 @@
 
 from collections.abc import Sequence
 from datetime import datetime
+from decimal import Decimal
 
 from pydantic import BaseModel, ConfigDict
 from sqlalchemy import select
@@ -11,6 +12,7 @@ from app.memory.preference import Preference
 from app.memory.vocabulary import Diet, Kind, Status
 from app.menu.allergens import Allergen
 from app.menu.constraints import HardConstraints
+from app.menu.taste import Tastes
 
 
 class PreferenceOut(BaseModel):
@@ -53,4 +55,27 @@ def hard_constraints(profile: Sequence[Preference]) -> HardConstraints:
     vegan = Diet.VEGAN in diets
     return HardConstraints(
         excluded_allergens=allergens, vegan=vegan, vegetarian=vegan or Diet.VEGETARIAN in diets
+    )
+
+
+_SPICE_LEVEL = {"none": 0, "mild": 1, "medium": 2, "hot": 3}
+
+
+def tastes(profile: Sequence[Preference], weekday: str, kcal_today: int) -> Tastes:
+    """The soft side of the profile, for "Matches my tastes" (never enforced)."""
+    values = {kind: [p.value for p in profile if p.kind == kind] for kind in Kind}
+    today = [
+        rule.split(": ", 1)[1]
+        for rule in values[Kind.DAY_DISLIKE]
+        if rule.startswith(f"{weekday}:")
+    ]
+    budget, spice, goal = values[Kind.BUDGET], values[Kind.SPICE], values[Kind.CALORIES]
+    return Tastes(
+        dislikes=tuple(values[Kind.DISLIKE]),
+        likes=tuple(values[Kind.LIKE]),
+        today_avoid=tuple(today),
+        weekday=weekday,
+        budget=Decimal(budget[0]) if budget else None,
+        max_spice=_SPICE_LEVEL.get(spice[0]) if spice else None,
+        kcal_left=int(goal[0]) - kcal_today if goal else None,
     )

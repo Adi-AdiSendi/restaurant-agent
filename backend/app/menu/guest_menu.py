@@ -8,6 +8,7 @@ from app.menu.guest_view import GuestItem, guest_item
 from app.menu.queries import restaurant_by_slug, search_items
 from app.menu.restaurant_schemas import RestaurantOut
 from app.menu.schemas import MenuFilter, MenuItemOut
+from app.menu.taste import NO_TASTES, Tastes
 
 
 class GuestMenu(BaseModel):
@@ -16,7 +17,7 @@ class GuestMenu(BaseModel):
 
 
 async def guest_menu(
-    session: AsyncSession, slug: str, constraints: HardConstraints
+    session: AsyncSession, slug: str, constraints: HardConstraints, tastes: Tastes = NO_TASTES
 ) -> GuestMenu | None:
     """Every dish, including ones that do not suit the guest (they carry the reasons);
     None if there is no such restaurant."""
@@ -26,7 +27,7 @@ async def guest_menu(
     rows = await search_items(session, restaurant.id, MenuFilter())
     order = {category: n for n, category in enumerate(restaurant.categories)}
     items = sorted(
-        (guest_item(MenuItemOut.model_validate(row), constraints) for row in rows),
+        (guest_item(MenuItemOut.model_validate(row), constraints, tastes) for row in rows),
         key=lambda item: (order.get(item.category, len(order)), item.price_sar, item.id),
     )
     return GuestMenu(restaurant=RestaurantOut.model_validate(restaurant), items=items)

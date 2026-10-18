@@ -54,4 +54,15 @@ describe('MenuBrowser', () => {
     expect(onChoose).toHaveBeenCalledWith(latte)
     expect(screen.getByRole('button', { name: 'Add to cart' })).toBeInTheDocument()
   })
+
+  test('"Matches my tastes" hides dishes with a soft note, and liked ones say so', () => {
+    const sweet = { ...latte, id: 90, name: 'Honey Cake', taste_notes: ['over your 20 SAR budget'] }
+    const loved = { ...latte, id: 91, name: 'Mocha', liked: true }
+    const tasteMenu = { ...menu, items: [sweet, loved] }
+    render(<MenuBrowser menu={tasteMenu} onChoose={vi.fn()} />)
+    expect(screen.getByText('Not your usual: over your 20 SAR budget.')).toBeInTheDocument()
+    expect(screen.getByText('You like this')).toBeInTheDocument()
+    fireEvent.click(screen.getByLabelText('Matches my tastes'))
+    expect(names()).toEqual(['Mocha'])
+  })
 })

@@ -13,9 +13,7 @@ from tests.orders.helpers import dish as seeded_dish
 
 
 def test_every_dish_has_an_estimate() -> None:
-    missing = [
-        f"{r.slug}/{i.name}" for r in load_restaurants() for i in r.items if i.kcal is None
-    ]
+    missing = [f"{r.slug}/{i.name}" for r in load_restaurants() for i in r.items if i.kcal is None]
     assert not missing
 
 

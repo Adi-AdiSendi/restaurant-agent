@@ -60,6 +60,10 @@ export interface Card {
   /** Why no way of ordering it suits the guest; empty if one does. */
   conflicts_with_guest: string[]
   may_contain_warnings: Allergen[]
+  /** Soft reasons it may not suit the guest today (dislikes, budget, day rules, kcal). */
+  taste_notes: string[]
+  /** It has something the guest likes. */
+  liked: boolean
 }
 
 export interface Restaurant {

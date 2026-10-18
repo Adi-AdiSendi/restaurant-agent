@@ -59,4 +59,6 @@ export const latte: Card = {
   ],
   conflicts_with_guest: [],
   may_contain_warnings: [],
+  taste_notes: [],
+  liked: false,
 }

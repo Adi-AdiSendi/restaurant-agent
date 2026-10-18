@@ -41,6 +41,7 @@ function ItemCard({ item, onChoose, quickAdd }: Props) {
           {SPICE[item.spice_level] ?? ''}
         </span>
         {item.kcal !== null && <span className={styles.spice}>{kcalLabel(item.kcal)}</span>}
+        {item.liked && <span className={styles.diet}>You like this</span>}
       </div>
       <p className={styles.ingredients}>{item.ingredients.join(', ')}</p>
       <ItemOptions groups={item.option_groups} removable={item.removable} />
@@ -61,6 +62,9 @@ function ItemCard({ item, onChoose, quickAdd }: Props) {
           May contain {item.may_contain_warnings.map(allergenLabel).join(', ')}, which you avoid.
           Please check with staff.
         </p>
+      )}
+      {item.taste_notes.length > 0 && (
+        <p className={styles.traces}>Not your usual: {item.taste_notes.join('; ')}.</p>
       )}
       {traces.length > 0 && (
         <p className={styles.traces}>

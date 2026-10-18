@@ -10,6 +10,7 @@ from app.menu.allergens import Allergen
 from app.menu.constraints import HardConstraints
 from app.menu.option_schemas import OptionGroupBase, OptionOut
 from app.menu.schemas import MenuItemBase, MenuItemOut
+from app.menu.taste import NO_TASTES, Tastes, liked, taste_notes
 
 
 class GuestOption(OptionOut):
@@ -31,9 +32,14 @@ class GuestItem(MenuItemBase):
     """Why no way of ordering it suits the guest; empty if one does."""
     may_contain_warnings: list[Allergen] = Field(default_factory=list[Allergen])
     """Traces the guest avoids that every suitable way of ordering it carries."""
+    taste_notes: list[str] = Field(default_factory=list[str])
+    """Soft reasons it may not suit the guest today (dislikes, budget, ...); never a block."""
+    liked: bool = False
 
 
-def guest_item(item: MenuItemOut, constraints: HardConstraints) -> GuestItem:
+def guest_item(
+    item: MenuItemOut, constraints: HardConstraints, tastes: Tastes = NO_TASTES
+) -> GuestItem:
     conflicts = constraints.option_conflicts(item)
     groups = [
         GuestOptionGroup(
@@ -54,4 +60,6 @@ def guest_item(item: MenuItemOut, constraints: HardConstraints) -> GuestItem:
         option_groups=groups,
         conflicts_with_guest=constraints.item_violations(item),
         may_contain_warnings=constraints.item_may_contain_warnings(item),
+        taste_notes=taste_notes(item, tastes),
+        liked=liked(item, tastes),
     )

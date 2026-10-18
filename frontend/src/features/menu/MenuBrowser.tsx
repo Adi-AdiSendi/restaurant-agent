@@ -21,11 +21,13 @@ function MenuBrowser({ menu, onChoose, quickAdd }: Props) {
   const [category, setCategory] = useState<string | null>(null)
   const [text, setText] = useState('')
   const [fitsOnly, setFitsOnly] = useState(false)
+  const [tastesOnly, setTastesOnly] = useState(false)
   const needle = text.trim().toLowerCase()
   const shown = menu.items.filter(
     (item) =>
       (category === null || item.category === category) &&
       (!fitsOnly || item.conflicts_with_guest.length === 0) &&
+      (!tastesOnly || item.taste_notes.length === 0) &&
       (needle === '' ||
         [item.name, item.description, ...item.ingredients]
           .join(' ')
@@ -63,6 +65,14 @@ function MenuBrowser({ menu, onChoose, quickAdd }: Props) {
             onChange={(e) => setFitsOnly(e.target.checked)}
           />
           Fits my profile
+        </label>
+        <label className={styles.fits}>
+          <input
+            type="checkbox"
+            checked={tastesOnly}
+            onChange={(e) => setTastesOnly(e.target.checked)}
+          />
+          Matches my tastes
         </label>
       </div>
       {shown.length === 0 && <p className={styles.empty}>No dishes match.</p>}

@@ -2,12 +2,12 @@
 
 from datetime import UTC, datetime
 
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.menu.restaurant import Restaurant
 from app.orders.errors import NotFound
-from app.orders.models import Order
+from app.orders.models import Order, OrderLine
 from app.orders.schemas import CartRestaurant, OrderLineOut, OrderOut, OrderSummary
 from app.orders.status import order_status
 
@@ -49,3 +49,13 @@ async def get_order(session: AsyncSession, user_id: int, order_id: int) -> Order
     summary = _summary(order, restaurant, datetime.now(UTC))
     lines = [OrderLineOut.model_validate(line) for line in order.lines]
     return OrderOut(**summary.model_dump(), lines=lines)
+
+
+async def kcal_since(session: AsyncSession, user_id: int, since: datetime) -> int:
+    """Estimated kcal of this guest's orders placed since `since`, for the daily goal."""
+    stmt = (
+        select(func.coalesce(func.sum(OrderLine.kcal * OrderLine.quantity), 0))
+        .join(Order, Order.id == OrderLine.order_id)
+        .where(Order.user_id == user_id, Order.placed_at >= since)
+    )
+    return int(await session.scalar(stmt) or 0)
