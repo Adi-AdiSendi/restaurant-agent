@@ -1,5 +1,7 @@
 """Place an order from the cart, and read the guest's own orders. No payment (ADR 0019)."""
 
+from decimal import Decimal
+
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -20,6 +22,8 @@ class PlaceOrderRequest(BaseModel):
     fulfilment: Fulfilment
     accepted_reasons: list[str] = Field(default_factory=list[str], max_length=20)
     """The conflict reasons the guest was shown at checkout and accepted."""
+    expected_total_sar: Decimal | None = None
+    """The total the guest saw; a cart that changed since is refused (code cart_changed)."""
 
 
 @router.post("/orders", status_code=201)
@@ -31,7 +35,12 @@ async def place(
 ) -> OrderOut:
     try:
         order = await place_order(
-            session, user_id, body.fulfilment, constraints, accepted_reasons=body.accepted_reasons
+            session,
+            user_id,
+            body.fulfilment,
+            constraints,
+            accepted_reasons=body.accepted_reasons,
+            expected_total=body.expected_total_sar,
         )
     except OrderError as exc:
         raise http_error(exc) from exc

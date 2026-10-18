@@ -10,7 +10,7 @@ from app.menu.models import Option
 from app.orders.cart import get_cart
 from app.orders.cart_add import add_line
 from app.orders.checkout import place_order
-from app.orders.errors import EmptyCart, LineConflict, NotFound, UnavailableLines
+from app.orders.errors import CartChanged, EmptyCart, LineConflict, NotFound, UnavailableLines
 from app.orders.orders import get_order, list_orders
 from app.orders.schemas import NewLine
 from app.orders.status import order_status
@@ -95,3 +95,17 @@ async def test_orders_are_listed_newest_first_and_private(seeded: AsyncSession) 
 def test_status_follows_the_time_since_placing(minutes: float, status: str) -> None:
     placed = datetime(2026, 10, 17, 12, 0, tzinfo=UTC)
     assert order_status(placed, placed + timedelta(minutes=minutes)) == status
+
+
+async def test_a_cart_that_changed_since_the_guest_looked_is_not_ordered(
+    seeded: AsyncSession,
+) -> None:
+    user = await make_user(seeded, "checkout_changed")
+    cart = await add_line(seeded, user, CAFE, await latte_line(seeded, "Oat milk"), ANYONE)
+    seen = cart.total_sar
+    await add_line(seeded, user, CAFE, await latte_line(seeded, "Oat milk"), ANYONE)
+    with pytest.raises(CartChanged):
+        await place_order(seeded, user, "pickup", ANYONE, expected_total=seen)
+    assert await list_orders(seeded, user) == []
+    order = await place_order(seeded, user, "pickup", ANYONE, expected_total=seen * 2)
+    assert order.total_sar == seen * 2

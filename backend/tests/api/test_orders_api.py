@@ -55,3 +55,15 @@ async def test_checkout_consent_names_the_reasons(
         "/api/orders", json={"fulfilment": "pickup", "accepted_reasons": ["dairy"]}
     )
     assert placed.status_code == 201
+
+
+async def test_an_order_for_a_total_the_guest_did_not_see_is_refused(
+    seeded: AsyncSession, client: httpx2.AsyncClient
+) -> None:
+    await login(client, "ord_api_e")
+    await client.post("/api/cart/lines", json=await latte(seeded, "Oat milk"))
+    body = {"fulfilment": "pickup", "expected_total_sar": "16.00"}
+    stale = await client.post("/api/orders", json=body)
+    assert stale.status_code == 409 and stale.json()["detail"]["code"] == "cart_changed"
+    body["expected_total_sar"] = "19.00"
+    assert (await client.post("/api/orders", json=body)).status_code == 201

@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter, Route, Routes } from 'react-router'
 import { describe, expect, test, vi } from 'vitest'
 
-import { emptyCart, latteCart, placedOrder } from '../../test/carts'
+import { emptyCart, latteCart, oatLatte, placedOrder } from '../../test/carts'
 import { mockFetch } from '../../test/fetchMock'
 import CartProvider from '../cart/CartProvider'
 import CheckoutCard from './CheckoutCard'
@@ -41,7 +41,9 @@ describe('chat checkout card', () => {
     fireEvent.click(screen.getByRole('radio', { name: 'Dine in' }))
     fireEvent.click(screen.getByRole('button', { name: 'Place order · 38.00 SAR' }))
     expect(await screen.findByText('Order page')).toBeInTheDocument()
-    expect(placedBodies(fetchMock)).toEqual([{ fulfilment: 'dine_in', accepted_reasons: [] }])
+    expect(placedBodies(fetchMock)).toEqual([
+      { fulfilment: 'dine_in', accepted_reasons: [], expected_total_sar: '38.00' },
+    ])
   })
 
   test('a conflict asks the guest, and only their answer resends', async () => {
@@ -55,6 +57,26 @@ describe('chat checkout card', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Place it anyway' }))
     expect(await screen.findByText('Order page')).toBeInTheDocument()
     expect(placedBodies(fetchMock).map((b) => b.accepted_reasons)).toEqual([[], ['dairy']])
+  })
+
+  test('a cart that changed since the guest looked is shown again, not ordered', async () => {
+    const changed = {
+      status: 409,
+      body: { detail: { code: 'cart_changed', message: 'Your cart changed since you looked.' } },
+    }
+    mockFetch({ 'GET /api/cart': { body: latteCart }, 'POST /api/orders': changed })
+    renderCard()
+    fireEvent.click(await screen.findByRole('button', { name: /Place order/ }))
+    expect(await screen.findByRole('alert')).toHaveTextContent('Your cart changed')
+    expect(screen.queryByText('Order page')).not.toBeInTheDocument()
+  })
+
+  test('unavailable dishes block the order', async () => {
+    const gone = { ...oatLatte, problem: 'The menu changed.', line_total_sar: null }
+    mockFetch({ 'GET /api/cart': { body: { ...latteCart, lines: [gone] } } })
+    renderCard()
+    expect(await screen.findByText(/Remove the unavailable dishes/)).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /Place order/ })).not.toBeInTheDocument()
   })
 
   test('an empty cart offers no button', async () => {

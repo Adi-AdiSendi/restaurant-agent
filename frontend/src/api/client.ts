@@ -89,8 +89,13 @@ export const api = {
     patch<Cart>(`/cart/lines/${lineId}`, { quantity }),
   removeCartLine: (lineId: number) => remove<Cart>(`/cart/lines/${lineId}`),
   clearCart: () => remove<Cart>('/cart'),
-  placeOrder: (fulfilment: Fulfilment, acceptedReasons: string[]) =>
-    post<Order>('/orders', { fulfilment, accepted_reasons: acceptedReasons }),
+  /** `expectedTotal`: the total the guest saw; the server refuses a cart that changed since. */
+  placeOrder: (fulfilment: Fulfilment, acceptedReasons: string[], expectedTotal: string) =>
+    post<Order>('/orders', {
+      fulfilment,
+      accepted_reasons: acceptedReasons,
+      expected_total_sar: expectedTotal,
+    }),
   orders: () => request<OrderSummary[]>('/orders'),
   order: (orderId: number) => request<Order>(`/orders/${orderId}`),
 }

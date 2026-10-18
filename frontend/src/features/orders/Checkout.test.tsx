@@ -44,7 +44,11 @@ describe('checkout and orders', () => {
     ).toBeInTheDocument()
     expect(screen.getByText('Preparing')).toBeInTheDocument()
     const placed = fetchMock.mock.calls.find(([url]) => String(url) === '/api/orders')
-    expect(placed?.[1]?.body).toBe(JSON.stringify({ fulfilment: 'dine_in', accepted_reasons: [] }))
+    expect(JSON.parse(String(placed?.[1]?.body))).toEqual({
+      fulfilment: 'dine_in',
+      accepted_reasons: [],
+      expected_total_sar: '38.00',
+    })
   })
 
   test('a conflict at checkout needs "Place it anyway"', async () => {

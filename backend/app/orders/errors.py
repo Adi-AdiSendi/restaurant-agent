@@ -49,3 +49,9 @@ class UnavailableLines(OrderError):
     """A line's item or options changed on the menu; it must be removed before checkout."""
 
     code = "unavailable"
+
+
+class CartChanged(OrderError):
+    """The total is not the one the guest reviewed: a chat turn or another tab changed it."""
+
+    code = "cart_changed"

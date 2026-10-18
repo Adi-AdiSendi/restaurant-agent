@@ -11,9 +11,11 @@ interface Conflict {
 }
 
 /** Place the guest's order from their button (ADR 0019), then open it. A conflict with
- * their saved profile becomes a question; the answer resends with those reasons only. */
+ * their saved profile becomes a question; the answer resends with those reasons only.
+ * The total the guest sees goes along, so a cart a chat turn changed meanwhile is refused
+ * and shown again instead of ordered. */
 export function usePlaceOrder(fulfilment: Fulfilment) {
-  const { refresh } = useCart()
+  const { cart, refresh } = useCart()
   const navigate = useNavigate()
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -23,7 +25,7 @@ export function usePlaceOrder(fulfilment: Fulfilment) {
     setBusy(true)
     setError(null)
     try {
-      const order = await api.placeOrder(fulfilment, acceptedReasons)
+      const order = await api.placeOrder(fulfilment, acceptedReasons, cart?.total_sar ?? '0')
       await refresh()
       void navigate(`/orders/${order.id}`)
     } catch (err) {
