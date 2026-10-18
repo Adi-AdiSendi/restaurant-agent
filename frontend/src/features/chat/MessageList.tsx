@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 
 import type { Card } from '../../api/menuTypes'
-import type { ChatMessage } from './chatReducer'
+import type { ChatMessage } from './chatTypes'
 import MessageBubble from './MessageBubble'
 import styles from './MessageList.module.css'
 
@@ -21,7 +21,9 @@ function MessageList({ messages, sending, greeting, onChoose }: Props) {
 
   return (
     <div className={styles.list} aria-live="polite">
-      <MessageBubble message={{ id: 0, role: 'assistant', text: greeting, items: [] }} />
+      <MessageBubble
+        message={{ id: 0, role: 'assistant', text: greeting, items: [], actions: [] }}
+      />
       {messages.map((message) => (
         <MessageBubble key={message.id} message={message} onChoose={onChoose} />
       ))}

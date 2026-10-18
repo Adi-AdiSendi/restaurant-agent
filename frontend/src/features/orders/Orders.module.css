@@ -85,3 +85,11 @@
 .ready {
   background: var(--ok-tint);
 }
+
+.card {
+  width: min(560px, 100%);
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface);
+}

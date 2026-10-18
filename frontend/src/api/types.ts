@@ -1,11 +1,25 @@
 // Mirrors the backend Pydantic models. Keep in sync with app/agent/schemas.py,
-// app/memory/profile.py, app/api/auth.py and app/api/health.py. Menu types are
-// in menuTypes.ts.
+// app/agent/turn_reply.py, app/memory/profile.py, app/api/auth.py and
+// app/api/health.py. Menu types are in menuTypes.ts, cart types in cartTypes.ts.
+import type { Cart, CartLine } from './cartTypes'
 import type { Card } from './menuTypes'
+
+/** A cart change the chat made, from the server's tool result; or a checkout card. */
+export interface CartAction {
+  kind: 'added' | 'updated' | 'removed' | 'checkout'
+  quantity: number
+  /** The line as it is now (as it was, for a removal); null for checkout. */
+  line: CartLine | null
+  /** Ingredients left out because the guest dislikes them. */
+  left_out: string[]
+}
 
 export interface ChatReply {
   reply: string
   items: Card[]
+  actions: CartAction[]
+  /** The cart as it is after this turn. */
+  cart: Cart
 }
 
 export interface LoginResponse {

@@ -41,3 +41,22 @@
   gap: 10px;
   width: min(760px, 100%);
 }
+
+.action {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: min(560px, 100%);
+  padding: 8px 12px;
+  border-left: 4px solid var(--brand);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.actionTitle {
+  font-weight: 700;
+}
+
+.leftOut {
+  color: var(--ink-muted);
+}

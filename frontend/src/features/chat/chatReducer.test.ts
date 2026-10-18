@@ -1,10 +1,11 @@
 import { describe, expect, test } from 'vitest'
 
-import type { ChatReply } from '../../api/types'
-import { chatReducer, initialChat, type ChatState } from './chatReducer'
+import { chatReply, latteAdded } from '../../test/chat'
+import { chatReducer, initialChat } from './chatReducer'
+import type { ChatState } from './chatTypes'
 
 const started: ChatState = chatReducer(initialChat, { type: 'started', conversationId: 7 })
-const reply: ChatReply = { reply: 'Try the bowl', items: [] }
+const reply = chatReply('Try the bowl')
 
 describe('chatReducer', () => {
   test('a sent message shows at once and marks the chat as sending', () => {
@@ -18,6 +19,13 @@ describe('chatReducer', () => {
     const state = chatReducer(sent, { type: 'replied', reply })
     expect(state.messages.map((m) => m.role)).toEqual(['user', 'assistant'])
     expect(state.sending).toBe(false)
+  })
+
+  test('a reply keeps the cart changes it made, for its action cards', () => {
+    const sent = chatReducer(started, { type: 'sent', text: 'two lattes' })
+    const state = chatReducer(sent, { type: 'replied', reply: latteAdded })
+    expect(state.messages.at(-1)?.actions).toEqual(latteAdded.actions)
+    expect(state.messages[0]?.actions).toEqual([])
   })
 
   test('a failure removes the unanswered message and keeps it for retry', () => {

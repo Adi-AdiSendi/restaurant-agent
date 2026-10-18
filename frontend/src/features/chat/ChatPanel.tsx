@@ -1,4 +1,5 @@
 import type { Card } from '../../api/menuTypes'
+import type { ChatReply } from '../../api/types'
 import Composer from './Composer'
 import MessageList from './MessageList'
 import styles from './ChatPanel.module.css'
@@ -11,7 +12,7 @@ interface Props {
   username: string
   isNew: boolean
   onUnauthorized: () => void
-  onReplied: () => void
+  onReplied: (reply: ChatReply) => void
   /** Opens the options sheet for a recommended dish. */
   onChoose?: (item: Card) => void
 }

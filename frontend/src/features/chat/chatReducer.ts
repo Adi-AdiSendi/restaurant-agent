@@ -1,34 +1,4 @@
-import type { Card } from '../../api/menuTypes'
-import type { ChatReply } from '../../api/types'
-
-export interface ChatMessage {
-  id: number
-  role: 'user' | 'assistant'
-  text: string
-  items: Card[]
-}
-
-/** What Retry should do, or null when retrying cannot help (e.g. 404, 422). */
-export type RetryAction = 'send' | 'start' | null
-
-export interface ChatState {
-  conversationId: number | null
-  messages: ChatMessage[]
-  sending: boolean
-  error: string | null
-  retry: RetryAction
-  /** The message that failed, kept so Retry can resend it. */
-  failedText: string | null
-  nextId: number
-}
-
-export type ChatAction =
-  | { type: 'starting' }
-  | { type: 'started'; conversationId: number }
-  | { type: 'sent'; text: string }
-  | { type: 'replied'; reply: ChatReply }
-  | { type: 'failed'; error: string; status: number }
-  | { type: 'startFailed'; error: string }
+import type { ChatAction, ChatMessage, ChatState } from './chatTypes'
 
 export const initialChat: ChatState = {
   conversationId: null,
@@ -60,7 +30,7 @@ export function chatReducer(state: ChatState, action: ChatAction): ChatState {
       return { ...initialChat, conversationId: action.conversationId, nextId: state.nextId }
     case 'sent':
       return {
-        ...withMessage(state, { role: 'user', text: action.text, items: [] }),
+        ...withMessage(state, { role: 'user', text: action.text, items: [], actions: [] }),
         sending: true,
         error: null,
         retry: null,
@@ -72,6 +42,7 @@ export function chatReducer(state: ChatState, action: ChatAction): ChatState {
           role: 'assistant',
           text: action.reply.reply,
           items: action.reply.items,
+          actions: action.reply.actions,
         }),
         sending: false,
       }

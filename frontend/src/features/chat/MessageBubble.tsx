@@ -1,5 +1,6 @@
 import type { Card } from '../../api/menuTypes'
-import type { ChatMessage } from './chatReducer'
+import ActionCard from './ActionCard'
+import type { ChatMessage } from './chatTypes'
 import ItemCard from './ItemCard'
 import styles from './MessageBubble.module.css'
 
@@ -20,6 +21,9 @@ function MessageBubble({ message, onChoose }: Props) {
           ))}
         </div>
       )}
+      {message.actions.map((action, n) => (
+        <ActionCard key={n} action={action} />
+      ))}
     </div>
   )
 }

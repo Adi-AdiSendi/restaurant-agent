@@ -1,11 +1,11 @@
 import { fireEvent, render, screen } from '@testing-library/react'
 import { describe, expect, test, vi } from 'vitest'
 
-import type { ChatReply } from '../../api/types'
+import { chatReply } from '../../test/chat'
 import { mockFetch } from '../../test/fetchMock'
 import ChatPanel from './ChatPanel'
 
-const reply: ChatReply = { reply: 'Try the sorbet.', items: [] }
+const reply = chatReply('Try the sorbet.')
 const prefs = { 'GET /api/preferences': { body: [] } }
 const started = { 'POST /api/conversations': { status: 201, body: { id: 1 } } }
 

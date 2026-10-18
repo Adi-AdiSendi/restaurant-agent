@@ -1,13 +1,15 @@
 import { useCallback, useEffect, useReducer, useRef } from 'react'
 
 import { api, ApiError } from '../../api/client'
+import type { ChatReply } from '../../api/types'
 import { chatReducer, initialChat } from './chatReducer'
 
 interface Options {
   /** The restaurant's slug; null until the list has loaded. A change starts a new chat. */
   restaurant: string | null
   onUnauthorized: () => void
-  onReplied: () => void
+  /** Gets the reply, which carries the cart as it is after the turn. */
+  onReplied: (reply: ChatReply) => void
 }
 
 const FALLBACK = 'Something went wrong. Please try again.'
@@ -50,7 +52,7 @@ export function useChat({ restaurant, onUnauthorized, onReplied }: Options) {
       try {
         const reply = await api.sendMessage(state.conversationId, trimmed)
         dispatch({ type: 'replied', reply })
-        onReplied()
+        onReplied(reply)
       } catch (err) {
         if (err instanceof ApiError && err.status === 401) {
           onUnauthorized()

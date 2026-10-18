@@ -2,6 +2,7 @@ import { useCallback, useState } from 'react'
 import { Link } from 'react-router'
 
 import type { Card } from '../../api/menuTypes'
+import type { ChatReply } from '../../api/types'
 import { useCart } from '../cart/cartContext'
 import ChatPanel from '../chat/ChatPanel'
 import MemoryPanel from '../memory/MemoryPanel'
@@ -22,11 +23,14 @@ type Side = 'chat' | 'memory'
 /** One restaurant: its menu, the chat scoped to it by the URL, and the guest's memory. */
 function MenuPage({ slug, username, isNew, onLogout }: Props) {
   const [refreshKey, setRefreshKey] = useState(0)
-  const { refresh: refreshCart } = useCart()
-  const onReplied = useCallback(() => {
-    setRefreshKey((k) => k + 1)
-    void refreshCart()
-  }, [refreshCart])
+  const { setCart } = useCart()
+  const onReplied = useCallback(
+    (reply: ChatReply) => {
+      setRefreshKey((k) => k + 1)
+      setCart(reply.cart)
+    },
+    [setCart],
+  )
   const { menu, error, reload } = useGuestMenu(slug, refreshKey, onLogout)
   const [choosing, setChoosing] = useState<Card | null>(null)
   const [side, setSide] = useState<Side>('chat')

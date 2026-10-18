@@ -1,3 +1,5 @@
+import { useId } from 'react'
+
 import type { Fulfilment } from '../../api/cartTypes'
 import styles from './Orders.module.css'
 
@@ -9,6 +11,8 @@ interface Props {
 }
 
 function FulfilmentChoice({ value, onChange }: Props) {
+  // Unique per use: the checkout page and chat checkout cards each have their own group.
+  const name = useId()
   return (
     <fieldset className={styles.choice}>
       <legend>How would you like it?</legend>
@@ -16,7 +20,7 @@ function FulfilmentChoice({ value, onChange }: Props) {
         <label key={option}>
           <input
             type="radio"
-            name="fulfilment"
+            name={name}
             checked={value === option}
             onChange={() => onChange(option)}
           />{' '}
