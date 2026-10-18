@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 import type { Card, GuestMenu } from '../../api/menuTypes'
 import ItemCard from '../chat/ItemCard'
+import type { QuickAdd } from '../chat/quickAdd'
 import styles from './MenuBrowser.module.css'
 
 const label = (category: string) => {
@@ -12,10 +13,11 @@ const label = (category: string) => {
 interface Props {
   menu: GuestMenu
   onChoose: (item: Card) => void
+  quickAdd?: QuickAdd
 }
 
 /** Category tabs, a search, and a filter for dishes that suit the guest's saved profile. */
-function MenuBrowser({ menu, onChoose }: Props) {
+function MenuBrowser({ menu, onChoose, quickAdd }: Props) {
   const [category, setCategory] = useState<string | null>(null)
   const [text, setText] = useState('')
   const [fitsOnly, setFitsOnly] = useState(false)
@@ -66,7 +68,7 @@ function MenuBrowser({ menu, onChoose }: Props) {
       {shown.length === 0 && <p className={styles.empty}>No dishes match.</p>}
       <div className={styles.grid}>
         {shown.map((item) => (
-          <ItemCard key={item.id} item={item} onChoose={() => onChoose(item)} />
+          <ItemCard key={item.id} item={item} onChoose={() => onChoose(item)} quickAdd={quickAdd} />
         ))}
       </div>
     </section>

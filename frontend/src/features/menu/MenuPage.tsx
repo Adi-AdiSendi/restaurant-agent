@@ -1,5 +1,4 @@
-import { useCallback, useState } from 'react'
-import { Link } from 'react-router'
+import { type CSSProperties, useCallback, useState } from 'react'
 
 import type { Card } from '../../api/menuTypes'
 import type { ChatReply } from '../../api/types'
@@ -7,9 +6,10 @@ import { useCart } from '../cart/cartContext'
 import ChatPanel from '../chat/ChatPanel'
 import MemoryPanel from '../memory/MemoryPanel'
 import ItemSheet from './ItemSheet'
-import MenuBrowser from './MenuBrowser'
+import MenuColumn from './MenuColumn'
 import styles from './MenuPage.module.css'
 import { useGuestMenu } from './useGuestMenu'
+import { useQuickAdd } from './useQuickAdd'
 
 interface Props {
   slug: string
@@ -34,25 +34,23 @@ function MenuPage({ slug, username, isNew, onLogout }: Props) {
   const { menu, error, reload } = useGuestMenu(slug, refreshKey, onLogout)
   const [choosing, setChoosing] = useState<Card | null>(null)
   const [side, setSide] = useState<Side>('chat')
+  const quickAdd = useQuickAdd({
+    restaurant: slug,
+    onNeedsSheet: setChoosing,
+    onUnauthorized: onLogout,
+  })
+  // Photos, icons and the header use the restaurant's own colour.
+  const accent = { '--accent': menu?.restaurant.accent_color } as CSSProperties
 
   return (
-    <div className={styles.page}>
-      <div className={styles.menu}>
-        <header className={styles.head} style={{ borderLeftColor: menu?.restaurant.accent_color }}>
-          <h1 className={styles.title}>{menu?.restaurant.name ?? ' '}</h1>
-          {menu && <p className={styles.tagline}>{menu.restaurant.tagline}</p>}
-        </header>
-        {error && (
-          <div className={styles.error} role="alert">
-            <span>{error}</span>
-            <button type="button" onClick={() => void reload()}>
-              Retry
-            </button>
-            <Link to="/">All restaurants</Link>
-          </div>
-        )}
-        {menu && <MenuBrowser menu={menu} onChoose={setChoosing} />}
-      </div>
+    <div className={styles.page} style={accent}>
+      <MenuColumn
+        menu={menu}
+        error={error}
+        onRetry={() => void reload()}
+        onChoose={setChoosing}
+        quickAdd={quickAdd}
+      />
       <aside className={styles.side}>
         <div className={styles.sideTabs} role="group" aria-label="Assistant">
           {(['chat', 'memory'] as const).map((tab) => (
@@ -75,6 +73,7 @@ function MenuPage({ slug, username, isNew, onLogout }: Props) {
             onUnauthorized={onLogout}
             onReplied={onReplied}
             onChoose={setChoosing}
+            quickAdd={quickAdd}
           />
         </div>
         {side === 'memory' && <MemoryPanel refreshKey={refreshKey} onUnauthorized={onLogout} />}

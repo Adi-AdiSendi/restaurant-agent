@@ -33,6 +33,7 @@ const latte: Card = {
   allergens: [],
   may_contain: [],
   removable: ['sugar'],
+  photo: null,
   option_groups: [
     {
       id: 7,

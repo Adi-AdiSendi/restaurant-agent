@@ -1,5 +1,5 @@
 import type { Card } from '../../api/menuTypes'
-import type { CartAction, ChatReply } from '../../api/types'
+import type { CartAction, ChatReply, MenuBlock } from '../../api/types'
 
 export interface ChatMessage {
   id: number
@@ -8,6 +8,8 @@ export interface ChatMessage {
   items: Card[]
   /** Cart changes this reply made, and a checkout card if one was proposed. */
   actions: CartAction[]
+  /** Categories the guest asked to see. */
+  menus: MenuBlock[]
 }
 
 /** What Retry should do, or null when retrying cannot help (e.g. 404, 422). */

@@ -1,0 +1,16 @@
+.menu {
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.error {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin: 12px var(--gutter);
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: var(--danger-tint);
+  color: #a61b1b;
+}

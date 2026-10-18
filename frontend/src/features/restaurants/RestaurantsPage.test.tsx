@@ -26,6 +26,14 @@ describe('RestaurantsPage', () => {
     )
   })
 
+  test('placeholders show while the list loads, then the restaurants', async () => {
+    mockFetch(restaurants)
+    renderPage()
+    expect(screen.getByRole('status', { name: 'Loading the restaurants' })).toBeInTheDocument()
+    expect(await screen.findByRole('link', { name: /Golden Dragon/ })).toBeInTheDocument()
+    expect(screen.queryByRole('status')).not.toBeInTheDocument()
+  })
+
   test('a failed list shows Retry, which loads it again', async () => {
     mockFetch({
       'GET /api/restaurants': [

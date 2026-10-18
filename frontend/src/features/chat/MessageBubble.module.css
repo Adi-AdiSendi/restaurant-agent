@@ -35,11 +35,20 @@
   border-bottom-left-radius: 4px;
 }
 
+/* Recommendations scroll sideways, one card at a time on a phone. */
 .cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: min(260px, 80%);
   gap: 10px;
   width: min(760px, 100%);
+  padding-bottom: 6px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.cards > * {
+  scroll-snap-align: start;
 }
 
 .action {

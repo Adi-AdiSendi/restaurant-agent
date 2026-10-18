@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 
 import type { Card } from '../../api/menuTypes'
 import type { ChatMessage } from './chatTypes'
+import type { QuickAdd } from './quickAdd'
 import MessageBubble from './MessageBubble'
 import styles from './MessageList.module.css'
 
@@ -10,9 +11,10 @@ interface Props {
   sending: boolean
   greeting: string
   onChoose?: (item: Card) => void
+  quickAdd?: QuickAdd
 }
 
-function MessageList({ messages, sending, greeting, onChoose }: Props) {
+function MessageList({ messages, sending, greeting, onChoose, quickAdd }: Props) {
   const end = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -22,10 +24,10 @@ function MessageList({ messages, sending, greeting, onChoose }: Props) {
   return (
     <div className={styles.list} aria-live="polite">
       <MessageBubble
-        message={{ id: 0, role: 'assistant', text: greeting, items: [], actions: [] }}
+        message={{ id: 0, role: 'assistant', text: greeting, items: [], actions: [], menus: [] }}
       />
       {messages.map((message) => (
-        <MessageBubble key={message.id} message={message} onChoose={onChoose} />
+        <MessageBubble key={message.id} message={message} onChoose={onChoose} quickAdd={quickAdd} />
       ))}
       {sending && (
         <div className={styles.typing} role="status" aria-label="The assistant is thinking">

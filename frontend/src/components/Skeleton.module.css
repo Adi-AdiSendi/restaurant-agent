@@ -1,0 +1,55 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  gap: 14px;
+  margin: 16px var(--gutter);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.photo,
+.line,
+.lineShort {
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--line) 25%, var(--brand-tint) 50%, var(--line) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.photo {
+  aspect-ratio: 4 / 3;
+}
+
+.line {
+  height: 14px;
+}
+
+.lineShort {
+  width: 55%;
+  height: 14px;
+}
+
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo,
+  .line,
+  .lineShort {
+    animation: none;
+  }
+}

@@ -3,7 +3,7 @@ import type { CartAction, ChatReply } from '../api/types'
 import { emptyCart, latteCart, oatLatte } from './carts'
 
 export function chatReply(reply: string, extra: Partial<ChatReply> = {}): ChatReply {
-  return { reply, items: [], actions: [], cart: emptyCart, ...extra }
+  return { reply, items: [], actions: [], cart: emptyCart, menus: [], ...extra }
 }
 
 export const addedLatte: CartAction = {

@@ -14,6 +14,7 @@ const menu: GuestMenu = {
     tagline: 'T.',
     accent_color: '#2b8a3e',
     categories: ['coffee', 'bakery_and_cakes'],
+    photo: null,
   },
   items: [
     latte,

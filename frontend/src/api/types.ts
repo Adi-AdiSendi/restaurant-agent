@@ -14,12 +14,19 @@ export interface CartAction {
   left_out: string[]
 }
 
+/** A category the guest asked to see: every dish, unsuitable ones marked. Not a recommendation. */
+export interface MenuBlock {
+  category: string
+  items: Card[]
+}
+
 export interface ChatReply {
   reply: string
   items: Card[]
   actions: CartAction[]
   /** The cart as it is after this turn. */
   cart: Cart
+  menus: MenuBlock[]
 }
 
 export interface LoginResponse {

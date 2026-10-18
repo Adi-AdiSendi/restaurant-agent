@@ -1,6 +1,7 @@
 import type { Card } from '../../api/menuTypes'
 import type { ChatReply } from '../../api/types'
 import Composer from './Composer'
+import type { QuickAdd } from './quickAdd'
 import MessageList from './MessageList'
 import styles from './ChatPanel.module.css'
 import Suggestions from './Suggestions'
@@ -15,9 +16,12 @@ interface Props {
   onReplied: (reply: ChatReply) => void
   /** Opens the options sheet for a recommended dish. */
   onChoose?: (item: Card) => void
+  /** One-click add for cards and menu blocks. */
+  quickAdd?: QuickAdd
 }
 
-function ChatPanel({ restaurant, username, isNew, onUnauthorized, onReplied, onChoose }: Props) {
+function ChatPanel(props: Props) {
+  const { restaurant, username, isNew, onUnauthorized, onReplied, onChoose, quickAdd } = props
   const { state, send, retry, newChat } = useChat({ restaurant, onUnauthorized, onReplied })
   const greeting = isNew
     ? `Welcome, ${username}! Tell me what you feel like, and anything you avoid or cannot eat. I will remember it for next time.`
@@ -41,6 +45,7 @@ function ChatPanel({ restaurant, username, isNew, onUnauthorized, onReplied, onC
         sending={state.sending}
         greeting={greeting}
         onChoose={onChoose}
+        quickAdd={quickAdd}
       />
       {state.error && (
         <div className={styles.error} role="alert">

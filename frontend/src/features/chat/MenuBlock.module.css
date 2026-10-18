@@ -1,0 +1,58 @@
+.block {
+  width: min(560px, 100%);
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.title {
+  margin: 0 0 6px;
+  font-size: 15px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.row,
+.rowOff {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.rowOff {
+  opacity: 0.55;
+}
+
+.name {
+  font-weight: 600;
+}
+
+.price {
+  color: var(--brand);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.reason {
+  color: var(--danger);
+  font-size: 13px;
+}
+
+.add {
+  min-height: 36px;
+  padding: 6px 14px;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--brand);
+  font-weight: 700;
+}

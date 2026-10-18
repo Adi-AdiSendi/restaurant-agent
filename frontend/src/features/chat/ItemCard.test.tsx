@@ -17,6 +17,7 @@ const cake: Card = {
   allergens: ['gluten', 'dairy', 'egg'],
   may_contain: ['tree_nut'],
   removable: [],
+  photo: null,
   option_groups: [],
   conflicts_with_guest: [],
   may_contain_warnings: [],

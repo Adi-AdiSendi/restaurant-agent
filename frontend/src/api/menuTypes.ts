@@ -50,6 +50,8 @@ export interface Card {
   allergens: Allergen[]
   may_contain: Allergen[]
   removable: string[]
+  /** A similar dish's photo, `<restaurant>/<name>`; null shows a category icon. */
+  photo: string | null
   option_groups: OptionGroup[]
   /** Why no way of ordering it suits the guest; empty if one does. */
   conflicts_with_guest: string[]
@@ -64,16 +66,8 @@ export interface Restaurant {
   tagline: string
   accent_color: string
   categories: string[]
-}
-
-export interface Restaurant {
-  id: number
-  slug: string
-  name: string
-  cuisine: string
-  tagline: string
-  accent_color: string
-  categories: string[]
+  /** The cover photo, `<restaurant>/<name>`; null shows the accent colour. */
+  photo: string | null
 }
 
 export interface GuestMenu {

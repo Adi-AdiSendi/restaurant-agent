@@ -1,0 +1,30 @@
+.card,
+.thumb {
+  display: block;
+  object-fit: cover;
+  background: color-mix(in srgb, var(--accent, var(--brand)) 22%, var(--surface));
+}
+
+.card {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.thumb.icon {
+  font-size: 26px;
+}

@@ -12,6 +12,7 @@ test('a recommended dish in the chat opens the same options sheet as the menu', 
     text: 'Try this.',
     items: [latte],
     actions: [],
+    menus: [],
   }
   render(<MessageBubble message={message} onChoose={onChoose} />)
   fireEvent.click(screen.getByRole('button', { name: 'Choose options' }))
@@ -25,6 +26,7 @@ test('without a sheet to open, cards have no button', () => {
     text: 'Try this.',
     items: [latte],
     actions: [],
+    menus: [],
   }
   render(<MessageBubble message={message} />)
   expect(screen.queryByRole('button')).not.toBeInTheDocument()

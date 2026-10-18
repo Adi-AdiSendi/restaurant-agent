@@ -1,6 +1,9 @@
 import type { Allergen, Card } from '../../api/menuTypes'
+import { categoryIcon } from '../../components/categoryIcon'
+import DishPhoto from '../../components/DishPhoto'
 import styles from './ItemCard.module.css'
 import ItemOptions from './ItemOptions'
+import { canQuickAdd, type QuickAdd } from './quickAdd'
 
 const SPICE = ['Not spicy', 'Mild', 'Medium', 'Hot']
 
@@ -10,15 +13,18 @@ interface Props {
   item: Card
   /** Opens the options sheet, so the guest can add it to the cart. */
   onChoose?: () => void
+  /** Adds it in one click, when no choice is needed and nothing conflicts. */
+  quickAdd?: QuickAdd
 }
 
 // Every detail comes from the card data the backend loaded from the database,
 // never from the assistant's text. Allergens are always visible.
-function ItemCard({ item, onChoose }: Props) {
+function ItemCard({ item, onChoose, quickAdd }: Props) {
   const diet = item.is_vegan ? 'Vegan' : item.is_vegetarian ? 'Vegetarian' : null
   const traces = item.may_contain.filter((a) => !item.may_contain_warnings.includes(a))
   return (
     <article className={styles.card} aria-label={item.name}>
+      <DishPhoto photo={item.photo} icon={categoryIcon(item.category)} />
       <header className={styles.header}>
         <h3 className={styles.name}>{item.name}</h3>
         <span className={styles.price}>
@@ -59,10 +65,21 @@ function ItemCard({ item, onChoose }: Props) {
           May contain traces of {traces.map(allergenLabel).join(', ')}.
         </p>
       )}
-      {onChoose && (
-        <button className={styles.choose} type="button" onClick={onChoose}>
-          {item.option_groups.length > 0 ? 'Choose options' : 'Add to cart'}
+      {quickAdd && canQuickAdd(item) ? (
+        <button
+          className={styles.choose}
+          type="button"
+          aria-label={`Add ${item.name} to the cart`}
+          onClick={() => quickAdd.add(item)}
+        >
+          {quickAdd.added === item.id ? 'Added ✓' : 'Add'}
         </button>
+      ) : (
+        onChoose && (
+          <button className={styles.choose} type="button" onClick={onChoose}>
+            {item.option_groups.length > 0 ? 'Choose options' : 'Add to cart'}
+          </button>
+        )
       )}
     </article>
   )

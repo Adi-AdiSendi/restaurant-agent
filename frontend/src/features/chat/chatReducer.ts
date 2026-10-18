@@ -30,7 +30,13 @@ export function chatReducer(state: ChatState, action: ChatAction): ChatState {
       return { ...initialChat, conversationId: action.conversationId, nextId: state.nextId }
     case 'sent':
       return {
-        ...withMessage(state, { role: 'user', text: action.text, items: [], actions: [] }),
+        ...withMessage(state, {
+          role: 'user',
+          text: action.text,
+          items: [],
+          actions: [],
+          menus: [],
+        }),
         sending: true,
         error: null,
         retry: null,
@@ -43,6 +49,7 @@ export function chatReducer(state: ChatState, action: ChatAction): ChatState {
           text: action.reply.reply,
           items: action.reply.items,
           actions: action.reply.actions,
+          menus: action.reply.menus,
         }),
         sending: false,
       }
