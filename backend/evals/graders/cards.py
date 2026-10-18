@@ -20,6 +20,9 @@ def grade_turn(expect: Expect, turn: Turn, label: str) -> list[Check]:
         vegan = expect.diet == "vegan"
         bad = [c.name for c in turn.cards if not (c.is_vegan if vegan else c.is_vegetarian)]
         checks.append(Check(name=f"{label} diet {expect.diet}", passed=not bad, detail=str(bad)))
+    if expect.menu is not None:
+        ok = turn.menus == [expect.menu]
+        checks.append(Check(name=f"{label} menu {expect.menu}", passed=ok, detail=str(turn.menus)))
     if expect.max_price_sar is not None:
         limit = expect.max_price_sar
         bad = [f"{c.name} {c.price_sar}" for c in turn.cards if c.price_sar > limit]

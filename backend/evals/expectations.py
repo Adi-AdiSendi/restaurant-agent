@@ -39,6 +39,8 @@ class Expect(Strict):
     """How many orders the speaker has after the turn."""
     checkout_card: bool | None = None
     """Whether the reply shows a checkout card."""
+    menu: str | None = None
+    """The reply shows a menu block of exactly this category."""
 
 
 Fact = tuple[Kind, str]

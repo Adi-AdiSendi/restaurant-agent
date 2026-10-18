@@ -82,8 +82,9 @@ async def _turn(
     result: dict[str, object] = {"user": step.user, "say": step.say}
     try:
         reply = await handle_message(llm, session, user_id, target, step.say, deadline)
-        actions = [a.kind for a in reply.actions]
-        result |= {"status": "ok", "reply": reply.reply, "cards": reply.items, "actions": actions}
+        actions, menus = [a.kind for a in reply.actions], [m.category for m in reply.menus]
+        result |= {"status": "ok", "reply": reply.reply, "cards": reply.items}
+        result |= {"actions": actions, "menus": menus}
     except ConversationNotFoundError:
         result |= {"status": "refused"}
     except TurnTimeoutError:

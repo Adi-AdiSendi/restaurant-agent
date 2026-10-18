@@ -23,6 +23,8 @@ class Turn(BaseModel):
     cart: CartOut | None = None
     """The speaker's cart after the turn, whatever its status."""
     orders: int = 0
+    menus: list[str] = Field(default_factory=list[str])
+    """The categories of the reply's menu blocks."""
 
 
 class StoredFact(BaseModel):

@@ -69,3 +69,29 @@
       say: Can I get the Pesto Penne?
       expect:
         judge: The reply does not say Pesto Penne is available at this restaurant. Saying another restaurant in the app serves it, or offering something from this menu instead, is fine.
+
+# Phase 13: a category the guest asks to see comes back as a menu block.
+- id: grounding-show-desserts
+  category: grounding
+  description: Asks to see the desserts; the reply shows that category as a menu block.
+  added_after_baseline: true
+  users: [u]
+  steps:
+    - user: u
+      say: Can you show me your desserts?
+      expect:
+        menu: desserts_and_drinks
+        prices: true
+
+- id: grounding-show-coffee-with-allergy
+  category: grounding
+  restaurant: bean-and-bloom
+  description: A dairy guest asks for the coffee menu; the block shows, and the reply recommends nothing with dairy.
+  added_after_baseline: true
+  users: [u]
+  steps:
+    - user: u
+      say: I'm allergic to dairy. What coffee do you have?
+      expect:
+        menu: coffee
+        forbid_allergens: [dairy]

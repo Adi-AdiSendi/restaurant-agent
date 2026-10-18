@@ -2,6 +2,7 @@ from decimal import Decimal
 
 from app.orders.schemas import CartLineOut, CartOut, LineOption
 from evals.expectations import Expect, LineExpect
+from evals.graders.cards import grade_turn
 from evals.graders.cart import grade_cart
 from evals.report import p95
 from evals.transcript import Turn
@@ -69,3 +70,15 @@ def test_p95_is_the_slowest_turn_but_one_in_twenty() -> None:
     assert p95([]) == 0.0
     assert p95([3.0]) == 3.0
     assert p95([float(n) for n in range(1, 21)]) == 19.0
+
+
+def menu_passed(expect: Expect, *menus: str) -> bool:
+    turn = Turn(user="u", say="x", status="ok", seconds=1, menus=list(menus))
+    return next(c for c in grade_turn(expect, turn, "t") if "menu" in c.name).passed
+
+
+def test_the_menu_block_must_be_exactly_the_asked_category() -> None:
+    expect = Expect(menu="desserts")
+    assert menu_passed(expect, "desserts")
+    assert not menu_passed(expect)
+    assert not menu_passed(expect, "desserts", "drinks")
