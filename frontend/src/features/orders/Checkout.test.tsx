@@ -39,10 +39,8 @@ describe('checkout and orders', () => {
     renderAt('/checkout')
     fireEvent.click(await screen.findByRole('radio', { name: 'Dine in' }))
     fireEvent.click(screen.getByRole('button', { name: 'Place order · 38.00 SAR' }))
-    expect(
-      await screen.findByRole('heading', { name: 'Order 31 · Bean & Bloom' }),
-    ).toBeInTheDocument()
-    expect(screen.getByText('Preparing')).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: 'Order 31' })).toBeInTheDocument()
+    expect(screen.getByRole('list', { name: 'Status: Preparing' })).toBeInTheDocument()
     const placed = fetchMock.mock.calls.find(([url]) => String(url) === '/api/orders')
     expect(JSON.parse(String(placed?.[1]?.body))).toEqual({
       fulfilment: 'dine_in',
@@ -85,10 +83,10 @@ describe('checkout and orders', () => {
       },
     })
     renderAt('/orders')
-    expect(await screen.findByRole('link', { name: 'Order 31 · Bean & Bloom' })).toHaveAttribute(
-      'href',
-      '/orders/31',
-    )
+    const card = await screen.findByRole('link', { name: /Bean & Bloom/ })
+    expect(card).toHaveAttribute('href', '/orders/31')
+    expect(card).toHaveTextContent('38.00 SAR')
+    expect(screen.getByText(/1 order · 38.00 SAR spent in all/)).toBeInTheDocument()
   })
 
   test("another guest's order, or a missing one, is not found", async () => {

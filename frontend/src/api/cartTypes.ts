@@ -66,6 +66,8 @@ export interface OrderLine {
   removed: string[]
   allergens: Allergen[]
   kcal: number | null
+  /** The dish's photo today; null if it has none or left the menu. */
+  photo: string | null
 }
 
 export interface OrderSummary {
@@ -76,6 +78,10 @@ export interface OrderSummary {
   item_count: number
   placed_at: string
   status: OrderStatus
+  /** Photos of the dishes in the order, at most 4. */
+  photos: string[]
+  /** Estimated kcal of the whole order. */
+  kcal: number | null
 }
 
 export interface Order extends OrderSummary {

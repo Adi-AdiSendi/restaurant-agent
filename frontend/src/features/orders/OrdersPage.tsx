@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 import { api, ApiError } from '../../api/client'
 import type { OrderSummary } from '../../api/cartTypes'
-import { STATUS, when } from './orderLabels'
+import OrderCard from './OrderCard'
 import styles from './Orders.module.css'
 
 /** The guest's own orders, newest first. */
@@ -32,16 +32,16 @@ function OrdersPage() {
           No orders yet. <Link to="/">Pick a restaurant</Link>.
         </p>
       )}
-      <ul className={styles.lines}>
+      {orders && orders.length > 0 && (
+        <p className={styles.note}>
+          {orders.length} {orders.length === 1 ? 'order' : 'orders'} ·{' '}
+          {orders.reduce((sum, o) => sum + Number(o.total_sar), 0).toFixed(2)} SAR spent in all
+        </p>
+      )}
+      <ul className={styles.history}>
         {orders?.map((o) => (
-          <li key={o.id} className={styles.summary}>
-            <Link to={`/orders/${o.id}`}>
-              Order {o.id} · {o.restaurant.name}
-            </Link>
-            <span>
-              {o.item_count} items · {o.total_sar} SAR · {when(o.placed_at)}
-            </span>
-            <span className={styles[o.status]}>{STATUS[o.status]}</span>
+          <li key={o.id}>
+            <OrderCard order={o} />
           </li>
         ))}
       </ul>

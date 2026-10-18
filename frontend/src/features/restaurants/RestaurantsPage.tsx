@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import Skeleton from '../../components/Skeleton'
 
 import styles from './RestaurantsPage.module.css'
-import Storefront from './Storefront'
+import Storefront from '../../components/Storefront'
 import { useRestaurants } from './useRestaurants'
 
 /** The home page: pick a restaurant, then browse, chat and order there. */

@@ -1,0 +1,88 @@
+.card {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.card:hover,
+.card:focus-visible {
+  border-color: var(--brand);
+}
+
+.sign {
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.meta {
+  font-size: 13px;
+  color: var(--ink-muted);
+}
+
+.dishes {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.more {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.paid {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  text-align: right;
+}
+
+.amount {
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+
+  .paid {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+}

@@ -43,6 +43,8 @@ export const placedOrder: Order = {
   item_count: 2,
   placed_at: '2026-10-17T18:00:00Z',
   status: 'preparing',
+  photos: ['bean-and-bloom/latte'],
+  kcal: 340,
   lines: [
     {
       item_name: 'Latte',
@@ -52,6 +54,7 @@ export const placedOrder: Order = {
       removed: ['sugar'],
       allergens: [],
       kcal: 170,
+      photo: 'bean-and-bloom/latte',
     },
   ],
 }

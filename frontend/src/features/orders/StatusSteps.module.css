@@ -1,0 +1,22 @@
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.step,
+.stepDone {
+  padding: 8px 0 6px;
+  border-top: 5px solid var(--line);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+.stepDone {
+  border-top-color: var(--brand);
+  color: var(--brand);
+}

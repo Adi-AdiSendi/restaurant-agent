@@ -72,6 +72,8 @@ class OrderLineOut(BaseModel):
     removed: list[str]
     allergens: list[Allergen]
     kcal: int | None = None
+    photo: str | None = None
+    """The dish's photo today (`<restaurant>/<name>`); None if it has none or is gone."""
 
 
 class OrderSummary(BaseModel):
@@ -82,6 +84,10 @@ class OrderSummary(BaseModel):
     item_count: int
     placed_at: datetime
     status: OrderStatus
+    photos: list[str] = Field(default_factory=list[str])
+    """Photos of the dishes in the order, in order, at most 4, for the history list."""
+    kcal: int | None = None
+    """Estimated kcal of the whole order; None if no line had an estimate."""
 
 
 class OrderOut(OrderSummary):

@@ -12,7 +12,8 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
 - `src/components/`: pieces shared by features: `useModal`, `DishPhoto`
   (the WebP sizes under `public/menu/`, named by the database, with a category
   icon on the restaurant's colour when there is no photo; ADR 0024) and
-  `Skeleton` (placeholders while a list loads).
+  `Skeleton` (placeholders while a list loads) and `Storefront` (a
+  restaurant's sign, used on the restaurants list and in orders).
 - `public/storefronts/`: each restaurant's sign (3:1, supplied by the project
   owner), shown as a banner on the restaurants list, one restaurant per row.
 - `public/menu/<restaurant>/`: reviewed Openverse photos, credited in
@@ -37,9 +38,11 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
   call returns the whole cart); `CartButton`, `CartDrawer`, `CartLineRow`.
 - `src/features/orders/`: `CheckoutPage` (pickup or dine-in, pay at the
   counter, asks again on a conflict) and the chat's `CheckoutCard` share
-  `usePlaceOrder`; only the guest's button places an order. `OrdersPage`,
-  `OrderPage` (keys `OrderView` by the order id; it reloads the status until
-  ready).
+  `usePlaceOrder`; only the guest's button places an order. `OrdersPage`
+  lists `OrderCard`s (the restaurant's sign, dish photos, status, the price
+  paid) under the total spent; `OrderPage` keys `OrderView` by the order id
+  (it reloads the status until ready) and renders `OrderDetail`, a receipt
+  with `StatusSteps`, a photo per dish and the total paid.
 - `src/features/chat/`: `ChatPanel` (New chat, messages, item cards,
   composer, suggestions). State is a pure reducer (`chatReducer.ts`) driven by
   `useChat.ts`; a chat starts at the URL's restaurant, and another restaurant

@@ -4,7 +4,7 @@ import { Link } from 'react-router'
 import { api, ApiError } from '../../api/client'
 import type { Order } from '../../api/cartTypes'
 import styles from './Orders.module.css'
-import { STATUS, when } from './orderLabels'
+import OrderDetail from './OrderDetail'
 
 export const REFRESH_MS = 30_000
 
@@ -46,34 +46,7 @@ function OrderView({ id }: { id: number }) {
       </main>
     )
   }
-  if (!order) return null
-  return (
-    <main className={styles.page}>
-      <h1 className={styles.title}>
-        Order {order.id} · {order.restaurant.name}
-      </h1>
-      <p>
-        <span className={styles[order.status]}>{STATUS[order.status]}</span> ·{' '}
-        {order.fulfilment === 'pickup' ? 'Pickup' : 'Dine in'} · {when(order.placed_at)}
-      </p>
-      <ul className={styles.lines}>
-        {order.lines.map((line, n) => (
-          <li key={n} className={styles.summary}>
-            <span>
-              {line.quantity} × {line.item_name}
-            </span>
-            <span>{[...line.option_names, ...line.removed.map((r) => `no ${r}`)].join(', ')}</span>
-            <span>{line.unit_price_sar} SAR each</span>
-            <span>
-              Allergens: {line.allergens.join(', ').replaceAll('_', ' ') || 'none listed'}
-            </span>
-          </li>
-        ))}
-      </ul>
-      <p className={styles.total}>Total {order.total_sar} SAR · pay at the counter</p>
-      <Link to="/orders">All your orders</Link>
-    </main>
-  )
+  return order ? <OrderDetail order={order} /> : null
 }
 
 export default OrderView
