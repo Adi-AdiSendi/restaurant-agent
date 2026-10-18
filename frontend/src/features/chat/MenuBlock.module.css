@@ -56,3 +56,9 @@
   color: var(--brand);
   font-weight: 700;
 }
+
+.trace {
+  grid-column: 2 / -1;
+  color: var(--warn-ink);
+  font-size: 13px;
+}

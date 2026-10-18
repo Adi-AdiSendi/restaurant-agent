@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { api, ApiError } from '../../api/client'
 import type { Card } from '../../api/menuTypes'
@@ -19,6 +19,9 @@ interface Options {
 export function useQuickAdd({ restaurant, onNeedsSheet, onUnauthorized }: Options): QuickAdd {
   const { setCart } = useCart()
   const [added, setAdded] = useState<number | null>(null)
+  const [pending, setPending] = useState<number | null>(null)
+  // Only the latest add may set the cart, so a slow earlier answer cannot undo a newer one.
+  const latest = useRef(0)
 
   useEffect(() => {
     if (added === null) return
@@ -28,19 +31,30 @@ export function useQuickAdd({ restaurant, onNeedsSheet, onUnauthorized }: Option
 
   const send = useCallback(
     async (item: Card) => {
+      const request = ++latest.current
+      setPending(item.id)
       const line = { item_id: item.id, quantity: 1, option_ids: [], removed: [] }
       try {
         const body = { restaurant, ...line, accepted_reasons: [], replace_cart: false }
-        setCart(await api.addCartLine(body))
+        const cart = await api.addCartLine(body)
+        if (request !== latest.current) return
+        setCart(cart)
         setAdded(item.id)
       } catch (err) {
         if (err instanceof ApiError && err.status === 401) onUnauthorized()
         else onNeedsSheet(item)
+      } finally {
+        if (request === latest.current) setPending(null)
       }
     },
     [restaurant, setCart, onNeedsSheet, onUnauthorized],
   )
 
-  const add = useCallback((item: Card) => void send(item), [send])
-  return { add, added }
+  const add = useCallback(
+    (item: Card) => {
+      if (pending === null) void send(item)
+    },
+    [pending, send],
+  )
+  return { add, added, pending }
 }

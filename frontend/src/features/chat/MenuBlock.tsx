@@ -3,7 +3,7 @@ import type { MenuBlock as Block } from '../../api/types'
 import { categoryIcon } from '../../components/categoryIcon'
 import DishPhoto from '../../components/DishPhoto'
 import styles from './MenuBlock.module.css'
-import { canQuickAdd, type QuickAdd } from './quickAdd'
+import { addLabel, canQuickAdd, type QuickAdd } from './quickAdd'
 
 const title = (category: string) => {
   const words = category.replaceAll('_', ' ')
@@ -34,6 +34,11 @@ function MenuBlock({ block, onChoose, quickAdd }: Props) {
                 {from}
                 {item.price_sar} SAR
               </span>
+              {item.may_contain_warnings.length > 0 && (
+                <span className={styles.trace}>
+                  may contain {item.may_contain_warnings.join(', ').replaceAll('_', ' ')}
+                </span>
+              )}
               {unsuitable ? (
                 <span className={styles.reason}>
                   not for you: {item.conflicts_with_guest.join(', ')}
@@ -42,14 +47,20 @@ function MenuBlock({ block, onChoose, quickAdd }: Props) {
                 <button
                   className={styles.add}
                   type="button"
-                  aria-label={`Add ${item.name} to the cart`}
+                  aria-label={addLabel(item, quickAdd)}
+                  disabled={quickAdd.pending !== null}
                   onClick={() => quickAdd.add(item)}
                 >
                   {quickAdd.added === item.id ? 'Added ✓' : 'Add'}
                 </button>
               ) : (
                 onChoose && (
-                  <button className={styles.add} type="button" onClick={() => onChoose(item)}>
+                  <button
+                    className={styles.add}
+                    type="button"
+                    aria-label={`Choose options for ${item.name}`}
+                    onClick={() => onChoose(item)}
+                  >
                     Options
                   </button>
                 )

@@ -3,7 +3,7 @@ import { categoryIcon } from '../../components/categoryIcon'
 import DishPhoto from '../../components/DishPhoto'
 import styles from './ItemCard.module.css'
 import ItemOptions from './ItemOptions'
-import { canQuickAdd, type QuickAdd } from './quickAdd'
+import { addLabel, canQuickAdd, type QuickAdd } from './quickAdd'
 
 const SPICE = ['Not spicy', 'Mild', 'Medium', 'Hot']
 
@@ -69,7 +69,8 @@ function ItemCard({ item, onChoose, quickAdd }: Props) {
         <button
           className={styles.choose}
           type="button"
-          aria-label={`Add ${item.name} to the cart`}
+          aria-label={addLabel(item, quickAdd)}
+          disabled={quickAdd.pending !== null}
           onClick={() => quickAdd.add(item)}
         >
           {quickAdd.added === item.id ? 'Added ✓' : 'Add'}

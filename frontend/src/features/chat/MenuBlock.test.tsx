@@ -5,12 +5,19 @@ import type { Card } from '../../api/menuTypes'
 import { latte } from '../../test/cards'
 import MenuBlock from './MenuBlock'
 
-const water: Card = { ...latte, id: 41, name: 'Still Water', option_groups: [], price_sar: '6.00' }
+const water: Card = {
+  ...latte,
+  id: 41,
+  name: 'Still Water',
+  option_groups: [],
+  removable: [],
+  price_sar: '6.00',
+}
 const milkshake: Card = { ...water, id: 42, name: 'Milkshake', conflicts_with_guest: ['dairy'] }
 const block = { category: 'coffee', items: [latte, water, milkshake] }
 
 test('every dish shows; unsuitable ones say why and cannot be added', () => {
-  const quickAdd = { add: vi.fn(), added: null }
+  const quickAdd = { add: vi.fn(), added: null, pending: null }
   const onChoose = vi.fn()
   render(<MenuBlock block={block} onChoose={onChoose} quickAdd={quickAdd} />)
   expect(screen.getByRole('region', { name: 'Menu: Coffee' })).toBeInTheDocument()
@@ -19,14 +26,31 @@ test('every dish shows; unsuitable ones say why and cannot be added', () => {
 
   fireEvent.click(screen.getByRole('button', { name: 'Add Still Water to the cart' }))
   expect(quickAdd.add).toHaveBeenCalledWith(water)
-  fireEvent.click(screen.getByRole('button', { name: 'Options' }))
+  fireEvent.click(screen.getByRole('button', { name: 'Choose options for Latte' }))
   expect(onChoose).toHaveBeenCalledWith(latte)
   expect(screen.getByText('from 16.00 SAR')).toBeInTheDocument()
 })
 
 test('a dish just added says so', () => {
-  render(<MenuBlock block={block} quickAdd={{ add: vi.fn(), added: 41 }} />)
-  expect(screen.getByRole('button', { name: 'Add Still Water to the cart' })).toHaveTextContent(
+  render(<MenuBlock block={block} quickAdd={{ add: vi.fn(), added: 41, pending: null }} />)
+  expect(screen.getByRole('button', { name: 'Still Water added to the cart' })).toHaveTextContent(
     'Added ✓',
   )
+})
+
+test('a trace the guest avoids is shown, and such a dish goes through the sheet', () => {
+  const nuts: Card = { ...water, id: 43, name: 'Cookie', may_contain_warnings: ['tree_nut'] }
+  const onChoose = vi.fn()
+  const quickAdd = { add: vi.fn(), added: null, pending: null }
+  render(
+    <MenuBlock
+      block={{ category: 'bakery', items: [nuts] }}
+      onChoose={onChoose}
+      quickAdd={quickAdd}
+    />,
+  )
+  expect(screen.getByText('may contain tree nut')).toBeInTheDocument()
+  fireEvent.click(screen.getByRole('button', { name: 'Choose options for Cookie' }))
+  expect(onChoose).toHaveBeenCalledWith(nuts)
+  expect(quickAdd.add).not.toHaveBeenCalled()
 })

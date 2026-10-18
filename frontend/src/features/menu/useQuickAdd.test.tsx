@@ -45,6 +45,26 @@ describe('quick add', () => {
     expect(JSON.parse(String(sent?.[1]?.body))).toMatchObject({ item_id: 50, option_ids: [] })
   })
 
+  test('a double click adds once', async () => {
+    const fetchMock = mockFetch({
+      'GET /api/cart': { body: emptyCart },
+      'POST /api/cart/lines': { body: latteCart },
+    })
+    renderShelf(cake)
+    const add = screen.getByRole('button', { name: 'Add Lemon Cake to the cart' })
+    fireEvent.click(add)
+    fireEvent.click(add)
+    expect(await screen.findByText('Added ✓')).toBeInTheDocument()
+    const posts = fetchMock.mock.calls.filter(([url]) => String(url) === '/api/cart/lines')
+    expect(posts).toHaveLength(1)
+  })
+
+  test('a dish with a removable ingredient goes through the sheet', () => {
+    mockFetch({ 'GET /api/cart': { body: emptyCart } })
+    renderShelf({ ...cake, removable: ['icing'] })
+    expect(screen.queryByRole('button', { name: /to the cart/ })).not.toBeInTheDocument()
+  })
+
   test('anything the server asks about opens the sheet instead', async () => {
     const conflict = { status: 409, body: { detail: { code: 'other_restaurant', message: 'x' } } }
     mockFetch({ 'GET /api/cart': { body: emptyCart }, 'POST /api/cart/lines': conflict })
