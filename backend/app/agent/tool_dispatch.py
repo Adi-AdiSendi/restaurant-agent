@@ -12,6 +12,7 @@ from app.tools import (
     recent_orders,
     remove_cart_line,
     search_menu,
+    show_menu,
     update_cart_line,
     view_cart,
 )
@@ -25,6 +26,7 @@ Handler = Callable[[str, ToolContext], Awaitable[BaseModel]]
 _TOOLS = (
     search_menu,
     get_item,
+    show_menu,
     view_cart,
     add_to_cart,
     update_cart_line,

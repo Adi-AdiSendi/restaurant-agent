@@ -10,12 +10,13 @@ from app.menu.queries import get_items_by_ids
 from app.menu.schemas import MenuItemOut
 from app.tools.get_item import GetItemResult
 from app.tools.search_menu import SearchMenuResult
+from app.tools.show_menu import ShowMenuResult
 
 logger = logging.getLogger(__name__)
 
 
 def ids_in_tool_result(result: BaseModel) -> set[int]:
-    if isinstance(result, SearchMenuResult):
+    if isinstance(result, SearchMenuResult | ShowMenuResult):
         return {item.id for item in result.items}
     if isinstance(result, GetItemResult):
         return {result.item.id}
