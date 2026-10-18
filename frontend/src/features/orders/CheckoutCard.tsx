@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import type { Fulfilment } from '../../api/cartTypes'
+import { kcalLabel } from '../../components/kcal'
 import { useCart } from '../cart/cartContext'
 import FulfilmentChoice from './FulfilmentChoice'
 import PlaceConfirm from './PlaceConfirm'
@@ -28,6 +29,7 @@ function CheckoutCard() {
     <section className={styles.card} aria-label="Checkout">
       <p>
         <strong>{cart.restaurant?.name}</strong> · {items} · {cart.total_sar} SAR
+        {cart.kcal ? ` · ${kcalLabel(cart.kcal) ?? ''}` : ''}
       </p>
       <FulfilmentChoice value={fulfilment} onChange={setFulfilment} />
       <p className={styles.note}>Pay at the counter. This prototype takes no payment.</p>

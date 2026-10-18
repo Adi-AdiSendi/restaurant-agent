@@ -80,7 +80,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             }
           ]
         },
@@ -118,7 +119,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             }
           ]
         },
@@ -134,7 +136,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Tahini",
@@ -145,7 +148,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 90
             },
             {
               "name": "Spicy red sauce",
@@ -165,7 +169,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 90
             }
           ]
         },
@@ -183,7 +188,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Akkawi cheese",
@@ -194,7 +200,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 120
             },
             {
               "name": "Pickled turnips",
@@ -207,7 +214,8 @@
             }
           ]
         }
-      ]
+      ],
+      "kcal": 560
     },
     {
       "name": "Arabic Shawarma Platter",
@@ -278,7 +286,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Tahini",
@@ -289,7 +298,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 90
             },
             {
               "name": "Spicy red sauce",
@@ -309,11 +319,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 90
             }
           ]
         }
-      ]
+      ],
+      "kcal": 980
     },
     {
       "name": "Shawarma Fatteh",
@@ -375,7 +387,8 @@
             }
           ]
         }
-      ]
+      ],
+      "kcal": 820
     },
     {
       "name": "Falafel Wrap",
@@ -432,7 +445,8 @@
             }
           ]
         }
-      ]
+      ],
+      "kcal": 520
     },
     {
       "name": "Mixed Grill Plate",
@@ -467,7 +481,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -478,7 +493,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Fattoush salad",
@@ -489,11 +505,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             }
           ]
         }
-      ]
+      ],
+      "kcal": 1050
     },
     {
       "name": "Shish Tawook Plate",
@@ -527,7 +545,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -538,7 +557,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Fattoush salad",
@@ -549,11 +569,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             }
           ]
         }
-      ]
+      ],
+      "kcal": 780
     },
     {
       "name": "Kofta Plate",
@@ -589,7 +611,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -600,7 +623,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Fattoush salad",
@@ -611,11 +635,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             }
           ]
         }
-      ]
+      ],
+      "kcal": 860
     },
     {
       "name": "Grilled Halloumi Plate",
@@ -651,7 +677,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -662,7 +689,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Fattoush salad",
@@ -673,11 +701,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             }
           ]
         }
-      ]
+      ],
+      "kcal": 640
     },
     {
       "name": "Hummus",
@@ -722,11 +752,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             }
           ]
         }
-      ]
+      ],
+      "kcal": 360
     },
     {
       "name": "Moutabal",
@@ -748,7 +780,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 260
     },
     {
       "name": "Fattoush",
@@ -776,7 +809,8 @@
         "radish",
         "fried pita"
       ],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 240
     },
     {
       "name": "Tabbouleh",
@@ -799,7 +833,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 180
     },
     {
       "name": "Cheese Sambousek",
@@ -823,7 +858,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 380
     },
     {
       "name": "Ayran",
@@ -843,7 +879,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 110
     },
     {
       "name": "Mint Lemonade",
@@ -863,7 +900,8 @@
       "allergens": [],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 130
     },
     {
       "name": "Kunafa",
@@ -888,7 +926,8 @@
       "removable": [
         "pistachio"
       ],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 620
     }
   ]
 }

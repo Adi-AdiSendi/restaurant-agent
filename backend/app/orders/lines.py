@@ -59,6 +59,7 @@ def line_out(r: Resolved, constraints: HardConstraints) -> CartLineOut:
         options=options,
         removed=r.line.removed,
         unit_price_sar=unit,
+        kcal=r.config.kcal if r.config else None,
         line_total_sar=unit * r.line.quantity if unit is not None else None,
         allergens=r.config.allergens if r.config else [],
         conflicts_with_guest=constraints.violations(r.config) if r.config else [],

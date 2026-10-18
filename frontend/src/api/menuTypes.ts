@@ -22,6 +22,8 @@ export interface CardOption {
   is_vegetarian: boolean
   is_vegan: boolean
   spice_level: number
+  /** Estimated kcal this choice adds (or saves) against the dish. */
+  kcal_delta: number
   /** Why this guest must not pick it (saved allergies or diet); empty if they may. */
   conflicts_with_guest: string[]
   /** Trace allergens of this option that the guest avoids. */
@@ -52,6 +54,8 @@ export interface Card {
   removable: string[]
   /** A similar dish's photo, `<restaurant>/<name>`; null shows a category icon. */
   photo: string | null
+  /** Estimated kcal of the base dish; null if not estimated. */
+  kcal: number | null
   option_groups: OptionGroup[]
   /** Why no way of ordering it suits the guest; empty if one does. */
   conflicts_with_guest: string[]

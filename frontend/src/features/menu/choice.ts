@@ -61,6 +61,16 @@ export function linePrice(item: Card, choice: Choice): string {
   return (((cents(item.price_sar) + extras) * choice.quantity) / 100).toFixed(2)
 }
 
+/** Estimated kcal for the chosen quantity; null when the dish has no estimate. */
+export function lineKcal(item: Card, choice: Choice): number | null {
+  if (item.kcal === null) return null
+  const options = item.option_groups.flatMap((g) => g.options)
+  const extra = options
+    .filter((o) => choice.optionIds.includes(o.id))
+    .reduce((sum, o) => sum + o.kcal_delta, 0)
+  return Math.max(item.kcal + extra, 0) * choice.quantity
+}
+
 /** Why the chosen options do not suit the guest; empty if they do. */
 export function chosenConflicts(item: Card, choice: Choice): string[] {
   const reasons = item.option_groups

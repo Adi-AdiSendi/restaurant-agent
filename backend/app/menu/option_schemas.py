@@ -18,6 +18,8 @@ class OptionFields(BaseModel):
     is_vegetarian: bool
     is_vegan: bool
     spice_level: int = Field(ge=0, le=3)
+    kcal_delta: int = Field(default=0, ge=-1000, le=2000)
+    """Estimated kcal this choice adds (or saves) against the dish's base."""
 
     @model_validator(mode="after")
     def _vegan_is_vegetarian(self) -> Self:

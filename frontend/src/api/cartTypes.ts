@@ -32,6 +32,8 @@ export interface CartLine {
   removed: string[]
   unit_price_sar: string | null
   line_total_sar: string | null
+  /** Estimated kcal of one, with its options. */
+  kcal: number | null
   allergens: Allergen[]
   conflicts_with_guest: string[]
   may_contain_warnings: Allergen[]
@@ -49,6 +51,8 @@ export interface Cart {
   lines: CartLine[]
   total_sar: string
   item_count: number
+  /** Estimated kcal of the whole cart. */
+  kcal: number
 }
 
 export type Fulfilment = 'pickup' | 'dine_in'
@@ -61,6 +65,7 @@ export interface OrderLine {
   option_names: string[]
   removed: string[]
   allergens: Allergen[]
+  kcal: number | null
 }
 
 export interface OrderSummary {

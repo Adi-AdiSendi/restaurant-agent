@@ -1,12 +1,14 @@
 import { useState } from 'react'
 
 import type { Card } from '../../api/menuTypes'
+import { kcalLabel } from '../../components/kcal'
 import { useModal } from '../../components/useModal'
 import AddConfirm from './AddConfirm'
 import ChoiceExtras from './ChoiceExtras'
 import {
   chosenConflicts,
   initialChoice,
+  lineKcal,
   linePrice,
   missing,
   toggleOption,
@@ -76,6 +78,9 @@ function ItemSheet({ item, restaurant, onClose, onUnauthorized }: Props) {
           <p className={styles.error} role="alert">
             {add.error}
           </p>
+        )}
+        {item.kcal !== null && (
+          <p className={styles.description}>{kcalLabel(lineKcal(item, choice))}</p>
         )}
         <SheetFooter
           quantity={choice.quantity}

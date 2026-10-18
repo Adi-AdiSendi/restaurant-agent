@@ -62,6 +62,8 @@ class OrderLine(Base):
     option_names: Mapped[list[str]] = mapped_column(ARRAY(Text))
     removed: Mapped[list[str]] = mapped_column(ARRAY(Text))
     allergens: Mapped[list[str]] = mapped_column(ARRAY(Text))
+    kcal: Mapped[int | None]
+    """Estimated kcal of one, as ordered; summed for the guest's daily total."""
 
 
 class Order(Base):

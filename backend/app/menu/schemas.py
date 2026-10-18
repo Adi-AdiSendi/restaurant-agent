@@ -26,6 +26,8 @@ class MenuItemBase(BaseModel):
     removable: list[str] = Field(default_factory=list[str])
     """Ingredients a guest may leave out. Leaving one out never removes an allergen."""
     photo: str | None = Field(default=None, pattern=PHOTO_PATTERN, max_length=100)
+    kcal: int | None = Field(default=None, ge=1, le=3000)
+    """Estimated kcal of the base dish (typical portion); None if not estimated."""
     """A similar dish's photo, credited in docs/photo-credits.md; None shows an icon."""
 
     @model_validator(mode="after")

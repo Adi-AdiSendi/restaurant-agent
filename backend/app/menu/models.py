@@ -32,6 +32,7 @@ class Option(Base):
     )
     name: Mapped[str] = mapped_column(String(60))
     price_delta_sar: Mapped[Decimal] = mapped_column(Numeric(8, 2))
+    kcal_delta: Mapped[int] = mapped_column(server_default=text("0"))
     allergens: Mapped[list[str]] = mapped_column(ARRAY(Text))
     may_contain: Mapped[list[str]] = mapped_column(ARRAY(Text))
     is_vegetarian: Mapped[bool]
@@ -88,6 +89,7 @@ class MenuItem(Base):
     may_contain: Mapped[list[str]] = mapped_column(ARRAY(Text))
     removable: Mapped[list[str]] = mapped_column(ARRAY(Text), server_default=text("'{}'"))
     photo: Mapped[str | None] = mapped_column(String(100))
+    kcal: Mapped[int | None]
     option_groups: Mapped[list[OptionGroup]] = relationship(
         order_by=OptionGroup.position, lazy="selectin"
     )

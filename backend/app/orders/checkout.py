@@ -33,6 +33,7 @@ def _snapshot(r: Resolved) -> OrderLine:
         option_names=[offered[i] for i in r.config.option_ids],
         removed=r.config.removed,
         allergens=[a.value for a in r.config.allergens],
+        kcal=r.config.kcal,
     )
 
 

@@ -1,6 +1,7 @@
 import type { Allergen, Card } from '../../api/menuTypes'
 import { categoryIcon } from '../../components/categoryIcon'
 import DishPhoto from '../../components/DishPhoto'
+import { kcalLabel } from '../../components/kcal'
 import styles from './ItemCard.module.css'
 import ItemOptions from './ItemOptions'
 import { addLabel, canQuickAdd, type QuickAdd } from './quickAdd'
@@ -39,6 +40,7 @@ function ItemCard({ item, onChoose, quickAdd }: Props) {
           <span aria-hidden="true">{'🌶'.repeat(item.spice_level)}</span>{' '}
           {SPICE[item.spice_level] ?? ''}
         </span>
+        {item.kcal !== null && <span className={styles.spice}>{kcalLabel(item.kcal)}</span>}
       </div>
       <p className={styles.ingredients}>{item.ingredients.join(', ')}</p>
       <ItemOptions groups={item.option_groups} removable={item.removable} />

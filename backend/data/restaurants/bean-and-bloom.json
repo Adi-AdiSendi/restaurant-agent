@@ -48,11 +48,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 5
             }
           ]
         }
-      ]
+      ],
+      "kcal": 5
     },
     {
       "name": "Americano",
@@ -91,7 +93,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Large",
@@ -100,7 +103,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 130
             }
           ]
         },
@@ -116,11 +120,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 5
             }
           ]
         }
-      ]
+      ],
+      "kcal": 10
     },
     {
       "name": "Cappuccino",
@@ -160,7 +166,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Large",
@@ -169,7 +176,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 130
             }
           ]
         },
@@ -198,7 +206,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Lactose-free milk",
@@ -220,7 +229,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 20
             },
             {
               "name": "Almond milk",
@@ -231,7 +241,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Soy milk",
@@ -242,7 +253,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -20
             }
           ]
         },
@@ -258,7 +270,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Caramel",
@@ -267,7 +280,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Hazelnut",
@@ -278,7 +292,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Honey",
@@ -287,7 +302,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             }
           ]
         },
@@ -303,11 +319,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 5
             }
           ]
         }
-      ]
+      ],
+      "kcal": 110
     },
     {
       "name": "Latte",
@@ -347,7 +365,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Large",
@@ -356,7 +375,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 130
             }
           ]
         },
@@ -385,7 +405,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Lactose-free milk",
@@ -407,7 +428,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 20
             },
             {
               "name": "Almond milk",
@@ -418,7 +440,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Soy milk",
@@ -429,7 +452,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -20
             }
           ]
         },
@@ -445,7 +469,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Caramel",
@@ -454,7 +479,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Hazelnut",
@@ -465,7 +491,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Honey",
@@ -474,7 +501,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             }
           ]
         },
@@ -490,11 +518,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 5
             }
           ]
         }
-      ]
+      ],
+      "kcal": 150
     },
     {
       "name": "Flat White",
@@ -538,7 +568,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Lactose-free milk",
@@ -560,7 +591,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 20
             },
             {
               "name": "Almond milk",
@@ -571,7 +603,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Soy milk",
@@ -582,7 +615,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -20
             }
           ]
         },
@@ -598,11 +632,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 5
             }
           ]
         }
-      ]
+      ],
+      "kcal": 120
     },
     {
       "name": "Spanish Latte",
@@ -645,7 +681,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Large",
@@ -654,7 +691,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 130
             }
           ]
         },
@@ -683,7 +721,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Lactose-free milk",
@@ -705,7 +744,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 20
             },
             {
               "name": "Almond milk",
@@ -716,7 +756,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Soy milk",
@@ -727,7 +768,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -20
             }
           ]
         },
@@ -743,11 +785,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 5
             }
           ]
         }
-      ]
+      ],
+      "kcal": 230
     },
     {
       "name": "Mocha",
@@ -792,7 +836,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Large",
@@ -801,7 +846,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 130
             }
           ]
         },
@@ -830,7 +876,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Lactose-free milk",
@@ -852,7 +899,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 20
             },
             {
               "name": "Almond milk",
@@ -863,7 +911,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Soy milk",
@@ -874,7 +923,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -20
             }
           ]
         },
@@ -890,7 +940,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Caramel",
@@ -899,7 +950,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Hazelnut",
@@ -910,7 +962,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Honey",
@@ -919,7 +972,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             }
           ]
         },
@@ -935,11 +989,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 5
             }
           ]
         }
-      ]
+      ],
+      "kcal": 260
     },
     {
       "name": "Saudi Coffee",
@@ -971,11 +1027,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 70
             }
           ]
         }
-      ]
+      ],
+      "kcal": 15
     },
     {
       "name": "Iced Latte",
@@ -1016,7 +1074,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Large",
@@ -1025,7 +1084,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 130
             }
           ]
         },
@@ -1054,7 +1114,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Lactose-free milk",
@@ -1076,7 +1137,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 20
             },
             {
               "name": "Almond milk",
@@ -1087,7 +1149,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Soy milk",
@@ -1098,7 +1161,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -20
             }
           ]
         },
@@ -1114,7 +1178,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Caramel",
@@ -1123,7 +1188,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Hazelnut",
@@ -1134,7 +1200,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Honey",
@@ -1143,7 +1210,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             }
           ]
         },
@@ -1159,11 +1227,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 5
             }
           ]
         }
-      ]
+      ],
+      "kcal": 140
     },
     {
       "name": "Matcha Latte",
@@ -1203,7 +1273,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Large",
@@ -1212,7 +1283,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 130
             }
           ]
         },
@@ -1241,7 +1313,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Lactose-free milk",
@@ -1263,7 +1336,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 20
             },
             {
               "name": "Almond milk",
@@ -1274,7 +1348,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -50
             },
             {
               "name": "Soy milk",
@@ -1285,7 +1360,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": -20
             }
           ]
         },
@@ -1301,7 +1377,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Caramel",
@@ -1310,7 +1387,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Hazelnut",
@@ -1321,7 +1399,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 40
             },
             {
               "name": "Honey",
@@ -1330,11 +1409,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             }
           ]
         }
-      ]
+      ],
+      "kcal": 180
     },
     {
       "name": "Karak Chai",
@@ -1356,7 +1437,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 170
     },
     {
       "name": "Mango Smoothie",
@@ -1398,11 +1480,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 45
             }
           ]
         }
-      ]
+      ],
+      "kcal": 240
     },
     {
       "name": "Avocado Toast",
@@ -1439,7 +1523,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 75
             },
             {
               "name": "Feta",
@@ -1450,7 +1535,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Smoked salmon",
@@ -1461,7 +1547,8 @@
               "may_contain": [],
               "is_vegetarian": false,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Chilli flakes",
@@ -1474,7 +1561,8 @@
             }
           ]
         }
-      ]
+      ],
+      "kcal": 380
     },
     {
       "name": "Shakshuka",
@@ -1529,7 +1617,8 @@
             }
           ]
         }
-      ]
+      ],
+      "kcal": 420
     },
     {
       "name": "Halloumi Croissant",
@@ -1556,7 +1645,8 @@
       "removable": [
         "tomato"
       ],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 480
     },
     {
       "name": "Granola Bowl",
@@ -1580,7 +1670,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 450
     },
     {
       "name": "Butter Croissant",
@@ -1604,7 +1695,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 270
     },
     {
       "name": "Pistachio Croissant",
@@ -1628,7 +1720,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 430
     },
     {
       "name": "Vegan Banana Bread",
@@ -1650,7 +1743,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 320
     },
     {
       "name": "San Sebastian Cheesecake",
@@ -1675,7 +1769,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 480
     }
   ]
 }

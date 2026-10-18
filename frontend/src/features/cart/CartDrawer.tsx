@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { Link } from 'react-router'
 
 import { api, ApiError } from '../../api/client'
+import { kcalLabel } from '../../components/kcal'
 import { useModal } from '../../components/useModal'
 import { useCart } from './cartContext'
 import styles from './CartDrawer.module.css'
@@ -70,6 +71,7 @@ function CartDrawer({ onClose }: Props) {
               <span>Total</span>
               <span>{cart?.total_sar} SAR</span>
             </div>
+            {cart?.kcal ? <p className={styles.blocked}>{kcalLabel(cart.kcal)}</p> : null}
             {blocked && (
               <p className={styles.blocked}>Remove the unavailable dishes to check out.</p>
             )}

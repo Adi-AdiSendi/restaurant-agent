@@ -35,7 +35,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 330
     },
     {
       "name": "Tuna Tartare",
@@ -63,7 +64,8 @@
       "removable": [
         "sesame seeds"
       ],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 280
     },
     {
       "name": "Lentil Soup",
@@ -83,7 +85,8 @@
       "allergens": [],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 240
     },
     {
       "name": "Fattoush Salad",
@@ -108,7 +111,8 @@
       "removable": [
         "fried pita"
       ],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 260
     },
     {
       "name": "Grilled Hammour Fillet",
@@ -154,7 +158,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 120
             },
             {
               "name": "Tandoori (yogurt marinade)",
@@ -183,7 +188,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 100
             },
             {
               "name": "Tahini",
@@ -194,7 +200,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 90
             },
             {
               "name": "Garlic sauce",
@@ -203,7 +210,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Tartare sauce",
@@ -215,7 +223,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Spicy harissa",
@@ -240,7 +249,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -251,7 +261,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Grilled vegetables",
@@ -260,7 +271,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Green salad",
@@ -269,11 +281,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 30
             }
           ]
         }
-      ]
+      ],
+      "kcal": 520
     },
     {
       "name": "Whole Sea Bream",
@@ -318,7 +332,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 120
             }
           ]
         },
@@ -334,7 +349,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -345,7 +361,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Grilled vegetables",
@@ -354,7 +371,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Green salad",
@@ -363,11 +381,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 30
             }
           ]
         }
-      ]
+      ],
+      "kcal": 560
     },
     {
       "name": "Salmon Steak",
@@ -430,7 +450,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -441,7 +462,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Grilled vegetables",
@@ -450,7 +472,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Green salad",
@@ -459,11 +482,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 30
             }
           ]
         }
-      ]
+      ],
+      "kcal": 600
     },
     {
       "name": "Jumbo Shrimp Skewers",
@@ -500,7 +525,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 100
             },
             {
               "name": "Tahini",
@@ -511,7 +537,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 90
             },
             {
               "name": "Garlic sauce",
@@ -520,7 +547,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Tartare sauce",
@@ -532,7 +560,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Spicy harissa",
@@ -557,7 +586,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -568,7 +598,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Grilled vegetables",
@@ -577,7 +608,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Green salad",
@@ -586,11 +618,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 30
             }
           ]
         }
-      ]
+      ],
+      "kcal": 450
     },
     {
       "name": "Lobster Tail",
@@ -627,7 +661,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -638,7 +673,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Grilled vegetables",
@@ -647,7 +683,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Green salad",
@@ -656,11 +693,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 30
             }
           ]
         }
-      ]
+      ],
+      "kcal": 480
     },
     {
       "name": "Mixed Seafood Grill",
@@ -699,7 +738,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 100
             },
             {
               "name": "Tahini",
@@ -710,7 +750,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 90
             },
             {
               "name": "Garlic sauce",
@@ -719,7 +760,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Tartare sauce",
@@ -731,7 +773,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": false,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 80
             },
             {
               "name": "Spicy harissa",
@@ -756,7 +799,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 250
             },
             {
               "name": "Fries",
@@ -767,7 +811,8 @@
               ],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 300
             },
             {
               "name": "Grilled vegetables",
@@ -776,7 +821,8 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 60
             },
             {
               "name": "Green salad",
@@ -785,11 +831,13 @@
               "may_contain": [],
               "is_vegetarian": true,
               "is_vegan": true,
-              "spice_level": 0
+              "spice_level": 0,
+              "kcal_delta": 30
             }
           ]
         }
-      ]
+      ],
+      "kcal": 820
     },
     {
       "name": "Fish and Chips",
@@ -816,7 +864,8 @@
       "removable": [
         "tartare sauce (egg, mustard)"
       ],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 880
     },
     {
       "name": "Fried Calamari",
@@ -840,7 +889,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 480
     },
     {
       "name": "Sayadiyah",
@@ -867,7 +917,8 @@
       "removable": [
         "pine nuts"
       ],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 720
     },
     {
       "name": "Shrimp Tacos",
@@ -891,7 +942,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 560
     },
     {
       "name": "Saffron Rice",
@@ -910,7 +962,8 @@
       "allergens": [],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 320
     },
     {
       "name": "Fresh Orange Juice",
@@ -927,7 +980,8 @@
       "allergens": [],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 140
     },
     {
       "name": "Um Ali",
@@ -952,7 +1006,8 @@
       ],
       "may_contain": [],
       "removable": [],
-      "option_groups": []
+      "option_groups": [],
+      "kcal": 560
     }
   ]
 }

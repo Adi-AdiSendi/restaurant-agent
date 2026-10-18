@@ -11,6 +11,7 @@ export function option(id: number, name: string, extra: Partial<CardOption> = {}
     is_vegetarian: true,
     is_vegan: true,
     spice_level: 0,
+    kcal_delta: 0,
     conflicts_with_guest: [],
     may_contain_warnings: [],
     ...extra,
@@ -32,6 +33,7 @@ export const latte: Card = {
   may_contain: [],
   removable: ['sugar'],
   photo: null,
+  kcal: 150,
   option_groups: [
     {
       id: 7,

@@ -31,7 +31,8 @@
       "allergens": [
         "dairy"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 520
     },
     {
       "name": "Buffalo Chicken Wings",
@@ -52,7 +53,8 @@
       "allergens": [
         "dairy"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 640
     },
     {
       "name": "Crispy Halloumi Sticks",
@@ -75,7 +77,8 @@
         "gluten",
         "egg"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 480
     },
     {
       "name": "Edamame with Chili Salt",
@@ -95,7 +98,8 @@
       "allergens": [
         "soy"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 220
     },
     {
       "name": "Classic Smash Burger",
@@ -121,7 +125,8 @@
         "egg",
         "mustard"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 780
     },
     {
       "name": "Double Wagyu Burger",
@@ -146,7 +151,8 @@
         "egg",
         "mustard"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 1100
     },
     {
       "name": "Nashville Hot Chicken Sandwich",
@@ -169,7 +175,8 @@
         "dairy",
         "egg"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 820
     },
     {
       "name": "Plant-Based Burger",
@@ -193,7 +200,8 @@
         "soy",
         "sesame"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 650
     },
     {
       "name": "Grilled Salmon Plate",
@@ -215,7 +223,8 @@
         "fish",
         "dairy"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 620
     },
     {
       "name": "Pesto Penne",
@@ -239,7 +248,8 @@
         "tree_nut",
         "dairy"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 720
     },
     {
       "name": "Penne Arrabbiata",
@@ -261,7 +271,8 @@
       "allergens": [
         "gluten"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 580
     },
     {
       "name": "Thai Peanut Noodle Bowl",
@@ -287,7 +298,8 @@
         "gluten",
         "sesame"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 690
     },
     {
       "name": "Mediterranean Veggie Bowl",
@@ -309,7 +321,8 @@
       "allergens": [
         "sesame"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 520
     },
     {
       "name": "Shrimp Poke Bowl",
@@ -336,7 +349,8 @@
         "egg",
         "gluten"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 560
     },
     {
       "name": "Chocolate Lava Cake",
@@ -362,7 +376,8 @@
       ],
       "may_contain": [
         "tree_nut"
-      ]
+      ],
+      "kcal": 520
     },
     {
       "name": "Pistachio Cheesecake",
@@ -387,7 +402,8 @@
         "gluten",
         "egg"
       ],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 560
     },
     {
       "name": "Mango Sorbet",
@@ -404,7 +420,8 @@
         "lime"
       ],
       "allergens": [],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 180
     },
     {
       "name": "Fresh Lemon Mint",
@@ -422,7 +439,8 @@
         "ice"
       ],
       "allergens": [],
-      "may_contain": []
+      "may_contain": [],
+      "kcal": 120
     }
   ]
 }

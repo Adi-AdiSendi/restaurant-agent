@@ -36,4 +36,5 @@ async def get_cart(session: AsyncSession, user_id: int, constraints: HardConstra
         lines=lines,
         total_sar=total(lines),
         item_count=sum(ln.quantity for ln in lines),
+        kcal=sum(ln.kcal * ln.quantity for ln in lines if ln.kcal is not None),
     )

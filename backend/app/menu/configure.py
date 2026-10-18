@@ -28,6 +28,8 @@ class Configuration(BaseModel):
     is_vegetarian: bool
     is_vegan: bool
     spice_level: int
+    kcal: int | None
+    """Estimated kcal of one, with these options; None if the dish has no estimate."""
 
 
 def _chosen(item: MenuItemOut, option_ids: Sequence[int]) -> list[OptionOut]:
@@ -66,4 +68,5 @@ def configure(
         is_vegetarian=item.is_vegetarian and all(o.is_vegetarian for o in options),
         is_vegan=item.is_vegan and all(o.is_vegan for o in options),
         spice_level=max([item.spice_level, *(o.spice_level for o in options)]),
+        kcal=None if item.kcal is None else max(item.kcal + sum(o.kcal_delta for o in options), 0),
     )

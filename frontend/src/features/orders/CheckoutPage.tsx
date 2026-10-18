@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 
 import type { Fulfilment } from '../../api/cartTypes'
 import { useCart } from '../cart/cartContext'
+import { kcalLabel } from '../../components/kcal'
 import CartLineRow from '../cart/CartLineRow'
 import FulfilmentChoice from './FulfilmentChoice'
 import PlaceConfirm from './PlaceConfirm'
@@ -51,6 +52,7 @@ function CheckoutPage() {
         ))}
       </ul>
       <p className={styles.total}>Total {cart.total_sar} SAR</p>
+      {cart.kcal ? <p className={styles.note}>{kcalLabel(cart.kcal)}</p> : null}
       <FulfilmentChoice value={fulfilment} onChange={setFulfilment} />
       <p className={styles.note}>Pay at the counter. This prototype takes no payment.</p>
       {conflict && (

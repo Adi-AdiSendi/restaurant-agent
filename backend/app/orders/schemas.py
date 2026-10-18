@@ -39,6 +39,8 @@ class CartLineOut(BaseModel):
     removed: list[str]
     unit_price_sar: Decimal | None
     line_total_sar: Decimal | None
+    kcal: int | None = None
+    """Estimated kcal of one, with its options; None if the dish has no estimate."""
     allergens: list[Allergen]
     conflicts_with_guest: list[str]
     may_contain_warnings: list[Allergen]
@@ -56,6 +58,8 @@ class CartOut(BaseModel):
     lines: list[CartLineOut]
     total_sar: Decimal
     item_count: int
+    kcal: int = 0
+    """Estimated kcal of the whole cart, from the lines that have an estimate."""
 
 
 class OrderLineOut(BaseModel):
@@ -67,6 +71,7 @@ class OrderLineOut(BaseModel):
     option_names: list[str]
     removed: list[str]
     allergens: list[Allergen]
+    kcal: int | None = None
 
 
 class OrderSummary(BaseModel):
