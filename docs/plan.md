@@ -4,7 +4,7 @@ Budget: about 10 to 12 focused hours inside the 72-hour window.
 Rule: the baseline must work end to end (deployed) before Part 2 starts.
 Every phase ends with all checks green and a `code-reviewer` pass.
 
-**Current phase: 13** (v2; phases 9 to 12 done; v1 phases 0 to 8 are below, the video moved to phase 18)
+**Current phase: 14** (v2; phases 9 to 13 done; v1 phases 0 to 8 are below, the video moved to phase 18)
 
 ## Inputs
 - Menu concept: international casual (burgers, bowls, pasta, desserts), prices in SAR.
@@ -428,6 +428,28 @@ Reused from sibling projects, adapted rather than rebuilt:
   missing photos.
 - Done when: every dish has a credited photo the user approved, or a
   deliberate icon, and the chat shows photo cards, menu blocks and cart cards.
+- Status: done 2026-10-18.
+  - **Photos:** Openverse search found candidates for 108 of 109 targets
+    (after simpler and hand-written queries). The user reviewed every pick on
+    a contact sheet: 52 changes, 17 set to no photo. I switched one more
+    (Mapo Tofu, whose pick showed peanuts the dish does not have) with the
+    user's approval. 91 photos, 4.1 MB, credited in `docs/photo-credits.md`.
+  - **Built:** migration 0005 (`photo`), `show_menu` and menu blocks,
+    `DishPhoto` with an icon fallback, quick Add, sideways cards, covers,
+    skeletons.
+  - **Review fixes:** quick Add only for dishes with nothing to choose or
+    notice, waits while adding; traces on menu rows; licence and owner
+    checks on photos; the import writes only when complete.
+  - **Evals:** the first full run caught menu blocks replacing
+    recommendations for guests with allergies (no unsafe card); fixed. Final
+    run: every safety category passes every run, grounding 8/8, ordering
+    26/27 (one judge-only miss, see `docs/eval-report.md`). Tests: 878
+    backend, 94 frontend.
+  - **Live** 2026-10-18 (bundle `index-CwYAHszg.js`): photos load from
+    `/menu/` as WebP; a dairy guest's "What coffee do you have?" gave the
+    coffee block (2 of 8 greyed) and 3 dairy-free cards in 8.3 s; "cakes and
+    pastries" gave its block (3 of 4 greyed) and Vegan Banana Bread in 5.1 s.
+    The model once said the block is "above" the reply; it is below.
 
 ## Phase 14: mobile friendly and fluid sizing (about 4 h)
 - **Sizing:**

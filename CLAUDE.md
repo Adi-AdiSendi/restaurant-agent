@@ -18,7 +18,8 @@ cart and orders, React Router, voice input and CRMs. Update these lines as
 each lands. Landed: six restaurants with options (phase 10); tools take a
 server-built `ToolContext` (ADR 0020); cart, checkout and orders in
 `app/orders/` and React Router pages (phase 11); cart tools in the chat
-with action and checkout cards (phase 12).
+with action and checkout cards (phase 12); Openverse photos, menu blocks
+and quick Add (phase 13, ADR 0024).
 - Backend: Python 3.12, FastAPI, Pydantic v2, SQLAlchemy 2 (async) + asyncpg, Alembic
 - Database: PostgreSQL 16
 - LLM: OpenAI GPT-6 Luna via the Responses API (model ID from `OPENAI_MODEL`)

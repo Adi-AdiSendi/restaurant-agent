@@ -1,4 +1,4 @@
-# Handoff (2026-10-18: v2 phase 12 done, phase 13 next)
+# Handoff (2026-10-18: v2 phase 13 done, phase 14 next)
 
 Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 
@@ -8,7 +8,8 @@ Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 | 0 to 8 (v1) | done and live; v1 video moved to phase 18 |
 | 9 to 11 (v2) | done and live: ADRs, 6 restaurants with options, cart and checkout by hand |
 | 12 Ordering through the chat | done and live-checked 2026-10-18 (see `docs/plan.md`) |
-| 13 to 18 | not started: visuals, mobile, voice, restaurant CRM, personal CRM, final evals and video |
+| 13 Visuals | done and live-checked 2026-10-18: 91 reviewed Openverse photos, menu blocks, quick Add |
+| 14 to 18 | not started: mobile, voice, restaurant CRM, personal CRM, final evals and video |
 
 Repo: GitHub `Adi-AdiSendi/restaurant-agent` (private), branch `main`, all
 pushed. Commits are allowed (one logical change each). Green at the end of
@@ -29,11 +30,19 @@ serves bundle `index-CjJDF6BI.js`.
 - Frontend: `ActionCard`, `orders/CheckoutCard`, `api/errors.ts`.
 - Evals: `ordering` category, cart grader, p95 per category.
 
-## Next session: phase 13, visuals
-Plan it in plan mode first (`docs/plan.md` phase 13). Decide the photo source
-with the user first (see below), then update ADR 0022.
-Optional: a browser click-through of phase 11 and 12 on the live site (Claude
-in Chrome was not connected this session).
+## Phase 13: what exists
+- Photos: `backend/scripts/photos/` (Openverse search with a cache, import,
+  credits). Reviewed picks in `backend/data/photos/picks.json`; files in
+  `frontend/public/menu/`; `photo` columns (migration 0005). To change a
+  photo: edit `picks.json` (A, B, C or none), run
+  `uv run python -m scripts.photos.import_photos`, commit.
+- `show_menu` tool and menu blocks; quick Add (`features/chat/quickAdd.ts`,
+  `features/menu/useQuickAdd.ts`); `components/DishPhoto`, `Skeleton`.
+
+## Next session: phase 14, mobile friendly
+Plan it in plan mode first (`docs/plan.md` phase 14). It adds Playwright
+(a new dev dependency, needs a reason in the commit) and a manual check on a
+real phone.
 
 ## Still open (needs the user)
 - **Before the repo goes public:** remove `docs/task/` (the brief PDF, only
@@ -44,13 +53,6 @@ in Chrome was not connected this session).
     `git filter-branch --index-filter "git rm -r --cached --ignore-unmatch docs/task" -- main`,
     add `docs/task/` to `.gitignore`, re-run gitleaks, and force-push.
   - Commit hashes quoted in `docs/plan.md` will change.
-- **Photos (phase 13):** the user has **no Pexels key**.
-  - Options offered:
-    - Openverse (no key, Creative Commons, credits; recommended);
-    - hand-downloaded Pexels or Unsplash photos;
-    - icons only.
-  - Pinterest images cannot be used (no licence).
-  - Update ADR 0022 once one is chosen.
 
 ## Deploy design (ADR 0017, accepted)
 - Netlify serves the UI and proxies `/api/*` to FastAPI on Render free
