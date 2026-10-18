@@ -15,7 +15,8 @@ async def test_restaurants_are_listed_in_order_without_login(client: httpx2.Asyn
     assert response.status_code == 200
     first = response.json()[0]
     assert first["slug"] == "corner-table"
-    assert set(first) == {"id", "slug", "name", "cuisine", "tagline", "accent_color", "categories"}
+    expected = {"id", "slug", "name", "cuisine", "tagline", "accent_color", "categories", "photo"}
+    assert set(first) == expected
 
 
 async def test_unknown_restaurant_is_404(client: httpx2.AsyncClient) -> None:

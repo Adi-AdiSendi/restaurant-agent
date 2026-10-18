@@ -7,7 +7,7 @@ from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 from app.menu.allergens import Allergen
 from app.menu.option_schemas import OptionGroupFields, OptionGroupOut
-from app.menu.restaurant import CATEGORY_PATTERN
+from app.menu.restaurant import CATEGORY_PATTERN, PHOTO_PATTERN
 
 
 class MenuItemBase(BaseModel):
@@ -25,6 +25,8 @@ class MenuItemBase(BaseModel):
     may_contain: list[Allergen]
     removable: list[str] = Field(default_factory=list[str])
     """Ingredients a guest may leave out. Leaving one out never removes an allergen."""
+    photo: str | None = Field(default=None, pattern=PHOTO_PATTERN, max_length=100)
+    """A similar dish's photo, credited in docs/photo-credits.md; None shows an icon."""
 
     @model_validator(mode="after")
     def _consistent(self) -> Self:

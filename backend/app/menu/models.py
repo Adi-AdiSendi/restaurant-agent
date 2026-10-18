@@ -12,6 +12,7 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db.base import Base
 from app.menu.allergens import ALLERGENS_SQL
+from app.menu.restaurant import PHOTO_PATTERN
 
 
 class Option(Base):
@@ -68,6 +69,7 @@ class MenuItem(Base):
         CheckConstraint(f"allergens <@ {ALLERGENS_SQL}", name="known_allergens"),
         CheckConstraint(f"may_contain <@ {ALLERGENS_SQL}", name="known_may_contain"),
         CheckConstraint("removable <@ ingredients", name="removable_are_ingredients"),
+        CheckConstraint(f"photo ~ '{PHOTO_PATTERN}'", name="photo_format"),
     )
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -85,6 +87,7 @@ class MenuItem(Base):
     allergens: Mapped[list[str]] = mapped_column(ARRAY(Text))
     may_contain: Mapped[list[str]] = mapped_column(ARRAY(Text))
     removable: Mapped[list[str]] = mapped_column(ARRAY(Text), server_default=text("'{}'"))
+    photo: Mapped[str | None] = mapped_column(String(100))
     option_groups: Mapped[list[OptionGroup]] = relationship(
         order_by=OptionGroup.position, lazy="selectin"
     )
