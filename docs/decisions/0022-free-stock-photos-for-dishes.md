@@ -1,6 +1,6 @@
 # 0022: Free stock photos for dishes
 
-- Status: Accepted
+- Status: Superseded by [0024](0024-openverse-photos-for-dishes.md)
 - Date: 2026-10-17
 
 ## Context
