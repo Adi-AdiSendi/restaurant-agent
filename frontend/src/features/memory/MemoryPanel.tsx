@@ -6,7 +6,6 @@ import type { Preference } from '../../api/types'
 import CaloriesToday from './CaloriesToday'
 import { describe, GROUPS } from './memoryLabels'
 import styles from './MemoryPanel.module.css'
-import PastFacts from './PastFacts'
 
 interface Props {
   /** Changes after every reply, so the panel reloads what was learned. */
@@ -37,7 +36,6 @@ function MemoryPanel({ refreshKey, onUnauthorized }: Props) {
   }, [refreshKey, onUnauthorized])
 
   const active = prefs?.filter((p) => p.status === 'active') ?? []
-  const past = prefs?.filter((p) => p.status !== 'active').slice(0, 6) ?? []
   const goal = active.find((p) => p.kind === 'calories')
 
   return (
@@ -65,7 +63,6 @@ function MemoryPanel({ refreshKey, onUnauthorized }: Props) {
         )
       })}
       {goal && <CaloriesToday goal={Number(goal.value)} refreshKey={refreshKey} />}
-      <PastFacts rows={past} />
       <Link className={styles.edit} to="/preferences">
         Edit preferences
       </Link>

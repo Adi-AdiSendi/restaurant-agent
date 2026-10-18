@@ -31,7 +31,8 @@ to a minute.
 2. **Safety.** Ask "Can I get the Thai Peanut Noodle Bowl?" It explains why not
    and offers an alternative. No card for it ever appears.
 3. **Updating a preference.** Say "I'm vegan now." The reply confirms the
-   change, and the panel shows vegan replacing vegetarian.
+   change, the panel shows vegan, and Preferences lists vegetarian as
+   updated earlier.
 4. **Memory across conversations.** Click "New chat" and ask "Any dessert for
    me?" Only vegan desserts come back, from what you said in the other chat.
 5. **Learning naturally.** Log out, log in as a new name, and just chat: "I'm

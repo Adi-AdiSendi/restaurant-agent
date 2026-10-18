@@ -58,8 +58,9 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
   `/api/transcribe` elsewhere. The text goes into the box for the guest to
   send, or with the **Auto** toggle (saved in `localStorage`) it is sent at once.
 - `src/features/memory/`: "What I remember about you", from `/api/preferences`,
-  refreshed after each reply, with an "Edit preferences" link. Old facts are
-  struck through (`PastFacts`, also on the Preferences page). Pages (`menu`)
+  refreshed after each reply, with an "Edit preferences" link. It shows
+  active facts only; replaced ones are struck through on the Preferences
+  page (`PastFacts`). Pages (`menu`)
   compose features. A few pieces cross over: the cart context, the chat's
   `ItemCard` on the menu, and the orders `CheckoutCard` in the chat.
 - `src/features/preferences/`: `/preferences`, every remembered fact edited

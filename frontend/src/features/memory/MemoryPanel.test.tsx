@@ -25,7 +25,7 @@ const row = (id: number, kind: Preference['kind'], value: string, status: Prefer
   }) satisfies Preference
 
 describe('MemoryPanel', () => {
-  test('shows active facts, marks hard ones as enforced, strikes through old ones', async () => {
+  test('shows active facts, marks hard ones as enforced, hides old ones', async () => {
     mockFetch({
       'GET /api/preferences': {
         body: [
@@ -39,7 +39,8 @@ describe('MemoryPanel', () => {
     expect(await screen.findByText('tree nut')).toBeInTheDocument()
     expect(screen.getByText('mild')).toBeInTheDocument()
     expect(screen.getByText('always enforced')).toBeInTheDocument()
-    expect(screen.getByText('hot').tagName).toBe('S')
+    expect(screen.queryByText('hot')).not.toBeInTheDocument()
+    expect(screen.queryByText('Updated earlier')).not.toBeInTheDocument()
   })
 
   test('invites the guest to share preferences when nothing is stored', async () => {
