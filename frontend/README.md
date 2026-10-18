@@ -52,7 +52,8 @@ Netlify serves it and proxies `/api` to the backend (`../netlify.toml`).
   all from server data. `MenuPage` sets the cart from each reply's `cart`.
 - `src/features/voice/`: the mic in the composer (English). `speech.ts` uses
   the browser's recognition where it exists; `record.ts` records a clip for
-  `/api/transcribe` elsewhere. The text goes into the box; the guest sends it.
+  `/api/transcribe` elsewhere. The text goes into the box for the guest to
+  send, or with the **Auto** toggle (saved in `localStorage`) it is sent at once.
 - `src/features/memory/`: "What I remember about you", from `/api/preferences`,
   refreshed after each reply. Old facts are struck through. Pages (`menu`)
   compose features. A few pieces cross over: the cart context, the chat's

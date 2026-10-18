@@ -18,6 +18,13 @@ function Composer({ disabled, onSend }: Props) {
     setText('')
   }
 
+  // Auto mode sends what was said; while a reply is pending it waits in the box instead.
+  function sendSpoken(spoken: string) {
+    if (disabled || !spoken.trim()) return setText(spoken)
+    onSend(spoken)
+    setText('')
+  }
+
   return (
     <form className={styles.composer} onSubmit={submit}>
       <input
@@ -28,7 +35,7 @@ function Composer({ disabled, onSend }: Props) {
         aria-label="Message"
         maxLength={2000}
       />
-      <MicButton disabled={disabled} onText={setText} />
+      <MicButton disabled={disabled} onText={setText} onSend={sendSpoken} />
       <button className={styles.send} type="submit" disabled={disabled || !text.trim()}>
         Send
       </button>

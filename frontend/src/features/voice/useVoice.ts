@@ -11,9 +11,10 @@ export const hasVoice = () => isSpeechSupported() || isRecordingSupported()
 export const MIC_BLOCKED = 'Microphone blocked: allow it in your browser to speak your order.'
 export const NOT_HEARD = "Didn't catch that, please try again."
 
-/** Voice into the message box. The guest reviews the text and presses Send: a misheard
- * "add two" must not change the cart unseen. Ported from Aviation-Services useVoice.js. */
-export function useVoice(setText: (text: string) => void) {
+/** Voice into the message box: live text while speaking, then `onDone` with the final
+ * text (the box to review, or straight to Send in auto mode). Ported from
+ * Aviation-Services useVoice.js. */
+export function useVoice(setText: (text: string) => void, onDone: (text: string) => void) {
   const [listening, setListening] = useState(false)
   const [transcribing, setTranscribing] = useState(false)
   const [error, setError] = useState<string | null>(null)
@@ -33,7 +34,7 @@ export function useVoice(setText: (text: string) => void) {
     setTranscribing(true)
     try {
       const text = await transcribe(audio)
-      if (text) setText(text)
+      if (text) onDone(text)
       else setError(NOT_HEARD)
     } catch (err) {
       setError(err instanceof ApiError ? err.message : NOT_HEARD)
@@ -52,7 +53,7 @@ export function useVoice(setText: (text: string) => void) {
     const recognizer = isSpeechSupported()
       ? createRecognizer({
           onInterim: setText,
-          onFinal: setText,
+          onFinal: onDone,
           onError: (code) => fail(code === 'not-allowed' ? MIC_BLOCKED : NOT_HEARD),
           onEnd: () => setListening(false),
         })

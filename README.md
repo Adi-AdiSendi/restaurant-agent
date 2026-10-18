@@ -62,7 +62,8 @@ to a minute.
     Dishes with nothing to choose have a one-click "Add".
 11. **Speak your order.** Press the mic next to Send and say "Add a small
     latte with oat milk". The words appear in the message box as you speak;
-    check them and press Send.
+    check them and press Send. Turn on **Auto** next to the mic to send what
+    you say as soon as you stop speaking.
 
 ## How it works
 ```
@@ -238,8 +239,9 @@ Evals (real OpenAI calls, local DB only): `cd backend && uv run python -m evals.
 - **Photos:** 91 of the 109 dishes and covers have an openly licensed
   Openverse photo of a similar dish, not the restaurant's own; the rest show
   an icon. The user reviewed each one. Credits: [docs/photo-credits.md](docs/photo-credits.md).
-- **Voice:** English only, and the guest always presses Send, so a misheard
-  order never changes the cart unseen. Chrome and Edge use the browser's
+- **Voice:** English only. By default the guest checks the words and presses
+  Send, so a misheard order never changes the cart unseen; the **Auto**
+  toggle (remembered in the browser) sends at once instead. Chrome and Edge use the browser's
   own speech recognition (which may send audio to the browser maker);
   other browsers record a clip (up to 20 s) that the server sends to
   OpenAI's transcription. No spoken replies.

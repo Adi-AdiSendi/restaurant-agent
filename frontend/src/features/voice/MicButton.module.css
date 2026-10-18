@@ -41,3 +41,20 @@
     animation: none;
   }
 }
+
+.auto,
+.autoOn {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.autoOn {
+  background: var(--brand);
+  color: #fff;
+}
