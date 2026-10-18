@@ -4,7 +4,7 @@ Budget: about 10 to 12 focused hours inside the 72-hour window.
 Rule: the baseline must work end to end (deployed) before Part 2 starts.
 Every phase ends with all checks green and a `code-reviewer` pass.
 
-**Current phase: 12** (v2; phases 9 to 11 done; v1 phases 0 to 8 are below, the video moved to phase 18)
+**Current phase: 13** (v2; phases 9 to 12 done; v1 phases 0 to 8 are below, the video moved to phase 18)
 
 ## Inputs
 - Menu concept: international casual (burgers, bowls, pasta, desserts), prices in SAR.
@@ -377,6 +377,40 @@ Reused from sibling projects, adapted rather than rebuilt:
   Also measure p95 turn time against the 22 s deadline.
 - Done when: a full order can be built and changed by chat alone, and the
   ordering evals pass 3 of 3 runs.
+- Status: done 2026-10-18.
+  - **Built:**
+    - six cart tools (`app/tools/`), each write in a savepoint of the turn;
+    - the cart with line ids in the model's context;
+    - replies carry action cards and the cart;
+    - a chat checkout card whose button places the order.
+  - **Decided with the user:** a cart from another restaurant is refused
+    with a pointer to "Empty cart"; a removable dislike is left out and
+    reported ("with pickles this time" keeps it).
+  - **Review fixes:**
+    - checkout refuses a total the guest did not see (`cart_changed`);
+    - a conflicting line cannot be raised;
+    - checkout is proposed only at the cart's restaurant;
+    - dislikes match whole words.
+  - **Evals:** ordering 9/9 cases over 27 runs, p95 8.0 s; every safety
+    category passes every run. The full run caught a regression (the
+    `add_to_cart` description made a disliked dish look fine to recommend),
+    fixed and measured (`docs/eval-report.md`). Tests: 854 backend, 82 frontend.
+  - **Live run** 2026-10-18 on the Netlify site (bundle `index-CjJDF6BI.js`),
+    fresh user at Stack & Smash:
+
+    | Turn | Time | Result |
+    |---|---|---|
+    | "I don't like pickles." | 10.1 s | stored |
+    | add a Classic Smash, single, brioche | 6.4 s | added, "pickles left off" |
+    | "Make that two." | 6.0 s | line set to 2, 64.00 SAR |
+    | "Add classic fries too." | 5.0 s | asked regular or large |
+    | "Regular, please." | 6.1 s | fries added, 76.00 SAR |
+    | "Actually, remove the fries." | 3.9 s | removed, 64.00 SAR |
+    | "Place my order for pickup." | 3.3 s to 5.0 s | checkout card, "not placed yet", 0 orders |
+    | the card's button (API) | 0.6 s | order placed, 64.00 SAR |
+
+    The browser click-through was not run (Claude in Chrome not connected);
+    the live bundle was checked for the new UI strings.
 
 ## Phase 13: visuals (about 6 h)
 - **Photos** (ADR 0022):

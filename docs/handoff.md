@@ -1,4 +1,4 @@
-# Handoff (2026-10-18: v2 phase 11 done, phase 12 next)
+# Handoff (2026-10-18: v2 phase 12 done, phase 13 next)
 
 Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 
@@ -6,48 +6,34 @@ Read this first in a new session, then `CLAUDE.md` and `docs/plan.md`.
 | Phase | State |
 |---|---|
 | 0 to 8 (v1) | done and live; v1 video moved to phase 18 |
-| 9 v2 foundations | done: ADRs 0018 to 0023, v2 plan in `docs/plan.md` |
-| 10 Restaurants and options | done and live: 6 restaurants, 103 dishes, 304 options, evals pass |
-| 11 Cart and checkout by hand | done and live-checked through the API on 2026-10-18 |
-| 12 to 18 | not started: chat ordering, visuals, mobile, voice, restaurant CRM, personal CRM, final evals and video |
+| 9 to 11 (v2) | done and live: ADRs, 6 restaurants with options, cart and checkout by hand |
+| 12 Ordering through the chat | done and live-checked 2026-10-18 (see `docs/plan.md`) |
+| 13 to 18 | not started: visuals, mobile, voice, restaurant CRM, personal CRM, final evals and video |
 
 Repo: GitHub `Adi-AdiSendi/restaurant-agent` (private), branch `main`, all
-pushed. Commits are allowed (one logical change each). Green locally at the
-end of this session: backend 806 tests, ruff, pyright and the import layers;
-frontend 73 tests, ESLint and Prettier; the line limits. Check CI on the last
-push with `gh run list --limit 1`.
+pushed. Commits are allowed (one logical change each). Green at the end of
+this session: backend 854 tests, ruff, pyright and the import layers;
+frontend 82 tests, ESLint and Prettier; the line limits; CI. The live site
+serves bundle `index-CjJDF6BI.js`.
 
-## Phase 11: what exists
-- **Backend:** migration 0004 (`carts`, `cart_lines`, `orders`,
-  `order_lines`); `app/orders/` (cart service, checkout with a cart row
-  lock, orders, status by time); routes `app/api/cart.py`, `app/api/orders.py`
-  and `GET /api/restaurants/{slug}/menu`. Cart and order errors return a
-  `code` (conflict, other_restaurant, invalid_choice, empty_cart,
-  unavailable, not_found).
-- **Consent** (ADR 0019): a request carries `accepted_reasons`, the conflict
-  reasons the guest was shown. Any other conflict gets a new 409, at add and
-  at checkout. Only the checkout button places an order.
-- **Chat lock:** the chat turn's user lock is `FOR NO KEY UPDATE`, so carts
-  and orders never wait for a chat reply (`tests/orders/test_locks.py`).
-- **Frontend** (react-router 7.18.4): `/` restaurants; `/r/:slug`
-  (`MenuRoute` keys `MenuPage` by slug) with the menu, item sheet, and Chat
-  and Memory tabs; `/checkout`; `/orders`; `/orders/:id` (`OrderView` keyed
-  by id). A cart button and drawer in the header; chat cards open the same
-  item sheet; `components/useModal.ts` makes the sheet and drawer modal.
-- **Live check script:** an API flow with two fresh users, timed (results in
-  `docs/plan.md`). It lived in the session scratchpad; rewrite it from the
-  table there if needed. The browser click-through was not done (Claude in
-  Chrome was not connected); worth a manual pass.
+## Phase 12: what exists
+- `app/tools/`: `view_cart`, `add_to_cart`, `update_cart_line`,
+  `remove_cart_line`, `recent_orders`, `propose_checkout`. Writes go through
+  `cart_write.py` (a savepoint); order errors map to tool errors with advice
+  (`order_errors.py`); `dislikes.py` matches removable ingredients by words.
+- `app/agent/turn_setup.py` builds the turn (cart block after the profile);
+  `turn_reply.py` returns `ChatReply` with `actions` and `cart`.
+- Checkout takes `expected_total_sar`; a different total is 409
+  `cart_changed`. Both the checkout page and the chat card send it
+  (`usePlaceOrder`).
+- Frontend: `ActionCard`, `orders/CheckoutCard`, `api/errors.ts`.
+- Evals: `ordering` category, cart grader, p95 per category.
 
-## Next session: phase 12, ordering through the chat
-Plan it in plan mode first (`docs/plan.md` phase 12).
-- Cart tools get the `ToolContext` (`app/tools/context.py`) and call
-  `app/orders` (`add_line` etc.) with no `accepted_reasons`, so a conflict is
-  always refused and explained. Register them in `app/agent/tool_dispatch.py`.
-- `propose_checkout` shows a card; the guest's button places the order.
-- The reply (`app/agent/schemas.py` `AgentReply`) carries the cart; the
-  drawer updates from it.
-- Add an `ordering` eval category; measure p95 turn time against 22 s.
+## Next session: phase 13, visuals
+Plan it in plan mode first (`docs/plan.md` phase 13). Decide the photo source
+with the user first (see below), then update ADR 0022.
+Optional: a browser click-through of phase 11 and 12 on the live site (Claude
+in Chrome was not connected this session).
 
 ## Still open (needs the user)
 - **Before the repo goes public:** remove `docs/task/` (the brief PDF, only
